@@ -1,30 +1,40 @@
 % -*- coding: utf-8 -*-
-\documentclass{scrbook} % Entspricht den Typografieregeln eines Buches
+\documentclass{scrbook}[headings=normal]% Entspricht den Typografieregeln eines Buches
 \usepackage{wbh-thesis} % Laden der Vorlage
 
+\usepackage[automark,headsepline,plainheadsepline]{scrlayer-scrpage}
+\clearpairofpagestyles % <==============================================
+\ihead*{\leftmark} % <==================================================
+\ohead*{\pagemark} % <==================================================
+\pagestyle{scrheadings}
 
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
-
-\title{Realisierung eines Source-to-Source Compilers zwischen Xamarin.Forms und Flutter zur automatisierten Transformation bestehender mobiler Anwendungen}
-\Autor[m]{Julian Pasqué} % Option entspricht dem Genus für Autor/in bzw. 
-                            % Studierende/r:  m = Autor bzw. Studierender
-                            %                 f = Autorin bzw. Studierende
-\Fachbereich{INF} % Entspricht einer der folgenden Optionen für den Fachbereich:
-                  % * ING = Ingenieurwissenschaften
-                  % * INF = Informatik
-                  % * WRT = Wirtschaftsingeniuerwesen und Technologiemanagement
-\Betreuung[m]{Dr. Thomas Kalbe} % Option entspricht dem Genus für 
-                                    % Betreuer/in:  m = Betreuer
-                                    %               f = Betreuerin
-\Matrikelnummer{902953}
-\Abgabetermin{1.\,April~2021}
-\Anschrift{Römlinghovener Str. 33}{53227 Bonn}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=0bp,
+  afterskip=0bp]{chapter}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=12bp,
+  afterskip=6bp]{section}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=12bp,
+  afterskip=6bp]{subsection}
+\RedeclareSectionCommand[
+  afterindent=false,
+  beforeskip=6bp,
+  afterskip=6bp]{subsubsection}
+\RedeclareSectionCommand[
+  runin=true,
+  afterskip=1em]{paragraph}
+\RedeclareSectionCommand[
+  runin=true,
+  afterskip=1em]{subparagraph}
 
 \begin{document}
-  \maketitle          % Setzt die Titelseite
+  \include{TitlePage}  % Setzt die Titelseite
   \frontmatter        % Eigenschaften für den Vorspann setzen
-  \Abstract{abstract} % Zusammenfassung (Abstract) aus Datei
+  \include{Abstract}  % Setzt die Titelseite
   \tableofcontents    % Setzt das Inhaltsverzeichnis
   \listoffigures      % Setzt das Abbildungsverzeichnis
   \listoftables       % Setzt das Tabellenverzeichnis
@@ -32,14 +42,17 @@
   
 
 
-  \include{Einleitung}
-  \include{SourceToSourceCompiler}
-  \include{CrossPlattformFrameworks}
-  \include{CompilerEntwurf}  
-  \include{Realisierung}
-  \include{Qualitätssicherung}
-  \include{Anwendungsfall}
-  \include{Fazit}
+
+
+
+  \include{01Einleitung}
+  \include{02SourceToSourceCompiler}
+  \include{03CrossPlattformFrameworks}
+  \include{04CompilerEntwurf}  
+  \include{05Realisierung}
+  \include{06Qualitätssicherung}
+  \include{07Anwendungsfall}
+  \include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
   \pagenumbering{Roman}%  

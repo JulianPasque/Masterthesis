@@ -3,6 +3,14 @@
 {/globaldict where{pop globaldict}{userdict}ifelse/pdfmark/cleartomark load put}
 ifelse
 [
+/Title(Abstract)
+/Action/GoTo/Dest(Doc-Start)cvn
+/OUT pdfmark
+[
+/Title(Inhaltsverzeichnis)
+/Action/GoTo/Dest(chapter*.2)cvn
+/OUT pdfmark
+[
 /Title(Abbildungsverzeichnis)
 /Action/GoTo/Dest(chapter*.3)cvn
 /OUT pdfmark
@@ -174,5 +182,5 @@ ifelse
 /OUT pdfmark
 [
 /Title(Literaturverzeichnis)
-/Action/GoTo/Dest(chapter*.5)cvn
+/Action/GoTo/Dest(appendix.A)cvn
 /OUT pdfmark

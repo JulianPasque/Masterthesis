@@ -16,10 +16,6 @@
 \usepackage[ngerman]{babel} % Festlegen der neuen deutschen Rechtschreibung für 
                             % das gesamte Dokument
 
-\usepackage[headsepline]{scrlayer-scrpage}
-\pagestyle{scrheadings}
-\clearpairofpagestyles
-
 
 \usepackage{textcomp} % Erweitert den Zeichensatz
 \usepackage{mathptmx}    % Setzt die Standardschriftart Times New Roman
@@ -31,6 +27,7 @@
 \KOMAoption{parskip}{full}  % Absatzauszeichnung ohne Einzug
 \KOMAoption{listof}{totoc}  % Fügt weitere Listenverzeichnisse in das 
                                     % Inhaltsverzeichnis ein
+
 \setuptoc{toc}{totoc}
 
 
@@ -59,115 +56,25 @@ right=4cm}                  % konstant vier Zentimeter (4cm)
   % quellen.bib eingebunden werden!
 \bibliography{quellen.bib}            % Lädt Literaturliste aus Datei "quellen.bib"
 \defbibheading{bibliography}[\bibname]  % Kapitelname für das Literaturverzeichnis
-  {\chapter{Literaturverzeichnis}}          %  u.a. im Inhaltsverzeichnis
+  {\chapter*{Literaturverzeichnis}
+	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+	\markboth{Literaturverzeichnis}{}
+  
+  }          %  u.a. im Inhaltsverzeichnis
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% MAKRO-DEFINITIONEN %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\WBH}{Wilhelm Büchner Hochschule}
-
-\newcommand{\Fachbereich}[1]{%
-  % Entspricht einer der folgenden Optionen für den Fachbereich:
-  % * ING = Ingenieurwissenschaften
-  % * INF = Informatik
-  % * WRT = Wirtschaftsingenieurwesen und Technologiemanagement
-  \ifthenelse{\equal{#1}{ING}}{\newcommand{\fachbereich}
-    {Ingenieurwissenschaften}}{%
-    \ifthenelse{\equal{#1}{INF}}{\newcommand{\fachbereich}{Informatik}}{%
-      \ifthenelse{\equal{#1}{WRT}}{\newcommand{\fachbereich}
-        {Wirtschaftsingenieurwesen \\ und Technologiemanagement}}{%
-        \errmessage{Unbekannter Fachbereich}
-      }
-    }
-  }
-}
-
-% Ermittlung des Schlüssel/Wert-Paares für den/die Betreuer/in
-\newcommand{\Betreuung}[2][nogender]{%
-  \ifthenelse{\equal{#1}{m}}{\newcommand{\betreuungschluessel}{Betreuer}}{%
-    \ifthenelse{\equal{#1}{f}}{\newcommand{\betreuungschluessel}{Betreuerin}}{%
-      \newcommand{\betreuungschluessel}{Betreuer/in}
-    }
-  }
-  \newcommand{\betreuungwert}{#2}
-}
-
-% Ermittlung des Schlüssel/Wert-Paares für den/die Autor/in bzw. die/den
-% Studierende/n
-\newcommand{\Autor}[2][nogender]{%
-  \ifthenelse{\equal{#1}{m}}{%
-    \newcommand{\autorschluessel}{Autor}
-    \newcommand{\studentschluessel}{Studierender}
-  }{%
-    \ifthenelse{\equal{#1}{f}}{%
-      \newcommand{\autorschluessel}{Autorin}
-      \newcommand{\studentschluessel}{Studierende}
-    }{%
-      \newcommand{\autorschluessel}{Autor/in}
-      \newcommand{\studentschluessel}{Studierende/r}
-    }
-  }
-  \newcommand{\autorwert}{#2}
-}
-
-\newcommand{\Matrikelnummer}[1]{\newcommand{\matrikelnummer}{#1}}
-
-\newcommand{\Abgabetermin}[1]{\newcommand{\abgabetermin}{#1}}
-
-% Die Anschrift bestehend aus zwei Teilen:
-% * Straße mit Hausnummer
-% * Postleitzahl und Ort
-\newcommand{\Anschrift}[2]{%
-  \newcommand{\strhausnr}{#1}
-  \newcommand{\plzort}{#2}
-}
-
-% Einfügen der Zusammenfassung (Abstract) aus externer Datei
-\newcommand{\Abstract}[1]{%
-  \addcontentsline{toc}{chapter}{Abstract}
-  \addchap*{Zusammenfassung}%
-  \pagenumbering{Roman}%
-  \input{#1}} % Deutsch
-\newcommand{\AbstractEN}[1]{
-  \addchap*{Abstract}%
-  \pagenumbering{Roman}%
-  \input{#1}}      % Englisch
-
-\renewcommand{\maketitle}{%
-  \begin{titlepage}
-    % Bildkante des Logo bündig mit Text
-    \hspace{-2mm} \includegraphics[scale=0.5]{wbh_logo.png} \\
-    {\sffamily Fachbereich \fachbereich               \\
-    Hilpertstraße 31,                                               \\
-    D-64295 Darmstadt                                      }
-
-    \vfill
-
-    {\usekomafont{subtitle}\@title}
-
-    \vfill
-
-    % Meta-Angaben zur vorgelegten Arbeit
-    {\sffamily\begin{tabular}{@{}p{4cm}p{9cm}@{}}
-      \betreuungschluessel: & \betreuungwert  \\
-      \autorschluessel:     & \autorwert      \\
-      Matrikelnummer:     & \matrikelnummer \\
-      Anschrift:                & \strhausnr      \\
-                                    & \plzort         \\
-      Abgabetermin:        & \abgabetermin   \\
-    \end{tabular}}
-  \end{titlepage}
-}
 
 \newcommand{\printEidesstattlicheErklaerung}{%
   \clearpage
   \pagenumbering{gobble}  % Keine Seitennummerierung 
   
   \chapter*{Eidesstattliche Erklärung}
-
+	\markboth{Eidesstattliche Erklärung}{}
   \begin{tabular}{@{}p{4cm}p{9cm}@{}}
-    \studentschluessel: & \autorwert      \\
-    Matrikelnummer:     & \matrikelnummer \\
+    Studierender: & Julian Pasqué      \\
+    Matrikelnummer:     & 902953 \\
   \end{tabular}
 
   \bigskip
