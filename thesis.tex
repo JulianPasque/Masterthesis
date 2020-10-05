@@ -2,6 +2,10 @@
 \documentclass{scrbook} % Entspricht den Typografieregeln eines Buches
 \usepackage{wbh-thesis} % Laden der Vorlage
 
+
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
 \title{Realisierung eines Source-to-Source Compilers zwischen Xamarin.Forms und Flutter zur automatisierten Transformation bestehender mobiler Anwendungen}
 \Autor[m]{Julian Pasqué} % Option entspricht dem Genus für Autor/in bzw. 
                             % Studierende/r:  m = Autor bzw. Studierender
@@ -22,24 +26,25 @@
   \frontmatter        % Eigenschaften für den Vorspann setzen
   \Abstract{abstract} % Zusammenfassung (Abstract) aus Datei
   \tableofcontents    % Setzt das Inhaltsverzeichnis
+  \listoffigures      % Setzt das Abbildungsverzeichnis
+  \listoftables       % Setzt das Tabellenverzeichnis
   \mainmatter         % Eigenschaften für den Hauptteil setzen
   
-%%% bitte die nächsten 5 Zeilen löschen
-\chapter{Testkapitel}
-Der eigentliche Inhalt folgt an dieser Stelle.
 
-\section{Testabschnitt}
-Und hier ein kurzer Text mit einem Quellenverweis \autocite{Schlosser14}.
 
-  % \include{kap_einleitung}
-  % \include{kap_analyse}
-  % \include{kap_entwurf}
-  % \include{kap_realisierung}
-  % \include{kap_resuemee}
+  \include{Einleitung}
+  \include{SourceToSourceCompiler}
+  \include{CrossPlattformFrameworks}
+  \include{CompilerEntwurf}  
+  \include{Realisierung}
+  \include{Qualitätssicherung}
+  \include{Anwendungsfall}
+  \include{Fazit}
   
   \appendix                       % Leitet den Nachspann ein
-  \listoftables                   % Setzt das Tabellenverzeichnis
-  \listoffigures                  % Setzt das Abbildungsverzeichnis
+  \pagenumbering{Roman}%  
+  \setcounter{page}{6}
+  
   \printbibliography              % Setzt das Literaturverzeichnis
   \printEidesstattlicheErklaerung % Setzt die eidesstattlichen Erklärung
 \end{document}
