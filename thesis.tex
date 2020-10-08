@@ -1,62 +1,78 @@
 % -*- coding: utf-8 -*-
 \documentclass{scrbook}[headings=normal]% Entspricht den Typografieregeln eines Buches
 \usepackage{wbh-thesis} % Laden der Vorlage
+\usepackage{blindtext}
+\usepackage{listings}
 
-\usepackage[automark,headsepline,plainheadsepline]{scrlayer-scrpage}
-\clearpairofpagestyles % <==============================================
-\ihead*{\leftmark} % <==================================================
-\ohead*{\pagemark} % <==================================================
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+
+
+
+\KOMAoptions{%
+    headsepline=true,   % header line
+    footsepline=false,          % footer line
+    plainheadsepline=false, % activate header line for plain pages
+    plainfootsepline=false} % activate footer line for plain pages
+
+
 \pagestyle{scrheadings}
+\clearscrheadfoot
 
-\RedeclareSectionCommand[
-  afterindent=false,
-  beforeskip=0bp,
-  afterskip=0bp]{chapter}
-\RedeclareSectionCommand[
-  afterindent=false,
-  beforeskip=12bp,
-  afterskip=6bp]{section}
-\RedeclareSectionCommand[
-  afterindent=false,
-  beforeskip=12bp,
-  afterskip=6bp]{subsection}
-\RedeclareSectionCommand[
-  afterindent=false,
-  beforeskip=6bp,
-  afterskip=6bp]{subsubsection}
-\RedeclareSectionCommand[
-  runin=true,
-  afterskip=1em]{paragraph}
-\RedeclareSectionCommand[
-  runin=true,
-  afterskip=1em]{subparagraph}
+
+\ihead{\leftmark}
+\ohead{\pagemark} 
+
+
+%\RedeclareSectionCommand[
+%  afterindent=false,
+%  beforeskip=0bp,
+%  afterskip=0bp]{chapter}
+%\RedeclareSectionCommand[
+%  afterindent=false,
+%  beforeskip=12bp,
+%  afterskip=6bp]{section}
+%\RedeclareSectionCommand[
+%  afterindent=false,
+%  beforeskip=12bp,
+%  afterskip=6bp]{subsection}
+%\RedeclareSectionCommand[
+%  afterindent=false,
+%  beforeskip=6bp,
+%  afterskip=6bp]{subsubsection}
+%\RedeclareSectionCommand[
+%  runin=true,
+%  afterskip=1em]{paragraph}
+%\RedeclareSectionCommand[
+%  runin=true,
+%  afterskip=1em]{subparagraph}
 
 \begin{document}
   \include{TitlePage}  % Setzt die Titelseite
   \frontmatter        % Eigenschaften für den Vorspann setzen
+  
+
   \include{Abstract}  % Setzt die Titelseite
+
   \tableofcontents    % Setzt das Inhaltsverzeichnis
   \listoffigures      % Setzt das Abbildungsverzeichnis
+  
   \listoftables       % Setzt das Tabellenverzeichnis
   \mainmatter         % Eigenschaften für den Hauptteil setzen
   
 
-
-
-
-
   \include{01Einleitung}
-  \include{02SourceToSourceCompiler}
-  \include{03CrossPlattformFrameworks}
-  \include{04CompilerEntwurf}  
-  \include{05Realisierung}
-  \include{06Qualitätssicherung}
-  \include{07Anwendungsfall}
-  \include{08Fazit}
+  %\include{02SourceToSourceCompiler}
+  %\include{03CrossPlattformFrameworks}
+  %\include{04CompilerEntwurf}  
+  %\include{05Realisierung}
+  %\include{06Qualitätssicherung}
+  %\include{07Anwendungsfall}
+  %\include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
-  \pagenumbering{Roman}%  
-  \setcounter{page}{6}
+\clearpairofpagestyles
+\pagestyle{empty}
+
   
   \printbibliography              % Setzt das Literaturverzeichnis
   \printEidesstattlicheErklaerung % Setzt die eidesstattlichen Erklärung
