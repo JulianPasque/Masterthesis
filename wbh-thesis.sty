@@ -50,8 +50,11 @@ right=4cm}                  % konstant vier Zentimeter (4cm)
 \usepackage[autostyle]{csquotes}  % Von BibLaTeX verlangte Abhängigkeit
 
 \usepackage[backend=biber,        % Legt das Format des Literaturverzeichnisses 
-  style=verbose,sortcase=false,   % fest, hier "BibLaTeX" mit "bibtex" als 
+  style=authoryear,sortcase=false,   % fest, hier "BibLaTeX" mit "bibtex" als 
   autolang=other]{biblatex}       % Backend
+  \DefineBibliographyStrings{ngerman}{
+   andothers = {{et\,al\adddot}},
+}
   % Alternativ wäre auch "Biber" als Backend möglich, dann muss die Bibliografie mit
   % quellen.bib eingebunden werden!
 \bibliography{quellen.bib}            % Lädt Literaturliste aus Datei "quellen.bib"

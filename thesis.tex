@@ -15,6 +15,25 @@
     plainfootsepline=false} % activate footer line for plain pages
 
 
+\usepackage{mathtools}
+
+\usepackage[framemethod=tikz]{mdframed}
+
+% Shorthands
+\newcommand*\iffdef{\overset{\text{def}}{\iff}}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+\definecolor{WBH}{RGB}{0, 94, 166}
+
+
+% Theorem
+\mdtheorem[
+  linecolor=WBH,
+  frametitlefont=\sffamily\bfseries\color{white},
+  frametitlebackgroundcolor=WBH,
+]{Def}{Defintion}
+
 \pagestyle{scrheadings}
 \clearscrheadfoot
 
@@ -22,29 +41,6 @@
 \ihead{\leftmark}
 \ohead{\pagemark} 
 
-
-%\RedeclareSectionCommand[
-%  afterindent=false,
-%  beforeskip=0bp,
-%  afterskip=0bp]{chapter}
-%\RedeclareSectionCommand[
-%  afterindent=false,
-%  beforeskip=12bp,
-%  afterskip=6bp]{section}
-%\RedeclareSectionCommand[
-%  afterindent=false,
-%  beforeskip=12bp,
-%  afterskip=6bp]{subsection}
-%\RedeclareSectionCommand[
-%  afterindent=false,
-%  beforeskip=6bp,
-%  afterskip=6bp]{subsubsection}
-%\RedeclareSectionCommand[
-%  runin=true,
-%  afterskip=1em]{paragraph}
-%\RedeclareSectionCommand[
-%  runin=true,
-%  afterskip=1em]{subparagraph}
 
 \begin{document}
   \include{TitlePage}  % Setzt die Titelseite
@@ -61,7 +57,7 @@
   
 
   \include{01Einleitung}
-  %\include{02SourceToSourceCompiler}
+  \include{02Compiler}
   %\include{03CrossPlattformFrameworks}
   %\include{04CompilerEntwurf}  
   %\include{05Realisierung}
