@@ -1,7 +1,9 @@
 %%% bitte die nächsten 5 Zeilen löschen
 \chapter{Einleitung}
-
-\section{Motivation}
-
+Durch die Entwicklung von verschiedenen mobilen Geräten mit unterschiedlichsten Hardwarekomponenten und Betriebssystemen hat sich ein stark fragmentierter Markt ergeben.\footcite[Vgl.][S. 3]{Joorabchi2016}  Diese Marktentwicklung hat einen direkten Einfluss auf die Softwareentwicklung für mobile Endgeräte und damit zu der Entwicklung von Cross-Plattform Frameworks wie Xamarin.Forms und Flutter gesorgt. Durch die Abstraktion von Hardware und Betriebssystem bieten diese Frameworks die Möglichkeit Anwendungen für die verschiedenen Plattformen mit einer gemeinsamen Quelltextbasis zu entwickeln und somit Kosten und Zeit zu sparen. \footcite[Vgl.][S. 295]{Vollmer2017}
+Diese Reduktion der Aufwendungen ist jedoch nur Vorteilhaft, wenn während der Entwicklung kein Wechsel zwischen den Frameworks vorgenommen wird, da dieser mit enormen Aufwendungen verbunden ist, da sich die verwendeten Programmiersprachen wie auch die Arbeitsweise unterscheiden. 
 \section{Ziel der Arbeit}
+Im Rahmen dieser Arbeit soll ein Source-to-Source Compiler zwischen den Frameworks Xamarin.Forms und Flutter realisiert werden mit dessen Hilfe die folgende zentrale Forschungsfrage beantwortet werden soll: "Können Apps komplett automatisiert von Xamarin.Forms zu Flutter übersetzt werden, oder sind manuelle Arbeitsschritte erforderlich?"
+\section{Motivation}
+Im Mai 2020 hat Microsoft mit .NET MAUI einen Nachfolger für das Xamarin.Forms Framework angekündigt, der im Herbst 2021 zusammen mit der sechsten Version des .NET Frameworks veröffentlicht werden soll. \footcite[Vgl.][S. 6f]{Ullmann2008} Zum aktuellen Zeitpunkt ist bereits angekündigt, dass .NET MAUI grundlegende Änderung mit sich bringt und daher auch grundlegende Änderungen an produktiven Apps vorgenommen werden müssen.\footcite[Vgl.][S. 6f]{Ullmann2008} Dies stellt Anwendungsentwickler vor die Herausforderung bereits existierende Anwendungen grundlegend anpassen zu müssen um in der Zukunft von Aktualisierungen profitieren zu können. Eine automatisierte Übersetzung bereits existierender Anwendungen hin zu einem ausgereiften und produktiv eingesetzten Framework würde daher keinen manuellen Entwicklungsaufwand benötigten und im Falle von Flutter als Zielframework performantere Anwendungen liefern.
 \section{Gliederrung}
