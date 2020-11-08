@@ -1,1 +1,19 @@
-<mxfile host="app.diagrams.net" modified="2020-11-08T07:43:19.837Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" etag="PNPwRffAtPh5fya24fDO" version="13.9.2" type="github"><diagram id="9UPbzgYl-5UrYZkgg49_" name="Page-1">ddHBEoIgEADQr+EuMGWdzfLSyUNnRjZhBl0HabS+Ph0wY6wLszwWlgXCs2a8WNGpK0owhCVyJPxEGNtROo0zPD2k6dFDbbX0RFco9QsCJkEfWkIfJTpE43QXY4VtC5WLTFiLQ5x2RxNX7UQNGygrYbZ609IprweWrl6ArtVSme5Df41YkkMnvRIShy/iOeGZRXQ+asYMzPx2y7v4fec/q5+LWWjdjw1TsJ49TaIP4vkb</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2020-11-08T07:50:45.709Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15" etag="CBm_osjfz2yYhnK8BTC-" version="13.9.2" type="github">
+  <diagram id="9UPbzgYl-5UrYZkgg49_" name="Page-1">
+    <mxGraphModel dx="869" dy="723" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KqkX6P092_diG2JcVQqf-1" value="&lt;font face=&quot;Times New Roman&quot;&gt;Softwareentwickler&lt;/font&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="39.37" y="80" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="KqkX6P092_diG2JcVQqf-2" value="Rechneranlage" style="points=[];aspect=fixed;html=1;align=center;shadow=0;dashed=0;image;image=img/lib/allied_telesis/computer_and_terminals/Personal_Computer.svg;fontFamily=Times New Roman;" vertex="1" parent="1">
+          <mxGeometry x="509.4478" y="78.2" width="45.6" height="61.800000000000004" as="geometry" />
+        </mxCell>
+        <mxCell id="KqkX6P092_diG2JcVQqf-5" value="Programmiersprachen als Verständigungsmittel" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fontFamily=Times New Roman;" vertex="1" parent="1">
+          <mxGeometry x="83" y="80" width="420" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
