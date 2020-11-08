@@ -1,21 +1,31 @@
 \chapter{Compiler}
 
-%\section{Grundlagen}
-Programmiersprachen dienen als Verständigungsmittel zwischen Programmierern und Rechenanlagen. Je mehr sich diese Sprachen der Terminologie eines bestimmtes Anwendungsgebietes nähern, desto besser eignen sie sich zur Dokumentation von Algorithmen und Anwendungen. Jedoch entfernen sich diese Sprachen weiter von den Gegebenheiten des realen Rechners. Dieser Effekt muss vor der Ausführung eines Programmes wieder umgekehrt werden, daher das in einer problemorientierten Programmiersprache geschriebene Programm muss in eine maschinenorientierte Form überführt werden.\footcite[Vgl.][S. 15]{Schneider1975} Bereits im Jahre 1951 stelle Rutishauser fest, dass Rechner in der Lage sind diesen Übersetzungsvorgang selbst durchzuführen.\footcite[Vgl.][S. 1]{Quelle fehlt! improve https://link.springer.com/article/10.1007/BF02009622}  %Hier fehlt die Quelle!
+
+Programmiersprachen dienen als Verständigungsmittel zwischen Programmierern und Rechenanlagen. Diese Sprachen haben sich in der Vergangenheit dabei immer mehr an die  Terminologie eines bestimmtes Anwendungsgebietes angenähert. Durch diese Entwicklung eigneten sich Programmiersprachen direkt für die Dokumentation von entwickelten Algorithmen und Anwendungen, entfernten sich jedoch weiter von den Gegebenheiten des realen Rechners.\footcite[Vgl.][S. 15]{Schneider1975}
+\begin{figure}[h]
+ \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/LanguageIntermediary.png}
+ \caption{Programmiersprachen als Schnittstelle}
+ \label{fig:Programmiersprachen als Schnittstelle}
+\end{figure}
+Für die Ausführung eines in einer problemorientierten Programmiersprache ist es notwendig, die Sprache in eine maschinenorientierte Form zu überführen. \footcite[Vgl.][S. 15]{Schneider1975} Bereits im Jahre 1951 stelle Rutishauser fest, dass Computer in der Lage sind diesen Übersetzungsvorgang selbst durchzuführen.\footcite[Vgl.][S. 1]{Quelle fehlt! improve https://link.springer.com/article/10.1007/BF02009622}  %Hier fehlt die Quelle!
 \\
-Der Bedarf an dieser automatischen Übersetzung hat sich historisch durch die Verwendung von Hochsprachen ergeben. Da diese statt Anwendungen aus maschinennahen Instruktionen aufzubauen menschenfreundliche Sprachelemente verwenden. \footcite[Vgl.][S. 47]{Wagenknecht2014}
-Durch diesen Bedarf wurden in 50er Jahren des 20 Jahrhunderts die ersten Compiler entwickelt, welche es erlaubten, dass Programmierer Sprachen verwenden konnten die neben der Problemlösung auch Dokumentationszwecken dienen konnten. \footcite[Vgl.][S. 1]{Quelle fehlt! Meilensteine der Rechentechnik: Zur Geschichte der Mathematik und der Informatik}  %Hier fehlt die Quelle!\\
-\\
-Diese historische Einführung zeigt, dass Compiler schon eine lange Zeit existieren und sich in der Wissenschaft eine einheitliche Definition für diese ergeben hat. So beschreibt \citeauthor{Ullmann2008} im Jahre \citeyear{Ullmann2008} Compiler wie folgt:\footcite[Vgl.][S. 1]{Ullmann2008} 
+Durch die Möglichkeit zur automatischen Übersetzung von problemorientierten Programmiersprachen konnten Hochsprachen entwickelt werden, die menschenfreundliche Sprachelemente anstatt maschineninstruktionen zu verwenden. \footcite[Vgl.][S. 47]{Wagenknecht2014}
+
+Diese historische Einführung zeigt, dass Software zur automatisierten Übersetzung schon seit der Mitte des letzten Jahrhunderts thematisiert wurde, so hat sich in der Wissenschaft eine einheitliche Definition ergeben.  \citeauthor{Ullmann2008} beschreibt die sogenannten Compiler im Jahre \citeyear{Ullmann2008} wie folgt:\footcite[Vgl.][S. 1]{Ullmann2008} 
 \begin{Def}[Compiler]
 Ein Compiler ist ein Programm, welches ein anderes Programm aus einer Quellsprache in ein gleichwertiges Programm einer Zielsprache übersetzen kann.
 \end{Def}
+
+
 Neben dem Compiler können noch andere Programme Aufgaben für die Sprachverarbeitung übernehmen, diese sollen an dieser Stelle ebenfalls eingeführt werden:\footcite[Vgl.][S. 4f]{Ullmann2008} \\\begin{itemize}
 \setlength\itemsep{-1.5em}
 \item Präprozessor: Ein Quellprogramm kann aus mehreren Modulen gegSliedert sein, welche in anderen Dateien gespeichert sind. Die Aufgabe des Präprozessor ist es, diese Dateien zusammenzustellen. 
 \item Assembler: Compiler können die Sprache Assembler als Zielsprache haben, da sich solche Programme leichter auf Fehler untersuchen lassen. Der Assembler übernimmt die Verarbeitung und gibt den entsprechenden Maschinencode aus.
 \item Linker: Da Umfangreiche Programme häufig in mehreren Teilen kompiliert werden müssen die einzelnen Elemente miteinander verknüpft werden, Der Linker übernimmt diese Aufgaben indem er externe Speicheradressen auflöst.
 \end{itemize}
+
+
+
 \section{Aufgabe}
 Die Aufgaben des Compilers lassen sich, mit dem Ziel der Übersetzung von Programmiersprachen, in die zwei Unteraufgaben Analyse und Synthese unterteilen. \footcite[Vgl.][S. 6]{Ullmann2008}\\
 Bei der Analyse wird das Programm in seine Bestandteile zerlegt und mit einer grammatischen Struktur versehen. Diese wird anschließend verwendet um eine Zwischendarstellung des Quellprogramms zu erstellen. Dabei wird überprüft, ob das Programm syntaktisch oder semantisch nicht wohlgeformt ist, und ob der Programmierer Änderungen vornehmen muss. Außerdem werden bei der Analyse Informationen über das Quellprogramm gesammelt und in einer so genannten Symboltabelle abgelegt.  \footcite[Vgl.][S. 6f]{Ullmann2008}\\
