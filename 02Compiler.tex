@@ -10,19 +10,37 @@ Programmiersprachen dienen als Verständigungsmittel zwischen Programmierern und
 Für die Ausführung eines in einer problemorientierten Programmiersprache ist es notwendig, die Sprache in eine maschinenorientierte Form zu überführen. \footcite[Vgl.][S. 15]{Schneider1975} Bereits im Jahre 1951 stelle Rutishauser fest, dass Computer in der Lage sind diesen Übersetzungsvorgang selbst durchzuführen.\footcite[Vgl.][S. 1]{Quelle fehlt! improve https://link.springer.com/article/10.1007/BF02009622}  %Hier fehlt die Quelle!
 \\
 Durch die Möglichkeit zur automatischen Übersetzung von problemorientierten Programmiersprachen konnten Hochsprachen entwickelt werden, die menschenfreundliche Sprachelemente anstatt maschineninstruktionen zu verwenden. \footcite[Vgl.][S. 47]{Wagenknecht2014}
+\section{ Grundbegriffe}
 
-Diese historische Einführung zeigt, dass Software zur automatisierten Übersetzung schon seit der Mitte des letzten Jahrhunderts thematisiert wurde, so hat sich in der Wissenschaft eine einheitliche Definition ergeben.  \citeauthor{Ullmann2008} beschreibt die sogenannten Compiler im Jahre \citeyear{Ullmann2008} wie folgt:\footcite[Vgl.][S. 1]{Ullmann2008} 
+Diese historische Einführung zeigt,  dass Software zur automatisierten Übersetzung schon seit der Mitte des letzten Jahrhunderts thematisiert wurde, so hat sich in der Wissenschaft eine einheitliche Definition ergeben.  \citeauthor{Ullmann2008} beschreibt die sogenannten Compiler im Jahre \citeyear{Ullmann2008} wie folgt:\footcite[Vgl.][S. 1]{Ullmann2008} 
 \begin{Def}[Compiler]
 Ein Compiler ist ein Programm, welches ein anderes Programm aus einer Quellsprache in ein gleichwertiges Programm einer Zielsprache übersetzen kann.
+\end{Def} Aus dieser Definition lässt sich ein für diese Arbeit relevanter Fakt ableiten: Compiler sind nicht ausschließlich Übersetzer zwischen zwischen problemorientierten,- und maschinenorientierten Programmiersprachen.  Sie sind ausschließlich für die Übersetzung von einer Quellsprache in eine Zielsprache verantwortlich.  Die einzige Bedingung ist,  dass die Programme gleichwertig sind.  Darauf basierend haben sich einige Anwendungsfälle für Compiler entwickelt,  die ein anderes Ziel verfolgen. Dazu gehöre zum Beispiel: \footcite[Vgl.][S. 27]{Ullmann2008}\\
+\begin{itemize}
+\item Binärübersetzung: Dabei wird der Binärcode eines Programmes für einen Rechner in den für einen anderen Rechner übersetzt, sodass er das Computerprogramm Ausführung kann.
+\item Interpreter für Datenbankabfragen: Sprachen werden nicht nur für Software eingesetzt sondern auch für Abfragesprachen wie SQL (Structured Query Language).  Diese Datenbankabfragen können zu Befehlen kompiliert werden um in einer Datenbank nach Datensätzen zu suchen. 
+\end{itemize}
+
+Ein Source-to-Source(S2S) Compiler , häufig auch als "Transpiler" bezeichnet, ist ebenfalls eine besondere Ausprägung eines Compilers die sich wie folgt definieren lässt.  \footcite[Vgl.][S. 1629]{IJCSIT2015}
+\begin{Def}[Source-to-Source Compiler]
+Ein Source-to-Source-Compiler ist ein Compiler, bei dem sowohl die Quellsprache als auch die Zielsprache eine Hochsprache ist.
 \end{Def}
 
 
-Neben dem Compiler können noch andere Programme Aufgaben für die Sprachverarbeitung übernehmen, diese sollen an dieser Stelle ebenfalls eingeführt werden:\footcite[Vgl.][S. 4f]{Ullmann2008} \\\begin{itemize}
-\setlength\itemsep{-1.5em}
-\item Präprozessor: Ein Quellprogramm kann aus mehreren Modulen gegSliedert sein, welche in anderen Dateien gespeichert sind. Die Aufgabe des Präprozessor ist es, diese Dateien zusammenzustellen. 
-\item Assembler: Compiler können die Sprache Assembler als Zielsprache haben, da sich solche Programme leichter auf Fehler untersuchen lassen. Der Assembler übernimmt die Verarbeitung und gibt den entsprechenden Maschinencode aus.
-\item Linker: Da Umfangreiche Programme häufig in mehreren Teilen kompiliert werden müssen die einzelnen Elemente miteinander verknüpft werden, Der Linker übernimmt diese Aufgaben indem er externe Speicheradressen auflöst.
+
+\subsection{Programm}
+Um zu verstehen, wann Programme gleichwertig sind ist es zuerst notwendig ein einheitliches Begriffsverständnis herzustellen.  Auch wenn der Begriff Programm für jedermann geläufig ist,  unterscheidet man in der Literatur die Repräsentationen in denen ein Programm vorkommen kann.
+\begin{itemize}
+\item Der Quelltext:
+\item Ein Objektmodul:
+\item Ein ausführbares Programm:
+\item Ein Prozess:
 \end{itemize}
+
+\subsection{ Syntax und Semantik}
+Die Syntax einer Programmiersprache ist das Aussehen bzw. die Struktur des Quelltextes. Der komplette Quelltext eines Programms muss syntaktisch korrekt sein, damit er übersetzt werden kann.  \\
+Die Semantik ist die Bedeutung, die den verschiedenen syntaktischen Strukturen zugeordnet werden kann. Es ist also von der Semantik abhängig auf welche Art und Weise die Weiterverabeitung durch den Compiler erfolgt. 
+
 
 
 
