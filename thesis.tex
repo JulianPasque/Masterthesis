@@ -5,19 +5,13 @@
 \usepackage{wbh-thesis} % Laden der Vorlage
 \usepackage{blindtext}
 \usepackage{listings}
-
-
-
 \usepackage[automark,headsepline]{scrlayer-scrpage}
-
-
 
 \KOMAoptions{%
     headsepline=true,   % header line
     footsepline=false,          % footer line
     plainheadsepline=false, % activate header line for plain pages
     plainfootsepline=false} % activate footer line for plain pages
-
 
 \usepackage{mathtools}
 
@@ -30,7 +24,6 @@
 
 \definecolor{WBH}{RGB}{0, 94, 166}
 
-
 % Theorem
 \mdtheorem[
   linecolor=WBH,
@@ -41,16 +34,14 @@
 \pagestyle{scrheadings}
 \clearscrheadfoot
 
-
 \ihead{\leftmark}
 \ohead{\pagemark} 
 
 
-\begin{document}
+  \begin{document}
   \include{TitlePage}  % Setzt die Titelseite
   \frontmatter        % Eigenschaften für den Vorspann setzen
   
-
   \include{Abstract}  % Setzt die Titelseite
 
   \tableofcontents    % Setzt das Inhaltsverzeichnis
@@ -59,7 +50,6 @@
   \listoftables       % Setzt das Tabellenverzeichnis
   \mainmatter         % Eigenschaften für den Hauptteil setzen
   
-
   \include{01Einleitung}
   \include{02Compiler}
   \include{03CrossPlattformFrameworks}
@@ -70,9 +60,8 @@
   %\include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
-\clearpairofpagestyles
-\pagestyle{empty}
-
+  \clearpairofpagestyles
+  \pagestyle{empty}
   
   \printbibliography              % Setzt das Literaturverzeichnis
   \printEidesstattlicheErklaerung % Setzt die eidesstattlichen Erklärung
