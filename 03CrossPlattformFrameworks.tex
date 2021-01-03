@@ -17,7 +17,7 @@ Pages (zu Deutsch: Ansichtseiten) sind visuelle Elemente einer Anwendung die den
 verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dargestellt sind.\footcite[Vgl.][Abgerufen am 28.10.2020]{MicrosoftXamPages2016}
 
 \begin{figure}[h]
- \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinPages.png}
+ \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsPages.png}
  \caption{Xamarin.Forms Pages}
  \label{fig:Xamarin.Forms Pages}
 \end{figure}
@@ -25,6 +25,7 @@ verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dar
 Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einfluss auf das Navigationskonzept innerhalb der Anwendung.  Abgesehen von der ContentPage, die ausschließlich eine View anzeigt haben die jeweiligen Seiten die folgende Navigation zur folge: 
 
 \begin{itemize}
+\setlength\itemsep{-0.6em}
  \item FlyOutPage: Eine Seite, die zwei Bereiche für die Seite hat. Typischerweise enthält das Flyout ein Menü über welches zwischen den eigentlichen Inhaltsseiten navigiert werden kann.
  \item NavigationPage: Eine Seite, die eine Navigationsleiste enthält.  Die Seiten werden auf einem Stapel gehalten und es kann zwischen ihnen gesprungen werden.  Die Navigationsleiste kann sowohl Navigationsschaltflächen als auch einen Titel enthalten.
  \item TabbedPage: Eine Container-Seite.  Die TabbedPage fungiert als Container,  der die mit jeder Registerkarte verbundenen Inhaltsseiten enthält.
@@ -32,6 +33,13 @@ Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einf
 
 
 Die Auswahl einer Page hat daher bei Xamarin Forms einen direkten Einfluss auf die Navigation durch die Anwendung.  
+
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[language=XML]{SourceCode/XamarinFormsPages.XAML}
+\end{minipage}
+
+
 
 %Flutter gibt es alternativ weniger Auswahl, da lediglich ein "MaterialApp" und eine "CupertinoApp" als Widget zur Verfügung stellen und alternativ Materialdesign oder Cupertino design anbieten. 
 %Um Seiten mit Tab oder einem Slideout zu genierieren bietet Flutter jedoch ebenfalls Widgets an. 
