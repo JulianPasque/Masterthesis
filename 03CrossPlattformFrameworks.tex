@@ -2,7 +2,7 @@
 Für die Realisierung eine Source-to-Source Compilers gibt es zwei relevante Faktoren,  die für die Realisierung ausschlaggebend sind.  Zum einen die Programmiersprachen in dem die beiden Frameworks entwickelt werden,  da bei der Übersetzung eine Brücke zwischen Quell und Zielsprache geschlagen werden muss.  Neben der Programmiersprache ist jedoch auch die Arbeitsweise eines Frameworks von essentieller Bedeutung.  Wie die Definition von Compilern bereits einführte,  müssen die Programme vor und nach der Übersetzung gleichwertig sein.  Dies implementiert,  dass das Verhalten der übersetzten Anwendungen nach der Übersetzung identisch seien muss wie das der Ursprungsanwendung.  Es ist also notwendig,  neben den sprachlichen auch die technischen Unterschiede zwischen den Frameworks zu kennen und diese im Rahmen der compilierung zu optimieren. 
 
 \section{Frameworks}
-Xamarin is eine Open Source-Plattform für das Erstellen mobiler Anwendungen für iOS und Android mit Hilfe des .NET Frameworks, welches von Microsoft weiterentwickelt wird.  Dabei ist Xamarin ist eine Abstraktionsebene, die die Kommunikation zwischen Code und dem zugrunde liegenden Plattformcode verwaltet.  Xamarin wird in einer verwalteten Umgebung ausgeführt, die Vorteile wie Speicherbelegung und Garbage Collection bietet.  Bei Xamarin.Forms handelt es sich um ein Open-Source-Benutzeroberflächenframework., mit dessen Hilfe Entwickler iOS- und Android-Anwendungen aus einer einzigen CodeBase erstellen können.  Dabei wird auf die in der .NET Welt bekannten Technologien XAML  für die Benutzeroberfläche und C\# für die Anwendungslogik zurückgegriffen.  Die einzelnen Benutzeroberflächen werden von Xamarin.Forms als native Steuerelemente auf jeder Plattform gerendert.  \footcite[Vgl.][Abgerufen am 28.10.2020]{MicrosoftWhatIsXam2020}
+Xamarin is eine Open Source-Plattform für das Erstellen mobiler Anwendungen für iOS und Android mit Hilfe des .NET Frameworks, welches von Microsoft weiterentwickelt wird.  Dabei ist Xamarin ist eine Abstraktionsebene, die die Kommunikation zwischen Code und dem zugrunde liegenden Plattformcode verwaltet.  Xamarin wird in einer verwalteten Umgebung ausgeführt, die Vorteile wie Speicherbelegung und Garbage Collection bietet.  Bei Xamarin.Forms handelt es sich um ein Open-Source-Benutzeroberflächenframework., mit dessen Hilfe Entwickler iOS- und Android- Anwendungen aus einer einzigen CodeBase erstellen können.  Dabei wird auf die in der .NET Welt bekannten Technologien XAML  für die Benutzeroberfläche und C\# für die Anwendungslogik zurückgegriffen.  Die einzelnen Benutzeroberflächen werden von Xamarin.Forms als native Steuerelemente auf jeder Plattform gerendert.  \footcite[Vgl.][Abgerufen am 28.10.2020]{MicrosoftWhatIsXam2020}
 
 Flutter ist ebenfalls wie Xamarin.Forms ein Open Source Framework für die Erstellung von 2D mobilen Anwendungen.  Dabei werden im Vergleich zu Xamarin.Forms keine nativen Steuerelemente für jede Plattform gerendert sondern beinhaltet eine Sammlung von so genannten Widgets, die von dem Framework vewaltet und gerendert werden.  Für die Anzeige dieser Widgets wird auf die 2D engine Skia zugegriffen.  Flutter geht diesen Weg,  da das Endergebnis der Anwendungen eine höhere Qualität verspricht, da die nativen Steuerelemente in Bezug auf Flexibilität und Qualität begrenzt sind.  Außerdem ist es durch die Verwendung derselben Renderes einfacher, von derselben Codebasis aus für mehrere Plattformen zu veröffentlichen,  ohne eine sorgfältige und kostspielige Planung vornehmen zu müssen,  um verschiedene Funktionssätze und API-Merkmale aufeinander abzustimmen.\footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterFAQ2020}
 
@@ -22,25 +22,25 @@ verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dar
  \label{fig:Xamarin.Forms Pages}
 \end{figure}
 
-Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einfluss auf das Navigationskonzept innerhalb der Anwendung.  Abgesehen von der ContentPage, die ausschließlich eine View anzeigt haben die jeweiligen Seiten die folgende Navigation zur folge: 
+Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einfluss auf das Navigationskonzept innerhalb der Anwendung.  Abgesehen von der ContentPage, die ausschließlich eine View anzeigt haben die jeweiligen Seiten das folgende Navigationskonzept: 
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
  \item FlyOutPage: Eine Seite, die zwei Bereiche für die Seite hat. Typischerweise enthält das Flyout ein Menü über welches zwischen den eigentlichen Inhaltsseiten navigiert werden kann.
- \item NavigationPage: Eine Seite, die eine Navigationsleiste enthält.  Die Seiten werden auf einem Stapel gehalten und es kann zwischen ihnen gesprungen werden.  Die Navigationsleiste kann sowohl Navigationsschaltflächen als auch einen Titel enthalten.
+ \item NavigationPage: Eine Seite,  die eine Navigationsleiste enthält.  Die Seiten werden auf einem Stapel gehalten und es kann zwischen ihnen gesprungen werden.  Die Navigationsleiste kann sowohl Navigationsschaltflächen als auch einen Titel enthalten.
  \item TabbedPage: Eine Container-Seite.  Die TabbedPage fungiert als Container,  der die mit jeder Registerkarte verbundenen Inhaltsseiten enthält.
 \end{itemize}
 
-
-Die Auswahl einer Page hat daher bei Xamarin Forms einen direkten Einfluss auf die Navigation durch die Anwendung.  
-
+Die Auswahl einer Page wird innerhalb des Wurzelknoten der XAML Datei definiert.  Dies wird in Quelltext \ref{lst:TabbedPage} dargestellt. 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[language=XML]{SourceCode/XamarinFormsPages.XAML}
+\lstinputlisting[label={lst:TabbedPage},caption={Eine Xamarin.Forms TabbedPage definition}, language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
 \end{minipage}
+Das Beispiel zeigt eine TabbedPage mit drei in diesem Falle leeren NavigationsPages die als Children der TabbedPage hinzugefügt werden.  Im Gegensatz zu der TabbedPage hat die FlyoutPage keine Sammlung von ChildrenPages sondern ein sogenanntes "Flyout" welches das Menu beinhaltet und die entsprechend ausgewählte Seite in eine Detailansicht läd.  Dies wird in Quelltext \ref{lst:FlyOutPage} daregstellt.
 
-
-
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:FlyOutPage},caption={Eine Xamarin.Forms FlyOut definition}, language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
+\end{minipage}
 %Flutter gibt es alternativ weniger Auswahl, da lediglich ein "MaterialApp" und eine "CupertinoApp" als Widget zur Verfügung stellen und alternativ Materialdesign oder Cupertino design anbieten. 
 %Um Seiten mit Tab oder einem Slideout zu genierieren bietet Flutter jedoch ebenfalls Widgets an. 
 \subsubsection{Elemente}

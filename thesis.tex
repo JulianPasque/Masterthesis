@@ -6,6 +6,8 @@
 \usepackage{blindtext}
 \usepackage{listings}
 \usepackage[automark,headsepline]{scrlayer-scrpage}
+\renewcommand{\lstlistingname}{Quelltext}% Listing -> Quelltext
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
 
 \KOMAoptions{%
     headsepline=true,   % header line
@@ -94,6 +96,9 @@
   \listoffigures      % Setzt das Abbildungsverzeichnis
   
   \listoftables       % Setzt das Tabellenverzeichnis
+  
+  \lstlistoflistings
+
   \mainmatter         % Eigenschaften für den Hauptteil setzen
   
   \include{01Einleitung}
