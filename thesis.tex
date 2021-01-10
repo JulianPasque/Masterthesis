@@ -39,6 +39,11 @@
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
+\definecolor{listingDartDocCommentColor}{rgb}{0.0,0.5,0.0}
+\definecolor{listingDartTodoColor}{rgb}{0.6,0.0,0.0}
+\definecolor{listingDartKeywordColor}{rgb}{0.1,0.0,0.5}
+
+
 \definecolor{maroon}{rgb}{0.5,0,0}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 
@@ -74,6 +79,27 @@
   commentstyle=\color{darkgreen},
   stringstyle=\color{blue},
   identifierstyle=\color{red}
+}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95, 0.95, 0.96}
+
+\lstdefinelanguage{Dart} {
+	morekeywords={*,num,String,var,library,get,set,String,int,num} ,
+  	sensitive=true,
+ 	 morecomment=[l]{//},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen}, 
+	stringstyle=\color{mauve},
+	numberstyle=\tiny\color{gray},
+	language=Java,
+  	breaklines={true},
 }
 
 \lstset{style=Codestyle}

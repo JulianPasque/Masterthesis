@@ -34,15 +34,26 @@ Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einf
 Die Auswahl einer Page wird innerhalb des Wurzelknoten der XAML Datei definiert.  Dies wird in Quelltext \ref{lst:TabbedPage} dargestellt. 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:TabbedPage},caption={Eine Xamarin.Forms TabbedPage definition}, language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
+\lstinputlisting[label={lst:TabbedPage},caption={Xamarin.Forms TabbedPage definition}, language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
 \end{minipage}
+
 Das Beispiel zeigt eine TabbedPage mit drei in diesem Falle leeren NavigationsPages die als Children der TabbedPage hinzugefügt werden.  Im Gegensatz zu der TabbedPage hat die FlyoutPage keine Sammlung von ChildrenPages sondern ein sogenanntes "Flyout" welches das Menu beinhaltet und die entsprechend ausgewählte Seite in eine Detailansicht läd.  Dies wird in Quelltext \ref{lst:FlyOutPage} daregstellt.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:FlyOutPage},caption={Eine Xamarin.Forms FlyOut definition}, language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
+\lstinputlisting[label={lst:FlyOutPage},caption={Xamarin.Forms FlyOut definition}, language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
 \end{minipage}
-%Flutter gibt es alternativ weniger Auswahl, da lediglich ein "MaterialApp" und eine "CupertinoApp" als Widget zur Verfügung stellen und alternativ Materialdesign oder Cupertino design anbieten. 
-%Um Seiten mit Tab oder einem Slideout zu genierieren bietet Flutter jedoch ebenfalls Widgets an. 
+
+Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich das Style der Anwendung.  Flutter unterstützt dabei drei alternative Styles: MaterialApp dass eine App mit dem von Google entwickelten Material Design erzeugt,  CupertinoApp für eine App im iOS-Stil oder die Definition eines eigenen Styles für eine individuelle Anzeige.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:MaterialApp},caption={Flutter MaterialApp definition}, language=Dart]{SourceCode/MaterialApp.Dart}
+\end{minipage}
+
+Von diesem Widget aus ist die eigentliche erste Seite ein weiteres zustandsabhängiges Widget. Dieses besteht aus zwei Teilen:  Der erste Teil, der selbst unveränderlich ist, erzeugt ein State-Objekt, das den Zustand des Objekts enthält.  Das State-Objekt bleibt während der Lebensdauer des Widgets bestehen.
+Das State-Objekt implementiert die build()-Methode für das zustandsabhängige Widget.  Wenn sich der Zustand des Widget-Baums ändert,  wird setState() aufgerufen was einen Build des entsprechenden Teils der Benutzeroberfläche auslöst.  In Flutter ist die Benutzeroberfläche (auch bekannt als Widget-Baum) unveränderlich,  dass bedeutet da der Zustand nicht mehr geändert werden kann, sobald dieser aufgebaut ist.  Sie ändern Felder in Ihrer State-Klasse und rufen dann setState() auf, um den gesamten Widget-Baum neu zu erstellen.
+
+
+
 \subsubsection{Elemente}
 \subsubsection{Layouts}
 \subsubsection{Listen}
