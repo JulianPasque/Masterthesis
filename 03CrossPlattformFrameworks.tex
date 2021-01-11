@@ -37,21 +37,26 @@ Die Auswahl einer Page wird innerhalb des Wurzelknoten der XAML Datei definiert.
 \lstinputlisting[label={lst:TabbedPage},caption={Xamarin.Forms TabbedPage definition}, language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
 \end{minipage}
 
-Das Beispiel zeigt eine TabbedPage mit drei in diesem Falle leeren NavigationsPages die als Children der TabbedPage hinzugefügt werden.  Im Gegensatz zu der TabbedPage hat die FlyoutPage keine Sammlung von ChildrenPages sondern ein sogenanntes "Flyout" welches das Menu beinhaltet und die entsprechend ausgewählte Seite in eine Detailansicht läd.  Dies wird in Quelltext \ref{lst:FlyOutPage} daregstellt.
+Das Beispiel zeigt eine TabbedPage mit drei in diesem Falle leeren NavigationsPages die als Children der TabbedPage hinzugefügt werden.  Im Gegensatz zu der TabbedPage hat die FlyoutPage keine Sammlung von ChildrenPages sondern ein sogenanntes "Flyout" welches das Menu beinhaltet und die entsprechend ausgewählte Seite in eine Detailansicht läd.  Dies wird in Quelltext \ref{lst:FlyOutPage} dargestellt.
 
 \begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:FlyOutPage},caption={Xamarin.Forms FlyOut definition}, language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
 \end{minipage}
 
-Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich das Style der Anwendung.  Flutter unterstützt dabei drei alternative Styles: MaterialApp dass eine App mit dem von Google entwickelten Material Design erzeugt,  CupertinoApp für eine App im iOS-Stil oder die Definition eines eigenen Styles für eine individuelle Anzeige.
+Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich das Style der Anwendung.  Flutter unterstützt drei alternativen: MaterialApp erzeugt eine App mit dem von Google entwickelten Material Design, CupertinoApp für eine App im iOS-Stil oder die Definition eines eigenen Styles für eine individuelle Anzeige.  \footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterPages2020}  Quelltext \ref{lst:MaterialApp} zeigt die Definition einer MaterialDesign App in Flutter.
 
 \begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:MaterialApp},caption={Flutter MaterialApp definition}, language=Dart]{SourceCode/MaterialApp.Dart}
 \end{minipage}
 
-Von diesem Widget aus ist die eigentliche erste Seite ein weiteres zustandsabhängiges Widget. Dieses besteht aus zwei Teilen:  Der erste Teil, der selbst unveränderlich ist, erzeugt ein State-Objekt, das den Zustand des Objekts enthält.  Das State-Objekt bleibt während der Lebensdauer des Widgets bestehen.
-Das State-Objekt implementiert die build()-Methode für das zustandsabhängige Widget.  Wenn sich der Zustand des Widget-Baums ändert,  wird setState() aufgerufen was einen Build des entsprechenden Teils der Benutzeroberfläche auslöst.  In Flutter ist die Benutzeroberfläche (auch bekannt als Widget-Baum) unveränderlich,  dass bedeutet da der Zustand nicht mehr geändert werden kann, sobald dieser aufgebaut ist.  Sie ändern Felder in Ihrer State-Klasse und rufen dann setState() auf, um den gesamten Widget-Baum neu zu erstellen.
+Von diesem Widget aus ist die eigentliche erste Seite ein weiteres zustandsabhängiges Widget.  Dieses besteht aus zwei Teilen:  Der erste Teil, der selbst unveränderlich ist, erzeugt ein State-Objekt, das den Zustand des Objekts enthält.  Das State-Objekt bleibt während der Lebensdauer des Widgets bestehen.
+Das State-Objekt implementiert die build()-Methode für das zustandsabhängige Widget.  Wenn sich der Zustand des Widget-Baums ändert,  wird setState() aufgerufen was einen Build des entsprechenden Teils der Benutzeroberfläche auslöst.  In Flutter ist die Benutzeroberfläche (auch bekannt als Widget-Baum) unveränderlich,  dass bedeutet da der Zustand nicht mehr geändert werden kann, sobald dieser aufgebaut ist.  Sie ändern Felder in Ihrer State-Klasse und rufen dann setState() auf, um den gesamten Widget-Baum neu zu erstellen. 
 
+Damit die Navigation ähnlich wie in Xamarin.Forms definiert werden kann müssen verschiedene Widgets in einem Widget Baum verschachtelt werden.  Quelltext \ref{lst:FlutterTabbedApp} zeigt dies für die Arbeit mit Tabbs.  In diesem Beispiel wird eine TabBar mit drei Tab-Widgets erstellt und diese innerhalb einer AppBar platziert.\footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterTabs2020} 
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:FlutterTabbedApp},caption={Flutter Tab Layout definition}, language=Dart]{SourceCode/TabbedPage.Dart}
+\end{minipage}
 
 
 \subsubsection{Elemente}
