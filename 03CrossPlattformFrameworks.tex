@@ -11,7 +11,7 @@ Dieser essentielle Unterschied zwischen den Frameworks werden in den folgenden A
 Xamarin.Forms Projektmappen setzen sich aus mehreren Projekten zusammen.  Zwei Projekten für jeweils iOS und Android,  welche den plattformspezifischen Code beinhalten sowie ein zusätzliches für den Quelltext,  der zwischen den Plattformen geteilt wird.  Im Gegensatz dazu gibt es bei Flutter nur ein Projekt, welches alle notwendigen Inhalte für iOS und Android beinhaltet.  Xamarin.Forms bietet Entwicklern die Möglichkeit über die plattformbezogenen Projekte die nativen Renderer zu manipulieren.  Durch diese sogenannten Custom Renderer (deutsch: benutzerdefinierter Renderer)ist es möglich unterschiedliche Darstellungen und Verhalten je nach Plattform zu erzeugen.  Flutter bietet diese Möglichkeit nicht, da wie bereits beschrieben ausschließlich einheitliche Renderer Angeboten werden. 
 
 \subsection{Views}
-Views (zu Deutsch Ansichten) sind visuelle Elemente die in zwei Kategorien unterschieden werden können.  Controls, die für die Sammlung von Benutzereingaben oder die Ausgabe von Daten sind.  Sowie Layouts die eine Sammlung von Ansichten beinhalten und für die Anordnung der untergeorderten Ansichten in der Benutzeroberfläche verantwortlich sind. Außerdem arbeitet sie mit jeder untergeordneten Ansicht zusammen, um die endgültige Rendering-Größe zu bestimmen.\footcite[Vgl.][Abgerufen am 28.10.2020]{Ritscher2020}
+Views (zu Deutsch Ansichten) sind visuelle Elemente die in zwei Kategorien unterschieden werden können.  Controls, die für die Sammlung von Benutzereingaben oder die Ausgabe von Daten sind.  Sowie Layouts die eine Sammlung von Ansichten beinhalten und für die Anordnung der untergeorderten Ansichten in der Benutzeroberfläche verantwortlich sind.  Außerdem arbeitet sie mit jeder untergeordneten Ansicht zusammen, um die endgültige Rendering-Größe zu bestimmen.\footcite[Vgl.][Abgerufen am 28.10.2020]{Ritscher2020}
 \subsubsection{Pages}
 Pages (zu Deutsch: Ansichtseiten) sind visuelle Elemente einer Anwendung die den gesamten Bildschirm belegen und zu den Layout Views gehören.  Xamarin Forms bietet dafür 
 verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dargestellt sind.\footcite[Vgl.][Abgerufen am 28.10.2020]{MicrosoftXamPages2016}
@@ -59,15 +59,114 @@ Damit die Navigation ähnlich wie in Xamarin.Forms definiert werden kann müssen
 \end{minipage}
 
 
-\subsubsection{Elemente}
 \subsubsection{Layouts}
+
+Layouts werden in Xamarin.Forms verwendet, um die Steuerelemente der Benutzeroberfläche zu visuellen Strukturen zusammenzustellen. Dabei unterscheidet man zwischen Layouts die ausschließlich einen oder mehrere Inhalte beinhalten können.  Xamarin.Forms bietet die folgende Layouts an:
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item ContentView: ContentView enthält ein einzelnes untergeordnetes Element, das mit der Eigenschaft "Content" festgelegt wird. Die Eigenschaft Content kann auf jedes View-Derivat gesetzt werden, auch auf andere Layout-Derivate. ContentView wird meist als Strukturelement verwendet und dient als Basisklasse zu Frame.
+ \item Frame: Die Klasse Frame leitet sich von ContentView ab und zeigt einen Rahmen um die Ansicht.
+  \item ScrollView: Ist in der Lage, seinen Inhalt zu scrollen.  Die Eigenschaft Content auf eine Ansicht oder ein Layout fest, das zu groß ist, um auf den Bildschirm zu passen.  Legen Sie die Eigenschaft Orientierung fest, um anzugeben, ob der Bildlauf vertikal, horizontal oder beides sein soll.
+ \item StackLayout: Positioniert untergeordnete Elemente in einem Stapel entweder horizontal oder vertikal, basierend auf der Eigenschaft Orientation.
+ \item Grid: Grid positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften Row, Column, RowSpan und ColumnSpan angegeben.
+ \item AbsolutLayout: Positioniert untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften LayoutBounds und LayoutFlags angegeben. Ein AbsoluteLayout ist nützlich, um die Positionen von Ansichten zu animieren.
+ \item RelativeLayout:  Positioniert untergeordnete Elemente relativ zum RelativeLayout selbst oder zu ihren Geschwistern. Die Position eines Kindelements wird über die angehängten Eigenschaften angegeben, die auf Objekte vom Typ Constraint und BoundsConstraint gesetzt werden.
+\end{itemize}
+
+Alle verfügbaren Layouts werden in  \ref{fig:Xamarin.Forms Layouts} grafisch dargestellt.
+
+\begin{figure}[h]
+ \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsLayouts.png}
+ \caption{Xamarin.Forms Layouts}
+ \label{fig:Xamarin.Forms Layouts}
+\end{figure}
+
+
+\subsubsection{Steuerelemente}
+
+Xamarin.Forms-Ansichten sind die Bausteine von plattformübergreifenden mobilen Benutzeroberflächen. Ansichten sind Objekte der Benutzeroberfläche wie Beschriftungen, Schaltflächen und Schieberegler, die in anderen grafischen Programmierumgebungen üblicherweise als Steuerelemente oder Widgets bezeichnet werden. Die von Xamarin.Forms unterstützten Ansichten leiten sich alle von der Klasse View ab. 
+\subsubsection{Steuerelemente für die Darstellung}
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item BoxView zeigt ein einfarbiges Rechteck an 
+ \item Ellipse zeigt eine Ellipse oder einen Kreis an
+  \item Label zeigt einzeilige Textstrings oder mehrzeilige Textblöcke an, entweder mit konstanter oder variabler Formatierung.
+ \item Line zeigt eine Linie von einem Startpunkt zu einem Endpunkt an
+ \item Image zeigt ein Bitmap an, diese können über das Web heruntergeladen, als Ressourcen in über das gemeinsame Projekt oder in Plattformprojekte eingebettet  werden
+ \item Map zeigt eine Karte an
+ \item OpenGLView zeigt OpenGL-Grafiken an
+ \item Path zeigt Kurven und komplexe Formen an.
+ \item Polygon Polygon zeigt ein Polygon an.
+ \item  Polyline zeigt eine Reihe von verbundenen geraden Linien an
+ \item Rectangle zeigt ein Rechteck oder Quadrat an
+ \item WebView zeigt Web-Seiten oder HTML-Inhalte an
+\end{itemize}
+
+\subsubsection{Steuerelemente die Aktionen auslösen}
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item Button ist ein rechteckiges Objekt, das Text anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.
+ \item ImageButton ist ein rechteckiges Objekt, das ein Bild anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.
+  \item RadioButton erlaubt die Auswahl einer Option aus einer Menge und feuert ein CheckedChanged-Ereignis, wenn die Auswahl erfolgt.
+ \item RefreshView ist ein Container-Steuerelement, das eine Pull-to-Refresh-Funktionalität für scrollbare Inhalte bietet. 
+ \item SearchBar zeigt einen Bereich an, in dem der Benutzer eine Textzeichenfolge eingeben kann, sowie eine Schaltfläche (oder eine Tastaturtaste), die der Anwendung signalisiert, eine Suche durchzuführen
+ \item SwipeView ist ein Container-Steuerelement, das sich um ein Inhaltselement legt und Kontextmenüelemente bereitstellt, die durch eine Wischgeste angezeigt werden
+\end{itemize}
+
+
+
+\subsubsection{Steuerelemente um Werte zu setzen}
+
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item CheckBox ermöglicht dem Benutzer die Auswahl eines booleschen Wertes mit Hilfe einer Art Schaltfläche, die entweder markiert oder leer sein kann
+ \item Schieberegler bieten Benutzern die Option einen  Wert aus einem kontinuierlichen Bereich auswählen, der mit den Eigenschaften Minimum und Maximum festgelegt wurde.
+ \item Stepper ermöglicht es dem Benutzer, einen doppelten Wert aus einem Bereich von inkrementellen Werten auszuwählen, die mit den Eigenschaften Minimum, Maximum und Inkrement festgelegt wurden.
+ \item Schalter hat die Form eines Ein/Aus-Schalters, damit der Benutzer einen booleschen Wert auswählen kann
+ \item DatePicker ermöglicht es dem Benutzer, ein Datum mit der Datumsauswahl der Plattform auszuwählen.
+ \item TimePicker ermöglicht dem Benutzer die Auswahl einer Zeit mit dem TimePicker der Plattform
+\end{itemize}
+\subsubsection{Steuerelemente um text zu manipulieren}
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item Entry ermöglicht dem Benutzer die Eingabe und Bearbeitung einer einzelnen Textzeile
+ \item Editor ermöglicht dem Benutzer die Eingabe und Bearbeitung mehrerer Textzeilen
+\end{itemize}
+\subsubsection{Steuerelemente um eine Aktivität anzudeuten}
+
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item ActivityIndicator verwendet eine Animation, um zu zeigen, dass die Anwendung eine langwierige Aktivität ausführt, ohne einen Hinweis auf den Fortschritt zu geben. 
+ \item ProgressBar verwendet eine Animation, um zu zeigen, dass die Anwendung durch eine langwierige Aktivität fortschreitet
+\end{itemize}
+
+\subsubsection{Steuerelemente um Sammlungen anzuzeigen}
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item CarouselView zeigt eine blätterbare Liste von Datenelementen an
+ \item CollectionView zeigt eine scrollbare Liste mit auswählbaren Datenelementen an, wobei verschiedene Layout-Spezifikationen verwendet werden. Sie soll eine flexiblere und performantere Alternative zu ListView darstellen. 
+  \item IndicatorView zeigt Indikatoren an, die die Anzahl der Elemente in einer CarouselView darstellen
+ \item ListView zeigt eine scrollbare Liste mit auswählbaren Datenelementen an
+ \item Picker zeigt ein ausgewähltes Element aus einer Liste von Textzeichenfolgen an und ermöglicht die Auswahl dieses Elements, wenn die Ansicht angetippt wird
+ \item TableView zeigt eine Liste von Zeilen mit optionalen Überschriften und Unterüberschriften an
+\end{itemize}
+
 \subsubsection{Listen}
 \subsubsection{Gesten}
 \subsubsection{Animtion}
 
 \subsection{Navigation}
 Pages.
-Andere Apps
+\subsubsection{Navigation zu anderen Apps}
+In Xamarin.Forms verwenden kann, um zu einer anderen Anwendung zu navigieren, ein bestimmtes URI-Schema verwendet werden.  So z.B. mit dem Befehl Device.OpenUrl("mailto://") das Standard E-Mail-Programm des Gerätes geöffnet werden verwenden.
+
+Um diese Funktionalität in Flutter zu implementieren,  muss eine native Plattformintegration oder eine vorhandenes Plugin, wie z. B. url_launcher verwendet werden.  
 \subsection{Async UI}
 \subsection{Netzwerk Anfragen}
 \subsection{Abhängigkeiten}
