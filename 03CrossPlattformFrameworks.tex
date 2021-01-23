@@ -2,27 +2,27 @@
 Für die Realisierung eine Source-to-Source Compilers gibt es zwei relevante Faktoren,  die für die Realisierung ausschlaggebend sind.  Zum einen die Programmiersprachen in dem die beiden Frameworks entwickelt werden,  da bei der Übersetzung eine Brücke zwischen Quell und Zielsprache geschlagen werden muss.  Neben der Programmiersprache ist jedoch auch die Arbeitsweise eines Frameworks von essentieller Bedeutung.  Wie die Definition von Compilern bereits einführte,  müssen die Programme vor und nach der Übersetzung gleichwertig sein.  Dies implementiert,  dass das Verhalten der übersetzten Anwendungen nach der Übersetzung identisch seien muss wie das der Ursprungsanwendung.  Es ist also notwendig,  neben den sprachlichen auch die technischen Unterschiede zwischen den Frameworks zu kennen und diese im Rahmen der compilierung zu optimieren. 
 
 \section{Frameworks}
-Xamarin is eine Open Source-Plattform für das Erstellen mobiler Anwendungen für iOS und Android mit Hilfe des .NET Frameworks, welches von Microsoft weiterentwickelt wird.  Dabei ist Xamarin ist eine Abstraktionsebene, die die Kommunikation zwischen Code und dem zugrunde liegenden Plattformcode verwaltet.  Xamarin wird in einer verwalteten Umgebung ausgeführt, die Vorteile wie Speicherbelegung und Garbage Collection bietet.  Bei Xamarin.Forms handelt es sich um ein Open-Source-Benutzeroberflächenframework., mit dessen Hilfe Entwickler iOS- und Android- Anwendungen aus einer einzigen CodeBase erstellen können.  Dabei wird auf die in der .NET Welt bekannten Technologien XAML  für die Benutzeroberfläche und C\# für die Anwendungslogik zurückgegriffen.  Die einzelnen Benutzeroberflächen werden von Xamarin.Forms als native Steuerelemente auf jeder Plattform gerendert.  \footcite[Vgl.][Abgerufen am 28.10.2020]{MicrosoftWhatIsXam2020}
+Xamarin is eine Open Source-Plattform für das Erstellen mobiler Anwendungen für iOS und Android mit Hilfe des .NET Frameworks, welches von Microsoft weiterentwickelt wird.  Dabei ist Xamarin ist eine Abstraktionsebene, die die Kommunikation zwischen Code und dem zugrunde liegenden Plattformcode verwaltet.  Xamarin wird in einer verwalteten Umgebung ausgeführt, die Vorteile wie Speicherbelegung und Garbage Collection bietet.  Bei Xamarin.Forms handelt es sich um ein Open-Source-Benutzeroberflächenframework., mit dessen Hilfe Entwickler iOS- und Android- Anwendungen aus einer einzigen CodeBase erstellen können.  Dabei wird auf die in der .NET Welt bekannten Technologien XAML  für die Benutzeroberfläche und C\# für die Anwendungslogik zurückgegriffen.  Die einzelnen Benutzeroberflächen werden von Xamarin.Forms als native Steuerelemente auf jeder Plattform gerendert.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftWhatIsXam2020}
 
-Flutter ist ebenfalls wie Xamarin.Forms ein Open Source Framework für die Erstellung von 2D mobilen Anwendungen.  Dabei werden im Vergleich zu Xamarin.Forms keine nativen Steuerelemente für jede Plattform gerendert sondern beinhaltet eine Sammlung von so genannten Widgets, die von dem Framework vewaltet und gerendert werden.  Für die Anzeige dieser Widgets wird auf die 2D engine Skia zugegriffen.  Flutter geht diesen Weg,  da das Endergebnis der Anwendungen eine höhere Qualität verspricht, da die nativen Steuerelemente in Bezug auf Flexibilität und Qualität begrenzt sind.  Außerdem ist es durch die Verwendung derselben Renderes einfacher, von derselben Codebasis aus für mehrere Plattformen zu veröffentlichen,  ohne eine sorgfältige und kostspielige Planung vornehmen zu müssen,  um verschiedene Funktionssätze und API-Merkmale aufeinander abzustimmen.\footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterFAQ2020}
+Flutter ist ebenfalls wie Xamarin.Forms ein Open Source Framework für die Erstellung von 2D mobilen Anwendungen.  Dabei werden im Vergleich zu Xamarin.Forms keine nativen Steuerelemente für jede Plattform gerendert sondern beinhaltet eine Sammlung von so genannten Widgets, die von dem Framework vewaltet und gerendert werden.  Für die Anzeige dieser Widgets wird auf die 2D engine Skia zugegriffen.  Flutter geht diesen Weg,  da das Endergebnis der Anwendungen eine höhere Qualität verspricht, da die nativen Steuerelemente in Bezug auf Flexibilität und Qualität begrenzt sind.  Außerdem ist es durch die Verwendung derselben Renderes einfacher, von derselben Codebasis aus für mehrere Plattformen zu veröffentlichen,  ohne eine sorgfältige und kostspielige Planung vornehmen zu müssen,  um verschiedene Funktionssätze und API-Merkmale aufeinander abzustimmen.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterFAQ2020}
 
 Dieser essentielle Unterschied zwischen den Frameworks werden in den folgenden Abschnitten dieser Arbeit deutlicher und sind bei der Übersetzung der Anwendungen fokussiert zu Berücksichtigen. 
 \subsection{Projekte}
-Xamarin.Forms Projektmappen setzen sich aus mehreren Projekten zusammen.  Zwei Projekten für jeweils iOS und Android,  welche den plattformspezifischen Code beinhalten sowie ein zusätzliches für den Quelltext,  der zwischen den Plattformen geteilt wird.  Im Gegensatz dazu gibt es bei Flutter nur ein Projekt, welches alle notwendigen Inhalte für iOS und Android beinhaltet.  Xamarin.Forms bietet Entwicklern die Möglichkeit über die plattformbezogenen Projekte die nativen Renderer zu manipulieren.  Durch diese sogenannten Custom Renderer (deutsch: benutzerdefinierter Renderer)ist es möglich unterschiedliche Darstellungen und Verhalten je nach Plattform zu erzeugen.  Flutter bietet diese Möglichkeit nicht, da wie bereits beschrieben ausschließlich einheitliche Renderer Angeboten werden. 
+Xamarin.Forms Projektmappen setzen sich aus mehreren Projekten zusammen., jeweils eins für die Plattform (iOS/ Android),  welche den plattformspezifischen Code und assets in Form von Icons und Metadaten beinhalten sowie ein zusätzliches für den Quelltext,  der zwischen den Plattformen geteilt wird.  \footcite[Vgl.][S. 25f.]{Petzold2016} Im Gegensatz dazu gibt es bei Flutter nur ein Projekt, welches alle notwendigen Inhalte für iOS und Android beinhaltet.  Für plattformspezifischen Code gibt es jeweils einen Ordner für iOS und Android. \footcite[Vgl.][S. 113]{Biessek2019}
 
 \subsection{Views}
-Views (zu Deutsch Ansichten) sind visuelle Elemente die in zwei Kategorien unterschieden werden können.  Controls, die für die Sammlung von Benutzereingaben oder die Ausgabe von Daten sind.  Sowie Layouts die eine Sammlung von Ansichten beinhalten und für die Anordnung der untergeorderten Ansichten in der Benutzeroberfläche verantwortlich sind.  Außerdem arbeitet sie mit jeder untergeordneten Ansicht zusammen, um die endgültige Rendering-Größe zu bestimmen.\footcite[Vgl.][Abgerufen am 28.10.2020]{Ritscher2020}
+Views (zu Deutsch Ansichten) sind visuelle Elemente die in zwei Kategorien unterschieden werden können.  Controls, die für die Sammlung von Benutzereingaben oder die Ausgabe von Daten sind.  Sowie Layouts die eine Sammlung von Ansichten beinhalten und für die Anordnung der untergeorderten Ansichten in der Benutzeroberfläche verantwortlich sind.  Außerdem arbeitet sie mit jeder untergeordneten Ansicht zusammen, um die endgültige Rendering-Größe zu bestimmen.\footcite[Vgl.][Abgerufen am \today]{Ritscher2020}
 \subsubsection{Pages}
 Pages (zu Deutsch: Ansichtseiten) sind visuelle Elemente einer Anwendung die den gesamten Bildschirm belegen und zu den Layout Views gehören.  Xamarin Forms bietet dafür 
-verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dargestellt sind.\footcite[Vgl.][Abgerufen am 28.10.2020]{MicrosoftXamPages2016}
+verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dargestellt sind.\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}
 
 \begin{figure}[h]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsPages.png}
- \caption{Xamarin.Forms Pages}
+ \caption[Xamarin.Forms Pages]{Xamarin.Forms Pages\footnotemark}
  \label{fig:Xamarin.Forms Pages}
 \end{figure}
-
-Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einfluss auf das Navigationskonzept innerhalb der Anwendung.  Abgesehen von der ContentPage, die ausschließlich eine View anzeigt haben die jeweiligen Seiten das folgende Navigationskonzept: 
+\footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamPages2016}
+Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einfluss auf das Navigationskonzept innerhalb der Anwendung.  Abgesehen von der ContentPage, die ausschließlich eine View anzeigt haben die jeweiligen Seiten das folgende Navigationskonzept: \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
@@ -43,16 +43,15 @@ Das Beispiel zeigt eine TabbedPage mit drei in diesem Falle leeren NavigationsPa
 \lstinputlisting[label={lst:FlyOutPage},caption={Xamarin.Forms FlyOut definition}, language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
 \end{minipage}
 
-Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich das Style der Anwendung.  Flutter unterstützt drei alternativen: MaterialApp erzeugt eine App mit dem von Google entwickelten Material Design, CupertinoApp für eine App im iOS-Stil oder die Definition eines eigenen Styles für eine individuelle Anzeige.  \footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterPages2020}  Quelltext \ref{lst:MaterialApp} zeigt die Definition einer MaterialDesign App in Flutter.
+Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich das Style der Anwendung.  Flutter unterstützt drei alternativen: MaterialApp erzeugt eine App mit dem von Google entwickelten Material Design, CupertinoApp für eine App im iOS-Stil oder die Definition eines eigenen Styles für eine individuelle Anzeige.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterPages2020}  Quelltext \ref{lst:MaterialApp} zeigt die Definition einer MaterialDesign App in Flutter.
 
 \begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:MaterialApp},caption={Flutter MaterialApp definition}, language=Dart]{SourceCode/MaterialApp.Dart}
 \end{minipage}
 
-Von diesem Widget aus ist die eigentliche erste Seite ein weiteres zustandsabhängiges Widget.  Dieses besteht aus zwei Teilen:  Der erste Teil, der selbst unveränderlich ist, erzeugt ein State-Objekt, das den Zustand des Objekts enthält.  Das State-Objekt bleibt während der Lebensdauer des Widgets bestehen.
-Das State-Objekt implementiert die build()-Methode für das zustandsabhängige Widget.  Wenn sich der Zustand des Widget-Baums ändert,  wird setState() aufgerufen was einen Build des entsprechenden Teils der Benutzeroberfläche auslöst.  In Flutter ist die Benutzeroberfläche (auch bekannt als Widget-Baum) unveränderlich,  dass bedeutet da der Zustand nicht mehr geändert werden kann, sobald dieser aufgebaut ist.  Sie ändern Felder in Ihrer State-Klasse und rufen dann setState() auf, um den gesamten Widget-Baum neu zu erstellen. 
+Von diesem Widget aus ist die eigentliche erste Seite ein weiteres zustandsabhängiges Widget.  Dieses besteht aus zwei Teilen:  Der erste Teil, der selbst unveränderlich ist, erzeugt ein State-Objekt, das den Zustand des Objekts enthält.  Das State-Objekt bleibt während der Lebensdauer des Widgets bestehen. Das State-Objekt implementiert die build()-Methode für das zustandsabhängige Widget.  Wenn sich der Zustand des Widget-Baums ändert,  wird setState() aufgerufen was einen Build des entsprechenden Teils der Benutzeroberfläche auslöst.  In Flutter ist die Benutzeroberfläche (auch bekannt als Widget-Baum) unveränderlich,  dass bedeutet da der Zustand nicht mehr geändert werden kann, sobald dieser aufgebaut ist.  Sie ändern Felder in Ihrer State-Klasse und rufen dann setState() auf, um den gesamten Widget-Baum neu zu erstellen. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
-Damit die Navigation ähnlich wie in Xamarin.Forms definiert werden kann müssen verschiedene Widgets in einem Widget Baum verschachtelt werden.  Quelltext \ref{lst:FlutterTabbedApp} zeigt dies für die Arbeit mit Tabbs.  In diesem Beispiel wird eine TabBar mit drei Tab-Widgets erstellt und diese innerhalb einer AppBar platziert.\footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterTabs2020} 
+Damit die Navigation ähnlich wie in Xamarin.Forms definiert werden kann müssen verschiedene Widgets in einem Widget Baum verschachtelt werden.  Quelltext \ref{lst:FlutterTabbedApp} zeigt dies für die Arbeit mit Tabbs.  In diesem Beispiel wird eine TabBar mit drei Tab-Widgets erstellt und diese innerhalb einer AppBar platziert.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterTabs2020} 
 
 
 \begin{minipage}{\linewidth}
@@ -62,7 +61,8 @@ Damit die Navigation ähnlich wie in Xamarin.Forms definiert werden kann müssen
 
 \subsubsection{Layouts}
 
-Layouts werden in Xamarin.Forms verwendet, um die Steuerelemente der Benutzeroberfläche zu visuellen Strukturen zusammenzustellen. Dabei unterscheidet man zwischen Layouts die ausschließlich einen oder mehrere Inhalte beinhalten können.  Xamarin.Forms bietet die folgende Layouts an:
+Layouts werden in Xamarin.Forms verwendet, um die Steuerelemente der Benutzeroberfläche zu visuellen Strukturen zusammenzustellen. Dabei unterscheidet man zwischen Layouts die ausschließlich einen oder mehrere Inhalte beinhalten können.  Xamarin.Forms bietet die folgende Layouts an:\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} 
+
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
@@ -79,9 +79,10 @@ Alle verfügbaren Layouts werden in  \ref{fig:Xamarin.Forms Layouts} grafisch da
 
 \begin{figure}[h]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsLayouts.png}
- \caption{Xamarin.Forms Layouts}
+ \caption[Xamarin.Forms Layouts]{Xamarin.Forms Layouts\footnotemark}
  \label{fig:Xamarin.Forms Layouts}
 \end{figure}
+\footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamLayouts2018}
 
 
 \subsubsection{Steuerelemente}
@@ -256,14 +257,12 @@ Wenn Sie kein Plugin auf pub.dev finden, das Ihren Anforderungen entspricht, kö
 
 
 \subsection{Storage}
-Xamarin.Forms-Entwickler werden wahrscheinlich mit dem Settings-Plugin vertraut sein.
+Ein wesentlicher Bestandteil jeder mobilen Anwendung ist die Fähigkeit,  Daten zu persistieren.  Manchmal handelt es sich dabei um große Datenmengen,  die eine Datenbank erfordern,  oft sind es aber auch kleinere Daten wie Einstellungen und Präferenzen, die zwischen den Starts der Anwendung persistiert werden müssen.   
+Xamarin.Essentials stellt Entwicklern plattformübergreifende APIs für ihre mobilen Anwendungen bereit,  indem es die einzigartigen Betriebssystem- und Plattform-APIs nativ anspricht. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamEssentials2020} In diesem Paket ist das Settingsplugin, welches die Speicherung von Einstellungen in einem Schlüsselwertspeicher erlaubt.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamSettings2019} In Flutter wird für die Speicherung von Schlüssel-Wertpaaren auf die gleichen plattformspezifischen APIs zugegriffen wie bei Xamarin Forms diese werden mithilfe eines Plugins angesprochen.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
-In Flutter greifen Sie auf die gleiche Funktionalität mit dem sharedmpreferences Plugin zu. Dieses Plugin umhüllt die Funktionalität von UserDefaults und dem Android-Äquivalent SharedPreferences.
+Für die Speicherung in einer Datenbank können Xamarin.Forms Entwickler auf verschiedene Lösungen zurückgreifen zum einen SQLite  die am häufigsten verwendete Datenbank-Engine der Welt\footcite[Vgl.][Abgerufen am \today]{SQLiteConsortium2020},  oder Realm einer Datenbank optimiert für mobile Endgeräte. \footcite[Vgl.][Abgerufen am \today]{MongoDBRealm2020} Beide Datenbanken stehen auch als Plugin für Flutter zur Verfügung, wobei SQLite ausgereift ist,\footcite[Vgl.][Abgerufen am \today]{Tekartik2020} während Realm erst am 5 November 2020 support für Flutter angekündigt hat und noch nicht offiziell zur Verfügung steht. \footcite[Vgl.][Abgerufen am \today]{MongoDBFlutterSupport2020}
 
-In Xamarin.Forms würden die meisten Anwendungen das sqlite-net-pcl-Plugin verwenden, um auf SQLite-Datenbanken zuzugreifen.
 
-In Flutter greifen Sie auf diese Funktionalität mit dem sqflite-Plugin zu.
-\subsection{Notifications}
 \section{Programmiersprachen}
 C\# Dart Vergleich
 XAML Dart
