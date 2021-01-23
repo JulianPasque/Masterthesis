@@ -54,6 +54,7 @@ Das State-Objekt implementiert die build()-Methode für das zustandsabhängige W
 
 Damit die Navigation ähnlich wie in Xamarin.Forms definiert werden kann müssen verschiedene Widgets in einem Widget Baum verschachtelt werden.  Quelltext \ref{lst:FlutterTabbedApp} zeigt dies für die Arbeit mit Tabbs.  In diesem Beispiel wird eine TabBar mit drei Tab-Widgets erstellt und diese innerhalb einer AppBar platziert.\footcite[Vgl.][Abgerufen am 28.10.2020]{GoogleFlutterTabs2020} 
 
+
 \begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:FlutterTabbedApp},caption={Flutter Tab Layout definition}, language=Dart]{SourceCode/TabbedPage.Dart}
 \end{minipage}
@@ -195,11 +196,11 @@ In Xamarin.Forms würden Sie HttpClient verwenden. Einen Netzwerkaufruf in Flutt
 
 Um das http-Paket zu verwenden, fügen Sie es zu Ihren Abhängigkeiten in pubspec.yaml hinzu.
 
-Um eine Netzwerkanfrage zu stellen, rufen Sie await auf die asynchrone Funktion http.get() auf:
+Um eine Netzwerkanfrage zu stellen, rufen Sie await auf die asynchrone Funktion wie in \ref{lst:FlutterNetworkRequest} dargestellt auf:
 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:FlutterFont},caption={Flutter Font definition}, language=Dart]{SourceCode/Fonts.Dart}
+\lstinputlisting[label={lst:FlutterNetworkRequest},caption={Flutter Network request}, language=Dart]{SourceCode/NetworkRequest.Dart}
 \end{minipage}
 
 \subsection{Lebenzyklus}
@@ -234,7 +235,7 @@ In Flutter legen Sie die Schriftdatei in einem Ordner ab und referenzieren sie i
 Weisen Sie dann die Schriftart Ihrem Text-Widget zu, wie in  \ref{lst:FlutterFont} dargestellt. 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:FlutterFont},caption={Flutter Font definition}, language=Dart]{SourceCode/NetworkRequest.Dart}
+\lstinputlisting[label={lst:FlutterFont},caption={Flutter Font definition}, language=Dart]{SourceCode/Fonts.Dart}
 \end{minipage}
 
 \subsection{Plugins}

@@ -19,6 +19,11 @@
 
 \usepackage[framemethod=tikz]{mdframed}
 
+\RedeclareSectionCommand[
+  beforeskip=0pt,
+  afterindent=false% <- added
+  ]{chapter}
+
 % Shorthands
 \newcommand*\iffdef{\overset{\text{def}}{\iff}}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
@@ -106,10 +111,12 @@
 
 
 \pagestyle{scrheadings}
+
 \clearscrheadfoot
 
 \ihead{\leftmark}
 \ohead{\pagemark} 
+\renewcommand*{\chapterpagestyle}{scrheadings}
 
 
   \begin{document}
@@ -126,7 +133,8 @@
   \lstlistoflistings
 
   \mainmatter         % Eigenschaften für den Hauptteil setzen
-  
+  \renewcommand*{\chapterpagestyle}{plain}
+
   \include{01Einleitung}
   \include{02Compiler}
   \include{03CrossPlattformFrameworks}
@@ -137,9 +145,11 @@
   %\include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
-  \clearpairofpagestyles
-  \pagestyle{empty}
-  
+  \renewcommand*{\chapterpagestyle}{scrheadings}
+
+\setlength\bibitemsep{1.5\itemsep}
+
   \printbibliography              % Setzt das Literaturverzeichnis
+
   \printEidesstattlicheErklaerung % Setzt die eidesstattlichen Erklärung
 \end{document}

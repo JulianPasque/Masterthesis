@@ -61,7 +61,8 @@ right=4cm}                  % konstant vier Zentimeter (4cm)
 \newcommand{\printEidesstattlicheErklaerung}{%
   \clearpage
   \pagenumbering{gobble}  % Keine Seitennummerierung 
-  
+    \renewcommand*{\chapterpagestyle}{plain}
+
   \chapter*{Eidesstattliche Erklärung}
 
 	\markboth{Eidesstattliche Erklärung}{}
