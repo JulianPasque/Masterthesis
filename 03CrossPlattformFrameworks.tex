@@ -281,41 +281,105 @@ Für die Speicherung in einer Datenbank können Xamarin.Forms Entwickler auf ver
 
 
 \section{Programmiersprachen}
-Der Wechsel von C\# zu Dart ist aufgrund des ähnlichen Stils und der Syntax sehr einfach. Allerdings gibt es bei jeder Sprache Unterschiede, die manche Dinge einfacher und andere schwieriger machen In diesem Abschnitt werden die Programmiersprachen miteinander verglichen.  
-\subsection{Syntax, Operator- und Namensvariationen}
-Beginnend mit den Grundlagen, werde ich einige der häufigsten Syntax Variationen behandeln.
-In Dart ist alles null, auch das, was wir in C\# Wertetypen nennen würden. Persönlich macht mir das ein bisschen Angst, weil man bei absolut allem auf Nullen prüfen muss. Ein Problem zur Unterstützung von nicht-nullbaren Typen ist offen und wird bearbeitet.
+Der Wechsel von C\# zu Dart ist aufgrund des ähnlichen Stils und der Syntax einfach.  Allerdings gibt es bei jeder Sprache Unterschiede,  die manche Dinge einfacher und andere schwieriger machen. In diesem Abschnitt werden die Programmiersprachen miteinander verglichen.
+\subsection{In Dart ist alles Null}
+In Dart ist alles null, auch das, was in C\# als Wertetyp bezeichnet wird.  Dies führt dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden sollte.
 
-Verwenden Sie einen Unterstrich, um eine Klasse oder Methode als privat zu kennzeichnen, ansonsten als öffentlich.
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartNull},caption={Alles kann ich Dart Null sein}, language=Dart]{SourceCode/DartNull.Dart}
+\end{minipage}
+
+
+\subsection{Generics}
 
 Generics sind C\# sehr ähnlich, mit der Ausnahme, dass Sie eine generische Klasse ohne die Type-Beschränkung übergeben können.
 
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartGeneric},caption={Generics in Dart}, language=Dart]{SourceCode/DartGeneric.Dart}
+\end{minipage}
+
+\subsection{Delegates}
+
 Delegates sind im Wesentlichen Funktionszeiger. In Dart können Sie ein Typedef verwenden, um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen zu halten.
+
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartDelegates},caption={Delegates in Dart}, language=Dart]{SourceCode/DartDelegates.Dart}
+\end{minipage}
+
+\subsection{Das New Keyword}
+
 
 Dart kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie nicht new sagen, wenn Sie das nicht wollen.
 
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartNew},caption={Optinales "New" Keyword in Dart}, language=Dart]{SourceCode/DartNew.Dart}
+\end{minipage}
+
+
+\subsection{Listen und Dictionaries}
+
 Listen sind Listen, und Dictionaries sind Maps.
+
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartDicAndList},caption={Listen und Maps in Dart}, language=Dart]{SourceCode/DartListAndDictionairy.Dart}
+\end{minipage}
+
+
+
+\subsection{Zugriffsmodifizierer}
+
+Alle Typen und Typmember verfügen in beiden Sprachen über eine Zugriffsebene.  Diese Zugriffsebene steuert, ob sie von anderem Code in Ihrer Assembly oder anderen Assemblys verwendet werden können.  Dabei wird in C\# mit Mithilfe der Zugriffsmodifizieren (public,  private,  protected,  internal,  protected internal,  private protected) der Zugriff auf einen Typ oder Member festlegen.  In Dart gibt es die Schlüsselwörter public,  protected und private nicht. Wenn ein Bezeichner mit einem Unterstrich (\_) beginnt, ist er für seine Bibliothek privat dies wird in \ref{lst:PrivatePublicDart} als Quelltext dargestellt. 
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:PrivatePublicDart},caption={Private und Public Definitionen in Dart}, language=Dart]{SourceCode/PrivateDefinition.Dart}
+\end{minipage}
+
+Da ein Unterstrich ein valides Zeichen bei der Typ und Typmemberdefinition ist, ist daher bei der Übersetzung darauf zu achten,  dass existierende Unterstriche entfernt werden müssen da dies ansonsten potentiell zu fehlerhaften Übersetzungen führen kann.  Außerdem kann es durch die Verwendung von Zugriffsmodifiziern wie "protected internal" vorkommen, dass es keine entsprechende Dart Implementierung existiert.  Folglich führt dies potentiell zu falschen Zugriffsbeschränkungen bei der Übersetzung von Bibliotheken. 
 
 \subsection{Vererbung}
 
-Dart hat keine Schnittstellen, Sie haben abstrakte Klassen. Sie implementieren abstrakte Klassen.
-Wenn Sie erben wollen, erweitern Sie Klassen.
+Dart hat keine Schnittstellen, Sie haben abstrakte Klassen. Sie implementieren abstrakte Klassen. Wenn Sie erben wollen, erweitern Sie Klassen.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartInherit},caption={Vererbung in Dart}, language=Dart]{SourceCode/DartInherit.Dart}
+\end{minipage}
 
 Sie können eine Klasse erweitern und mehrere Klassen implementieren. Dart unterstützt auch Mixin's. Ein Mixin ist wie das Anhängen einer Klasse und das Hinzufügen ihrer Funktionalität zu der Klasse, ohne tatsächlich von ihr zu erben. Dies ist auch ähnlich wie die Schnittstellenimplementierungen von C\# 8.0.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartMixin},caption={Mixin's in Dart}, language=Dart]{SourceCode/DartMixin.Dart}
+\end{minipage}
 
 \subsection{Namespaces}
 Dart hat keine Namespaces. Stattdessen importieren Sie Pakete oder Dateien als solche.
 Dadurch haben Sie Zugriff auf alle Klassen und Funktionen innerhalb der Datei. Aber wenn es einen Namenskonflikt gibt oder Sie die Dinge etwas lesbarer machen wollen, können Sie sie benennen.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartPackages},caption={Importieren von Paketen in Dart}, language=Dart]{SourceCode/DartPackages.Dart}
+\end{minipage}
 
 \subsection{Bibliotheken}
 Dart verfügt über eine Vielzahl von Kernbibliotheken, die für viele alltägliche Programmieraufgaben wie das Arbeiten mit Objektsammlungen , das Durchführen von Berechnungen und das Kodieren/Dekodieren von Daten  unerlässlich sind.  Zusätzliche APIs sind in von der Community bereitgestellten Paketen verfügbar. Dieses Konzept ist dem aus .NET bekannten Bilbiothek Konzept sehr ähnlich.
 Neben den Konzept sind auch die Inhalte in einigen Bibliotheken sehr ähnlich. So ähnelt die Bibliothek dart:async sehr dem .Net Namespace System.Threading.  Außerdem ist dart:Math sehr ähnlich wie System.MAth und dart.io zu System.IO.
 Darüber hinaus können Sie Funktionen direkt in Dateien haben, ohne eine Klasse oder einen Namespace. Das ist fantastisch, wenn Sie funktionaler programmieren wollen. z. B. können Sie dies in eine Datei ganz allein stellen, nichts anderes wird benötigt.
 
+\subsection{Async/Await}
+Die asynchrone Programmierung in Dart ist ebenfalls sehr ähnlich zu C\#. Sie verwenden die Future-Klasse anstelle von Task. Die async- und await-Schlüsselwörter sind die gleichen, der einzige kleine Unterschied ist die Platzierung des async-Schlüsselworts, das nach dem Methodennamen steht, statt davor.
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartAsync},caption={Async und Await in Dart}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
+\end{minipage}
+
+
 \subsection{Events}
 Anstelle eines Ereignisses in C\# mit Delegaten, die dann alle aufgerufen werden, wenn ein Ereignis ausgelöst wird, arbeitet Dart in Streams. Ein Stream ist ähnlich wie ein Ereignis, aber Sie öffnen ihn, hören ihn an und schließen ihn.
 
 Der Vorteil dieses Ansatzes ist, dass Sie viele Dinge tun können, wie z. B. Werte transformieren oder Ereignisse für eine bestimmte Zeitspanne anhalten und vieles mehr. 
 
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:DartEvents},caption={Events in Dart}, language=Dart]{SourceCode/DartEvents.Dart}
+\end{minipage}
 
 
