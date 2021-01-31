@@ -85,80 +85,91 @@ An dieser Stelle ist es nun wichtig zu analysieren,  wie man jedes Xamarin.Forms
 \subsubsection{Steuerelemente}
 
 Xamarin.Forms-Ansichten sind die Bausteine von plattformübergreifenden mobilen Benutzeroberflächen. Ansichten sind Objekte der Benutzeroberfläche wie Beschriftungen, Schaltflächen und Schieberegler, die in anderen grafischen Programmierumgebungen üblicherweise als Steuerelemente oder Widgets bezeichnet werden. Die von Xamarin.Forms unterstützten Ansichten leiten sich alle von der Klasse View ab. 
+
 \subsubsection{Steuerelemente für die Darstellung}
+Steuerelemente für die Darstellung sind Elemente die neben der Darstellung und der Benutzerfahrung keine weitere Funktionalität haben. Klassischerweise zeigen diese Informationen die für die arbeit mit der Anwendung wichtig sind an.  Die folgende Aufzählung zeigt die wichtigsten Steuerelemente aus Xamarin.Forms für die Darstellung,  wobei zu zeichnende Elemente wie die Ellipse,  eine Linie,  Path,  Polygon, Polyline und Rectangle nicht besonders aufgeführt werden, da diese bei Flutter einfach auf das Canvas gezeichnet werden können. 
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item BoxView zeigt ein einfarbiges Rechteck an 
- \item Ellipse zeigt eine Ellipse oder einen Kreis an
-  \item Label zeigt einzeilige Textstrings oder mehrzeilige Textblöcke an, entweder mit konstanter oder variabler Formatierung.
- \item Line zeigt eine Linie von einem Startpunkt zu einem Endpunkt an
- \item Image zeigt ein Bitmap an, diese können über das Web heruntergeladen, als Ressourcen in über das gemeinsame Projekt oder in Plattformprojekte eingebettet  werden
- \item Map zeigt eine Karte an
- \item OpenGLView zeigt OpenGL-Grafiken an
- \item Path zeigt Kurven und komplexe Formen an.
- \item Polygon Polygon zeigt ein Polygon an.
- \item  Polyline zeigt eine Reihe von verbundenen geraden Linien an
- \item Rectangle zeigt ein Rechteck oder Quadrat an
- \item WebView zeigt Web-Seiten oder HTML-Inhalte an
+ \item BoxView zeigt in Xamarin.Forms ein einfarbiges Rechteck an. In der Praxis wird dieses Control auch häufig für die Darstellung von Seperatoren zwischen zwei Informationen verwendet.  Dafür wird in Xamarin.Forms die Höhe oder Breite des Controls auf 1 Pixel limitiert.  Für die Verwendung als seperator bietet Flutter das sogenannte Divider Widget an, welches überall verwendet werde kann um Content zu trennen.  Mit dem Widget SizedBox bietet Flutter jedoch auch ein Widget für die Zeichnung von Boxen mit einer gewissen Größe an.  
+ \item Label zeigt einzeilige Textstrings oder mehrzeilige Textblöcke an, entweder mit konstanter oder variabler Formatierung. Für Label gibt es bei Flutter mehrere alternativen.  Das Text dem Xamarin.Forms Label am nahekommenste Widget ist "Text" was die Darstellung mit einem einzigen stil erlaubt.  Ebenso bietet Flutter jedoch auch die Möglichkeit RichText in einem entsprechenden Widget anzuzeigen. 
+ \item Image zeigt ein Bitmap an, diese können über das Web heruntergeladen, als Ressourcen in über das gemeinsame Projekt oder in Plattformprojekte eingebettet  werden.  Flutter bietet ebenfalls ein Image Steuerelement an, welches die gleichen Quellen für Bilder unterstützt wie Xamarin.Forms
+ \item Map zeigt eine Karte an.  Für Flutter gibt es mehrere Anbietet für Karten z.B. Leamaps und Google Maps, welches direkt von den Flutter Entwickelern angbeoten wird. 
+ \item WebView zeigt Web-Seiten oder HTML-Inhalte an.  Das Widget "webview\_flutter" bietet eine entsprechende Implementierung für Flutter an. 
 \end{itemize}
 
 \subsubsection{Steuerelemente die Aktionen auslösen}
 
+Die folgenden Steuerelemente sind Elemente,  welche etwas in der mobilen Anwendung auslösen.  Diese Elemente benötigen eine Interaktion über Gesten des Anwenders mit der Anwendung. 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item Button ist ein rechteckiges Objekt, das Text anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.
- \item ImageButton ist ein rechteckiges Objekt, das ein Bild anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.
-  \item RadioButton erlaubt die Auswahl einer Option aus einer Menge und feuert ein CheckedChanged-Ereignis, wenn die Auswahl erfolgt.
- \item RefreshView ist ein Container-Steuerelement, das eine Pull-to-Refresh-Funktionalität für scrollbare Inhalte bietet. 
- \item SearchBar zeigt einen Bereich an, in dem der Benutzer eine Textzeichenfolge eingeben kann, sowie eine Schaltfläche (oder eine Tastaturtaste), die der Anwendung signalisiert, eine Suche durchzuführen
- \item SwipeView ist ein Container-Steuerelement, das sich um ein Inhaltselement legt und Kontextmenüelemente bereitstellt, die durch eine Wischgeste angezeigt werden
+ \item Button ist ein rechteckiges Objekt, das Text anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.  Flutter bietet eine Vielzahl von Buttons an, wobei der "FlatButton" dem Xamarin.Forms button am nähesten kommt.
+ \item ImageButton ist ein rechteckiges Objekt, das ein Bild anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.  In Flutter stehen dafür der IconButton zur Verfügung.
+  \item RadioButton erlaubt die Auswahl einer Option aus einer Menge und feuert ein CheckedChanged-Ereignis, wenn die Auswahl erfolgt. Flutter bietet genau wie Xamarin.Forms einen RadioButton an,  mit identischer Arbeitsweise
+ \item RefreshView ist ein Container-Steuerelement, das eine Pull\-to\-Refresh-Funktionalität für scrollbare Inhalte bietet.  Das Widget "pull\_to\_refresh" bietet ähnlich wie die Xamarin.Forms alternative an durch herunterziehen des Contents eine Aktion auszulösen.
+ \item SearchBar zeigt einen Bereich an, in dem der Benutzer eine Textzeichenfolge eingeben kann, sowie eine Schaltfläche (oder eine Tastaturtaste), die der Anwendung signalisiert, eine Suche durchzuführen. Das Widget "flutter\_search\_bar" bietet die Möglichkeit den Inhalt zu Filtern.  Jedoch kann es nicht wie bei Xamarin.Forms frei platziert werden, sondern wird im Rahmen der Navigationsleiste abgebildet. 
+ \item SwipeView ist ein Container-Steuerelement, das sich um ein Inhaltselement legt und Kontextmenüelemente bereitstellt, die durch eine Wischgeste angezeigt werden.  Flutter selber bietet kein Widget mit dieser Funktionalität an.  Für Listen steht jedoch mit "flutter\_slidable" ein OpenSource Widget zur Verfügung. 
 \end{itemize}
 
 
 
 \subsubsection{Steuerelemente um Werte zu setzen}
 
-
+Steuerelemente die Werte setzen sind User Interface Elemente die von einem Anwender durch Interaktion mit Werten versehen werden können um diese in der Anwendung zu verarbeiten.  In diesem Unterabschnitt wird nicht auf Elemente eingegangen,  die zur Eingabe und Manipulation von Texten zur Verfügung stehen, da diesen Steuerelementen ein eigener Unterabschnitt gewährt wird.  Xamarin.Forms bietet eine Vielzahl von Steuerelementen, die an dieser Stelle aufgeführt werden. Zusätzlich wird wie in den vorherigen Abschnitten erläutert, wie dieses Verhalten bei Flutter generiert werden kann. 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item CheckBox ermöglicht dem Benutzer die Auswahl eines booleschen Wertes mit Hilfe einer Art Schaltfläche, die entweder markiert oder leer sein kann
- \item Schieberegler bieten Benutzern die Option einen  Wert aus einem kontinuierlichen Bereich auswählen, der mit den Eigenschaften Minimum und Maximum festgelegt wurde.
- \item Stepper ermöglicht es dem Benutzer, einen doppelten Wert aus einem Bereich von inkrementellen Werten auszuwählen, die mit den Eigenschaften Minimum, Maximum und Inkrement festgelegt wurden.
- \item Schalter hat die Form eines Ein/Aus-Schalters, damit der Benutzer einen booleschen Wert auswählen kann
- \item DatePicker ermöglicht es dem Benutzer, ein Datum mit der Datumsauswahl der Plattform auszuwählen.
- \item TimePicker ermöglicht dem Benutzer die Auswahl einer Zeit mit dem TimePicker der Plattform
+ \item CheckBox ermöglicht dem Benutzer die Auswahl eines booleschen Wertes mit Hilfe einer Art Schaltfläche, die entweder markiert oder leer sein kann. Flutter bietet ebenfalls ein Checkbox Control an,  das Material Design Checkbox. 
+  \item Switch hat die Form eines Ein/Aus-Schalters, damit der Benutzer einen booleschen Wert auswählen kann, für das es ebenfalls eine entsprechendes Flutter Widget gibt. 
+ \item Slider bieten Benutzern die Option einen  Wert aus einem kontinuierlichen Bereich auswählen, der mit den Eigenschaften Minimum und Maximum festgelegt wurde.  Flutter bietet ebenfalls ein Widget für Slider an
+ \item Stepper ermöglicht es dem Benutzer, einen doppelten Wert aus einem Bereich von inkrementellen Werten auszuwählen, die mit den Eigenschaften Minimum, Maximum und Inkrement festgelegt wurden.  Von Haus aus gibt es bei Flutter kein Steuerelement,  welches ähnliche Eigenschaften anbietet.  Die Open Source Community hat mit dem number\_inc\_dec Plugin aber eine Widget entwickelt welches wie die Xamarin.Forms alternative arbeitet. 
+ \item DatePicker ermöglicht es dem Benutzer, ein Datum mit der Datumsauswahl der Plattform auszuwählen.  In Flutter stehen dafür kein Widget sondern eine Funktion zur Verfügung,  die klassischerweise, wie in Quelltext , in einem Gesture Detector auf einem anderen Widget ausgeführt wird.  
+ \item TimePicker ermöglicht dem Benutzer die Auswahl einer Zeit mit dem spezifischen TimePicker der Plattform.  Wird ähnlich wie der Datepicker nicht als Widget sonders als Funktionalität ausgeliefert,  ein mögliche Definition ist in Quelltext \ref{lst:FlutterTimePicker} dargestellt.
+ 
+ \begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:FlutterTimePicker},caption={Verwendung von Timepickern in Flutter}, language=Dart]{SourceCode/FlutterTimePicker.Dart}
+\end{minipage}
+
 \end{itemize}
-\subsubsection{Steuerelemente um text zu manipulieren}
-
+\subsubsection{Steuerelemente um Text zu manipulieren}
+Wie bereits im vorherigen Abschnitt beschrieben sind Steuerelemente zur Eingabe und manipulation von Texten Strang genommen ebenfalls Steuerelemente zum setzen von Werten.  In Xamarin Forms stehen die folgenden beiden Steuerelemente für die Arbeit mit Texten zur Verfügung:
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item Entry ermöglicht dem Benutzer die Eingabe und Bearbeitung einer einzelnen Textzeile
+ \item Entry ermöglicht dem Benutzer die Eingabe und Bearbeitung einer einzelnen Textzeile., optional kann dieses als Passworteingabe mit Sternen maskiert werden.
  \item Editor ermöglicht dem Benutzer die Eingabe und Bearbeitung mehrerer Textzeilen
 \end{itemize}
+
+In flutter gibt es ausschließlich das Textfield Widget, welches die Funktionalitäten von beiden Xamarin.Forms controlls bündelt.  Standardmäßig bietet das TextField Widget die Eingabemöglichkeit für eine Zeile ähnlich wie das Entry Steuerelement kann aber durch die Eigenschaft "keyboardType: TextInputType.multiline" wie ein entry fungieren wobei optional auch eine Anzahl von maximalen Zeilen übergeben werden kann.  Dies wird in Quelltext dargestellt.
+
+ \begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:FlutterTextField},caption={TextField mit mehreren Zeilen in Flutter}, language=Dart]{SourceCode/FlutterTextField.Dart}
+\end{minipage}
+
+
 \subsubsection{Steuerelemente um eine Aktivität anzudeuten}
 
+In mobilen Anwendungen kann es aufgrund der Limitierten Hardware Ressourcen und der begrenzten Netzwerkanbindung dazu kommen, dass Aktionen etwas länger dauern,  als es der Anwender erwarten würden.  Dafür stehen in Xamarin.Forms Steuerelemente zur Verfügung, die dem Anwender das Andauern einer Aktivität andeuten.  Die folgenden Elemente stehen Xamarin.Forms Entwicklern zur Verfügung:
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item ActivityIndicator verwendet eine Animation, um zu zeigen, dass die Anwendung eine langwierige Aktivität ausführt, ohne einen Hinweis auf den Fortschritt zu geben. 
- \item ProgressBar verwendet eine Animation, um zu zeigen, dass die Anwendung durch eine langwierige Aktivität fortschreitet
+ \item ActivityIndicator verwendet eine Animation, um zu zeigen, dass die Anwendung eine langwierige Aktivität ausführt, ohne einen Hinweis auf den Fortschritt zu geben.  Für Flutter Anwendungen steht ein ähnliches Widget zur Verfügung das als "CircularProgressIndicator" bezeichnet wird. 
+ \item ProgressBar verwendet eine Animation, um zu zeigen, dass die Anwendung durch eine langwierige Aktivität fortschreitet. In Flutter steht mit dem "LinearProgressIndicator" Widget ebenfalls eine Progressbar zur Verfügung.
 \end{itemize}
 
 \subsubsection{Steuerelemente um Sammlungen anzuzeigen}
+
+Bei diesen Steuerelementen handelt es sich um Elemente, die zur Anzeige von Daten-Sammlungen spezialisiert sind.  Xamarin.Forms stellt die folgenden Steuelemente zur Verfügung.
+
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item CarouselView zeigt eine blätterbare Liste von Datenelementen an
- \item CollectionView zeigt eine scrollbare Liste mit auswählbaren Datenelementen an, wobei verschiedene Layout-Spezifikationen verwendet werden. Sie soll eine flexiblere und performantere Alternative zu ListView darstellen. 
-  \item IndicatorView zeigt Indikatoren an, die die Anzahl der Elemente in einer CarouselView darstellen
- \item ListView zeigt eine scrollbare Liste mit auswählbaren Datenelementen an
- \item Picker zeigt ein ausgewähltes Element aus einer Liste von Textzeichenfolgen an und ermöglicht die Auswahl dieses Elements, wenn die Ansicht angetippt wird
- \item TableView zeigt eine Liste von Zeilen mit optionalen Überschriften und Unterüberschriften an
+ \item CarouselView zeigt eine blätterbare Liste von Datenelementen an.  Für Flutter steht ein ähnliches Widget mit dem "carousel\_slider" zur erfügung
+ \item IndicatorView zeigt Indikatoren an, die die Anzahl der Elemente in einer CarouselView darstellen
+ \item Picker zeigt ein ausgewähltes Element aus einer Liste von Textzeichenfolgen an und ermöglicht die Auswahl dieses Elements, wenn die Ansicht angetippt wird.  Das Picker Widget ist bereits wie im Date,- und Time-Picker beschrieben kein Controll sondern eine Funktion, welches durch Gesten auf andere Widges ausgeführt werden kann. 
+ \item TableView zeigt eine Liste von Zeilen mit optionalen Überschriften und Unterüberschriften an.  Das äquivalente flutter- Widget ist als Table Verfügbar.
 \end{itemize}
 
 \subsubsection{Listen}
 
-Das Äquivalent zu einer ListView in Flutter ist ... eine ListView!
+Listen sind ebenfalls Steuerelemente für die Anzeige und Interaktion mit Sammlungen,  bekommen jedoch wegen ihrer häufigen Verwendung einen eigenen Abschnitt. In Xamarin.Form existieren ein Listview und ein CollectionView Control,  wobei zweiteres eine optimierung der Listview ist.  Das Äquivalent zu einer ListView in Flutter ist ... eine ListView!
 
 In einer Xamarin.Forms ListView erstellen Sie eine ViewCell und möglicherweise einen DataTemplateSelector und übergeben diese an die ListView, die jede Zeile mit dem rendert, was Ihr DataTemplateSelector oder ViewCell zurückgibt. Allerdings müssen Sie oft darauf achten, dass Sie Cell Recycling einschalten, da es sonst zu Speicherproblemen und langsamen Scrollgeschwindigkeiten kommen kann.Aufgrund des unveränderlichen Widget-Musters von Flutter übergeben Sie eine Liste von Widgets an Ihre ListView, und Flutter kümmert sich darum, dass das Scrollen schnell und reibungslos funktioniert
 
@@ -174,7 +185,7 @@ In Xamarin.Forms können Elemente ein Klick-Ereignis enthalten, an das Sie anhä
 
 In Xamarin.Forms würden Sie dem VisualElement einen GestureRecognizer hinzufügen. Normalerweise wären Sie auf TapGestureRecognizer, PinchGestureRecognizer und PanGestureRecognizer beschränkt, es sei denn, Sie haben einen eigenen erstellt. Flutter kann mit Hilfe des GestureDetectors deutlich mehr Gesten behandeln als Xamarin.Forms.
 
-\subsubsection{Animtion}
+\subsubsection{Animation}
 In Xamarin.Forms erstellen Sie einfache Animationen mit ViewExtensions, die Methoden wie FadeTo und TranslateTo enthalten. Sie würden diese Methoden in einer Ansicht verwenden, um die gewünschten Animationen auszuführen.
 
 In Flutter animieren Sie Widgets mithilfe der Animationsbibliothek, indem Sie Widgets in ein animiertes Widget einwickeln. Verwenden Sie einen AnimationController, der eine Animation<double> ist, die die Animation pausieren, suchen, stoppen und umkehren kann. Er benötigt einen Ticker, der signalisiert, wenn vsync passiert, und erzeugt eine lineare Interpolation zwischen 0 und 1 auf jedem Frame, während er läuft. Anschließend erstellen Sie eine oder mehrere Animationen und hängen sie an den Controller.Zum Beispiel könnten Sie CurvedAnimation verwenden, um eine Animation entlang einer interpolierten Kurve zu implementieren. In diesem Sinne ist der Controller die "Master"-Quelle des Animationsverlaufs und die CurvedAnimation berechnet die Kurve, die die standardmäßige lineare Bewegung des Controllers ersetzt. Wie Widgets arbeiten auch Animationen in Flutter mit Komposition.
