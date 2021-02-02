@@ -23,7 +23,7 @@ verschiedene Alternativen an,  die in \ref{fig:Xamarin.Forms Pages} grafisch dar
 \end{figure}
 \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamPages2016}
 Wie die Darstellung präsentiert, hat die Auswahl einer Page einen direkten Einfluss auf das Navigationskonzept innerhalb der Anwendung.  Abgesehen von der ContentPage, die ausschließlich eine View anzeigt haben die jeweiligen Seiten das folgende Navigationskonzept: \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}
-
+f
 \begin{itemize}
 \setlength\itemsep{-0.6em}
  \item FlyOutPage: Eine Seite, die zwei Bereiche für die Seite hat. Typischerweise enthält das Flyout ein Menü über welches zwischen den eigentlichen Inhaltsseiten navigiert werden kann.
@@ -69,15 +69,15 @@ Layouts werden in Xamarin.Forms verwendet, um die Steuerelemente der Benutzerobe
 \end{figure}
 \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamLayouts2018}
 
-An dieser Stelle ist es nun wichtig zu analysieren,  wie man jedes Xamarin.Forms Layout in Flutter nachbilden kann.  Dafür wird folgend die Funktion der einzelnen Layouts anhand der Xamarin.Forms Dokumentation\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} erklärt und ein FLutter Layout mit den gleichen Eigenschaften herausgestellt. 
+An dieser Stelle ist es nun wichtig zu analysieren,  wie man jedes Xamarin.Forms Layout in Flutter nachbilden kann.  Dafür wird folgend die Funktion der einzelnen Layouts anhand der Xamarin.Forms Dokumentation\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} erklärt und ein Flutter Layout mit den gleichen Eigenschaften herausgestellt. 
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
  \item ContentView: ContentView enthält ein einzelnes untergeordnetes Element, das mit der Eigenschaft "Content" festgelegt wird. Die Eigenschaft Content kann auf jedes View-Derivat gesetzt werden, auch auf andere Layout-Derivate. ContentView wird meist als Strukturelement verwendet und dient als Basisklasse zu Frame.
- \item Frame: Die Klasse Frame leitet sich von ContentView ab und zeigt einen Rahmen um die Ansicht.  In Flutter kann auf das BoxDecoration widget zugegriffen werden es beschreibt, wie ein Kasten auf dem Bildschirm dargestellt werden soll, und kann als Rahmen dargestellt werden.
-  \item ScrollView: Ist in der Lage, seinen Inhalt zu scrollen.  Die Eigenschaft Content auf eine Ansicht oder ein Layout fest, das zu groß ist, um auf den Bildschirm zu passen.  Legen Sie die Eigenschaft Orientierung fest, um anzugeben, ob der Bildlauf vertikal, horizontal oder beides sein soll. In Flutter ist die nächste Entsprechung das SingleChildScrollView-Widget. 
- \item StackLayout: Positioniert untergeordnete Elemente in einem Stapel entweder horizontal oder vertikal,  basierend auf der Eigenschaft Orientation. Flutter hat ein ähnliches Konzept, anstatt der Orientation werden Kinder durch die Widgets Row und Column vertical oder horizontal ausgerichtet. 
- \item Grid: Grid positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften Row, Column, RowSpan und ColumnSpan angegeben.  Außerdem wird das Grid Control häufig verwendet um Steuerelemente zu stapeln.  Das nächste Äquivalent zu einem Grid wäre ein GridView. Dieses ist viel leistungsfähiger als das, was Sie in Xamarin.Forms gewohnt sind. Ein GridView bietet einen automatischen Bildlauf, wenn der Inhalt den sichtbaren Bereich überschreitet.  Für das Stapeln von Elementen,  in Flutter lässt sich dies mit dem Stack-Widget erreichen.
+ \item Frame: Die Klasse Frame leitet sich von ContentView ab und zeigt einen Rahmen um die Ansicht.  In Flutter kann auf das BoxDecoration widget zugegriffen werden es beschreibt, wie ein Kasten auf dem Bildschirm dargestellt werden soll, und kann als Rahmen dargestellt werden. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterBoxDecoration2020}
+  \item ScrollView: Ist in der Lage, seinen Inhalt zu scrollen.  Die Eigenschaft Content auf eine Ansicht oder ein Layout fest, das zu groß ist, um auf den Bildschirm zu passen.  Legen Sie die Eigenschaft Orientierung fest, um anzugeben, ob der Bildlauf vertikal, horizontal oder beides sein soll. In Flutter ist die nächste Entsprechung das SingleChildScrollView-Widget.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSingleChildScrollView2020}
+   \item StackLayout: Positioniert untergeordnete Elemente in einem Stapel entweder horizontal oder vertikal,  basierend auf der Eigenschaft Orientation.  Flutter hat ein ähnliches Konzept, anstatt der Orientation werden Kinder durch die Widgets Row und Column vertical oder horizontal ausgerichtet. 
+ \item Grid: Grid positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften Row, Column, RowSpan und ColumnSpan angegeben.  Außerdem wird das Grid Control häufig verwendet um Steuerelemente zu stapeln.  Das nächste Äquivalent zu einem Grid wäre ein GridView. Dieses ist viel leistungsfähiger als das, was Sie in Xamarin.Forms gewohnt sind. Ein GridView bietet einen automatischen Bildlauf, wenn der Inhalt den sichtbaren Bereich überschreitet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterGridView2020}  Für das Stapeln von Elementen,  in Flutter lässt sich dies mit dem Stack-Widget erreichen.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterStack2020}
  \item AbsolutLayout: Positioniert untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften LayoutBounds und LayoutFlags angegeben. Ein AbsoluteLayout ist nützlich, um die Positionen von Ansichten zu animieren.
  \item RelativeLayout:  Positioniert untergeordnete Elemente relativ zum RelativeLayout selbst oder zu ihren Geschwistern. Die Position eines Kindelements wird über die angehängten Eigenschaften angegeben, die auf Objekte vom Typ Constraint und BoundsConstraint gesetzt werden.
 \end{itemize}
@@ -87,7 +87,7 @@ An dieser Stelle ist es nun wichtig zu analysieren,  wie man jedes Xamarin.Forms
 Xamarin.Forms-Ansichten sind die Bausteine von plattformübergreifenden mobilen Benutzeroberflächen. Ansichten sind Objekte der Benutzeroberfläche wie Beschriftungen, Schaltflächen und Schieberegler, die in anderen grafischen Programmierumgebungen üblicherweise als Steuerelemente oder Widgets bezeichnet werden. Die von Xamarin.Forms unterstützten Ansichten leiten sich alle von der Klasse View ab. 
 
 \subsubsection{Steuerelemente für die Darstellung}
-Steuerelemente für die Darstellung sind Elemente die neben der Darstellung und der Benutzerfahrung keine weitere Funktionalität haben. Klassischerweise zeigen diese Informationen die für die arbeit mit der Anwendung wichtig sind an.  Die folgende Aufzählung zeigt die wichtigsten Steuerelemente aus Xamarin.Forms für die Darstellung,  wobei zu zeichnende Elemente wie die Ellipse,  eine Linie,  Path,  Polygon, Polyline und Rectangle nicht besonders aufgeführt werden, da diese bei Flutter einfach auf das Canvas gezeichnet werden können. 
+Steuerelemente für die Darstellung sind Elemente die neben der Darstellung und der Benutzerfahrung keine weitere Funktionalität haben. Klassischerweise zeigen diese Informationen die für die Arbeit mit der Anwendung wichtig sind an.  Die folgende Aufzählung zeigt die wichtigsten Steuerelemente aus Xamarin.Forms für die Darstellung, \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} wobei zu zeichnende Elemente wie die Ellipse,  eine Linie,  Path,  Polygon, Polyline und Rectangle nicht besonders aufgeführt werden, da diese bei Flutter einfach auf das Canvas gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020}
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
@@ -130,6 +130,7 @@ Steuerelemente die Werte setzen sind User Interface Elemente die von einem Anwen
 \end{minipage}
 
 \end{itemize}
+
 \subsubsection{Steuerelemente um Text zu manipulieren}
 Wie bereits im vorherigen Abschnitt beschrieben sind Steuerelemente zur Eingabe und manipulation von Texten Strang genommen ebenfalls Steuerelemente zum setzen von Werten.  In Xamarin Forms stehen die folgenden beiden Steuerelemente für die Arbeit mit Texten zur Verfügung:
 \begin{itemize}
@@ -334,7 +335,7 @@ Dart kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie
 
 
 \subsection{Listen und Dictionaries}
-
+C\# und .Net haben Sammlungen (Collection) Klassen die alle Auftretenden Probleme des Hinzufügen und entfernen von Elementen aus Arrays behandeln.  Diese werden als Listen (Eng. List) bezeichnet. \footcite[Vgl.][S. 413]{Stellman2021} Dart hat ebenfalls Listen die unter dem gleichen Namen zur Verfügung stehen und die gleichen Funktionalitäten abbilden. \footcite[Vgl.][S. 12f ]{Meiller2020}
 Listen sind Listen, und Dictionaries sind Maps.
 
 
