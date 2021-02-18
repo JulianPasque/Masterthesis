@@ -1,5 +1,5 @@
 \chapter{Cross Plattform Frameworks}
-Für die Realisierung eine Source-to-Source Compilers gibt es zwei relevante Faktoren,  die für die Realisierung ausschlaggebend sind.  Zum einen die Programmiersprachen in dem die beiden Frameworks entwickelt werden,  da bei der Übersetzung eine Brücke zwischen Quell und Zielsprache geschlagen werden muss.  Neben der Programmiersprache ist jedoch auch die Arbeitsweise eines Frameworks von essentieller Bedeutung.  Wie die Definition von Compilern bereits einführte,  müssen die Programme vor und nach der Übersetzung gleichwertig sein.  Dies implementiert,  dass das Verhalten der übersetzten Anwendungen nach der Übersetzung identisch seien muss wie das der Ursprungsanwendung.  Es ist also notwendig,  neben den sprachlichen auch die technischen Unterschiede zwischen den Frameworks zu kennen und diese im Rahmen der compilierung zu optimieren. 
+Für die Realisierung eine Source-to-Source Compilers gibt es zwei relevante Faktoren,  die für die Realisierung ausschlaggebend sind.  Zum einen die Programmiersprachen in dem die beiden Frameworks entwickelt werden,  da bei der Übersetzung eine Brücke zwischen Quell und Zielsprache geschlagen werden muss.  Neben der Programmiersprache ist jedoch auch die Arbeitsweise eines Frameworks von essentieller Bedeutung.  Wie die Definition von Compilern bereits einführte,  müssen die Programme vor und nach der Übersetzung gleichwertig sein.  Dies implementiert,  dass das Verhalten der übersetzten Anwendungen nach der Übersetzung identisch seien muss wie das der Ursprungsanwendung.  Es ist also notwendig,  neben den sprachlichen auch die technischen Unterschiede zwischen den Frameworks zu kennen und diese im Rahmen der Kompilierung zu optimieren. 
 
 \section{Frameworks}
 Xamarin is eine Open Source-Plattform für das Erstellen mobiler Anwendungen für iOS und Android mit Hilfe des .NET Frameworks, welches von Microsoft weiterentwickelt wird.  Dabei ist Xamarin ist eine Abstraktionsebene, die die Kommunikation zwischen Code und dem zugrunde liegenden Plattformcode verwaltet.  Xamarin wird in einer verwalteten Umgebung ausgeführt, die Vorteile wie Speicherbelegung und Garbage Collection bietet.  Bei Xamarin.Forms handelt es sich um ein Open-Source-Benutzeroberflächenframework., mit dessen Hilfe Entwickler iOS- und Android- Anwendungen aus einer einzigen CodeBase erstellen können.  Dabei wird auf die in der .NET Welt bekannten Technologien XAML  für die Benutzeroberfläche und C\# für die Anwendungslogik zurückgegriffen.  Die einzelnen Benutzeroberflächen werden von Xamarin.Forms als native Steuerelemente auf jeder Plattform gerendert.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftWhatIsXam2020}
@@ -84,18 +84,18 @@ An dieser Stelle ist es nun wichtig zu analysieren,  wie man jedes Xamarin.Forms
 
 \subsubsection{Steuerelemente}
 
-Xamarin.Forms-Ansichten sind die Bausteine von plattformübergreifenden mobilen Benutzeroberflächen. Ansichten sind Objekte der Benutzeroberfläche wie Beschriftungen, Schaltflächen und Schieberegler, die in anderen grafischen Programmierumgebungen üblicherweise als Steuerelemente oder Widgets bezeichnet werden. Die von Xamarin.Forms unterstützten Ansichten leiten sich alle von der Klasse View ab. 
+Xamarin.Forms-Ansichten sind die Bausteine von plattformübergreifenden mobilen Benutzeroberflächen. Ansichten sind Objekte der Benutzeroberfläche wie Beschriftungen, Schaltflächen und Schieberegler, die in anderen grafischen Programmierumgebungen üblicherweise als Steuerelemente oder Widgets bezeichnet werden. Die von Xamarin.Forms unterstützten Ansichten leiten sich alle von der Klasse View ab. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamViews2020}
 
 \subsubsection{Steuerelemente für die Darstellung}
 Steuerelemente für die Darstellung sind Elemente die neben der Darstellung und der Benutzerfahrung keine weitere Funktionalität haben. Klassischerweise zeigen diese Informationen die für die Arbeit mit der Anwendung wichtig sind an.  Die folgende Aufzählung zeigt die wichtigsten Steuerelemente aus Xamarin.Forms für die Darstellung, \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} wobei zu zeichnende Elemente wie die Ellipse,  eine Linie,  Path,  Polygon, Polyline und Rectangle nicht besonders aufgeführt werden, da diese bei Flutter einfach auf das Canvas gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020}
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
- \item BoxView zeigt in Xamarin.Forms ein einfarbiges Rechteck an. In der Praxis wird dieses Control auch häufig für die Darstellung von Seperatoren zwischen zwei Informationen verwendet.  Dafür wird in Xamarin.Forms die Höhe oder Breite des Controls auf 1 Pixel limitiert.  Für die Verwendung als seperator bietet Flutter das sogenannte Divider Widget an, welches überall verwendet werde kann um Content zu trennen.  Mit dem Widget SizedBox bietet Flutter jedoch auch ein Widget für die Zeichnung von Boxen mit einer gewissen Größe an.  
- \item Label zeigt einzeilige Textstrings oder mehrzeilige Textblöcke an, entweder mit konstanter oder variabler Formatierung. Für Label gibt es bei Flutter mehrere alternativen.  Das Text dem Xamarin.Forms Label am nahekommenste Widget ist "Text" was die Darstellung mit einem einzigen stil erlaubt.  Ebenso bietet Flutter jedoch auch die Möglichkeit RichText in einem entsprechenden Widget anzuzeigen. 
- \item Image zeigt ein Bitmap an, diese können über das Web heruntergeladen, als Ressourcen in über das gemeinsame Projekt oder in Plattformprojekte eingebettet  werden.  Flutter bietet ebenfalls ein Image Steuerelement an, welches die gleichen Quellen für Bilder unterstützt wie Xamarin.Forms
- \item Map zeigt eine Karte an.  Für Flutter gibt es mehrere Anbietet für Karten z.B. Leamaps und Google Maps, welches direkt von den Flutter Entwickelern angbeoten wird. 
- \item WebView zeigt Web-Seiten oder HTML-Inhalte an.  Das Widget "webview\_flutter" bietet eine entsprechende Implementierung für Flutter an. 
+ \item BoxView zeigt in Xamarin.Forms ein einfarbiges Rechteck an. In der Praxis wird dieses Control auch häufig für die Darstellung von Seperatoren zwischen zwei Informationen verwendet.  Dafür wird in Xamarin.Forms die Höhe oder Breite des Controls auf 1 Pixel limitiert.  Für die Verwendung als seperator bietet Flutter das sogenannte Divider Widget an, welches überall verwendet werde kann um Content zu trennen.  Mit dem Widget SizedBox bietet Flutter jedoch auch ein Widget für die Zeichnung von Boxen mit einer gewissen Größe an.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSizedBox2020}
+ \item Label zeigt einzeilige Textstrings oder mehrzeilige Textblöcke an, entweder mit konstanter oder variabler Formatierung. Für Label gibt es bei Flutter mehrere alternativen.  Das Text dem Xamarin.Forms Label am nahekommenste Widget ist "Text" was die Darstellung mit einem einzigen stil erlaubt. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterText2020} Ebenso bietet Flutter jedoch auch die Möglichkeit RichText in einem entsprechenden Widget anzuzeigen. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterRichText2020}
+ \item Image zeigt ein Bitmap an, diese können über das Web heruntergeladen, als Ressourcen in über das gemeinsame Projekt oder in Plattformprojekte eingebettet  werden.  Flutter bietet ebenfalls ein Image Steuerelement an, welches die gleichen Quellen für Bilder unterstützt wie Xamarin.Forms. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterImage2020}
+ \item Map zeigt eine Karte an.  Für Flutter gibt es mehrere Anbietet für Karten z.B. Leamaps und Google Maps, welches direkt von den Flutter Entwickelern angbeoten wird. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterMap2020}
+ \item WebView zeigt Web-Seiten oder HTML-Inhalte an.  Das Widget "webview\_flutter" bietet eine entsprechende Implementierung für Flutter an. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWebView2020}
 \end{itemize}
 
 \subsubsection{Steuerelemente die Aktionen auslösen}
@@ -293,36 +293,37 @@ Für die Speicherung in einer Datenbank können Xamarin.Forms Entwickler auf ver
 
 
 \section{Programmiersprachen}
-Der Wechsel von C\# zu Dart ist aufgrund des ähnlichen Stils und der Syntax einfach.  Allerdings gibt es bei jeder Sprache Unterschiede,  die manche Dinge einfacher und andere schwieriger machen. In diesem Abschnitt werden die Programmiersprachen miteinander verglichen.
+Die Programmiersprachen C\# zu Dart haben einen ähnlichen Stils,  Syntax und haben sogar gemeinsame Bibliotheksnamen.  \citeauthor{Pedley2019}, der ursprüngliche Auto des "Flutter für Xamarin.Forms Entwicklers" Dokumentation beschrieb in seinem Blog die Unterschiede zwischen den beiden Programmiersprachen. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019} Anhand dieses Beitrages solllen in diesem Abschnitt die Unterschiede zwischen den Programmiersprachen aufgedeckt und Anhand von Dart- Quelltext Beispielen veranschaulicht werden.    
 \subsection{In Dart ist alles Null}
 In Dart ist alles null, auch das, was in C\# als Wertetyp bezeichnet wird.  Dies führt dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden sollte.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartNull},caption={Alles kann ich Dart Null sein}, language=Dart]{SourceCode/DartNull.Dart}
+\lstinputlisting[label={lst:DartNull},caption={Alles kann ich Dart Null sein\protect\footnotemark}, language=Dart]{SourceCode/DartNull.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 
 \subsection{Generics}
-Generics führen in das Konzept der Typparameter in .NET ein, wodurch Sie Klassen und Methoden entwerfen können, die die Angabe mindestens eines Typs verzögern können, bis die Klasse oder Methode vom Clientcode deklariert und instanziiert wird. Indem Sie z. B. einen generischen Typparameter „T“ verwenden, können Sie eine einzelne Klasse schreiben, die von anderem Clientcode verwendet werden kann, ohne dass die Kosten und Risiken von Umwandlungen zur Laufzeit oder Boxingvorgängen anfallen, wie im Folgenden gezeigt:\footcite[Vgl.  Generics][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
+Generics wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklariert und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
 
-Generics sind C\# sehr ähnlich, mit der Ausnahme, dass Sie eine generische Klasse ohne die Type-Beschränkung übergeben können.
+Generics werden in Dart sehr ähnlich behandelt wie in C\# ,  mit der Ausnahme,  dass Sie eine generische Klasse ohne die Type-Beschränkung übergeben können.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartGeneric},caption={Generics in Dart}, language=Dart]{SourceCode/DartGeneric.Dart}
+\lstinputlisting[label={lst:DartGeneric},caption={Generics in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartGeneric.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 \subsection{Delegates}
 
-Ein Delegat ist ein Typ, der Verweise auf Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp darstellt. Nach Instanziierung eines Delegaten können Sie die Instanz mit einer beliebigen Methode verknüpfen, die eine kompatible Signatur und einen kompatiblen Rückgabetyp aufweist. Sie können die Methode über die Delegatinstanz aufrufen.
-Delegaten werden verwendet, um Methoden als Argumente an anderen Methoden zu übergeben. Ereignishandler sind nichts weiter als Methoden, die durch Delegaten aufgerufen werden. Wenn Sie eine benutzerdefinierte Methode erstellen, kann eine Klasse wie das Windows-Steuerelement diese Methode aufrufen, sobald ein bestimmtes Ereignis eintritt. Das folgende Beispiel veranschaulicht die Deklaration eines Delegaten:\footcite[Vgl.  Delegaten
-][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
+In .Net ist Ein Delegate ist ein Typ,  der Verweise auf Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp darstellt.  Nach der Instanziierung eines Delegaten können die Instanz mit einer beliebigen Methode verknüpft werden,  die eine kompatible Signatur und einen kompatiblen Rückgabetyp aufweisen.  Diese können die Methode über die Delegatinstanz aufrufen.  Delegates werden dazu verwendet,  um Methoden als Argumente an anderen Methoden zu übergeben.  Da Ereignishandler ebenfalls Methoden sind können diese durch Delegates aufgerufen werden.  Benutzerdefinierte Methoden können also durch Steuerelemente diese Methode aufrufen, wenn ein bestimmes Ereignis wie ein klick auf einen Button eintritt.\footcite[Vgl.  ][Abgerufen am \today]{MicrosoftDelegates2015} 
 
-Delegates sind im Wesentlichen Funktionszeiger. In Dart können Sie ein Typedef verwenden, um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen zu halten.
+In Dart kann der Typ Typedef verwendet werden, um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen zu halten. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Dies wird in Quelltext \ref{lst:DartDelegates} dargestellt. 
 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartDelegates},caption={Delegates in Dart}, language=Dart]{SourceCode/DartDelegates.Dart}
+\lstinputlisting[label={lst:DartDelegates},caption={Delegates in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartDelegates.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 \subsection{Das New Keyword}
 
@@ -330,8 +331,9 @@ Delegates sind im Wesentlichen Funktionszeiger. In Dart können Sie ein Typedef 
 Dart kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie nicht new sagen, wenn Sie das nicht wollen.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartNew},caption={Optinales "New" Keyword in Dart}, language=Dart]{SourceCode/DartNew.Dart}
+\lstinputlisting[label={lst:DartNew},caption={Optinales "New" Keyword in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartNew.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 
 \subsection{Listen und Dictionaries}
@@ -340,8 +342,9 @@ Listen sind Listen, und Dictionaries sind Maps.
 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartDicAndList},caption={Listen und Maps in Dart}, language=Dart]{SourceCode/DartListAndDictionairy.Dart}
+\lstinputlisting[label={lst:DartDicAndList},caption={Listen und Maps in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartListAndDictionairy.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 
 
@@ -350,8 +353,9 @@ Listen sind Listen, und Dictionaries sind Maps.
 Alle Typen und Typmember verfügen in beiden Sprachen über eine Zugriffsebene.  Diese Zugriffsebene steuert, ob sie von anderem Code in Ihrer Assembly oder anderen Assemblys verwendet werden können.  Dabei wird in C\# mit Mithilfe der Zugriffsmodifizieren (public,  private,  protected,  internal,  protected internal,  private protected) der Zugriff auf einen Typ oder Member festlegen.  In Dart gibt es die Schlüsselwörter public,  protected und private nicht. Wenn ein Bezeichner mit einem Unterstrich (\_) beginnt, ist er für seine Bibliothek privat dies wird in \ref{lst:PrivatePublicDart} als Quelltext dargestellt. 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:PrivatePublicDart},caption={Private und Public Definitionen in Dart}, language=Dart]{SourceCode/PrivateDefinition.Dart}
+\lstinputlisting[label={lst:PrivatePublicDart},caption={Private und Public Definitionen in Dart\protect\footnotemark}, language=Dart]{SourceCode/PrivateDefinition.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 Da ein Unterstrich ein valides Zeichen bei der Typ und Typmemberdefinition ist, ist daher bei der Übersetzung darauf zu achten,  dass existierende Unterstriche entfernt werden müssen da dies ansonsten potentiell zu fehlerhaften Übersetzungen führen kann.  Außerdem kann es durch die Verwendung von Zugriffsmodifiziern wie "protected internal" vorkommen, dass es keine entsprechende Dart Implementierung existiert.  Folglich führt dies potentiell zu falschen Zugriffsbeschränkungen bei der Übersetzung von Bibliotheken. 
 
@@ -365,14 +369,16 @@ Eine Schnittstelle definiert einen Vertrag. Jede class oder struct, die diesen V
 Dart hat keine Schnittstellen, Sie haben abstrakte Klassen. Sie implementieren abstrakte Klassen. Wenn Sie erben wollen, erweitern Sie Klassen.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartInherit},caption={Vererbung in Dart}, language=Dart]{SourceCode/DartInherit.Dart}
+\lstinputlisting[label={lst:DartInherit},caption={Vererbung in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartInherit.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 Sie können eine Klasse erweitern und mehrere Klassen implementieren. Dart unterstützt auch Mixin's. Ein Mixin ist wie das Anhängen einer Klasse und das Hinzufügen ihrer Funktionalität zu der Klasse, ohne tatsächlich von ihr zu erben. Dies ist auch ähnlich wie die Schnittstellenimplementierungen von C\# 8.0.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartMixin},caption={Mixin's in Dart}, language=Dart]{SourceCode/DartMixin.Dart}
+\lstinputlisting[label={lst:DartMixin},caption={Mixin's in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartMixin.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 \subsection{Namespaces}
 
@@ -385,8 +391,9 @@ Dart hat keine Namespaces. Stattdessen importieren Sie Pakete oder Dateien als s
 Dadurch haben Sie Zugriff auf alle Klassen und Funktionen innerhalb der Datei. Aber wenn es einen Namenskonflikt gibt oder Sie die Dinge etwas lesbarer machen wollen, können Sie sie benennen.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartPackages},caption={Importieren von Paketen in Dart}, language=Dart]{SourceCode/DartPackages.Dart}
+\lstinputlisting[label={lst:DartPackages},caption={Importieren von Paketen in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartPackages.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 \subsection{Bibliotheken}
 
@@ -404,8 +411,9 @@ Ziel dieser Syntax ist es: Code zu aktivieren, der sich wie eine Folge von Anwei
 Die asynchrone Programmierung in Dart ist ebenfalls sehr ähnlich zu C\#. Sie verwenden die Future-Klasse anstelle von Task. Die async- und await-Schlüsselwörter sind die gleichen, der einzige kleine Unterschied ist die Platzierung des async-Schlüsselworts, das nach dem Methodennamen steht, statt davor.
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartAsync},caption={Async und Await in Dart}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
+\lstinputlisting[label={lst:DartAsync},caption={Async und Await in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 
 \subsection{Events}
@@ -416,7 +424,8 @@ Anstelle eines Ereignisses in C\# mit Delegaten, die dann alle aufgerufen werden
 Der Vorteil dieses Ansatzes ist, dass Sie viele Dinge tun können, wie z. B. Werte transformieren oder Ereignisse für eine bestimmte Zeitspanne anhalten und vieles mehr. 
 
 \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartEvents},caption={Events in Dart}, language=Dart]{SourceCode/DartEvents.Dart}
+\lstinputlisting[label={lst:DartEvents},caption={Events in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartEvents.Dart}
 \end{minipage}
+\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 
