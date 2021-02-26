@@ -98,8 +98,7 @@ Bei der semantischen Analyse wird der Syntaxbaum,  \footnotetext{Abbildung in An
 \end{figure}
 \footnotetext{Abbildung in Anlehnung an Ullman et al. 2008, S.10.} 
 \subsection{Zwischencodeerzeugung}
-Bei der Übersetzung eines Quellprogramms in den Zielcode kann der Compiler mehrere Zwischendarstellungen in verschiedenen Formen erstellen. Syntaxbäume sind beispielsweise eine solche Darstellung. Nach der semantischen Analyse stellen viele Compiler eine maschinennahe Zwischendarstellung die für eine Abstrakte Maschine entworfen wurden. ç
-Darstellungen niedriger Ebene sind für maschinenabhängige Aufgaben, z. B. Registerabgabe und Befehlsauswahl, geeignet.
+Bei der Übersetzung eines Quellprogramms in den Zielcode kann der Compiler mehrere Zwischendarstellungen in verschiedenen Formen erstellen. Syntaxbäume sind beispielsweise eine solche Darstellung. Nach der semantischen Analyse stellen viele Compiler eine maschinennahe Zwischendarstellung die für eine Abstrakte Maschine entworfen wurden.  Darstellungen niedriger Ebene sind für maschinenabhängige Aufgaben, z. B. Registerabgabe und Befehlsauswahl, geeignet.
 \begin{figure}[!ht]
  \includegraphics[width=14.5cm,height=1.52cm]{Images/Compiler/Zwischendarstellungen.png}
  \caption[Zwischendarstellungen]{Zwischendarstellungen \protect\footcite{Ullmann2008} }
@@ -111,16 +110,13 @@ Die Auswahl oder der Entwurf einer Zwischendarstellung ist von Compiler zu Compi
 
 
 \subsection{Codeoptimierung}
-In dieser Phase wird der maschinenunabhängige Code so optimiert, dass sich darauf ein besserer Zielcode ergibt. Dabei bedeutet besser, schnellerer code oder code der weniger Ressourcen verbraucht. Der Umfang der Codeoptimierung schwankt dabei von Compiler zu Compiler erheblich.  \footcite[Vgl.][S. 11f]{Ullmann2008}
+In dieser Phase wird der Code so optimiert, dass sich darauf ein besserer Zielcode ergibt.  Dabei bedeutet besser, schnellerer code oder code der weniger Ressourcen verbraucht.  Der Umfang der Codeoptimierung schwankt dabei von Compiler zu Compiler erheblich.  \footcite[Vgl.][S. 11f]{Ullmann2008} Wenn ein Programmierer erst einmal einen bestimmten Algorithmus ausgewählt  und implementiert hat, kann der Compiler außer in ganz besonderen Fällen nicht genug  vom Programm verstehen, um ihn durch einen anderen, effizienteren Algorithmus zu  ersetzen.\footcite[Vgl.][S. 712]{Ullmann2008}
 
 \subsection{Codeerzeugung}
-Bei der Codeerzegung werden die Eingaben aus der Zwischendarstellung des Quellprogramms entgegengenommen und auf die Zielsprache abgebildet. Ein entsheidender Aspekt der Codeerzeugung ist die sinnvolle zuweisung von Registern für Variablen, falls es sich bei der Zielsprache um Maschinencode handelt.\footcite[Vgl.][S. 13]{Ullmann2008}
+Bei der Codeerzeugung werden die Eingaben aus der Zwischendarstellung des Quellprogramms entgegengenommen und auf die Zielsprache abgebildet. Das Zielprogramm  muss die semantische Bedeutung des Quellprogramms bewahren und qualitativ hochwertig sein, also die verfügbaren Ressourcen der Zielmaschine effizient nutzen.  Die Herausforderung ist, dass das Problem, für ein gegebenes Quellprogramm ein optimales Zielprogramm zu erstellen, mathematisch nicht entscheidbar ist; zahlreiche  Teilprobleme, die bei der Codeerzeugung anfallen, zum Beispiel die Vergabe von Registern, sind nicht effizient berechenbar (intractable). In der Praxis müssen wir mit heuristischen Techniken zufrieden sein, die guten, aber nicht unbedingt optimalen Code liefern.  Im Allgemeinen können die  Codeoptimierungs- und die Codeerzeugungsphase, die zusammen häufig als Back-End  des Compilers bezeichnet werden, die IR mehrmals durchlaufen, bevor das Zielprogramm steht. \footcite[Vgl.][S. 618f]{Ullmann2008}
 
+\section{Der .NET Compiler Roslyn}
+Für die Arbeit mit der Programmiersprache C\# steht mit Roslyn ein Compiler zur Verfügung, der aus modularen Bibliotheken zusammensetzen. Durch die Referenzierung dieser Bibliotheken können Programme in verschiedenen Art und Weisen auf die Funktionalitäten des Compilers zugreifen.  So ist es auch Möglich, den Compiler zu verwenden ohne das Ziel zu haben die Programmiersprache C\# zu plattformnahen Code zu übersetzen.  Dabei steht die Bibliotheken über den Packetemanager Nuget für die Einbindung in eigene Projekte zur Verfügung.  Um diese Funktionalität zu gewährleisten unterteilt Rosyln die Übersetzung in mehrere Phasen die einige der in diesem Kapitel beschriebenen Phasen zusammenfassen: Die erste Phase ist die Erstellung des Syntaxbaums, die zweite Phase ist die Semantische Analyse gefolgt von der letzten Phase der Ausgabe der so genannten Intermediate Language. \footcite[Vgl.][S. 1017]{Albahari2020}
 
-
-Wär
-
-Die Syntax einer Programmiersprache ist das Aussehen bzw. die Struktur des Quelltextes. Der komplette Quelltext eines Programms muss syntaktisch korrekt sein, damit er übersetzt werden kann.  \\
-Die Semantik ist die Bedeutung, die den verschiedenen syntaktischen Strukturen zugeordnet werden kann. Es ist also von der Semantik abhängig auf welche Art und Weise die Weiterverabeitung durch den Compiler erfolgt. 
 
 
