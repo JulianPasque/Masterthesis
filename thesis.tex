@@ -140,18 +140,26 @@
   \include{02Compiler}
   \include{03CompilerEntwurf}  
   \include{04CrossPlattformFrameworks}
-  %\include{04CompilerEntwurf}  
-  %\include{05Realisierung}
-  %\include{06Qualitätssicherung}
-  %\include{07Anwendungsfall}
-  %\include{08Fazit}
+  \include{05Realisierung}
+  \include{06Qualitätssicherung}
+ \include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
   \renewcommand*{\chapterpagestyle}{scrheadings}
 
 \setlength\bibitemsep{1.5\itemsep}
 
-  \printbibliography              % Setzt das Literaturverzeichnis
+
+
+%\printbibliography              % Setzt das Literaturverzeichnis
+
+\chapter*{Literaturverzeichnis}
+  
+	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+\printbibliography[nottype=online, heading=subbibliography, title={Gedruckte Quellen}]
+\printbibliography[type=online, heading=subbibliography, title={Online Quellen}]
+
 
   \printEidesstattlicheErklaerung % Setzt die eidesstattlichen Erklärung
 \end{document}
