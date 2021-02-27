@@ -109,8 +109,11 @@
 
 \lstset{style=Codestyle}
 
-
+\usepackage{microtype}
 \pagestyle{scrheadings}
+
+\setlength{\headheight}{18pt}
+\setlength{\footheight}{18pt}
 
 \clearscrheadfoot
 
@@ -120,6 +123,8 @@
 
 
   \begin{document}
+  \sloppy
+
   \include{TitlePage}  % Setzt die Titelseite
   \frontmatter        % Eigenschaften für den Vorspann setzen
   
@@ -151,11 +156,9 @@
 
 
 
-%\printbibliography              % Setzt das Literaturverzeichnis
-
 \chapter*{Literaturverzeichnis}
-  
-	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+ 
+ \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 
 \printbibliography[nottype=online, heading=subbibliography, title={Gedruckte Quellen}]
 \printbibliography[type=online, heading=subbibliography, title={Online Quellen}]
