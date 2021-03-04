@@ -1,1 +1,26 @@
 \chapter{Realisierung}
+
+
+\section{Umgebung}
+Für die Realisierung und Verwendung des Compilers ist es notwendig verschiedene Softwarekomponenten erforderlich,  die an dieser Stelle mit Ihrer Funktion definiert werde sollen. 
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item Windows 10:\footnote{Windows 10 ist über \url{https://www.microsoft.com/de-de/software-download/windows10ISO} zum download verfügbar. } Windows wird als Platform für den Übersetzer zwangsläufig benötigt, da der Roslyn Compiler ausschließlich für dieses Betriebssystem zur Verfügung steht. 
+ \item Visual Studio 2019\footnote{Visual Studio 2019 ist über \url{https://visualstudio.microsoft.com/de/downloads/} zum download verfügbar. }: Die Entwicklungsumgebung für die Entwicklung des Übersetzers.  Mit Hilfe von Visual Studio kann ein Projekt angelegt werden,  welches den Roslyn Compiler verwenden kann.  Darüber hinaus kann mit Visual Studio eine Xamarin.Forms Anwendung entwickelt werden,  die für die spätere Qualitätssicherung des Übersetzers essentiell ist.  
+ \item Build tools for Visual Studio:\footnote{Build tools for Visual Studio ist über \url{https://visualstudio.microsoft.com/de/downloads/} zum download verfügbar. } Beinhaltet MSBuild als teil der Build-Tool, das hilft, den Prozess der Erstellung eines Softwareprodukts zu automatisieren, einschließlich der Kompilierung des Quellcodes, der Paketierung, des Testens, der Bereitstellung und der Erstellung von Dokumentationen.  Mit MSBuild ist es möglich, Visual Studio-Projekte und -Lösungen zu erstellen, ohne dass die Visual Studio IDE installiert ist.
+ \item Android Studio\footnote{Android Studio ist über \url{https://developer.android.com/studio} zum download verfügbar. } oder Visual Studio Code\footnote{ Visual Studio Code  ist über \url{https://code.visualstudio.com/} zum download verfügbar. }: Dabei handelt es sich um die Entwicklungsumgebungen für die Entwicklung von Flutter.  Für beide Umgebungen steht jeweils eine Erweiterung für die Programmiersprache Dart und das Flutter Framework bereit, die für die Arbeit mit Flutter Apps notwendig sind.  Im Rahmen dieser Arbeit ist eine dieser Umgebungen notwendig um die übersetzte Anwendung auszuführen. 
+ \item Flutter SDK: \footnote{Die Flutter SDK ist über \url{https://flutter.dev/docs/get-started/install/windows} zum download verfügbar. } Das Flutter Software Development Kit (SDK)enthält die Pakete und Kommandozeilen-Tools, die Sie für die plattformübergreifende Entwicklung von Flutter-Apps benötigt werden. 
+\end{itemize}
+
+
+
+
+In der Zukunft könnte der Source to Source Compiler auch eine Web-Oberfläche bekommen,  diese hätte die zwei folgenden essentielle Vorteile im Gegensatz zu der aktuellen Implementierung.  Reduktion des Installationsaufwandes - durch den Betrieb über eine Webseite könnte die Installation von der Anzeige entkoppelt werden.  Natürlich wäre eine Client-Server Struktur auch ohne eine Webseite erreichbar,  jedoch haben Webseiten darüber hinaus den zusätzlichen Vorteil,  dass sie Plattform-unabhängig zur Verfügung stehen,  was es zum Beispiel für Xamarin.Forms Entwickelr mit einem Mac OSX Computer erlauben würde ebenfalls von dem Compiler zu profitieren, ohne sich eine Windows Installation vornehmen zu müssen
+
+\section{Projekterstellung}
+Mit Hilfe von Roslyn konnte der Name des Projektes extrahiert werden.  Dieser Name kann anschließend verwendet werden um ein neues Flutter Projekt zu initialisieren.  
+
+Wie der Quelltext zeigt,  wird dafür ein neues Projekt mit Hilfe der Kommandozeile angelegt.  Damit das Ergebnis nicht von voherigen Übersetzungsvorgängen beeinträchtigt wird,  auch im Vorhinein überprüft,  ob das Zielverzeichnis existiert und leer ist. 
+
+
