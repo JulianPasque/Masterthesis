@@ -19,11 +19,6 @@
 
 \usepackage[framemethod=tikz]{mdframed}
 
-\RedeclareSectionCommand[
-  beforeskip=0pt,
-  afterindent=false% <- added
-  ]{chapter}
-
 % Shorthands
 \newcommand*\iffdef{\overset{\text{def}}{\iff}}
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
@@ -126,7 +121,8 @@
 
   \include{TitlePage}  % Setzt die Titelseite
   \frontmatter        % Eigenschaften für den Vorspann setzen
-  
+  \renewcommand*\chapterheadstartvskip{}% removes space before chapter titles 
+
   \include{Abstract}  % Setzt die Titelseite
 
   \tableofcontents    % Setzt das Inhaltsverzeichnis
@@ -138,6 +134,8 @@
   \lstlistoflistings
 
   \mainmatter         % Eigenschaften für den Hauptteil setzen
+  \KOMAoptions{headings=big}% restores default space before chapter titles
+
   \renewcommand*{\chapterpagestyle}{plain}
 
   \include{01Einleitung}
@@ -149,14 +147,15 @@
  \include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
+  
+    \renewcommand*\chapterheadstartvskip{}% removes space before chapter titles 
+
   \renewcommand*{\chapterpagestyle}{scrheadings}
 
 \setlength\bibitemsep{1.5\itemsep}
-
-
-
 \chapter*{Literaturverzeichnis}
- 
+ \chaptermark{Literaturverzeichnis}
+
  \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 
 \printbibliography[nottype=online, heading=subbibliography, title={Gedruckte Quellen}]
