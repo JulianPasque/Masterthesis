@@ -1,7 +1,7 @@
 \chapter{Compiler Spezifikation}
 \label{chap:CompilerEntwurf}
 Beim Entwurf des Compilers werden anhand der Anforderungen an diesen eine softwaretechnische Lösung erarbeitet.  Dabei soll an dieser Stelle ein Grobentwurf skizziert werden, bevor in Kapitel \ref{chap:CrossPlattformFrameworks} die genauen Unterschiede zwischen den Frameworks erarbeitet werden um einen Feinentwurf erstellen zu können.\footcite[Vgl.][S.6]{Balzert2011}
-Um den zu S2 Compiler entwerfen zu können ist es notwendig,  das Compiler-Umfeld der Cross-Plattform Frameworks zu einzuführen, Abbildung \ref{fig:CompilerArchitecture} zeigt das Umfeld der in dieser Arbeit behandelten Cross-Plattform Frameworks Xamarin.Forms und Flutter.
+Um den zu Source-To-Source Compiler entwerfen zu können ist es notwendig,  das Compiler-Umfeld der Cross-Plattform Frameworks einzuführen um das Ziel des zu definieren.  Dafür wird in Abbildung \ref{fig:CompilerArchitecture} die Compiler der behandelten Cross-Plattform Frameworks Xamarin.Forms und Flutter dargstellt. 
 
 \begin{figure}[!ht]
  \includegraphics[width=14.5cm]{Images/CompilerArchitecture/CompilerStructure.png}
@@ -9,8 +9,8 @@ Um den zu S2 Compiler entwerfen zu können ist es notwendig,  das Compiler-Umfel
  \label{fig:CompilerArchitecture}
 \end{figure}
 
-Die in der Abbildung skizzierten Xamarin.Forms und Flutter Compiler durchlaufen natürlich die in Kapitel 2 eingeführten Compiler-Phasen, auf dem Weg zu einer ausführbaren mobilen Anwendung.  Zusätzlich wurde in der Abbildung dargestellt,  an welcher Stelle der Source-To-Source Compiler realisiert werden soll.  Aus dieser Skizierung ist ersichtlich, dass das Ergebnis der Übersetzung, wie schon in der Definition von Source-To-Source Compilern beschrieben eine Hochsprache ist.  
-Basierend auf der theoretischen Einführung von Compilern müssen bei dem Entwurf des Source to Source die Phasen aus dem Kapitel 2 betrachtet werden,  und Rückschlüssel darauf zu ziehen,  welche Arbeitsschritte in diesen Phasen durchgeführt werden müssen. Im folgenden wird anhand von Abbildung  \ref{fig:S2SCompilerAufbau} der S2- Compilers genauer betrachtet. Es ist ersichtlich,  dass sowohl Compiler-Frontend für den Übersetzer von wichtiger relvanz sind. 
+Die in der Abbildung skizzierten Xamarin.Forms und Flutter Compiler durchlaufen die in Kapitel 2 eingeführten Compiler-Phasen,  auf dem Weg zu einer ausführbaren mobilen Anwendung.  Zusätzlich wurde in der Abbildung dargestellt,  an welcher Stelle der Source-To-Source Compiler realisiert werden soll.  Aus dieser Skizierung ist ersichtlich, dass das Ergebnis der Übersetzung, wie schon in der Definition von Source-To-Source Compilern beschrieben eine Hochsprache ist.  
+Basierend auf der theoretischen Einführung von Compilern müssen bei dem Entwurf des Source to Source die Phasen aus dem Kapitel 2 betrachtet werden,  um Rückschlüssel darauf zu ziehen,  welche Arbeitsschritte in diesen Phasen durchgeführt werden müssen. Im folgenden wird anhand von Abbildung  \ref{fig:S2SCompilerAufbau} der S2- Compilers genauer betrachtet. Es ist ersichtlich,  dass sowohl Compiler-Frontend für den Übersetzer von wichtiger relvanz sind. 
 
 \begin{figure}[!ht]
  \includegraphics[width=14.5cm]{Images/CompilerArchitecture/S2SArchitecture.png}
@@ -18,19 +18,20 @@ Basierend auf der theoretischen Einführung von Compilern müssen bei dem Entwur
  \label{fig:S2SCompilerAufbau}
 \end{figure}
 
-Wichtig für das Ergebnis des Compilers ist es,  dass eine mit Hilfe des Xamarin.Forms Compilers Übersetzte mobile Anwendung sich identisch verhält, wie eine mit dem in dieser Arbeit realsierten S2 Compiler und dem Flutter Compiler übersetzte mobile Anwendung. 
+Aus den beiden Anwendungen lassen sich für diese Arbeit zwei Rückschlüsse ziehen.  Da sowohl die Übersetzung des Xamarin.Forms zu einer mobilen App, wie auch die Übersetzung einer Flutter App zu einem gleichwertigen Programm führen, wird auch die mit Hilfe des in dieser Arbeit erstellen Source-To-Source Compilers generierte Flutter Anwendung ein gleichwertiges Programm sein.
 
 
 \section{Abgrenzung}
-Da es sich sowohl bei Xamarin.Forms als auch Flutter um Open-Source Frameworks handelt, welche schon seit einigen Jahren auf dem Markt sind,  hat sich  eine Vielzahl von Erweiterungen in Form von Plugins entwickelt.  Da es sich bei diesen Erweiterungen nicht zwangsläufig um Open-Source Projekte handelt hat der zu entwickelnde Übersetzer keinen Zugriff auf den Quelltext und kann diesen daher nicht Übersetzen.  Der Einfachheit halber soll der in dieser Arbeit entwickelte Prototyp ausschließlich Elemente die im Eigentlichen Framework Xamarin.Forms vorhanden sind sowie die Inhalte des Optional Verfügbaren Packetes Xamarin.Essentials, welches ebenfalls von Microsoft ist übersetzen.  Ebenfalls soll der zu implementierende Prototyp keine anderen Architekturmuster als die von Xamarin.Forms angebotenen übersetzen können.  So gibt es  Plugins wie Prism die das Model-View- ViewModel(MVVM) für Xamarin.Forms realisieren und damit dabei helfen die Geschäfts und Präsentationslogik von der Benutzeroberfläche zu trennen.  Wegen seiner Vorteile werden viele Anwendungen mithilfe von MVVM realisiert wird jedoch nicht selber von Microsoft angeboten.  Außerdem sollen der Compiler keine plattformspezifischen Lösungen übersetzt werden.
-Zusammengefasst soll der zu realisierende Prototyp ausschließlich Elemente aus dem Quellframework Xamarin.Forms übersetzten, die von Micrsoft selber angeboten werden. 
+Da es sich sowohl bei Xamarin.Forms als auch Flutter um Open-Source Frameworks handelt, welche schon seit einigen Jahren auf dem Markt sind,  hat sich  eine Vielzahl von Erweiterungen in Form von Plugins entwickelt.  Da es sich bei diesen Erweiterungen nicht zwangsläufig um Open-Source Projekte handelt hat der zu entwickelnde Übersetzer keinen Zugriff auf den Quelltext und kann diesen daher nicht Übersetzen.  Der Einfachheit halber soll der in dieser Arbeit entwickelte Prototyp ausschließlich Elemente die im Eigentlichen Framework Xamarin.Forms vorhanden sind sowie die Inhalte des Optional Verfügbaren Packetes Xamarin.Essentials, welches ebenfalls von Microsoft ist übersetzen.  Ebenfalls soll der zu implementierende Prototyp keine anderen Architekturmuster als die von Xamarin.Forms angebotenen übersetzen können.  So gibt es Plugins wie Prism die das Model-View- ViewModel(MVVM) für Xamarin.Forms realisieren und damit dabei helfen die Geschäfts und Präsentationslogik von der Benutzeroberfläche zu trennen.  Wegen seiner Vorteile werden viele Anwendungen mithilfe von MVVM realisiert wird jedoch nicht selber von Microsoft angeboten.  Außerdem sollen der Compiler keine plattformspezifischen Lösungen übersetzt werden.
+Zusammengefasst soll der zu realisierende Prototyp ausschließlich Elemente aus dem Quellframework Xamarin.Forms übersetzten, die von Microsoft selber angeboten werden. 
 
-Versionen
+Für die Übersetzung soll jeweils auf die während dieser Arbeit aktuellen Versionen der beiden Frameworks verwendet werden.  Bei Xamarin.Forms handelt es sich dabei um die Version 5.0.0.2012 und beim Flutter Framework um die im März erschienene Version 2.0.0.
+
 
 \section{Verwendung von Rosyln}
-Der bereits im letzten Kapitel eingeführt Rosyln Compiler für das Übersetzen von C\# Dateien soll für den Compiler eine essentielle Rolle spielen.  Durch seinen modularen Aufbaue können die Phasen bis zur semantischen Analyse von vollständig von Roslyn durchgeführt werden.  Mithilfe des Typisierten Syntaxbaumes kann anschließend die Übersetzung zu Flutter durchgeführt werden.  
+Der bereits im letzten Kapitel eingeführt Rosyln Compiler für das Übersetzen von C\# Dateien soll für den Compiler eine essentielle Rolle spielen.  Durch seinen modularen Aufbaue können die Phasen bis zur semantischen Analyse vollständig von Roslyn durchgeführt werden.  Mithilfe des Typisierten Syntaxbaumes kann anschließend die Übersetzung zu der Programmiersprache Dart durchgeführt werden.  
 
-Allerdings lassen sich Xamarin.Forms Quelltext-Dokumente in zwei Kategorien unterteilen.  Den Quelltextdokumenten mit der Endung CS sowie den Dateien,  die eine Benutzeroberfläche beschreiben,  die sich nicht mit Hilfe von Roslyn übersetzen lassen.  Abbildung \ref{fig:CompilerStruktur} zeigt die Struktur des zu realisierenden Übersetzers auf einer hohen Abstraktionsebene.
+Allerdings lassen sich Xamarin.Forms Quelltext-Dokumente in zwei Kategorien unterteilen.  Den Quelltextdokumenten mit der Dateiendung CS sowie den Dateien,  die eine Benutzeroberfläche beschreiben,  die sich nicht mit Hilfe von Roslyn übersetzen lassen.  Abbildung \ref{fig:CompilerStruktur} zeigt die Struktur des zu realisierenden Übersetzers auf einer hohen Abstraktionsebene.
 \begin{figure}[!ht]
  \includegraphics[width=14.5cm]{Images/Compiler/CompilerArchitecture.png}
  \caption{Compiler Struktur}
@@ -38,11 +39,22 @@ Allerdings lassen sich Xamarin.Forms Quelltext-Dokumente in zwei Kategorien unte
 \end{figure}
 
 
-Bei den Dateien für die Ansicht handelt es sich wie in \ref{fig:CompilerStruktur} dargestellt um XAML (Extensible Application Markup Language) sowie .XAML.CS Dateien.  In einer XAML-Datei kann der Entwickler Benutzeroberflächen definieren, indem er alle Sichten, Layouts und Seiten sowie benutzerdefinierte Klassen verwendet.  Dabei hat XAML mehrere Vorteile gegenüber äquivalenten Code,  und hat sich daher in der Entwicklung von Benutzeroberflächen durchgesetzt.  So ist XAML ist prägnanter und besser lesbar als Äqivalenter Code.  Außderdem ermöglicht es die über-/unterordnungshierarchie, die in XML enthalten ist,  unterordnungshierarchie von Benutzeroberflächen Objekten zu imitieren.  Allerdings hat XAML auch den Nachteil, dass es keinen Code enthalten kann und daher immer auf Codedateien für Ereignishandler zurückgegriffen werden muss.  Diese Dateien werden häufig als .XAML.XS Dateien gespeichert und beinhalten alles was in XAML Datei nicht beinhaltet seien kann,  dazu gehören die weiter oben beschriebenen Ereignishandler,  die Events wie einen Button Knopfdruck oder die Eingabe von Text in ein Textfeld behandeln. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXAML2017}
+Bei den Dateien für die Ansicht handelt es sich wie in \ref{fig:CompilerStruktur} dargestellt um XAML (Extensible Application Markup Language) sowie .XAML.CS Dateien.  In einer XAML-Datei kann der Entwickler Benutzeroberflächen definieren, indem er alle Sichten, Layouts und Seiten sowie benutzerdefinierte Klassen verwendet.  Dabei hat XAML mehrere Vorteile gegenüber äquivalenten Code,  und hat sich daher in der Entwicklung von Benutzeroberflächen durchgesetzt.  So ist XAML ist prägnanter und besser lesbar als Äqivalenter Code.  Außderdem ermöglicht es die über-/unterordnungshierarchie, die in XML enthalten ist,  Unterordnungshierarchie von Benutzeroberflächen Objekten zu imitieren.  Allerdings hat XAML auch den Nachteil, dass es keinen Code enthalten kann und daher immer auf Codedateien für Ereignishandler zurückgegriffen werden muss.  Diese Dateien werden häufig als .XAML.XS Dateien gespeichert und beinhalten alles was in XAML Datei nicht beinhaltet seien kann,  dazu gehören die weiter oben beschriebenen Ereignishandler,  die Events wie einen Button Knopfdruck oder die Eingabe von Text in ein Textfeld behandeln. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXAML2017}
 Durch eine Kombination von beiden Teilen sollte anschließend eine gleichwertige mobile Anwendung ergeben. 
 
-\section{Code optimierung}
-Die Code Optimierung ist der essentielle Teil der Übersetzung.  Jedoch sind an dieser Stelle andere Aspekte relevant als die in Kapitel \ref{chap:Compiler} in welchem die Geschwindigkeit und die Ressourcenschonung erwähnt wurden.  Da beide Frameworks grundlegend unterschiedlich arbeiten,  ist eine einfache 1:1 Übersetzung nicht zielführend,  da sie zu keiner funktionsfähigen Anwendung führen würde.  Daher ist es notwendig,  beide Frameworks zu analysieren und die genauen Unterschiede zwischen den Arbeitsweisen zu verstehend.  Anschließend muss bei der Übersetzung darauf geachtet werden,  die Xamarin.Forms Anwendung in eine Form zu überführen bei der Sie in Form einer Flutter App auf sowohl iOS als auch Android ausgeführt werden kann.  Zu diesem Zwecke werden in dem Nachfolgenden Kapitel sowohl die Frameworks als auch die Programmiersprachen in welchen diese Entwickelt werden Analysiert um zu verstehen,  inwiefern sich Ansichten, Seiten und die Sprachen unterscheiden, und wie diese Überführt werden müssen. 
+\section{Code Optimierung}
+Die Code Optimierung ist der essentielle Teil der Übersetzung.  Jedoch sind an dieser Stelle andere Aspekte relevant als die in Kapitel \ref{chap:Compiler} in welchem die Geschwindigkeit und die Ressourcenschonung erwähnt wurden.  Da beide Frameworks grundlegend unterschiedlich arbeiten,  ist eine einfache 1:1 Übersetzung nicht zielführend,  da sie zu keiner funktionsfähigen Anwendung führen würde.  Um diesen essentiellen Zusammenhang klarer darzustellen wird anschließend ein Beispiel gezeigt für beide Frameworks in Form von Quelltext gezeigt: 
+
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:XFSelectImage},caption={Bilderauswahl in Xamarin.Forms}, language=csh]{SourceCode/Galery.cs}
+\end{minipage}
+
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:FlutterSelectImage},caption={Bilderauswahl in Dart}, language=Dart]{SourceCode/Galery.Dart}
+\end{minipage}
+Wie die beiden Code-Auschnitte zeigen, verwenden sie unterschiedliche Klassen für die Auswahl eines Bildes. Darüber hinaus sind auch die Eigenschaften dieser Bilder unterschiedlich. Daher ist es notwendig,  beide Frameworks zu analysieren und die genauen Unterschiede zwischen den Arbeitsweisen zu verstehend.  Anschließend muss bei der Übersetzung darauf geachtet werden,  die Xamarin.Forms Anwendung in eine Form zu überführen bei der Sie in Form einer Flutter App auf sowohl iOS als auch Android ausgeführt werden kann.  Zu diesem Zwecke werden in dem Nachfolgenden Kapitel sowohl die Frameworks als auch die Programmiersprachen in welchen diese Entwickelt werden Analysiert um zu verstehen,  inwiefern sich Ansichten, Seiten und die Sprachen unterscheiden, und wie diese Überführt werden müssen. 
 
 Nach der erfolgreichen Übersetzung zu einem Flutter Projekt wird die Anwendung vom Flutter Compiler so optimiert, dass sie möglichst ressourcenschonend ist - und schnelle Anwendungen erstellelt. 
 
