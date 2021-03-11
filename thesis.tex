@@ -18,6 +18,7 @@
 \usepackage{mathtools}
 
 \usepackage[framemethod=tikz]{mdframed}
+\counterwithout*{footnote}{chapter}
 
 % Shorthands
 \newcommand*\iffdef{\overset{\text{def}}{\iff}}
@@ -139,6 +140,16 @@ stringstyle=\color{redstrings},
 \ihead{\leftmark}
 \ohead{\pagemark} 
 \renewcommand*{\chapterpagestyle}{scrheadings}
+
+\hyphenation{
+platt-form-spe-zi-fi-schen
+Code-erzeugung
+}
+
+\newcommand{\Csharp}{%
+  {\settoheight{\dimen0}{C}C\kern-.05em \resizebox{!}{\dimen0}{\raisebox{\depth}{\#}}}}
+
+
 
 
   \begin{document}
