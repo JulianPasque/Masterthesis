@@ -34,7 +34,7 @@ Zur Übersetzung von Programmen bearbeiten Compiler zwei Teilaufgaben,  die Anal
 Der Vorgang des Kompilierens lässt sich basierend auf diesen zwei Teilaufgaben nach \citeauthor{Ullmann2008} in mehrere Phasen unterteilen,  die in Abbildung \ref{fig:Compilerphasen} grafisch dargestellt sind und in diesem Abschnitt detailliert beschrieben werden.  \footcite[Vgl.][S. 6]{Ullmann2008}
 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm,height=9.15cm]{Images/Compiler/Phasen.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Compiler/Phasen.png}
  \caption[Phasen eines Compilers]{Phasen eines Compilers\protect\footcite{Ullmann2008}}
  \label{fig:Compilerphasen}
 \end{figure}
@@ -61,7 +61,7 @@ number         & Numerische Konstanten    & 3.14159
 Der Teil eines Compilers,  der die Lexikalische Analyse durchführt,  wird als Lexer bezeichnet.  Basierend auf der beschriebenen Arbeitsweise ist in \ref{fig:LexerResult} ein Beispiel dargestellt, das zeigt wie der Lexer aus einer Zeichenfolge mehrere Tokens mit den optionalen Attributwerten extrahiert.  
  
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm,height=3cm]{Images/Compiler/LexerResult.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Compiler/LexerResult.png}
  \caption[Lexer Beispiel]{Lexer Beispiel\protect\footcite{Ullmann2008}}
  \label{fig:LexerResult}
 \end{figure}
@@ -70,7 +70,7 @@ Der Teil eines Compilers,  der die Lexikalische Analyse durchführt,  wird als L
 Der Lexer interagiert mit anderen Komponenten eines Compilers,  dies wird in Abbildung \ref{fig:LexerInteraktionen} visualisiert.  Klassischerweise wird der Lexer über den sogenannten Parser, welcher im nächsten Abschnitt eingeführt wird,  zur Übermittlung von Tokens aufgefordert,  dies wird in der Abbildung mit dem Aufruf "getNextToken" dargestellt.  \footcite[Vgl.][S. 135]{Ullmann2008} 
 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm,height=4.11cm]{Images/Compiler/LexerParser.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Compiler/LexerParser.png}
  \caption[Interaktion zwischen Lexer und Parser]{Interaktion zwischen Lexer und Parser\protect\footcite{Ullmann2008}}
  \label{fig:LexerInteraktionen}
 \end{figure}
@@ -82,7 +82,7 @@ Häufig werden Lexer daher in zwei kaskadierende Prozesse unterteilt, einen für
 In der zweiten Phase, der Übersetzung, der Syntaxanalyse,  werden durch den bereits erwähnten Parser auch syntaktischer Analysator genannt,  die vom Lexer ausgegebenen Tokens in eine baumartige Zwischendarstellung überführt, die die grammatikalische Struktur der Tokens zeigt.  Diese Darstellung wird basierend auf ihrem Aussehen häufig als Syntaxbaum bezeichnet.  Die Knoten im Syntaxbaum stehen für eine Operation und die Kindknoten für die Argumente dieser Operation.  Die Anordnung der Operationen stimmt mit üblichen arithmentischen Konventionen überein,  wie zum Beispiel dem Vorrang der Multiplikation vor Addition. \footcite[Vgl.][S. 9]{Ullmann2008} Abbildung \ref{fig:ParserResult} zeigt die Erstellung eines Syntaxbaumes aus den Tokens  der Abbildung  \ref{fig:LexerResult}.  Anhand des Knotens <id, 1> ist jederzeit über die Symboltabelle bekannt,  dass das Ergebnis der Rechnung an den Speicherort des Bezeichners Rechnungspreis abgelegt werden muss. \footcite[Vgl.][S. 9.]{Ullmann2008} 
 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm,height=5cm]{Images/Compiler/ParserResult.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Compiler/ParserResult.png}
  \caption[Syntaxbaum]{Syntaxbaum \protect\footcite{Ullmann2008} }
  \label{fig:ParserResult}
 \end{figure}
@@ -91,7 +91,7 @@ In der zweiten Phase, der Übersetzung, der Syntaxanalyse,  werden durch den ber
 Bei der semantischen Analyse wird der Syntaxbaum  \footnotetext{Abbildung in Anlehnung an Ullman et al. 2008, S.10.}  als Aufgliederung der Programmkonstruktur,  zusammen mit den Informationen aus der Symboltabelle verwendet,  um das Quellprogramm auf semantische Konsistenz mit der Sprachdefinition zu überprüfen. \footcite[Vgl.][S. 157]{Wilhelm2012}.  Zudem werden hier Typinformationen gesammelt und zur späteren Verwendung im Syntaxbaum oder der Symboltabelle hinterlegt.  Auch findet eine Typüberprüfung statt die analysiert, ob jeder Operator die passenden Operanden hat.  So wird beispielsweise validiert,  ob ein Index eine Ganzzahl ist.  Es besteht die Möglichkeit, innerhalb des Baums Typkonvertierungen zu deponieren.  So wurde in dem bisherigen Beispiel die Anzahl Äpfel als Ganzzahl behandelt und wird für die Berechnung des Preises in Abbildung \ref{fig:Typ} zu einer Fließkommazahl konvertiert. \footcite[Vgl.][S. 9ff]{Ullmann2008}
 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm,height=5cm]{Images/Compiler/Type.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Compiler/Type.png}
  \caption[Typüberprüfung]{Typüberprüfung \protect\footcite{Ullmann2008} }
  \label{fig:Typ}
 \end{figure}
@@ -100,7 +100,7 @@ Bei der semantischen Analyse wird der Syntaxbaum  \footnotetext{Abbildung in Anl
 Während der Übersetzung eines Programms  kann der Compiler mehrere Zwischendarstellungen in unterschiedlichsten Formen,  zum Beispiel wie die eines Syntaxbaums, erstellen.  
 Nach der semantischen Analyse stellen viele Compiler eine maschinennahe Zwischendarstellung auf niedriger Abstraktionsebene her, die eigentlich für maschinenabhängige Aufgaben wie Befehlsauswahl geeignet ist. 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm,height=1.52cm]{Images/Compiler/Zwischendarstellungen.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Compiler/Zwischendarstellungen.png}
  \caption[Zwischendarstellungen]{Zwischendarstellungen \protect\footcite{Ullmann2008} }
  \label{fig:Zwischendarstellung}
 \end{figure}

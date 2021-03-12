@@ -3,7 +3,7 @@
 Zur Entwicklung eines möglichst effektiven Compilers ist notwendig die genauen Anforderungen zu ermitteln,  um dann passende Softwaretechnische Lösungen zu erarbeiten. \footcite[Vgl.][S.6]{Balzert2011} Im speziellen Falle besteht die Anforderung darin vom Quellframework Xamarin.Forms in das Zielframework Flutter zu übersetzen,  welche beide für die Entwicklung von plattformunabhängigen Smartphone-Apps verwendet werden können.  Für eine genaue Spezifikation des zu realisieren Source-To-Source Compilers,  ist es notwendig einen Überblick über das Compiler-Umfeld zu erhalten,  dieses wird in Abbildung \ref{fig:CompilerArchitecture} visualisiert. 
 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm]{Images/CompilerArchitecture/CompilerStructure.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/CompilerArchitecture/CompilerStructure.png}
  \caption{Umfeld des Source-To-Source Compilerns}
  \label{fig:CompilerArchitecture}
 \end{figure}
@@ -11,7 +11,7 @@ Zur Entwicklung eines möglichst effektiven Compilers ist notwendig die genauen 
 Wie auf der Abbildung erkennbar ist,  durchlaufen sowohl Xamarin.Forms als auch Flutter bei der Übersetzung zu mobilen Anwendungen die in Kapitel \ref{fig:S2SCompilerAufbau} einführten Phasen,  kurz dargestellt als Compiler-Front und Backend.  Der Source-To-Source Compiler ist in der Abbildung horizontal dargestellt,  was veranschaulichen soll,  dass sich sowohl die Quelle,  als auch das Ziel der Übersetzung auf einer Abstraktionsebene befinden.  Auch bei dieser Übersetzung sind die Compilerphasen aus dem vorherigen Kapitel anzuwenden.  So lässt sich die Abbildung \ref{fig:CompilerArchitecture},  wie in \ref{fig:S2SCompilerAufbau} dargestellt um ein Front- und Backend erweitern.
 
 \begin{figure}[!ht]
- \includegraphics[width=14.5cm]{Images/CompilerArchitecture/S2SArchitecture.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/CompilerArchitecture/S2SArchitecture.png}
  \caption{Source-To-Source Compiler Aufbau}
  \label{fig:S2SCompilerAufbau}
 \end{figure}
@@ -26,14 +26,14 @@ Zur Beantwortung der Forschungsfrage ist es ausreichend, dass der Prototyp einen
  \item Framework Version: Der in dieser Arbeit zu realisierte Prototyp soll ausschließlich das offiziell von Microsoft veröffentliche Xamarin.Forms in der Verions 5.0.0.2012 zu Flutter übersetzten.  
  \item Erweiterungen von Dritten: Viele Firmen und einzelne Entwickler haben Erweiterungen für Xamarin.Forms programmiert.  Aufgrund der großen Anzahl und stetigen Veränderung dieser Erweiterungen, werden sie in dieser Arbeit nicht weiter betrachtet.  
  \item Plattformspezifischer Quelltext: Xamarin.Forms erlaubt die Verwendung von plattformspezifischen Quelltext,  der in dieser Arbeit keine Beachtung finden wird, da eine gleichwertige Darstellung in Flutter nicht garantiert werden kann. 
-  \item Benutzerberflächen(UI): Für die Entwicklung von Benutzeroberflächen kann die Programmiersprache \Csharp  verwendet werden,  jedoch hat die Alternative XAML  (Extensible Application Markup Language) für Entwickler Vorteile, \footcite[Vgl.][Abgerufen am \today]{MicrosoftXAML2017} weswegen die \Csharp  Ansichtsoption in dieser Arbeit nicht berücksichtigt wird.  
+  \item Benutzerberflächen(UI): Für die Entwicklung von Benutzeroberflächen kann die Programmiersprache \Csharp verwendet werden,  jedoch hat die Alternative XAML  (Extensible Application Markup Language) für Entwickler Vorteile, \footcite[Vgl.][Abgerufen am \today]{MicrosoftXAML2017} weswegen die \Csharp  Ansichtsoption in dieser Arbeit nicht berücksichtigt wird.  
 \end{itemize}
 
 Diese Eingrenzungen führen in Summe zu einer Vielzahl von nicht in Gänze übersetzbaren Xamarin.Forms Anwendungen.  Durch Erweiterungen des Compilers, könnte diese Limitierung in Zukunft aufgehoben werden.  Im Rahmen dieser Arbeit wird eine mobile Xamarin.Forms Anwendung entworfen, die vollständig übersetzt werden kann, da sie keine der oben definierten Ausschlüsse verwendet. 
 
 
 \section{Übersetzung von verschiedenen Dateien}
-Durch seinen modularen Aufbau,  kann der im letzten Kapitel eingeführt Roslyn Compiler,  die Phasen bis zur semantischen Analyse im zu entwickelnden Prototypen übernehmen.  Anschließend kann mithilfe des dabei typisierten Syntaxbaumes die Übersetzung in die Zielsprache durchgeführt werden.   Die Übersetzung mit Hilfe von Roslyn hat Grenzen, die aus der Zusammensetzung von Xamarin.Forms Projekten resultiert.  Wie in Abbildung \ref{fig:CompilerStruktur} zu erkennen ist setzten sich Xamarin.Forms Projektmappen aus verschiedenen Dateien zusammen wovon Roslyn ausschließlich die Klassen beinhaltenden .cs Dateien analysieren kann. 
+Durch seinen modularen Aufbau,  kann der im letzten Kapitel eingeführt Roslyn Compiler,  die Phasen bis zur semantischen Analyse im zu entwickelnden Prototypen übernehmen.  Anschließend kann mithilfe des dabei typisierten Syntaxbaumes die Übersetzung in die Zielsprache durchgeführt werden.   Die Übersetzung mit Roslyn hat Grenzen,  die aus der Zusammensetzung von Xamarin.Forms Projekten resultiert.  Wie in Abbildung \ref{fig:CompilerStruktur} zu erkennen ist,  setzten sich Xamarin.Forms Projektmappen aus verschiedenen Dateien zusammen, von denen ausschließlich die Klassen beinhaltenden Dateien mit der Endung \glq cs\grq{}  analysiert werden können. 
 
 \begin{figure}[!ht]
  \includegraphics[width=14.5cm]{Images/Compiler/CompilerArchitecture.png}
@@ -41,10 +41,10 @@ Durch seinen modularen Aufbau,  kann der im letzten Kapitel eingeführt Roslyn C
  \label{fig:CompilerStruktur}
 \end{figure}
 
-Neben den Klassen zeigt die Abbildung \ref{fig:CompilerStruktur} , dass auch Ansichten ein Teil von Xamarin.Forms Projekten sind.  Diese bestehen aus XAML sowie .XAML.CS Dateien.  Alle Ausgangsdateien müssen zu .Dart Dateien compiliert werden,  um ein Flutter Projekt als Ziel zu ergeben.  Die Zusammenführung von XAML und XAML.CS Dateien ist dabei notwendig,  weil Flutter ohne sogenannte Codebehind Dateien auskommt. 
+Neben den Klassen zeigt die Abbildung \ref{fig:CompilerStruktur},  dass auch Ansichten ein Teil von Xamarin.Forms Projekten sind.  Diese bestehen aus \glq XAML\grq{}  sowie \glq XAML.cs\grq{}  Dateien.  Alle Ausgangsdateien müssen zu Dart-Dateien compiliert werden,  um ein Flutter Projekt als Ziel zu ergeben.  Die Zusammenführung von \glq XAML\grq{}  und \glq XAML.cs\grq{} Dateien ist dabei notwendig,  weil Flutter ohne sogenannte Codebehind Dateien auskommt. 
 
 \section{Grafische Darstellung}
-Damit Unternehmen und Entwickler ihre bestehenden Xamarin.Forms Anwendungen übersetzen können, muss eine Möglichkeit für die Interaktion mit dem Source-To-Source Compiler existieren.  Da dieser Compiler zur einmaligen und nicht regelmäßigen Verwendung ausgelegt ist,  braucht er nicht in einer Entwicklungsumgebung integrieren werden.  Der Roslyn Compiler nist ausschließlich für das  Betriebssystem Windows verfügbar,  so muss die zu entwickelnde Oberfläche ebenfalls nur auf Windows Computern lauffähig sein.  Abbildung \ref{fig:UiMockup} zeigt ein Mockup der zu entwickelnden Oberfläche. 
+Damit Unternehmen und Entwickler ihre bestehenden Xamarin.Forms Anwendungen übersetzen können, muss eine Möglichkeit für die Interaktion mit dem Source-To-Source Compiler existieren.  Dieser Compiler ist zur einmaligen und nicht regelmäßigen Verwendung ausgelegt und braucht somit nicht in einer Entwicklungsumgebung integrieren werden.  Der Roslyn Compiler ist ausschließlich für das Betriebssystem Windows verfügbar,  die zu entwickelnde Oberfläche muss dementsprechend auf Windows Computern lauffähig sein.  Abbildung \ref{fig:UiMockup} zeigt einen Entwurf (engl. Mockup) der geplanten grafischen Benutzeroberfläche (GUI).
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/CompilerArchitecture/Mockup.png}
@@ -52,10 +52,11 @@ Damit Unternehmen und Entwickler ihre bestehenden Xamarin.Forms Anwendungen übe
  \label{fig:UiMockup}
 \end{figure}
 
-Wie in der Abbildung zu sehen ist,  wurde soll die grafische Oberfläche auf ein notwendiges Minimum reduziert sein.  Dazu befinden sich im oberen Teil eine Auswahl für das Ausgangsprojekt und einem Zielverzeichnis für den Compiler.  Der untere Teil der Ansicht zeigt die Ausgabe des Übersetzers.  Dafür werden im linken Bereich alle bearbeiteten Dateien angezeigt.  Bei der Auswahl einer Datei werden im großen Bereich alle vorgenommen Übersetzungsschritte aufgeführt.
+Im oberen Teil der GUI befindet sich eine Auswahl für das Quellprojekt und das Zielverzeichnis des Compilers.  Der untere Teil der Ansicht zeigt die Ausgabe des Übersetzers,  für die im linken Bereich alle bearbeiteten Dateien angezeigt werden.  Bei der Auswahl einer Datei werden in dem Bereich daneben alle vorgenommen Übersetzungsschritte aufgeführt.
 
-\section{Code Optimierung}
-Die Optimierung des Quelltextes ist wie in Kapitel \ref{chap:Compiler}  beschrieben eine Phase der Kompilierung.  Im Gegensatz zu den dort beschriebenen Aspekten, Geschwindigkeit und Ressourcenschonung,  sind für den Source-To-Source Compiler andere Faktoren, wie der Austausch von Klassen und Methoden,  relevant.  Beide Frameworks arbeiten grundlegend unterschiedlich,  sodass eine einfache 1:1 Übersetzung nicht möglich ist.  Um dies zu visualisieren, wird folgend ein Quelltextbeispiel aus beiden Frameworks gezeigt,  die die selbe Funktionalität abbilden.
+\section{Quelltext Optimierung}
+Die Optimierung des Quelltextes,  ist wie in Kapitel \ref{chap:Compiler} beschrieben,  eine Phase der Kompilierung.  Im Gegensatz zu den dort beschriebenen Aspekten, Geschwindigkeit und Ressourcenschonung,  sind für den Source-To-Source Compiler andere Faktoren wie der Austausch von Klassen und Methoden, relevant,  da diese Ressourcenoptimierung später, bei der Übersetzung durch den Flutter Compiler stattfinden.   
+Der Bedarf zum Austausch von Klassen und Methoden resultiert aus unterschiedlichen Arbeitsweisen der Frameworks,  sodass eine einfache 1:1 Übersetzung nicht möglich ist.  Um dies zu visualisieren, wird folgend ein Quelltextbeispiel aus beiden Frameworks gezeigt,  die die selbe Funktionalität abbilden.
 
 
 \begin{minipage}{\linewidth}
@@ -67,8 +68,10 @@ Die Optimierung des Quelltextes ist wie in Kapitel \ref{chap:Compiler}  beschrie
 \lstinputlisting[label={lst:FlutterSelectImage},caption={Bilderauswahl in Dart}, language=Dart]{SourceCode/Galery.Dart}
 \end{minipage}
 
-Wie die beiden Code-Auschnitte zeigen, verwenden beide Crossplatform Frameworks unterschiedliche Klassen für die Auswahl eines Bildes. Daher ist es notwendig,  beide Frameworks zu analysieren und die genauen Unterschiede zwischen den Arbeitsweisen zu verstehend.  Zu diesem Zweck werden im nachfolgenden Kapitel sowohl die Frameworks als auch deren Programmiersprachen analysiert.  Hieraus resultiert das Verstädnis, inwiefern sich Benutzeroberflächen und Sprachen unterscheiden und wie diese Überführt werden können.
+Beide Crossplatform Frameworks verwenden in diesem Beispiel unterschiedliche Klassen für die Auswahl eines Bildes aus der Smartphonegalerie.  Daher ist es notwendig,  beide Frameworks zu analysieren und die genauen Unterschiede zwischen den Arbeitsweisen zu verstehen.  Zu diesem Zweck werden im nachfolgenden Kapitel sowohl die Frameworks, als auch deren Programmiersprachen analysiert.  Hieraus resultiert das Verständnis, inwiefern sich Benutzeroberflächen und Sprachen unterscheiden und wie diese übersetzt werden können.
 
-Nach der erfolgreichen Übersetzung zu einem Flutter Projekt findet die Ressourcen- und Geschwindigkeitsoptimierungen bei der Übersetzung durch den Flutter Compiler statt. 
+Source-To-Source Compiler bilden eine Brücke zwischen zwei Hochsprachen.  Der für die Beantwortung der Forschungsfrage geplante Compiler soll darüber hinaus auch die Arbeitsweisen des Quellprogramms in das Zielprogramm übersetzen.  Das heißt, es soll versucht werden ein frameworkbasierte App in Gänze in die Form eines Zielframeworks zu überführen. 
+
+
 
 
