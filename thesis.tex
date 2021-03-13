@@ -8,7 +8,13 @@
 \usepackage[automark,headsepline]{scrlayer-scrpage}
 \renewcommand{\lstlistingname}{Quelltext}% Listing -> Quelltext
 \renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+
+\usepackage{booktabs}
+
 \usepackage{tabularx} 
+\setlength{\extrarowheight}{4pt}
+
+
 \KOMAoptions{%
     headsepline=true,   % header line
     footsepline=false,          % footer line
@@ -172,15 +178,14 @@ Code-erzeugung
   \KOMAoptions{headings=big}% restores default space before chapter titles
 
   \renewcommand*{\chapterpagestyle}{plain}
-
   \include{01Einleitung}
   \include{02Compiler}
   \include{03CompilerEntwurf}  
   \include{04CrossPlattformFrameworks}
   \include{05Programmiersprachen}
-  \include{05Realisierung}
-  \include{06Qualitätssicherung}
-  \include{07Fazit}
+  \include{06Realisierung}
+  \include{07Qualitätssicherung}
+  \include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
   
