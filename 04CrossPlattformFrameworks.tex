@@ -13,39 +13,31 @@ Ansichten (engl. Views) sind visuelle Elemente die in zwei Kategorien unterschie
 Ein wichtiger Teil der Layout-Ansichten sind in Xamarin.Forms die sogenannten Ansichtsseiten (engl. Pages),  die den gesamten Smartphone-Bildschirm belegen. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016} In Abbildung \ref{fig:Xamarin.Forms Pages} werden die angebotenen Ansichtsseiten von Xamarin Forms visualisiert. 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsPages.png}
- \caption[Xamarin.Forms Pages]{Xamarin.Forms Pagesprotect\footcite{MicrosoftXamPages2016}}
+ \caption[Xamarin.Forms Pages]{Xamarin.Forms Pages\footcite{MicrosoftXamPages2016}}
  \label{fig:Xamarin.Forms Pages}
 \end{figure}
 \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamPages2016}
 Durch die Einnahme des gesamten Bildschirms haben diese Layouts einen direkten Einfluss auf das Navigationskonzept innerhalb der App.  Unter einem Navigationskonzept versteht man in diesem Zusammenhang, wie zwischen den verschiedenen Inhalten der mobilen App gewechselt werden kann.  Abgesehen von der ContentPage,  die ausschließlich die Anzeige einer weiteren Ansicht verantwortlich ist haben die anderen Seiten das in Abbildung \ref{fig:Xamarin.Forms Pages} Navigationskonzept.  Bei einer \glq FlyOutPage\grq{} wird der Bildschirm in zwei Bereiche aufgeteilt, einem namensgebenden Bereich der einfliegen kann und ein Menü beinhaltet über welches der Anwender durch die App navigieren kann sowie einer Detailansicht,  in welchen der Inhalt der aktuellen Seite geladen wird.  Bei einer \glq NavigationPage\grq{} beinhaltet die Seite eine Navigationsleiste die einen Titel der aktuellen Seite sowie Schaltflächen für die Navigation beinhalten kann.  Bei einer \glq TabbedPage\grq{} werden die unterschiedlichen Seiten der App in Form von Registerkarten vorgehalten.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}
 Innerhalb der bereits eingeführten XAML-Dateien wird die gewünschte Ansichtsseite auf der untersten Ebene,  dem sogenannten Wurzelknoten, wie in Quelltext \ref{lst:TabbedPage} dargestellt,  angegeben.  
 
-\begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:TabbedPage},caption={Xamarin.Forms TabbedPage definition}, language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
-\end{minipage}
+\lstinputlisting[label={lst:TabbedPage},caption={[Xamarin.Forms \glq TabbedPage\grq{} Definition]{Xamarin.Forms \glq TabbedPage\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{MicrosoftXamTabbedView2020}}} , language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
 
 Das Beispiel zeigt eine \glq TabbedPage\grq{}  mit drei,  in diesem Falle leeren,  Registerkarten. Ebenfalls wird aus dem Beispiel ersichtlich, dass sich potentiell Ansichtsseiten miteinander kombinieren lassen,  wenn z.B.  innerhalb einer Registerkarte eine Navigationsleiste angezeigt werden soll.  Neben dem unterschiedlichen Namen,  unterscheiden sich die Ansichtsseiten in den verfügbaren Eigenschaften.  Dies wird in Quelltext \ref{lst:FlyOutPage},  in der Definition einer \glq FlyoutPage\grq , deutlich.  Es ist zu erkennen, dass im Gegensatz zu der \glq TabbedPage\grq{}  keine Sammlung von \glq NavigationsPages\grq ,  sondern die Eigenschaften \glq Flyout\grq{}  und \glq Detail\grq{}  verfügbar sind.  
 
-\begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:FlyOutPage},caption={Xamarin.Forms FlyOut definition}, language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
-\end{minipage}
+\lstinputlisting[label={lst:FlyOutPage}, caption={[Xamarin.Forms \glq FlyoutPage \grq{} Definition]{Xamarin.Forms \glq FlyoutPage\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{MicrosoftXamFlyOutPage2020}}} ,language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
 
 Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich der Style der Anwendung.  Wie bereits in Kapitel \ref{chap:CompilerEntwurf} aufgeführt, wird in dieser Arbeit ausschließlich der Material Design Style unterstützt. Quelltext \ref{lst:MaterialApp} zeigt die Definition einer MaterialDesign App in Flutter.
 
-\begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:MaterialApp},caption={Flutter MaterialApp definition}, language=Dart]{SourceCode/MaterialApp.Dart}
-\end{minipage}
+\lstinputlisting[label={lst:MaterialApp}, caption={[Flutter \glq MaterialApp\grq{} Definition]{Flutter \glq MaterialApp\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterFirstApp2020}}}, language=Dart]{SourceCode/MaterialApp.Dart}
 
 Der Vergleich zu der Definition einer Seite in Xamarin.Forms  macht an dieser Stelle auch den Unterschied zwischen XML basierten XAML-Dateien und den bei Flutter verwendeten Dart-Dateien offensichtlich die in dem Format einer Hochsprache geschrieben sind.  Diese grundlegenden Änderungen sind bei der Übersetzung zu berücksichtigt und das Format anzupassen. 
 
 Damit in Flutter ein Navigationskonzept definiert werden kann,  können verschiedene sogenannte Widgets verwendet und verschachtelt werden,  dies wird in Quelltext \ref{lst:FlutterTabbedApp} exemplarisch für eine Apps mit Registerkarten visualisiert.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterTabs2020} Die zentrale Idee hinter Flutter ist es,  eine Benutzeroberfläche aus Widgets aufbauen.  Diese beschreiben, wie ihre Ansicht angesichts ihrer aktuellen Konfiguration und ihres Zustands aussehen soll.  Wenn sich der Zustand eines ändert, erstellt das Widget seine visuelle Beschreibung neu,  die das Framework mit der vorherigen Beschreibung vergleicht, um die minimalen Änderungen durchführen zu müssen.\footcite[Vgl.][Abgerufen am \today]{GoogleWidgets2020} 
-
-\begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:FlutterTabbedApp},caption={Flutter Tab Layout definition}, language=Dart]{SourceCode/TabbedPage.Dart}
-\end{minipage}
+\newpage
+\lstinputlisting[label={lst:FlutterTabbedApp},caption={[Flutter \glq Tab Layout\grq{} Definition]{Flutter \glq Tab Layout\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterTabs2020}}}, language=Dart]{SourceCode/TabbedPage.Dart}
 
 
-Basierend auf diesem Verständnis kann nun eine Gegenüberstellung zwischen Xamarin.Forms Pages und Flutter Widgets vorgenommen werden dies wird in Tabelle \ref{tab:ComapreXFFlutter} dargestellt.  Im weiteren Verlaufe dieser Arbeit wird diese Form der Darstellung wiederverwendet.  Für die suche nach entsprechenden Gegenstücken aus dem Flutter Ökosystem wurde für die Recherche auf den den Flutter Widget Katalog\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWidgetCatalog2020} zurückgegriffen,  zusätzlich bietet Google eine Webseite mit dem Namen Flutter für Xamarin.Forms Entwickler an die ebenfalls wichtige Unterschiede aufzeigt. \footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs}
+Basierend auf diesem Verständnis kann nun eine Gegenüberstellung zwischen Xamarin.Forms Pages und Flutter Widgets vorgenommen werden dies wird in Tabelle \ref{tab:ComapreXFFlutter} dargestellt.  Im weiteren Verlaufe dieser Arbeit wird diese Form der Darstellung wiederverwendet.  Für die Suche nach entsprechenden Gegenstücken aus dem Flutter Ökosystem wurde für die Recherche auf den den Flutter Widget Katalog\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWidgetCatalog2020} zurückgegriffen,  zusätzlich bietet Google eine Webseite mit dem Namen Flutter für Xamarin.Forms Entwickler an die ebenfalls wichtige Unterschiede aufzeigt. \footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs}
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
@@ -55,48 +47,62 @@ Basierend auf diesem Verständnis kann nun eine Gegenüberstellung zwischen Xama
 	NavigationPage       & Scaffold         	 					\\ 
 	TabbedPage            & TabBar und TabBarView 		\\ 
 \end{tabularx}
-\caption{Gegenüberstellung Xamarin.Forms Pages und Flutter Widgets}
+\caption{Gegenüberstellung Pages}
  \label{tab:ComapreXFFlutter}
 \end{table}
 
-
-Layouts werden in Xamarin.Forms verwendet, um die Steuerelemente der Benutzeroberfläche zu visuellen Strukturen zusammenzustellen.  Dabei unterscheidet man zwischen Layouts die ausschließlich einen oder mehrere Inhalte beinhalten können.  Xamarin.Forms bietet eine vielzahl von Layouts an die in \ref{fig:Xamarin.Forms Layouts} grafisch dargestellt werden.
+Neben den Ansichtsseiten bietet Xamarin.Forms jedoch weitere Layouts,  die Steuerelemente zu visuellen Strukturen zusammenstellen.  Abbildung \ref{fig:Xamarin.Forms Layouts} visualisiert die wichtigsten dieser Layouts. 
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsLayouts.png}
- \caption[Xamarin.Forms Layouts]{Xamarin.Forms Layouts\footnotemark}
+ \caption[Xamarin.Forms Layouts]{Xamarin.Forms Layouts\footcite{MicrosoftXamViews2020}}
  \label{fig:Xamarin.Forms Layouts}
 \end{figure}
-\footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamLayouts2018}
 
-An dieser Stelle ist es nun wichtig zu analysieren,  wie man jedes Xamarin.Forms Layout in Flutter nachbilden kann.  Dafür wird folgend die Funktion der einzelnen Layouts anhand der Xamarin.Forms Dokumentation\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} erklärt und ein Flutter Layout mit den gleichen Eigenschaften herausgestellt. 
+Die in der Abbildungen visualisierten Layouts werden innerhalb von Xamarin.Forms Anwendungen am häufigsten benutzt und haben haben die folgenden visuellen Eigenschaften.  \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamLayouts2018} \glq ContentView\grq{}  enthält ein einzelnes untergeordnetes Ansichtselement und wird als Basisklassen für eigene Darstellungen verwendet.  Ein \glq StackLayout\grq{}  positioniert die untergeordnete Elemente in einem Stapel entweder horizontal oder vertikal.  Ein \glq Grid\grq{}  positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten,  es wird aber auch häufig für die visuelle Stapelung von Layouts und Steuerelementen verwendet.  Das \glq ScrollView\grq{} erlaubt es seinen Inhalt, wie der Name es vermuten lässt,  zu scrollen. Neben diesen häufig verwendeten Layouts gibt es noch weitere die jedoch nicht so häufig verwendet werden.  Dazu gehört ein Frame, welches einen Rahmen um ein visuelles Element zeichnet.  Das AbsolutLayout, welches untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element plaziert und das RelativeLayout welches die gleiche Aufgabe relativ zum RelativLayout oder seiner Kinder übernimmt.\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018}
 
-\begin{itemize}
-\setlength\itemsep{-0.6em}
- \item ContentView: ContentView enthält ein einzelnes untergeordnetes Element, das mit der Eigenschaft "Content" festgelegt wird. Die Eigenschaft Content kann auf jedes View-Derivat gesetzt werden, auch auf andere Layout-Derivate. ContentView wird meist als Strukturelement verwendet und dient als Basisklasse zu Frame.
- \item Frame: Die Klasse Frame leitet sich von ContentView ab und zeigt einen Rahmen um die Ansicht.  In Flutter kann auf das BoxDecoration widget zugegriffen werden es beschreibt, wie ein Kasten auf dem Bildschirm dargestellt werden soll, und kann als Rahmen dargestellt werden. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterBoxDecoration2020}
-  \item ScrollView: Ist in der Lage, seinen Inhalt zu scrollen.  Die Eigenschaft Content auf eine Ansicht oder ein Layout fest, das zu groß ist, um auf den Bildschirm zu passen.  Legen Sie die Eigenschaft Orientierung fest, um anzugeben, ob der Bildlauf vertikal, horizontal oder beides sein soll. In Flutter ist die nächste Entsprechung das SingleChildScrollView-Widget.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSingleChildScrollView2020}
-   \item StackLayout: Positioniert untergeordnete Elemente in einem Stapel entweder horizontal oder vertikal,  basierend auf der Eigenschaft Orientation.  Flutter hat ein ähnliches Konzept, anstatt der Orientation werden Kinder durch die Widgets Row und Column vertical oder horizontal ausgerichtet. 
- \item Grid: Grid positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften Row, Column, RowSpan und ColumnSpan angegeben.  Außerdem wird das Grid Control häufig verwendet um Steuerelemente zu stapeln.  Das nächste Äquivalent zu einem Grid wäre ein GridView. Dieses ist viel leistungsfähiger als das, was Sie in Xamarin.Forms gewohnt sind. Ein GridView bietet einen automatischen Bildlauf, wenn der Inhalt den sichtbaren Bereich überschreitet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterGridView2020}  Für das Stapeln von Elementen,  in Flutter lässt sich dies mit dem Stack-Widget erreichen.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterStack2020}
- \item AbsolutLayout: Positioniert untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element. Die Position eines untergeordneten Elements wird über die angehängten Eigenschaften LayoutBounds und LayoutFlags angegeben. Ein AbsoluteLayout ist nützlich, um die Positionen von Ansichten zu animieren.
- \item RelativeLayout:  Positioniert untergeordnete Elemente relativ zum RelativeLayout selbst oder zu ihren Geschwistern. Die Position eines Kindelements wird über die angehängten Eigenschaften angegeben, die auf Objekte vom Typ Constraint und BoundsConstraint gesetzt werden.
-\end{itemize}
+Basierend auf diesen Verfügbaren Layouts werden in Tabelle \ref{tab:XamLayouts}  die es entsprechende Flutter Widgets aufgeführt.  Diese wurden wie die Ansichtsseiten mit dem Flutter Widget Katalog erarbeitet.  Teilweise haben diese Widgets jedoch auch erweitere Funktionalitäten.  So muss für die Verwendung eines scrollbaren \glq Grids in Xamarin.Forms dieses in einer \glq ScrollView\grq{}  hinterlegt werden. In Flutter ist bietet das \glq GridView\grq{}  Widget diese von sich aus an,  wenn der Inhalt den sichtbaren Bereich überschreitet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterGridView2020} Dies hat zur Folge,  innerhalb der Codeoptimierung des Compilers \glq ScrollViews\grq{}  um \glq Grids\grq{}  entfernt werden könnnen. 
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	AbsolutLayout       		&  Positioned	 			\\ 
+	ContentView       		&  StatelessWidget	 			\\ 
+	Frame       					&  BoxDecoration     	 			\\ 
+	Grid            				&  GridView oder Stack für das Stapeln von Elementen						\\ 
+	ScrollView            		&  SingleChildScrollView		\\ 
+	StackLayout       		&  Row und Column  	 			\\ 
+	ReleativLayout           &  Positioned		\\ 
+
+\end{tabularx}
+\caption{Gegenüberstellung Layouts}
+ \label{tab:XamLayouts}
+\end{table}
 
 \subsection{Steuerelemente}
 
-Xamarin.Forms-Ansichten sind die Bausteine von plattformübergreifenden mobilen Benutzeroberflächen. Ansichten sind Objekte der Benutzeroberfläche wie Beschriftungen, Schaltflächen und Schieberegler, die in anderen grafischen Programmierumgebungen üblicherweise als Steuerelemente oder Widgets bezeichnet werden. Die von Xamarin.Forms unterstützten Ansichten leiten sich alle von der Klasse View ab. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamViews2020}
+Steuerelemente sind die Bausteine der Benutzeroberflächen in Xamarin.Forms, zu Ihnen gehören zum Beispiel Schaltflächen, Beschriftungen und Textfelder.  Xamarin.forms kategorisiert Steuerelemente innerhalb der Dokumentation anhand ihrer Hauptaufgaben,  der Übersichtlichkeit halber wird diese Kategorisierung in diesem Abschnitt übernommen.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamViews2020}
 
-\subsubsection{Steuerelemente für die Darstellung}
-Steuerelemente für die Darstellung sind Elemente die neben der Darstellung und der Benutzerfahrung keine weitere Funktionalität haben. Klassischerweise zeigen diese Informationen die für die Arbeit mit der Anwendung wichtig sind an.  Die folgende Aufzählung zeigt die wichtigsten Steuerelemente aus Xamarin.Forms für die Darstellung, \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} wobei zu zeichnende Elemente wie die Ellipse,  eine Linie,  Path,  Polygon, Polyline und Rectangle nicht besonders aufgeführt werden, da diese bei Flutter einfach auf das Canvas gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020}
+\subsubsection{Steuerelemente zur Darstellung}
+Diese Steuerelemente sind Ausschließlich für die Darstellung von Inhalten vorgesehen,  klassischerweise sind dies Informationen die für die Arbeit mit der Anwendung wichtig sind an.  Im folgenden werden die wichtigsten Steuerelemente dieser Kategorie vorgestellt,  wobei zu zeichnende Elemente wie die \glq Ellipse\grq{} ,  \glq Linie\grq{} , \glq Path\grq{} ,  \glq Polygon,\grq{}   \glq Polyline\grq{}  und \glq Rectangle\grq{}  nicht besonders aufgeführt werden,  da diese bei Flutter einfach auf die sogenannte Canvas gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020} In Xamarin. Forms gibt es die folgenden Darstellungssteuerelemente für die eine Flutter Repräsentation notwendig ist.  Das Steuerelement \glq BoxView zeigt in Xamarin.Forms ein einfarbiges Rechteck an. Häufig wird eine \glq BoxView\grq{}  jedoch auch dafür benutzt einen Strich als Separator zwischen anderen visuellen Elementen darzustellen.  Für die Darstellung von Texten wird in Xamarin.Forms auf \glq Label\grq{} zurückgegriffen. Bilder können mit Hilfe des \glq Image\grq{}  Steuerelement geladen werden,  wobei die Bilder aus verschiedenen Quellen geladen werden können.  Dazu gehören das Web oder aus den Ressourcen der App.  Das Steuerelement \glq Map\grq{}  kann für die Anzeige von Karten innerhalb der App verwendet werden.  Zur Darstellung von Webseiten und Hypertext Markup Language (HTML) Dokumenten kann das \glq WebView\grq{}  Steuerelement verwendet werden.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} Für die Steuerelemente kann nun eine Gegenüberstellung zwischen Xamarin.Forms Pages und Flutter Widgets vorgenommen werden dies wird in Tabelle \ref{tab:ControlsVisualization} dargestellt.
 
-\begin{itemize}
-\setlength\itemsep{-0.6em}
- \item BoxView zeigt in Xamarin.Forms ein einfarbiges Rechteck an. In der Praxis wird dieses Control auch häufig für die Darstellung von Seperatoren zwischen zwei Informationen verwendet.  Dafür wird in Xamarin.Forms die Höhe oder Breite des Controls auf 1 Pixel limitiert.  Für die Verwendung als seperator bietet Flutter das sogenannte Divider Widget an, welches überall verwendet werde kann um Content zu trennen.  Mit dem Widget SizedBox bietet Flutter jedoch auch ein Widget für die Zeichnung von Boxen mit einer gewissen Größe an.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSizedBox2020}
- \item Label zeigt einzeilige Textstrings oder mehrzeilige Textblöcke an, entweder mit konstanter oder variabler Formatierung. Für Label gibt es bei Flutter mehrere alternativen.  Das Text dem Xamarin.Forms Label am nahekommenste Widget ist "Text" was die Darstellung mit einem einzigen stil erlaubt. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterText2020} Ebenso bietet Flutter jedoch auch die Möglichkeit RichText in einem entsprechenden Widget anzuzeigen. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterRichText2020}
- \item Image zeigt ein Bitmap an, diese können über das Web heruntergeladen, als Ressourcen in über das gemeinsame Projekt oder in Plattformprojekte eingebettet  werden.  Flutter bietet ebenfalls ein Image Steuerelement an, welches die gleichen Quellen für Bilder unterstützt wie Xamarin.Forms. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterImage2020}
- \item Map zeigt eine Karte an.  Für Flutter gibt es mehrere Anbietet für Karten z.B. Leamaps und Google Maps, welches direkt von den Flutter Entwickelern angbeoten wird. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterMap2020}
- \item WebView zeigt Web-Seiten oder HTML-Inhalte an.  Das Widget "webview\_flutter" bietet eine entsprechende Implementierung für Flutter an. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWebView2020}
-\end{itemize}
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	BoxView		       		&  	 SizedBox oder 	Divider 		\\ 
+	Image       					&       Image	 			\\ 
+	Label       					&  	Text oder RichText 			\\ 
+	Map            				&   	Leamaps oder Google Maps \\ 
+	WebView            		&  	webview\_flutter	\\ 
+	Ellipse,  Linie,  Path,  Polygon,  Polyline und Rectangle  &  	CustomPaint	\\ 
+
+\end{tabularx}
+\caption{Gegenüberstellung Darstellungssteuerelemente}
+ \label{tab:ControlsVisualization}
+\end{table}
 
 \subsubsection{Steuerelemente die Aktionen auslösen}
 

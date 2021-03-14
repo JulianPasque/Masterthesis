@@ -59,14 +59,9 @@ Im oberen Teil der GUI befindet sich eine Auswahl für das Quellprojekt und das 
 Die Optimierung des Quelltextes,  ist wie in Kapitel \ref{chap:Compiler} beschrieben,  eine Phase der Kompilierung.  Im Gegensatz zu den dort beschriebenen Aspekten, Geschwindigkeit und Ressourcenschonung,  sind für den Source-To-Source Compiler andere Faktoren wie der Austausch von Klassen und Methoden, relevant,  da diese Ressourcenoptimierung später, bei der Übersetzung durch den Flutter Compiler stattfinden.   
 Der Bedarf zum Austausch von Klassen und Methoden resultiert aus unterschiedlichen Arbeitsweisen der Frameworks,  sodass eine einfache 1:1 Übersetzung nicht möglich ist.  Um dies zu visualisieren, wird folgend ein Quelltextbeispiel aus beiden Frameworks gezeigt,  die die selbe Funktionalität abbilden.
 
-\begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:XFSelectImage},caption={Bilderauswahl in Xamarin.Forms}, language=csh]{SourceCode/Galery.cs}
-\end{minipage}
 
-
-\begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:FlutterSelectImage},caption={Bilderauswahl in Dart}, language=Dart]{SourceCode/Galery.Dart}
-\end{minipage}
 
 Beide Crossplatform Frameworks verwenden in diesem Beispiel unterschiedliche Klassen für die Auswahl eines Bildes aus der Smartphonegalerie.  Daher ist es notwendig,  beide Frameworks zu analysieren und die genauen Unterschiede zwischen den Arbeitsweisen zu verstehen.  Zu diesem Zweck werden im nachfolgenden Kapitel sowohl die Frameworks, als auch deren Programmiersprachen analysiert.  Hieraus resultiert das Verständnis, inwiefern sich Benutzeroberflächen und Sprachen unterscheiden und wie diese übersetzt werden können.
 

@@ -1,5 +1,4 @@
-class TabBarDemo extends StatelessWidget {
-  @override
+class TabBarDemo extends StatelessWidget { @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: DefaultTabController(
