@@ -92,37 +92,64 @@ Diese Steuerelemente sind Ausschließlich für die Darstellung von Inhalten vorg
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
 \hline
-	BoxView		       		&  	 SizedBox oder 	Divider 		\\ 
-	Image       					&       Image	 			\\ 
-	Label       					&  	Text oder RichText 			\\ 
-	Map            				&   	Leamaps oder Google Maps \\ 
-	WebView            		&  	webview\_flutter	\\ 
-	Ellipse,  Linie,  Path,  Polygon,  Polyline und Rectangle  &  	CustomPaint	\\ 
+	BoxView		       			&   	 SizedBox oder 	Divider 		\\ 
+	Image       						&	     Image	 			\\ 
+	Label       						&  	Text oder RichText 			\\ 
+	Map            					&	   	Leamaps oder Google Maps \\ 
+	WebView            			&  	webview\_flutter	\\ 
+	Ellipse							&  	CustomPaint	\\ 
+	Linie								&	  	CustomPaint	\\ 
+	Path  							&  	CustomPaint	\\ 
+	Polygon  						&  	CustomPaint	\\ 
+	Polyline und Rectangle  &  	CustomPaint	\\ 
+	Rectangle  					&  	CustomPaint	\\ 
 
 \end{tabularx}
 \caption{Gegenüberstellung Darstellungssteuerelemente}
  \label{tab:ControlsVisualization}
 \end{table}
 
-\subsubsection{Steuerelemente die Aktionen auslösen}
+\subsubsection{Ereignisauslösende  Steuerelemente}
+Xamarin.Forms ist ein ereignisgesteuertes Framework,  die hier behandelten Steuerelemente stellen alle mindestens ein Ereignissen zur Verfügung,  das mithilfe von Codebehind Klassen abonniert werden können.  Auf diese Art und Weise wird die Codebehind Klasse informiert, sobald dieses Ereignis ausgelöst wird.  Die meisten dieser Ereignisse werden dabei von Steuerelementen ausgelöst, wenn mithilfe von Gesten mit ihnen interagiert wurde.  Die folgenden Steuerelemente lösen dabei die folgenden Ereignisse aus.  \glq Buttons\grq{}  sind ein rechteckiges Objekt,  die ein \glq clicked\grq{}  Event auslösen nachdem es von einem Anwender gedrückt wurde. Ähnlich funktioniert das \glq ImageButton\grq{}  Steuerelement das als Unterschied statt einem Text ein Icon anzeigt.  Bei einem \glq RadioButton\grq{}  wird eine Option aus einer Menge von Möglichkeiten ausgewählt und löst ein \glq CheckedChanged\grq{}  Ereignis aus, wenn die Auswahl geändert wird.  Das \glq RefreshView\grq{}  ist ebenfalls als Layout-Element, dass eine \glq PullToRefresh\grq{}  funktionalität für scrollbare Inhalte anbietet und ein Event auslöst, wenn diese Interaktion durchführt wurde.  Die \glq Searchbar\grq{}  ist eine Suchleiste, über die der Benutzer Textzeichenfolgen eingeben kann und per Schaltfläche, oder Tastaturtaste,  kann \glq Searched-Event\grq{} ausgelöst werden.  Ein \glq Swipeview\grq{}  ist evenfalls ein Container Steuerelement, welches durch Wischgesten ein Kontextmenü zur Verfügung stellt. 
+Tabelle \ref{tab:ControlsVisualization} zeigt die Steuerelemente und Ihre Gegenstücke aus dem Flutter Framework. 
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	Button		       				&  	Flatbutton 		\\ 
+	ImageButton		       		&  	IconButton 		\\ 
+	RadioButton		       		&  	RadioButton 		\\ 
+	RefreshView		       		&  	pull\_to\_refresh 		\\ 
+	SearchBar		       			&  	flutter\_search\_bar 	\\ 
+	SwipeView		       		&  	flutter\_slideable 		\\ 
+\end{tabularx}
+\caption{Gegenüberstellung ereignisauslösende Steuerelemente}
+ \label{tab:eventcommands}
+\end{table}
 
-Die folgenden Steuerelemente sind Elemente,  welche etwas in der mobilen Anwendung auslösen.  Diese Elemente benötigen eine Interaktion über Gesten des Anwenders mit der Anwendung. 
-\begin{itemize}
-\setlength\itemsep{-0.6em}
- \item Button ist ein rechteckiges Objekt, das Text anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.  Flutter bietet eine Vielzahl von Buttons an, wobei der "FlatButton" dem Xamarin.Forms button am nähesten kommt.
- \item ImageButton ist ein rechteckiges Objekt, das ein Bild anzeigt und ein Clicked-Ereignis auslöst, wenn es gedrückt wurde.  In Flutter stehen dafür der IconButton zur Verfügung.
-  \item RadioButton erlaubt die Auswahl einer Option aus einer Menge und feuert ein CheckedChanged-Ereignis, wenn die Auswahl erfolgt. Flutter bietet genau wie Xamarin.Forms einen RadioButton an,  mit identischer Arbeitsweise
- \item RefreshView ist ein Container-Steuerelement, das eine Pull\-to\-Refresh-Funktionalität für scrollbare Inhalte bietet.  Das Widget "pull\_to\_refresh" bietet ähnlich wie die Xamarin.Forms alternative an durch herunterziehen des Contents eine Aktion auszulösen.
- \item SearchBar zeigt einen Bereich an, in dem der Benutzer eine Textzeichenfolge eingeben kann, sowie eine Schaltfläche (oder eine Tastaturtaste), die der Anwendung signalisiert, eine Suche durchzuführen. Das Widget "flutter\_search\_bar" bietet die Möglichkeit den Inhalt zu Filtern.  Jedoch kann es nicht wie bei Xamarin.Forms frei platziert werden, sondern wird im Rahmen der Navigationsleiste abgebildet. 
- \item SwipeView ist ein Container-Steuerelement, das sich um ein Inhaltselement legt und Kontextmenüelemente bereitstellt, die durch eine Wischgeste angezeigt werden.  Flutter selber bietet kein Widget mit dieser Funktionalität an.  Für Listen steht jedoch mit "flutter\_slidable" ein OpenSource Widget zur Verfügung. 
-\end{itemize}
+Nicht alle Steuerelemente verhalten sich immer exakt gleich wie die Xamarin.Forms Steuerelemente. Ein Beispiel ist die hier erwähnte SearchBar, die bei Flutter im Gegensatz zu Xamarin.Forms nicht frei plazierbar ist, sondern immer in der Navigationsleiste angezeigt wird.  Alternativ wäre es jedoch auch möglich,  das gliche Verhalten mit einem Textinput Feld zu generieren die anliegend beschrieben werden. 
 
 
-
-\subsubsection{Steuerelemente um Werte zu setzen}
+\subsubsection{Wertsetztende Steuerelemente}
 
 Steuerelemente die Werte setzen sind User Interface Elemente die von einem Anwender durch Interaktion mit Werten versehen werden können um diese in der Anwendung zu verarbeiten.  In diesem Unterabschnitt wird nicht auf Elemente eingegangen,  die zur Eingabe und Manipulation von Texten zur Verfügung stehen, da diesen Steuerelementen ein eigener Unterabschnitt gewährt wird.  Xamarin.Forms bietet eine Vielzahl von Steuerelementen, die an dieser Stelle aufgeführt werden. Zusätzlich wird wie in den vorherigen Abschnitten erläutert, wie dieses Verhalten bei Flutter generiert werden kann. 
 \begin{itemize}
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	CheckBox		       				&  	 		\\ 
+	Switch		       					&  	 		\\ 
+	Slider		       					&  	 		\\ 
+	Stepper		       				&  	 		\\ 
+	DatePicker		       			&  			\\ 
+	TimePicker		       			&  	 		\\ 
+\end{tabularx}
+\caption{Gegenüberstellung wertsetzender Steuerelemente}
+ \label{tab:eventcommands}
+\end{table}
+
 \setlength\itemsep{-0.6em}
  \item CheckBox ermöglicht dem Benutzer die Auswahl eines booleschen Wertes mit Hilfe einer Art Schaltfläche, die entweder markiert oder leer sein kann. Flutter bietet ebenfalls ein Checkbox Control an,  das Material Design Checkbox. 
   \item Switch hat die Form eines Ein/Aus-Schalters, damit der Benutzer einen booleschen Wert auswählen kann, für das es ebenfalls eine entsprechendes Flutter Widget gibt. 
@@ -145,6 +172,18 @@ Wie bereits im vorherigen Abschnitt beschrieben sind Steuerelemente zur Eingabe 
  \item Editor ermöglicht dem Benutzer die Eingabe und Bearbeitung mehrerer Textzeilen
 \end{itemize}
 
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	Entry		       		&  	 		\\ 
+	Editor		       	&  	 		\\ 
+\end{tabularx}
+\caption{Gegenüberstellung textmanipulierender Steuerelemente}
+ \label{tab:eventcommands}
+\end{table}
+
+
 In flutter gibt es ausschließlich das Textfield Widget, welches die Funktionalitäten von beiden Xamarin.Forms controlls bündelt.  Standardmäßig bietet das TextField Widget die Eingabemöglichkeit für eine Zeile ähnlich wie das Entry Steuerelement kann aber durch die Eigenschaft "keyboardType: TextInputType.multiline" wie ein entry fungieren wobei optional auch eine Anzahl von maximalen Zeilen übergeben werden kann.  Dies wird in Quelltext dargestellt.
 
  \begin{minipage}{\linewidth}
@@ -162,9 +201,36 @@ In mobilen Anwendungen kann es aufgrund der Limitierten Hardware Ressourcen und 
  \item ProgressBar verwendet eine Animation, um zu zeigen, dass die Anwendung durch eine langwierige Aktivität fortschreitet. In Flutter steht mit dem "LinearProgressIndicator" Widget ebenfalls eine Progressbar zur Verfügung.
 \end{itemize}
 
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	ActivityIndicator		       		&  	 		\\ 
+	ProgressBar		       				&  	 		\\ 
+\end{tabularx}
+\caption{Gegenüberstellung aktivitätsandeutender Steuerelemente}
+ \label{tab:eventcommands}
+\end{table}
+
+
 \subsubsection{Steuerelemente um Sammlungen anzuzeigen}
 
 Bei diesen Steuerelementen handelt es sich um Elemente, die zur Anzeige von Daten-Sammlungen spezialisiert sind.  Xamarin.Forms stellt die folgenden Steuelemente zur Verfügung.
+
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	CarouselView		       		&  	 		\\ 
+	IndicatorView		       		&  	 		\\ 	
+	Picker		       					&  	 		\\ 
+	TableView		       				&  	 		\\ 
+\end{tabularx}
+\caption{Gegenüberstellung sammlungsanzeigender Steuerelemente}
+ \label{tab:eventcommands}
+\end{table}
+
 
 \begin{itemize}
 \setlength\itemsep{-0.6em}
