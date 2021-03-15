@@ -4,45 +4,49 @@
 Die Unterschiede zwischen den Frameworks werden im folgenden genauer betrachtet.  Für den technischen Vergleich dient Xamarin.Forms als Grundlage.  Die Namen von Abschnitten und Unterabschnitten orientieren sich deshalb an dessen Terminologie.  In den jeweiligen Gliederungspunkten wird anschließend genauer betrachtet,  wie sich spezielle Arbeitsweisen oder Darstellungsoptionen in Flutter abbilden lassen. 
 
 \section{Projektaufbau}
-Xamarin.Forms weißt eine andere Projektstruktur auf als Flutter,  das nur mit einem Projekt arbeitet.  Wärend das Flutter Projekt alle notwendigen Inhalte für iOS und Android inkludiert, \footcite[Vgl.][S. 113]{Biessek2019} setzt sich die Projektmappe bei Xamarin.Forms aus mehreren Projekten zusammen.  Es gibt für jede Plattform ein dediziertes Projekt das den plattformspezifischen Code,  Konfigurationen und Icons beinhaltet, sowie ein Projekt für den plattformunabhängigen Quelltext.   \footcite[Vgl.][S. 25f.]{Petzold2016} In den Ausschlusskriterien in Kapitel \ref{chap:CompilerEntwurf} dieser Arbeit wurde bereits der plattformspezifische Code von Xamarin.Forms excludiert.  Icons und Konfigurationen werden bei Flutter in einem gleichen oder ähnlichen Format und nur in einem anderen Projekt hinterlegt und lassen sich folglich migrieren. 
-
+Xamarin.Forms weißt eine andere Projektstruktur auf als Flutter,  das nur mit einem Projekt arbeitet.  Wärend das Flutter Projekt alle notwendigen Inhalte für iOS und Android inkludiert, \footcite[Vgl.][S. 113]{Biessek2019} setzt sich die Projektmappe bei Xamarin.Forms aus mehreren Projekten zusammen.  Es gibt für jede Plattform ein dediziertes Projekt, dass den plattformspezifischen Code,  Konfigurationen und Icons beinhaltet, sowie ein Projekt für den plattformunabhängigen Quelltext.   \footcite[Vgl.][S. 25f.]{Petzold2016} Icons und Konfigurationen werden bei Flutter in einem gleichen oder ähnlichen Format und nur in einem anderen Projekt hinterlegt und lassen sich folglich migrieren.  In den Ausschlusskriterien in Kapitel \ref{chap:CompilerEntwurf} dieser Arbeit wurde bereits der plattformspezifische Quelltext von Xamarin.Forms für die Übersetzung exkludiert.  
 \section{Ansichten}
-Ansichten (engl. Views) sind visuelle Elemente die in zwei Kategorien unterschieden werden können.  Steuerelemente (engl. Controls) die für die Sammlung von Benutzereingaben oder die Ausgabe von Daten verantwortlich sind.  Sowie Layouts die eine Sammlung von Ansichten beinhalten und für deren visuelle Anordnung auf der Benutzeroberfläche verantwortlich sind.  \footcite[Vgl.][Abgerufen am \today]{Ritscher2020}
+Ansichten (engl. Views) sind visuelle Elemente, die in zwei Kategorien unterschieden werden können.  Steuerelemente (engl. Controls) sind für die Sammlung von Benutzereingaben oder die Ausgabe von Daten verantwortlich und Layouts, beinhalten eine Sammlung von Ansichten und sind für ihre visuelle Anordung auf der Benutzeroberfläche verantwortlich.  \footcite[Vgl.][Abgerufen am \today]{Ritscher2020}
 
 \subsection{Layouts}
-Ein wichtiger Teil der Layout-Ansichten sind in Xamarin.Forms die sogenannten Ansichtsseiten (engl. Pages),  die den gesamten Smartphone-Bildschirm belegen. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016} In Abbildung \ref{fig:Xamarin.Forms Pages} werden die angebotenen Ansichtsseiten von Xamarin Forms visualisiert. 
+Ähnlich wie die Ansichten lassen sich auch die Layouts in zwei Kategorien unterteilen.  Den Ansichtsseiten (engl. Pages) sowie den generellen Layouts. 
+Die Pages nehmen den gesamten Bildschirm ein und werden in Abbildung \ref{fig:Xamarin.Forms Pages} dargestellt.\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}  
+
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsPages.png}
  \caption[Xamarin.Forms Pages]{Xamarin.Forms Pages\footcite{MicrosoftXamPages2016}}
  \label{fig:Xamarin.Forms Pages}
 \end{figure}
-\footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamPages2016}
-Durch die Einnahme des gesamten Bildschirms haben diese Layouts einen direkten Einfluss auf das Navigationskonzept innerhalb der App.  Unter einem Navigationskonzept versteht man in diesem Zusammenhang, wie zwischen den verschiedenen Inhalten der mobilen App gewechselt werden kann.  Abgesehen von der ContentPage,  die ausschließlich die Anzeige einer weiteren Ansicht verantwortlich ist haben die anderen Seiten das in Abbildung \ref{fig:Xamarin.Forms Pages} Navigationskonzept.  Bei einer \glq FlyOutPage\grq{} wird der Bildschirm in zwei Bereiche aufgeteilt, einem namensgebenden Bereich der einfliegen kann und ein Menü beinhaltet über welches der Anwender durch die App navigieren kann sowie einer Detailansicht,  in welchen der Inhalt der aktuellen Seite geladen wird.  Bei einer \glq NavigationPage\grq{} beinhaltet die Seite eine Navigationsleiste die einen Titel der aktuellen Seite sowie Schaltflächen für die Navigation beinhalten kann.  Bei einer \glq TabbedPage\grq{} werden die unterschiedlichen Seiten der App in Form von Registerkarten vorgehalten.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}
-Innerhalb der bereits eingeführten XAML-Dateien wird die gewünschte Ansichtsseite auf der untersten Ebene,  dem sogenannten Wurzelknoten, wie in Quelltext \ref{lst:TabbedPage} dargestellt,  angegeben.  
+
+\glq ContentPage \grq{} ist ausschließlich für die Anzeige einer weiteren Ansicht verantwortlich.  Die drei anderen Pages besitzen ein Navigationskonzept.  \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamPages2016} \glq FlyOutPage\grq{} teilt den Bildschirm in zwei Bereiche, ein Bereich dient der Navigation.  Er enthält ein Menü das wie im Namen enthalten einfliegen kann.  Der zweite Bereich zeigt eine Detailansicht,  in welcher der Inhalt der angeforderten Seite geladen wird.  \glq NavigationPage\grq{} bietet eine Navigationsleiste, die einen Titel der aktuellen Seite und eine Navigationsschaltfläche beinhalten kann.  \glq TabbedPage\grq{} stellt die unterschiedlichen Seiten als Registerkarten dar. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamPages2016}
+Die Ansichtseiten befinden sich in der Regel, innerhalb der XAML-Datei, auf der untersten Ebene, dem so genannten Wurzelknoten. Der Quelltext \ref{lst:TabbedPage} zeigt dies exemplarisch für eine \glq TabbedPage\grq{} dargestellt,  angegeben.  
 
 \lstinputlisting[label={lst:TabbedPage},caption={[Xamarin.Forms \glq TabbedPage\grq{} Definition]{Xamarin.Forms \glq TabbedPage\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{MicrosoftXamTabbedView2020}}} , language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
 
-Das Beispiel zeigt eine \glq TabbedPage\grq{}  mit drei,  in diesem Falle leeren,  Registerkarten. Ebenfalls wird aus dem Beispiel ersichtlich, dass sich potentiell Ansichtsseiten miteinander kombinieren lassen,  wenn z.B.  innerhalb einer Registerkarte eine Navigationsleiste angezeigt werden soll.  Neben dem unterschiedlichen Namen,  unterscheiden sich die Ansichtsseiten in den verfügbaren Eigenschaften.  Dies wird in Quelltext \ref{lst:FlyOutPage},  in der Definition einer \glq FlyoutPage\grq , deutlich.  Es ist zu erkennen, dass im Gegensatz zu der \glq TabbedPage\grq{}  keine Sammlung von \glq NavigationsPages\grq ,  sondern die Eigenschaften \glq Flyout\grq{}  und \glq Detail\grq{}  verfügbar sind.  
+Es wird eine \glq TabbedPage\grq{} mit drei Registerkarten entworfen.  Eine Kombination mehrerer Navigationskonzepte ist hier wie das Beispiel zeigt möglich,  hier befindet sich eine Navigationsleiste innerhalb der Registerkarten. 
+
+Die verfügbaren Eigenschaften der Ansichtsseiten unterscheiden sich je nach Einsatzszenario.  Im folgenden Quelltext \ref{lst:FlyOutPage} wird dies am Beispiel der Realisierung einer \glq FlyoutPage\grq deutlich.  Anders als bei \glq TabbedPage\grq{}  die aus einer Sammlung von Registerkarten besteht finden sich an dieser Stelle die Eigenschaften \glq Flyout\grq{}  und \glq Detail\grq{}.
 
 \lstinputlisting[label={lst:FlyOutPage}, caption={[Xamarin.Forms \glq FlyoutPage \grq{} Definition]{Xamarin.Forms \glq FlyoutPage\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{MicrosoftXamFlyOutPage2020}}} ,language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
 
-Im Gegensatz zu Xamarin.Forms lässt sich bei Flutter auf der Ebene der Wurzel kein Navigationskonzept definieren,  sondern ausschließlich der Style der Anwendung.  Wie bereits in Kapitel \ref{chap:CompilerEntwurf} aufgeführt, wird in dieser Arbeit ausschließlich der Material Design Style unterstützt. Quelltext \ref{lst:MaterialApp} zeigt die Definition einer MaterialDesign App in Flutter.
-
+Im Unterschied zu Xamarin.Forms lässt kann Flutter auf der Wurzelebene nur den Style der App nicht aber ein Navigationskonzept definieren.  Wie bereits in Kapitel \ref{chap:CompilerEntwurf} aufgeführt, wird in dieser Arbeit ausschließlich der Material Design Style unterstützt. \footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs} Quelltext \ref{lst:MaterialApp} zeigt die Realisierung einer MaterialDesign App in Flutter.
+\newpage
 \lstinputlisting[label={lst:MaterialApp}, caption={[Flutter \glq MaterialApp\grq{} Definition]{Flutter \glq MaterialApp\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterFirstApp2020}}}, language=Dart]{SourceCode/MaterialApp.Dart}
 
-Der Vergleich zu der Definition einer Seite in Xamarin.Forms  macht an dieser Stelle auch den Unterschied zwischen XML basierten XAML-Dateien und den bei Flutter verwendeten Dart-Dateien offensichtlich die in dem Format einer Hochsprache geschrieben sind.  Diese grundlegenden Änderungen sind bei der Übersetzung zu berücksichtigt und das Format anzupassen. 
+Der Vergleich zwischen den Extensible Markup Language(XML) basierten XAML-Dateien und den bei Flutter verwendeten Dart-Dateien verdeutlicht die Unterschiede in den verwendeten Sprachen zur Benutzeroberflächen Entwicklung. 
 
-Damit in Flutter ein Navigationskonzept definiert werden kann,  können verschiedene sogenannte Widgets verwendet und verschachtelt werden,  dies wird in Quelltext \ref{lst:FlutterTabbedApp} exemplarisch für eine Apps mit Registerkarten visualisiert.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterTabs2020} Die zentrale Idee hinter Flutter ist es,  eine Benutzeroberfläche aus Widgets aufbauen.  Diese beschreiben, wie ihre Ansicht angesichts ihrer aktuellen Konfiguration und ihres Zustands aussehen soll.  Wenn sich der Zustand eines ändert, erstellt das Widget seine visuelle Beschreibung neu,  die das Framework mit der vorherigen Beschreibung vergleicht, um die minimalen Änderungen durchführen zu müssen.\footcite[Vgl.][Abgerufen am \today]{GoogleWidgets2020} 
-\newpage
+Die zentrale Idee hinter dem Flutter-Framework ist es,  eine Benutzeroberfläche aus Widgets aufzubauen.  Diese beschreiben das Aussehen der Anwendung basierend auf ihrem aktuellen Zustand.  Sobald er sich ändert, kann das Framework den neuen mit dem alten Status vergleichen, um grafische Veränderungen möglichst effektiv vorzunehmen. \footcite[Vgl.][Abgerufen am \today]{GoogleWidgets2020}  Damit in Flutter ein Navigationskonzept definiert werden kann,  können verschiedene  Widgets verwendet und verschachtelt werden,  dies wird in Quelltext \ref{lst:FlutterTabbedApp} exemplarisch für eine App mit Registerkarten visualisiert.
+
 \lstinputlisting[label={lst:FlutterTabbedApp},caption={[Flutter \glq Tab Layout\grq{} Definition]{Flutter \glq Tab Layout\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterTabs2020}}}, language=Dart]{SourceCode/TabbedPage.Dart}
 
+Die deutliche Unterschiede bei der Auswahl eines Navigationkonzeptes können dadurch überbrückt werden, dass man zu jeder Xamarin.Forms Page das entsprechende Flutter Widget findet.  Der Flutter-Widgetkatalog\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWidgetCatalog2020} und die Webseite "Flutter for Xamarin.Forms Developers"\footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs} wurde für die Recherche des Gegenstückes verwendet.  Entsprechende Ergebnisse der Suche können in Tabelle \ref{tab:ComapreXFFlutter} abgelesen werden. 
 
-Basierend auf diesem Verständnis kann nun eine Gegenüberstellung zwischen Xamarin.Forms Pages und Flutter Widgets vorgenommen werden dies wird in Tabelle \ref{tab:ComapreXFFlutter} dargestellt.  Im weiteren Verlaufe dieser Arbeit wird diese Form der Darstellung wiederverwendet.  Für die Suche nach entsprechenden Gegenstücken aus dem Flutter Ökosystem wurde für die Recherche auf den den Flutter Widget Katalog\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWidgetCatalog2020} zurückgegriffen,  zusätzlich bietet Google eine Webseite mit dem Namen Flutter für Xamarin.Forms Entwickler an die ebenfalls wichtige Unterschiede aufzeigt. \footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs}
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
 \hline
+	ContentPage            &           	\\ 
 	FlyOutPage             & MasterDetailScaffold          	\\ 
 	NavigationPage       & Scaffold         	 					\\ 
 	TabbedPage            & TabBar und TabBarView 		\\ 
@@ -50,6 +54,8 @@ Basierend auf diesem Verständnis kann nun eine Gegenüberstellung zwischen Xama
 \caption{Gegenüberstellung Pages}
  \label{tab:ComapreXFFlutter}
 \end{table}
+Diese Gegenüberstellung,  in Tabellenform,  von Xamarin.Forms Elementen und Flutter Widgets wird auch an anderer Stelle in diesem Kapitel der Übersichtlichkeit halber verwendet.  Eine vollständige Referenztabelle die sich aus allen Einzelbetrachtungen zusammensetzt befindet sich in Anhang X. 
+
 
 Neben den Ansichtsseiten bietet Xamarin.Forms jedoch weitere Layouts,  die Steuerelemente zu visuellen Strukturen zusammenstellen.  Abbildung \ref{fig:Xamarin.Forms Layouts} visualisiert die wichtigsten dieser Layouts. 
 
