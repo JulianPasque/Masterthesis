@@ -135,84 +135,62 @@ Tabelle \ref{tab:ControlsVisualization} zeigt die Steuerelemente und Ihre Gegens
 
 Nicht alle Steuerelemente verhalten sich immer exakt gleich wie die Xamarin.Forms Steuerelemente. Ein Beispiel ist die hier erwähnte SearchBar, die bei Flutter im Gegensatz zu Xamarin.Forms nicht frei plazierbar ist, sondern immer in der Navigationsleiste angezeigt wird.  Alternativ wäre es jedoch auch möglich,  das gliche Verhalten mit einem Textinput Feld zu generieren die anliegend beschrieben werden. 
 
-
-\subsubsection{Wertsetztende Steuerelemente}
-
-Steuerelemente die Werte setzen sind User Interface Elemente die von einem Anwender durch Interaktion mit Werten versehen werden können um diese in der Anwendung zu verarbeiten.  In diesem Unterabschnitt wird nicht auf Elemente eingegangen,  die zur Eingabe und Manipulation von Texten zur Verfügung stehen, da diesen Steuerelementen ein eigener Unterabschnitt gewährt wird.  Xamarin.Forms bietet eine Vielzahl von Steuerelementen, die an dieser Stelle aufgeführt werden. Zusätzlich wird wie in den vorherigen Abschnitten erläutert, wie dieses Verhalten bei Flutter generiert werden kann. 
-\begin{itemize}
-
-\begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
-\hline
-	CheckBox		       				&  	 		\\ 
-	Switch		       					&  	 		\\ 
-	Slider		       					&  	 		\\ 
-	Stepper		       				&  	 		\\ 
-	DatePicker		       			&  			\\ 
-	TimePicker		       			&  	 		\\ 
-\end{tabularx}
-\caption{Gegenüberstellung wertsetzender Steuerelemente}
- \label{tab:eventcommands}
-\end{table}
-
-\setlength\itemsep{-0.6em}
- \item CheckBox ermöglicht dem Benutzer die Auswahl eines booleschen Wertes mit Hilfe einer Art Schaltfläche, die entweder markiert oder leer sein kann. Flutter bietet ebenfalls ein Checkbox Control an,  das Material Design Checkbox. 
-  \item Switch hat die Form eines Ein/Aus-Schalters, damit der Benutzer einen booleschen Wert auswählen kann, für das es ebenfalls eine entsprechendes Flutter Widget gibt. 
- \item Slider bieten Benutzern die Option einen  Wert aus einem kontinuierlichen Bereich auswählen, der mit den Eigenschaften Minimum und Maximum festgelegt wurde.  Flutter bietet ebenfalls ein Widget für Slider an
- \item Stepper ermöglicht es dem Benutzer, einen doppelten Wert aus einem Bereich von inkrementellen Werten auszuwählen, die mit den Eigenschaften Minimum, Maximum und Inkrement festgelegt wurden.  Von Haus aus gibt es bei Flutter kein Steuerelement,  welches ähnliche Eigenschaften anbietet.  Die Open Source Community hat mit dem number\_inc\_dec Plugin aber eine Widget entwickelt welches wie die Xamarin.Forms alternative arbeitet. 
- \item DatePicker ermöglicht es dem Benutzer, ein Datum mit der Datumsauswahl der Plattform auszuwählen.  In Flutter stehen dafür kein Widget sondern eine Funktion zur Verfügung,  die klassischerweise, wie in Quelltext , in einem Gesture Detector auf einem anderen Widget ausgeführt wird.  
- \item TimePicker ermöglicht dem Benutzer die Auswahl einer Zeit mit dem spezifischen TimePicker der Plattform.  Wird ähnlich wie der Datepicker nicht als Widget sonders als Funktionalität ausgeliefert,  ein mögliche Definition ist in Quelltext \ref{lst:FlutterTimePicker} dargestellt.
- 
- \begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:FlutterTimePicker},caption={Verwendung von Timepickern in Flutter}, language=Dart]{SourceCode/FlutterTimePicker.Dart}
-\end{minipage}
-
-\end{itemize}
-
 \subsubsection{Steuerelemente um Text zu manipulieren}
-Wie bereits im vorherigen Abschnitt beschrieben sind Steuerelemente zur Eingabe und manipulation von Texten Strang genommen ebenfalls Steuerelemente zum setzen von Werten.  In Xamarin Forms stehen die folgenden beiden Steuerelemente für die Arbeit mit Texten zur Verfügung:
-\begin{itemize}
-\setlength\itemsep{-0.6em}
- \item Entry ermöglicht dem Benutzer die Eingabe und Bearbeitung einer einzelnen Textzeile., optional kann dieses als Passworteingabe mit Sternen maskiert werden.
- \item Editor ermöglicht dem Benutzer die Eingabe und Bearbeitung mehrerer Textzeilen
-\end{itemize}
+In Xamarin Forms stehen die folgenden beiden Steuerelemente für die Arbeit mit Texten die folgenden zwei Steuerelemente zur  Verfügung. Eine Entry für die Eingabe von einzelnen Textzeilen und einem Editor der für die Eingabe von mehrzeiligen Texten verwendet werden kann.  Das entsprechenden Flutter Widget wird in Tabelle  \ref{tab:TextWidgets} dargestellt.  
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
 \hline
-	Entry		       		&  	 		\\ 
-	Editor		       	&  	 		\\ 
+	Entry		       		&  TextField	 		\\ 
+	Editor		       	&  TextField	 		\\ 
 \end{tabularx}
 \caption{Gegenüberstellung textmanipulierender Steuerelemente}
- \label{tab:eventcommands}
+ \label{tab:TextWidgets}
 \end{table}
 
-
-In flutter gibt es ausschließlich das Textfield Widget, welches die Funktionalitäten von beiden Xamarin.Forms controlls bündelt.  Standardmäßig bietet das TextField Widget die Eingabemöglichkeit für eine Zeile ähnlich wie das Entry Steuerelement kann aber durch die Eigenschaft "keyboardType: TextInputType.multiline" wie ein entry fungieren wobei optional auch eine Anzahl von maximalen Zeilen übergeben werden kann.  Dies wird in Quelltext dargestellt.
+Die Gegenüberstllung zeigt, dass es ausschließlich das Textfield Widget gibt, welches die Funktionalitäten von beiden Xamarin.Forms controlls bündelt.  Standardmäßig bietet das TextField Widget die Eingabemöglichkeit für eine Zeile ähnlich wie das Entry Steuerelement kann aber durch die Eigenschaft "keyboardType: TextInputType.multiline" wie ein entry fungieren wobei optional auch eine Anzahl von maximalen Zeilen übergeben werden kann.  Dies wird in Quelltext dargestellt.
 
  \begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:FlutterTextField},caption={TextField mit mehreren Zeilen in Flutter}, language=Dart]{SourceCode/FlutterTextField.Dart}
 \end{minipage}
 
+\subsubsection{Wertsetztende Steuerelemente}
 
-\subsubsection{Steuerelemente um eine Aktivität anzudeuten}
+Steuerelemente die Werte setzen sind User Interface Elemente die von einem Anwender durch Interaktion mit Werten versehen werden können um diese in der Anwendung zu verarbeiten.   Xamarin.Forms bietet eine Vielzahl von Steuerelementen, die an dieser Stelle aufgeführt werden. Zusätzlich wird wie in den vorherigen Abschnitten erläutert, wie dieses Verhalten bei Flutter generiert werden kann.  Bei Xamarin.Forms-Elementen können Element direkt abgefragt werden , um den Status einer seiner Eigenschaften wie den gesetzt Wert zu ermitteln.  Das Abrufen von Informationen in Flutter wird von spezialisierten Widgets gehandhabtd.  Wenn Sie ein TextField oder ein TextFormField haben, können Sie einen TextEditingController bereitstellen, um Benutzereingaben abzurufen. 
+Die folgenden Steuerelemente bietet Xamarin.Forms an.  Das CheckBox Steuerelement ermöglicht dem Benutzer die Auswahl eines booleschen Wert.  Ein Switch der die gleiche Aufgabe wie eine Checkbox übernimmt.  Ein Slider bieten Benutzern die Option einen  Wert aus einem kontinuierlichen Bereich auswählen.  Ein Stepper ermöglicht es dem Benutzer, einen doppelten Wert aus einem Bereich von inkrementellen Werten auszuwählen. DatePicker ermöglicht es dem Benutzer, ein Datum mit der Datumsauswahl der Plattform auszuwählen. TimePicker ermöglicht dem Benutzer die Auswahl einer Zeit mit dem spezifischen TimePicker der Plattform.
 
-In mobilen Anwendungen kann es aufgrund der Limitierten Hardware Ressourcen und der begrenzten Netzwerkanbindung dazu kommen, dass Aktionen etwas länger dauern,  als es der Anwender erwarten würden.  Dafür stehen in Xamarin.Forms Steuerelemente zur Verfügung, die dem Anwender das Andauern einer Aktivität andeuten.  Die folgenden Elemente stehen Xamarin.Forms Entwicklern zur Verfügung:
-
-\begin{itemize}
-\setlength\itemsep{-0.6em}
- \item ActivityIndicator verwendet eine Animation, um zu zeigen, dass die Anwendung eine langwierige Aktivität ausführt, ohne einen Hinweis auf den Fortschritt zu geben.  Für Flutter Anwendungen steht ein ähnliches Widget zur Verfügung das als "CircularProgressIndicator" bezeichnet wird. 
- \item ProgressBar verwendet eine Animation, um zu zeigen, dass die Anwendung durch eine langwierige Aktivität fortschreitet. In Flutter steht mit dem "LinearProgressIndicator" Widget ebenfalls eine Progressbar zur Verfügung.
-\end{itemize}
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
 \hline
-	ActivityIndicator		       		&  	 		\\ 
-	ProgressBar		       				&  	 		\\ 
+	CheckBox		       				&  Checkbox	 		\\ 
+	Switch		       					&  Switch	 		\\ 
+	Slider		       					&  Slider	 		\\ 
+	Stepper		       				&  number\_inc\_dec	 		\\ 
+	DatePicker		       			&  TextField mit Funktion		\\ 
+	TimePicker		       			&  TextField mit Funktion	 		\\ 
+\end{tabularx}
+\caption{Gegenüberstellung wertsetzender Steuerelemente}
+ \label{tab:eventcommands}
+\end{table}
+ 
+ Wird ähnlich wie der Datepicker nicht als Widget sonders als Funktionalität ausgeliefert,  ein mögliche Definition ist in Quelltext \ref{lst:FlutterTimePicker} dargestellt.
+ 
+\lstinputlisting[label={lst:FlutterTimePicker},caption={Verwendung von Timepickern in Flutter}, language=Dart]{SourceCode/FlutterTimePicker.Dart}
+
+
+\subsubsection{Steuerelemente um eine Aktivität anzudeuten}
+
+In mobilen Anwendungen kann es aufgrund der Limitierten Hardware Ressourcen und der begrenzten Netzwerkanbindung dazu kommen, dass Aktionen etwas länger dauern,  als es der Anwender erwarten würden.  Dafür stehen in Xamarin.Forms Steuerelemente zur Verfügung, die dem Anwender das Andauern einer Aktivität andeuten.  Die folgenden Elemente stehen Xamarin.Forms Entwicklern zur Verfügung: ActivityIndicator verwendet eine Animation, um zu zeigen, dass die Anwendung eine langwierige Aktivität ausführt, ohne einen Hinweis auf den Fortschritt zu geben. ProgressBar verwendet eine Animation, um zu zeigen, dass die Anwendung durch eine langwierige Aktivität fortschreitet
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+\hline
+	ActivityIndicator		       		&  	CircularProgressIndicator 		\\ 
+	ProgressBar		       				&  	LinearProgressIndicator 		\\ 
 \end{tabularx}
 \caption{Gegenüberstellung aktivitätsandeutender Steuerelemente}
  \label{tab:eventcommands}
@@ -221,30 +199,22 @@ In mobilen Anwendungen kann es aufgrund der Limitierten Hardware Ressourcen und 
 
 \subsubsection{Steuerelemente um Sammlungen anzuzeigen}
 
-Bei diesen Steuerelementen handelt es sich um Elemente, die zur Anzeige von Daten-Sammlungen spezialisiert sind.  Xamarin.Forms stellt die folgenden Steuelemente zur Verfügung.
+Bei diesen Steuerelementen handelt es sich um Elemente, die zur Anzeige von Daten-Sammlungen spezialisiert sind.  Xamarin.Forms stellt die folgenden Steuelemente zur Verfügung.  CarouselView zeigt eine blätterbare Liste von Datenelementen an.  IndicatorView zeigt Indikatoren an, die die Anzahl der Elemente in einer CarouselView darstellen. Picker zeigt ein ausgewähltes Element aus einer Liste von Textzeichenfolgen an.  TableView zeigt eine Liste von Zeilen mit optionalen Überschriften und Unterüberschriften an
 
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
 \hline
-	CarouselView		       		&  	 		\\ 
-	IndicatorView		       		&  	 		\\ 	
-	Picker		       					&  	 		\\ 
-	TableView		       				&  	 		\\ 
+	CarouselView		       		&  	carousel\_slider  		\\ 
+	IndicatorView		       		&  			\\ 	
+	Picker		       					&  	TextView mit Funktionalität 		\\ 
+	TableView		       				&  	Table		\\ 
 \end{tabularx}
 \caption{Gegenüberstellung sammlungsanzeigender Steuerelemente}
  \label{tab:eventcommands}
 \end{table}
 
-
-\begin{itemize}
-\setlength\itemsep{-0.6em}
- \item CarouselView zeigt eine blätterbare Liste von Datenelementen an.  Für Flutter steht ein ähnliches Widget mit dem "carousel\_slider" zur erfügung
- \item IndicatorView zeigt Indikatoren an, die die Anzahl der Elemente in einer CarouselView darstellen
- \item Picker zeigt ein ausgewähltes Element aus einer Liste von Textzeichenfolgen an und ermöglicht die Auswahl dieses Elements, wenn die Ansicht angetippt wird.  Das Picker Widget ist bereits wie im Date,- und Time-Picker beschrieben kein Controll sondern eine Funktion, welches durch Gesten auf andere Widges ausgeführt werden kann. 
- \item TableView zeigt eine Liste von Zeilen mit optionalen Überschriften und Unterüberschriften an.  Das äquivalente flutter- Widget ist als Table Verfügbar.
-\end{itemize}
 
 \subsection{Listen}
 
