@@ -1,0 +1,7 @@
+<Button Text="Click Me!"
+     Grid.Row="0"
+     Font="Large"
+     BorderWidth="1"
+     HorizontalOptions="End"
+     VerticalOptions="CenterAndExpand"
+     Clicked="Button_Clicked" />
