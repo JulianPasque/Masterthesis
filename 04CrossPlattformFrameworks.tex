@@ -23,19 +23,19 @@ Die Ansichtseiten befinden sich in der Regel, innerhalb der XAML-Datei, auf der 
 
 \lstinputlisting[label={lst:TabbedPage},caption={[Xamarin.Forms \glq TabbedPage\grq{} Definition]{Xamarin.Forms \glq TabbedPage\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{MicrosoftXamTabbedView2020}}} , language=XML]{SourceCode/XamarinFormsTabbedPage.XAML}
 
-Es wird eine \glq TabbedPage\grq{} mit drei Registerkarten entworfen.  Eine Kombination mehrerer Navigationskonzepte ist hier wie das Beispiel zeigt möglich,  hier befindet sich eine Navigationsleiste innerhalb der Registerkarten. 
+Es wird eine \glq TabbedPage\grq{} mit drei Registerkarten entworfen.  Eine Kombination mehrerer Navigationskonzepte ist  möglich,  das Beispiel zeigt eine Navigationsleiste innerhalb der Registerkarten. 
 
-Die verfügbaren Eigenschaften der Ansichtsseiten unterscheiden sich je nach Einsatzszenario.  Im folgenden Quelltext \ref{lst:FlyOutPage} wird dies am Beispiel der Realisierung einer \glq FlyoutPage\grq deutlich.  Anders als bei \glq TabbedPage\grq{}  die aus einer Sammlung von Registerkarten besteht finden sich an dieser Stelle die Eigenschaften \glq Flyout\grq{}  und \glq Detail\grq{}.
+Die verfügbaren Eigenschaften der Ansichtsseiten unterscheiden sich je nach Einsatzszenario.  Im folgenden Quelltext \ref{lst:FlyOutPage} wird dies exemplarisch an der Realisierung einer \glq FlyoutPage\grq{} deutlich.  Anders als bei \glq TabbedPage\grq{}, die aus einer Sammlung von Registerkarten besteht, finden sich im Quelltext die Eigenschaften \glq Flyout\grq{}  und \glq Detail\grq{}.
 
 \lstinputlisting[label={lst:FlyOutPage}, caption={[Xamarin.Forms \glq FlyoutPage \grq{} Definition]{Xamarin.Forms \glq FlyoutPage\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{MicrosoftXamFlyOutPage2020}}} ,language=XML]{SourceCode/XamarinFormsFlyoutPage.XAML}
 
-Im Unterschied zu Xamarin.Forms lässt kann Flutter auf der Wurzelebene nur den Style der App nicht aber ein Navigationskonzept definieren.  Wie bereits in Kapitel \ref{chap:CompilerEntwurf} aufgeführt, wird in dieser Arbeit ausschließlich der Material Design Style unterstützt. \footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs} Quelltext \ref{lst:MaterialApp} zeigt die Realisierung einer MaterialDesign App in Flutter.
+Im Unterschied zu Xamarin.Forms kann Flutter auf der Wurzelebene nur den Style der App,  nicht aber ein Navigationskonzept definieren.  Wie bereits in Kapitel \ref{chap:CompilerEntwurf} aufgeführt, wird in dieser Arbeit ausschließlich der Material Design Style unterstützt. \footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs} Quelltext \ref{lst:MaterialApp} zeigt die Realisierung einer MaterialDesign App in Flutter.
 \newpage
 \lstinputlisting[label={lst:MaterialApp}, caption={[Flutter \glq MaterialApp\grq{} Definition]{Flutter \glq MaterialApp\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterFirstApp2020}}}, language=Dart]{SourceCode/MaterialApp.Dart}
 
-Der Vergleich zwischen den Extensible Markup Language(XML) basierten XAML-Dateien und den bei Flutter verwendeten Dart-Dateien verdeutlicht die Unterschiede in den verwendeten Sprachen zur Benutzeroberflächen Entwicklung. 
+Der Vergleich zwischen den Extensible Markup Language(XML) basierten XAML-Dateien und den bei Flutter verwendeten Dart-Dateien verdeutlicht die Unterschiede in den verwendeten Sprachen zur Benutzeroberflächenentwicklung. 
 
-Die zentrale Idee hinter dem Flutter-Framework ist es,  eine Benutzeroberfläche aus Widgets aufzubauen.  Diese beschreiben das Aussehen der Anwendung basierend auf ihrem aktuellen Zustand.  Sobald er sich ändert, kann das Framework den neuen mit dem alten Status vergleichen, um grafische Veränderungen möglichst effektiv vorzunehmen. \footcite[Vgl.][Abgerufen am \today]{GoogleWidgets2020}  Damit in Flutter ein Navigationskonzept definiert werden kann,  können verschiedene  Widgets verwendet und verschachtelt werden,  dies wird in Quelltext \ref{lst:FlutterTabbedApp} exemplarisch für eine App mit Registerkarten visualisiert.
+Die zentrale Idee hinter dem Flutter-Framework ist es,  eine Benutzeroberfläche aus Widgets aufzubauen.  Diese beschreiben das Aussehen der Anwendung basierend auf ihrem aktuellen Zustand.  Sobald sich der Status ändert, kann das Framework den neuen mit dem alten vergleichen, um grafische Veränderungen möglichst effektiv vorzunehmen. \footcite[Vgl.][Abgerufen am \today]{GoogleWidgets2020} Damit in Flutter ein Navigationskonzept definiert werden kann,  können verschiedene Widgets verwendet und verschachtelt werden,  wie in Quelltext \ref{lst:FlutterTabbedApp} beispielhaft für eine App mit Registerkarten visualisiert wird.
 
 \lstinputlisting[label={lst:FlutterTabbedApp},caption={[Flutter \glq Tab Layout\grq{} Definition]{Flutter \glq Tab Layout\grq{} Definition\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterTabs2020}}}, language=Dart]{SourceCode/TabbedPage.Dart}
 
@@ -54,10 +54,9 @@ Die deutlichen Unterschiede bei der Auswahl eines Navigationkonzeptes können da
 \caption{Gegenüberstellung Pages}
  \label{tab:ComapreXFFlutter}
 \end{table}
-Diese Gegenüberstellung,  in Tabellenform,  von Xamarin.Forms Elementen und Flutter Widgets wird auch an anderer Stelle in diesem Kapitel der Übersichtlichkeit halber verwendet.  Eine vollständige Referenztabelle die sich aus allen Einzelbetrachtungen zusammensetzt befindet sich in Anhang X. 
+Gegenüberstellungen,  in Tabellenform,  von Xamarin.Forms Elementen und Flutter Widgets werden auch an anderer Stelle in diesem Kapitel der Übersichtlichkeit halber verwendet.  Eine vollständige Referenztabelle die sich aus allen Einzelbetrachtungen zusammensetzt, befindet sich in \ref{chap:Gegenueberstellung}. 
 
-
-Neben den Ansichtsseiten bietet Xamarin.Forms jedoch weitere Layouts,  die Steuerelemente zu visuellen Strukturen zusammenstellen.  Abbildung \ref{fig:Xamarin.Forms Layouts} visualisiert die wichtigsten dieser Layouts. 
+Neben den Ansichtsseiten bietet Xamarin.Forms weitere Layouts,  die Steuerelemente zu visuellen Strukturen zusammenstellen.  Abbildung \ref{fig:Xamarin.Forms Layouts} stellt die gebräuchlichsten dieser Layouts vor. 
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/XamarinFormsLayouts.png}
@@ -65,13 +64,14 @@ Neben den Ansichtsseiten bietet Xamarin.Forms jedoch weitere Layouts,  die Steue
  \label{fig:Xamarin.Forms Layouts}
 \end{figure}
 
-Die in der Abbildungen visualisierten Layouts werden innerhalb von Xamarin.Forms Anwendungen am häufigsten benutzt und haben haben die folgenden visuellen Eigenschaften.  \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamLayouts2018} \glq ContentView\grq{}  enthält ein einzelnes untergeordnetes Ansichtselement und wird als Basisklassen für eigene Darstellungen verwendet.  Ein \glq StackLayout\grq{}  positioniert die untergeordnete Elemente in einem Stapel entweder horizontal oder vertikal.  Ein \glq Grid\grq{}  positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten,  es wird aber auch häufig für die visuelle Stapelung von Layouts und Steuerelementen verwendet.  Das \glq ScrollView\grq{} erlaubt es seinen Inhalt, wie der Name es vermuten lässt,  zu scrollen. Neben diesen häufig verwendeten Layouts gibt es noch weitere die jedoch nicht so häufig verwendet werden.  Dazu gehört ein Frame, welches einen Rahmen um ein visuelles Element zeichnet.  Das AbsolutLayout, welches untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element plaziert und das RelativeLayout welches die gleiche Aufgabe relativ zum RelativLayout oder seiner Kinder übernimmt.\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018}
+Die vorgestellten Layouts haben  unterschiedliche visuellen Eigenschaften und dienen als Sprachelemente von XAML für den Entwurf von Benutzeroberflächen.  \footcitetext[Abbildung in Anlehnung an ][Abgerufen am \today]{MicrosoftXamLayouts2018} \glq ContentView\grq{} enthält ein einzelnes untergeordnetes Ansichtselement und wird als Basisklassen für benutzerdefinierte Darstellungen verwendet.  Das Gestaltungselement \glq StackLayout\grq{} legt untergeordnete Elemente in einem entweder horizontal oder vertikal angeordneten Stapel ab.  Ein \glq Grid\grq{} positioniert seine untergeordneten Elemente in einem Raster aus Zeilen und Spalten,  es wird auch dafür verwendet Layouts und Steuerelemente aufeinander zu legen.  Das \glq ScrollView\grq{} erlaubt das verschieben von Bildschirminhalten und hat wie ein \glq ContentView\grq{} nur ein untergeordnetes Element.  
+Neben diesen gängigen Layouts gibt es noch weniger verbreitete. zum Beispiel:  Das \glq  Frame,\grq{} das einen Rahmen um ein visuelles Element zeichnet.  Das \glq AbsolutLayout\grq{},  platziert untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element und das \glq RelativeLayout\grq{} übernimmt die gleiche Aufgabe jedoch nur auf der Ebene des Layout und untergeordneter Elemente. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018}
 
-Basierend auf diesen Verfügbaren Layouts werden in Tabelle \ref{tab:XamLayouts}  die es entsprechende Flutter Widgets aufgeführt.  Diese wurden wie die Ansichtsseiten mit dem Flutter Widget Katalog erarbeitet.  Teilweise haben diese Widgets jedoch auch erweitere Funktionalitäten.  So muss für die Verwendung eines scrollbaren \glq Grids in Xamarin.Forms dieses in einer \glq ScrollView\grq{}  hinterlegt werden. In Flutter ist bietet das \glq GridView\grq{}  Widget diese von sich aus an,  wenn der Inhalt den sichtbaren Bereich überschreitet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterGridView2020} Dies hat zur Folge,  innerhalb der Codeoptimierung des Compilers \glq ScrollViews\grq{}  um \glq Grids\grq{}  entfernt werden könnnen. 
+Basierend auf diesen verfügbaren Layouts werden in Tabelle \ref{tab:XamLayouts}  die es entsprechende Flutter Widgets entgegengesetzt.  
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Layout} & \textbf{Flutter Widget}  \\
 \hline
 	AbsolutLayout       		&  Positioned	 			\\ 
 	ContentView       		&  StatelessWidget	 			\\ 
@@ -86,24 +86,21 @@ Basierend auf diesen Verfügbaren Layouts werden in Tabelle \ref{tab:XamLayouts}
  \label{tab:XamLayouts}
 \end{table}
 
+Widgets haben zum Teil erweiterte,  oder abweichende Funktionalitäten, sodass Optimierungen durch den Compiler notwendig sind.  Damit das Layout Grid in Xamarin.Forms die Möglichkeit für einen Bildlauf bekommen weil der Inhalt zu groß für die Darstellung auf einer Seite ist, wird das Grid in einem ScrollView verschachtelt. Dagegen bietet das GridView vWidget von Flutter die option des Scrollen automatisch an, wenn der Inhalt den sichtbaren Bereich überschreitet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterGridView2020} Im Rahmen der Codeoptimierung muss das ScrollView in diesem Anwendungsfall entfernt werden.
+
+
 \subsection{Steuerelemente}
 
-Steuerelemente sind die Bausteine der Benutzeroberflächen in Xamarin.Forms, zu Ihnen gehören zum Beispiel Schaltflächen, Beschriftungen und Textfelder.  Abbildung \ref{fig:Xamarin.FormsSteuerelemente} zeigt einige verfügbare Steuerelemente,  die in diesem Unterabschnitt behandelt werden.  
-\begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/CrossPlattformFrameworks/Steuerelemente.png}
- \caption[Auswahl von Steuerelementen]{Auswahl von Steuerelementen}
- \label{fig:Xamarin.FormsSteuerelemente}
-\end{figure}
-
-Xamarin.forms kategorisiert Steuerelemente innerhalb der Dokumentation anhand ihrer Hauptaufgaben,  der Übersichtlichkeit halber wird diese Kategorisierung in diesem Abschnitt übernommen.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamViews2020}
+Steuerelemente sind die sichtbaren Bausteine der Benutzeroberflächen,  beispielsweise Schaltflächen, Beschriftungen und Textfelder.  
+Microsoft kategorisiert die Steuerelemente innerhalb der Frameworkdokumentation anhand ihrer primären Verwendung. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamViews2020} Diese Einteilung wird folgend übernommen,  obwohl eine klare Abgrenzung der  Steuerelemente zu Kategorien nicht uneingeschränkt möglich ist,  da einzelne zu mehreren Gruppierungen passen.
 
 
-\subsubsection{Steuerelemente zur Darstellung}
-Einige Steuerelemente sind Ausschließlich für die Darstellung von Inhalten vorgesehen klassischerweise sind dies Informationen die für die Arbeit mit der Anwendung wichtig sind an.  Im folgenden werden die wichtigsten Steuerelemente dieser Kategorie vorgestellt,  wobei zu zeichnende Elemente wie die \glq Ellipse\grq{} ,  \glq Linie\grq{} , \glq Path\grq{} ,  \glq Polygon,\grq{}   \glq Polyline\grq{}  und \glq Rectangle\grq{}  nicht besonders aufgeführt werden,  da diese bei Flutter einfach auf die sogenannte Canvas der Benutzeroberfläche gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020} In Xamarin. Forms gibt es die folgenden Darstellungssteuerelemente für die eine Flutter Repräsentation notwendig ist.  Das Steuerelement \glq BoxView zeigt in Xamarin.Forms ein einfarbiges Rechteck an.  Für die Darstellung von Texten wird in Xamarin.Forms auf \glq Label\grq{} zurückgegriffen.  Bilder können mit Hilfe des \glq Image\grq{}  Steuerelement geladen werden,  wobei diese aus verschiedenen Quellen wie dem Web oder aus den Ressourcen der App geladen werden können.  Das Steuerelement \glq Map\grq{}  kann für die Anzeige von Karten innerhalb der mobilen Anwendung verwendet werden.  Um Web und HTML Inhalte innerhalb einer App visualisieren zu können steht das \glq WebView\grq{}  Steuerelement bereit.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} Für die Steuerelemente kann nun eine Gegenüberstellung zwischen Xamarin.Forms Pages und Flutter Widgets vorgenommen werden dies wird in Tabelle \ref{tab:ControlsVisualization} dargestellt.
+\subsubsection{Steuerelemente für die Präsentation}
+Einige Steuerelemente sind ausschließlich für die Darstellung von Inhalten vorgesehen.  In Xamarin. Forms gibt es die folgenden  Darstellungssteuerelemente, für die eine Flutter Repräsentation notwendig ist.  Das Steuerelement \glq BoxView\grq{ }zeigt in Xamarin.Forms ein einfarbiges Rechteck an.  Für die Darstellung von Texten wird auf \glq Label\grq{} zurückgegriffen.  Bilder können mit Hilfe des \glq Image\grq{}  Steuerelement angezeigt werden,  wobei diese aus verschiedenen Quellen, wie dem Web oder aus den Ressourcen der App geladen werden können.  Das Steuerelement \glq Map\grq{}  kann für die Anzeige von Karten innerhalb der mobilen Anwendung verwendet werden.  Um Web und HTML Inhalte innerhalb einer App visualisieren zu können steht das \glq WebView\grq{}  Steuerelement bereit.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} Für die Steuerelemente kann nun eine Gegenüberstellung zwischen Xamarin.Forms Elementen und Flutter Widgets vorgenommen werden dies wird in Tabelle \ref{tab:ControlsVisualization} dargestellt.
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelement} & \textbf{Flutter Widget}  \\
 \hline
 	BoxView		       			&   	 SizedBox  		\\ 
 	Image       						&	     Image	 			\\ 
@@ -121,19 +118,13 @@ Einige Steuerelemente sind Ausschließlich für die Darstellung von Inhalten vor
 \caption{Gegenüberstellung Darstellungssteuerelemente}
  \label{tab:ControlsVisualization}
 \end{table}
+Zu zeichnende Elemente, wie die  \glq Ellipse\grq{}, \glq Linie\grq{}, \glq Path\grq{},  \glq Polygon\grq{},  \glq Polyline\grq{}  und \glq Rectangle\grq{}wurden nicht besonders aufgeführt,  da diese bei Flutter auf die sogenannte Canvas der Benutzeroberfläche gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020} 
 
-\subsubsection{Ereignisauslösende  Steuerelemente}
-Xamarin.Forms ist ein ereignisgesteuertes Framework,  die hier behandelten Steuerelemente stellen alle mindestens ein Ereigniss zur Verfügung,  das mithilfe der in Kapitel 2 \ref{chap:CompilerEntwurf}  erwähnten Codebehind Klassen abonniert werden können.  Auf diese Art und Weise wird die Codebehind Klasse informiert,  sobald dieses Ereignis ausgelöst wird.  Die folgenden Steuerelemente werden bei Xamarin.Forms dieser Kategorie zugeordnet.  \glq Buttons\grq{} sind rechteckige Objekte,  die ein \glq clicked\grq{} Ereignis auslösen nachdem es von einem Anwender gedrückt wurde.  Mit \glq ImageButton\grq{} steht ebenfalls eine Variante zur Verfügung,  die ein Icon statt einem Text anzeigt.  Bei einem \glq RadioButton\grq{} wird eine Option aus einer Reihe von Möglichkeiten ausgewählt und löst ein Ereignis aus,  wenn sich die Auswahl geändert hat.  Ein weiteres Steuerelement ist \glq RefreshView\grq{}, dass eine \glq PullToRefresh\grq{}  Funktionalität für Layouts mit Bildlauf anbietet und ein Event auslöst, wenn diese Interaktion durchführt wurde.  Mithilfe der \glq Searchbar\grq{} haben Anwender die Möglichkeit Inhalte zu innerhalb der App zu suchen, durch die Eingabe von Textzeichenfolgen kann per Schaltfläche, oder Tastaturtaste,  ein Ereignis ausgelöst werden was den eingegeben Text an die XAML.CS-Datei weiterleitet.   
-
-\lstinputlisting[label={lst:XFVuttonDefinition},caption={Xamarin.Forms Button Initialisierung}, language=XML]{SourceCode/XamarinFormsButton.XAML}
-
-\lstinputlisting[label={lst:XFEventHandler},caption={Xamarin.Forms Event Handler}, , language=csh]{SourceCode/EventHandler.cs}
-
-
-Tabelle \ref{tab:ControlsVisualization} zeigt die Steuerelemente und Ihre Gegenstücke aus dem Flutter Framework. 
+\subsubsection{Ereignisauslösende Steuerelemente}
+Xamarin.Forms ist ein ereignisgesteuertes Framework. Die hier behandelten Steuerelemente stellen alle mindestens ein Ereignis zur Verfügung,  das mithilfe der in Kapitel \ref{chap:CompilerEntwurf} erwähnten Codebehind Klassen abonniert werden kann.  Sobald ein ein sogenantes Event ausgelöst wird,  übermittelt das Framework diese Information an den Empfänger.   Die folgenden Steuerelemente werden bei Xamarin.Forms dieser Kategorie zugeordnet.  \glq Buttons\grq{} sind rechteckige Objekte,  die ein \glq clicked\grq{} Ereignis auslösen, nachdem sie von einem Anwender gedrückt wurden.  Mit \glq ImageButton\grq{} steht ebenfalls eine Variante zur Verfügung,  die ein Icon statt einem Text anzeigt.  Bei einem \glq RadioButton\grq{} wird eine Option aus einer Reihe von Möglichkeiten ausgewählt und löst ein Ereignis aus,  wenn sich die Benutzerauswahl ändert.  Ein weiteres Steuerelement ist \glq RefreshView\grq{}, dass eine \glq PullToRefresh\grq{}  Funktionalität für Layouts mit Bildlauf anbietet.  Dabei wird durch das herunterziehen des Seiteninhaltes der Wunsch zur Seitenaktualisierung  übermittelt.  Mithilfe der \glq Searchbar\grq{} haben Anwender die Möglichkeit Inhalte  innerhalb der App zu suchen.  Durch die Eingabe von Textzeichenfolgen kann per Schaltfläche, oder Tastaturtaste,  ein Ereignis ausgelöst und der eingegeben Text an die Codebehind-Datei weiterleitet werden.  Tabelle \ref{tab:eventcommands}  die ereignisauslösende Steuerelementen von Xamarin.Forms und alternative Flutter Widgets.
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	Button		       				&  	Flatbutton 		\\ 
 	ImageButton		       		&  	IconButton 		\\ 
@@ -146,7 +137,15 @@ Tabelle \ref{tab:ControlsVisualization} zeigt die Steuerelemente und Ihre Gegens
  \label{tab:eventcommands}
 \end{table}
 
-Nicht alle Steuerelemente verhalten sich immer exakt gleich wie die Xamarin.Forms Steuerelemente. Ein Beispiel ist die hier erwähnte SearchBar, die bei Flutter im Gegensatz zu Xamarin.Forms nicht frei plazierbar ist, sondern immer in der Navigationsleiste angezeigt wird.  Alternativ wäre es jedoch auch möglich,  das gliche Verhalten mit einem Textinput Feld zu generieren die anliegend beschrieben werden. 
+Flutter Widgets verhalten sich nicht exakt gleich wie die Steuerelemente von Xamarin.Forms.  Ein Beispiel ist die hier erwähnte SearchBar, die bei Flutter im Gegensatz zu Xamarin.Forms nicht frei platzierbar ist, sondern immer in der Navigationsleiste angezeigt wird. 
+
+Die Beziehung zwischen Steuerelementen und Codebehind über Ereignisse wird  in den beiden folgenden Quelltextausschnitten demonstriert.  Der erste Ausschnitt zeigt  XAML Quelltext,  durch welchen ein Button dargestellt werden kann.  Über die Eigenschaft clicked wird auf eine Methode in der XAML.cs Datei verwiesen,  die in dem zweiten Quelltextausschnitt abgebildet ist. 
+
+\lstinputlisting[label={lst:XFVuttonDefinition},caption={Xamarin.Forms Button Initialisierung}, language=XML]{SourceCode/XamarinFormsButton.XAML}
+
+\lstinputlisting[label={lst:XFEventHandler},caption={Xamarin.Forms Event Handler}, , language=csh]{SourceCode/EventHandler.cs}
+
+
 
 \subsubsection{Steuerelemente um Text zu manipulieren}
 In Xamarin Forms stehen die folgenden beiden Steuerelemente für die Arbeit mit Texten die folgenden zwei Steuerelemente zur  Verfügung. Eine Entry für die Eingabe von einzelnen Textzeilen und einem Editor der für die Eingabe von mehrzeiligen Texten verwendet werden kann.  Das entsprechenden Flutter Widget wird in Tabelle  \ref{tab:TextWidgets} dargestellt.  
@@ -231,16 +230,11 @@ Bei diesen Steuerelementen handelt es sich um Elemente, die zur Anzeige von Date
 
 \subsection{Listen}
 
-Listen sind ebenfalls Steuerelemente für die Anzeige und Interaktion mit Sammlungen,  bekommen jedoch wegen ihrer häufigen Verwendung einen eigenen Abschnitt. In Xamarin.Form existieren ein Listview und ein CollectionView Control,  wobei zweiteres eine optimierung der Listview ist.  Das Äquivalent zu einer ListView in Flutter ist ... eine ListView!
+Listen sind ebenfalls Steuerelemente für die Anzeige und Interaktion mit Sammlungen,  bekommen jedoch wegen ihrer häufigen Verwendung einen eigenen Abschnitt. In Xamarin.Form existieren für diese Darstellung zwei Steuerelemente die ListView und die CollectionView,  wobei zweiteres eine Optimierung der Listview ist.  Das Äquivalent zu einer ListView in Flutter ist ... eine ListView!
 
-In einer Xamarin.Forms ListView erstellen Sie eine ViewCell und möglicherweise einen DataTemplateSelector und übergeben diese an die ListView, die jede Zeile mit dem rendert, was Ihr DataTemplateSelector oder ViewCell zurückgibt. Allerdings müssen Sie oft darauf achten, dass Sie Cell Recycling einschalten, da es sonst zu Speicherproblemen und langsamen Scrollgeschwindigkeiten kommen kann.Aufgrund des unveränderlichen Widget-Musters von Flutter übergeben Sie eine Liste von Widgets an Ihre ListView, und Flutter kümmert sich darum, dass das Scrollen schnell und reibungslos funktioniert
+In einer Xamarin.Forms wird bei der Arbeit mit einer ListView Anhand einer angegebenen Vorlage für jede Zeile ermittelt, wie diese dargestellt werden muss.  Jede Reihe hat dabei ein ein Ereignis, das ausgelöst wird,  wenn eine Reihe ausgewählt wird.  Um dieses Verhalten in Flutter abzubilden wird die Touch-Behandlung des Widgets in der Liste bereitgestellt.  Eine weitere Art der Interaktion mit einer Liste ist mithilfe der \glq SwipeView\grq{}, die es erlaubt einzelne Reihen zur Seite zu schieben und darunter Schaltflächen sichtbar zu machen.
 
-In Xamarin.Forms hat die ListView eine ItemTapped-Methode, um herauszufinden, welches Element angeklickt wurde. Es gibt viele andere Techniken, die Sie vielleicht verwendet haben, wie z. B. die Überprüfung, wenn sich das SelectedItem- oder EventToCommand-Verhalten ändert. In Flutter verwenden Sie die Touch-Behandlung, die von den übergebenen Widgets bereitgestellt wird.
-
-Wenn Sie in Xamarin.Forms die ItemsSource-Eigenschaft an eine ObservableCollection gebunden haben, würden Sie einfach die Liste in Ihrem ViewModel aktualisieren. Alternativ könnten Sie der ItemSource-Eigenschaft auch eine neue Liste zuweisen. In Flutter funktionieren die Dinge ein wenig anders. Wenn Sie die Liste der Widgets innerhalb einer setState()-Methode aktualisieren, würden Sie schnell sehen, dass sich Ihre Daten visuell nicht geändert haben. Das liegt daran, dass die Flutter-Rendering-Engine beim Aufruf von setState() den Widget-Baum betrachtet, um zu sehen, ob sich etwas geändert hat. Wenn sie zu Ihrer ListView kommt, führt sie eine == Prüfung durch und stellt fest, dass die beiden ListViews gleich sind. Es hat sich nichts geändert, also ist keine Aktualisierung erforderlich. Eine einfache Möglichkeit, Ihre ListView zu aktualisieren, besteht darin, eine neue Liste innerhalb von setState() zu erstellen und die Daten aus der alten Liste in die neue Liste zu kopieren. Dieser Ansatz ist zwar einfach, aber für große Datensätze nicht zu empfehlen. Die empfohlene, effiziente und effektive Art, eine Liste zu erstellen, verwendet einen ListView.Builder. Diese Methode ist großartig, wenn Sie eine dynamische Liste oder eine Liste mit sehr großen Datenmengen haben. Dies ist im Wesentlichen das Äquivalent von RecyclerView unter Android, das automatisch Listenelemente für Sie recycelt:
-Anstatt eine "ListView" zu erstellen, erstellen Sie einen ListView.builder, der zwei wichtige Parameter benötigt: die anfängliche Länge der Liste und eine ItemBuilder-Funktion. Die ItemBuilder-Funktion ähnelt der getView-Funktion in einem Android-Adapter; sie nimmt eine Position an und gibt die Zeile zurück, die an dieser Position gerendert werden soll. Schließlich, aber am wichtigsten, beachten Sie, dass die onTap()-Funktion die Liste nicht mehr neu erstellt, sondern ihr stattdessen etwas hinzufügt.
-
-Ein \glq Swipeview\grq{}  ist evenfalls ein Container Steuerelement, welches durch Wischgesten ein Kontextmenü zur Verfügung stellt. 
+Damit sich die ListView in Xamarin Forms automatisch aktualisiert, wenn wenn Änderungen in der angezeigten Datensammlung ergeben ist es notwendig die Sammlung in einer  ObservableCollection vorzuhalten.  In Flutter funktionieren die Dinge ein wenig anders.  Wenn  die Liste der Widgets innerhalb einer setState()-Methode aktualisiert werden würde, würde auffallen, dass sich die Daten visuell nicht zwangsläufig geändert haben.   Das liegt daran, dass die Flutter-Rendering-Engine beim Aufruf von setState() den Widget-Baum betrachtet, um zu sehen, ob sich etwas geändert hat. Wenn die ListView mithilfe einer Gleichheitsprüfung analyisisert wird wird festgestellt, dass die beiden ListViews gleich sind.  Es hat sich nichts geändert, also ist keine Aktualisierung erforderlich. Eine  Möglichkeit, die ListView zu aktualisieren, besteht darin, eine neue Liste innerhalb von setState() zu erstellen und die Daten aus der alten Liste in die neue Liste zu kopieren. Dieser Ansatz ist zwar einfach, aber für große Datensätze nicht zu empfehlen. Die empfohlene, effiziente und effektive Art, eine Liste zu erstellen, verwendet einen ListView.Builder.  Diese Methode eignet sich für dynamische Listen oder eine Liste mit sehr großen Datenmengen.  Dies ist im Wesentlichen das Äquivalent von RecyclerView unter Android, das automatisch Listenelemente für Sie recycelt.  Anstatt eine "ListView" zu erstellen, wird  ein ListView.builder mit den folgenden zwei Parametern benötigt:  Die anfängliche Länge der Liste und eine ItemBuilder-Funktion.  Die ItemBuilder-Funktion nimmt eine Position und gibt die Zeile zurück, die an dieser Position gerendert werden soll.  
 
 Tabelle \ref{tab:ControlsVisualization} zeigt die Steuerelemente und Ihre Gegenstücke aus dem Flutter Framework. 
 \begin{table}[!ht]
@@ -256,7 +250,7 @@ Tabelle \ref{tab:ControlsVisualization} zeigt die Steuerelemente und Ihre Gegens
 \end{table}
 
 \section{Gesten}
-Viele Elemente haben wir bereits beschrieben Ereginisse, die bei bestimmten Gesten ausgelöst werden, wie der Button bei einem click.  Alternativ kann die Klasse "GestureRecognizer" (Deutsch Gestenerkenner) verwendet werden um Benutzerinteraktionen auf Ansichten zu erkennen.  Dafür werden das Tippen, das Ziehen, Schwenken,  Streichen und Drag und Drop unterstützt.  In Flutter gibt es zwei sehr ähnliche Möglichkeiten: Wenn das Widget die Ereigniserkennung unterstützt,  kann eine Funktion übergeben werden in der die Geste behandelt wird.  Zum Beispiel hat der ElevatedButton einen onPressed-Parameter. Alternativ wenn das Widget keine Ereigniserkennung unterstützt, verpacken Sie das Widget in einen GestureDetector und übergeben Sie eine Funktion an den Parameter onTap. 
+Viele Elemente haben wir bereits beschrieben Ereignisse, die bei bestimmten Gesten ausgelöst werden, wie der Button bei einem click.  Alternativ kann die Klasse "GestureRecognizer" (Deutsch Gestenerkenner) verwendet werden um Benutzerinteraktionen auf Ansichten zu erkennen.  Dafür werden das Tippen, das Ziehen, Schwenken,  Streichen und Drag und Drop unterstützt.  In Flutter gibt es zwei sehr ähnliche Möglichkeiten: Wenn das Widget die Ereigniserkennung unterstützt,  kann eine Funktion übergeben werden in der die Geste behandelt wird.  Zum Beispiel hat der ElevatedButton einen onPressed-Parameter. Alternativ wenn das Widget keine Ereigniserkennung unterstützt, kann es in einem GestureDetector verschachtelt werden.
 
 \section{Animation}
 Gut gestaltete Animationen machen eine Benutzeroberfläche intuitiver, tragen zum eleganten Erscheinungsbild einer ausgefeilten App bei und verbessern das Benutzererlebnis. Daher sind sie bei der Übersetzung von bestehenden Xamarin.Forms Anwendungen von großer Wichtigkeit. 
@@ -269,7 +263,7 @@ Die Navigation innerhalb der Anwendung hängt bei Xamarin.Forms hauptsächlich v
 Neben der internen Navigation innerhalb einer Anwendung ist es auch möglich zwischen verschiedenen Apps zu navigieren.  Dafür greift Xamarin Forms auf ein bestimmes URI-Schema zurrück.  Mit dem Befehl Device.OpenUrl("mailto://") kann so z.B. das  Standard E-Mail-Programm des Gerätes geöffnet werden verwenden. In Futter kann für diese Integration das Plugin urllauncher verwendet werden.
 
 \section{Async UI}
-Dart hat ein Single-Thread-Ausführungsmodell mit Unterstützung für Isolates (eine Möglichkeit, Dart-Code in einem anderen Thread auszuführen), eine Ereignisschleife und asynchrone Programmierung. Sofern Sie kein Isolate erzeugen, wird Ihr Dart-Code im Haupt-Thread der Benutzeroberfläche ausgeführt und von einer Ereignisschleife gesteuert.
+Dart hat ein Single-Thread-Ausführungsmodell mit Unterstützung für Isolates (eine Möglichkeit, Dart-Code in einem anderen Thread auszuführen), eine Ereignisschleife und asynchrone Programmierung.  Sofern Sie kein Isolate erzeugen, wird Ihr Dart-Code im Haupt-Thread der Benutzeroberfläche ausgeführt und von einer Ereignisschleife gesteuert.
 
 Das Single-Thread-Modell von Dart bedeutet nicht, dass Sie alles als blockierende Operation ausführen müssen, die das Einfrieren der Benutzeroberfläche verursacht. Ähnlich wie bei Xamarin.Forms müssen Sie den UI-Thread frei halten. Sie würden async/await verwenden, um Aufgaben auszuführen, bei denen Sie auf die Antwort warten müssen.
 
