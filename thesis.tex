@@ -12,6 +12,8 @@
 \usepackage{booktabs}
 
 \usepackage{tabularx} 
+\usepackage{xltabular}
+
 \setlength{\extrarowheight}{4pt}
 
 
@@ -50,13 +52,13 @@
 \definecolor{listingDartTodoColor}{rgb}{0.6,0.0,0.0}
 \definecolor{listingDartKeywordColor}{rgb}{0.1,0.0,0.5}
 
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
 
 \lstloadlanguages{% Check Dokumentation for further languages ...
 csh,
 Java
 }
-
-
 \definecolor{maroon}{rgb}{0.5,0,0}
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 
@@ -203,8 +205,8 @@ Code-erzeugung
 \printbibliography[nottype=online, heading=subbibliography, title={Gedruckte Quellen}]
 \printbibliography[type=online, heading=subbibliography, title={Online Quellen}]
   \include{AnhangGegenüberstellung}
-
- % \include{AndroidScreenshots}
+  \include{Testfälle}
+  \include{AndroidScreenshots}
 
 
   \printEidesstattlicheErklaerung % Setzt die eidesstattlichen Erklärung

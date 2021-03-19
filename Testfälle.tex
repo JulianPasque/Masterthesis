@@ -1,0 +1,101 @@
+\chapter{Anhang II: Testfälle für den Compiler}
+\label{chap:Testfälle}
+
+\begin{xltabular}{\textwidth}{l|X|l}
+   \textbf{ID} & \textbf{Beschreibung} & \textbf{Status}  \\  
+\hline
+
+	1             			& 			Das Icon der Anwendung wird sowohl für Android als auch für iOS übernommen       &  \checkmark   	\\ 
+	2             			& 			Der Name der Anwendung wird sowohl für Android als auch für iOS übernommen       &  \checkmark   	\\ 
+
+	3            			& 			FlyOutPage wird zu MasterDetailScaffold übersetzt      &  \checkmark   	\\ 
+	4            			& 			NavigationPage wird zu Scaffold übersetzt      &  \checkmark   	\\ 
+	5            			& 			TabbedPage wird zu TabBar und TabBarView übersetzt      &  \checkmark   	\\ 
+	
+	
+	6            			& 			AbsolutLayout wird zu Positioned übersetzt      &  \checkmark   	\\ 
+	7            			& 			ContentView wird zu StatelessWidget übersetzt      &  \checkmark   	\\ 
+	8            			& 			Frame wird zu BoxDecoration übersetzt      &  \checkmark   	\\ 
+	9            			& 			Grid wird zu GridView übersetzt      &  \checkmark   	\\ 
+	10            			& 			ScrollView wird zu SingleChildScrollView übersetzt      &  \checkmark   	\\ 
+	11           			& 			StackLayout wird zu Row und Column übersetzt     &  \checkmark   	\\ 
+	12            			& 			RelativLayout wird zu Positioned übersetzt      &  \checkmark   	\\ 
+	
+	
+	13            			& 	BoxView		       				wird zu   	 	SizedBox  	übersetzt	 &  \checkmark   	\\ 
+	 
+	14            			& Image       							wird zu	     	Image	 		übersetzt	 &  \checkmark   	\\ 
+	 
+	15            			& Label       							wird zu  		Text 				übersetzt	 &  \checkmark   	\\ 
+	 
+	16            			& Map            						wird zu	   		Leamaps oder Google Maps übersetzt &  \checkmark   	\\ 
+	17            			& WebView            				wird zu  		webview\_flutter	übersetzt &  \checkmark   	\\
+	18            			& Ellipse								wird zu  		CustomPaint	übersetzt &  \checkmark   	\\
+	19            			& Linie									wird zu	  		CustomPaint	übersetzt &  \checkmark   	\\
+	20            			& Path  								wird zu  		CustomPaint	übersetzt &  \checkmark   	\\
+	21           			& Polygon  							wird zu  		CustomPaint	übersetzt &  \checkmark   	\\ 
+	22            			& Polyline    	wird zu  		CustomPaint	übersetzt &  \checkmark   	\\
+	22            			&  Rectangle  	wird zu  		CustomPaint	übersetzt &  \checkmark   	\\
+	23            			& Rectangle  						wird zu  		CustomPaint	übersetzt &  \checkmark   	\\
+	24           			& Button		       					wird zu  		Flatbutton 		übersetzt &  \checkmark   	\\
+	25            			& ImageButton		       			wird zu  		IconButton 		übersetzt &  \checkmark   	\\
+	26            			& RadioButton		       			wird zu  		RadioButton 		übersetzt &  \checkmark   	\\
+	27            			& RefreshView		       			wird zu  		pull\_to\_refresh 		übersetzt &  \checkmark   	\\
+	28            			& SearchBar		       				wird zu  		flutter\_search\_bar 	übersetzt &  \checkmark   	\\
+	29            			& SwipeView		       			wird zu 		flutter\_slideable 		übersetzt &  \checkmark   	\\
+	30            			& Entry		       						wird zu  		TextField	 		übersetzt &  \checkmark   	\\
+	31           			& Editor		       					wird zu  		TextField	 		übersetzt &  \checkmark   	\\
+	32            			& CheckBox		       				wird zu 		Checkbox	 		übersetzt &  \checkmark   	\\
+	33            			& Switch		       					wird zu  		Switch	 		übersetzt &  \checkmark   	\\
+	34            			& Slider		       					wird zu 		Slider	 		übersetzt &  \checkmark   	\\
+	35            			& Stepper		       				wird zu  		number\_inc\_dec	 		übersetzt &  \checkmark   	\\
+	36            			& DatePicker		       			wird zu  		TextField mit Funktion		übersetzt &  \checkmark   	\\
+	37            			& TimePicker		       			wird zu  		TextField mit Funktion	 		übersetzt &  \checkmark   	\\
+	38            			& ActivityIndicator		       	wird zu  		CircularProgressIndicator 		übersetzt &  \checkmark   	\\
+	39            			& ProgressBar		       			wird zu 		LinearProgressIndicator 		übersetzt &  \checkmark   	\\
+	40            			& CarouselView		       		wird zu  		carousel\_slider  		übersetzt &  \checkmark   	\\
+	41            			& IndicatorView		       		wird zu  		carousel\_slider			übersetzt &  \checkmark   	\\
+	42            			& Picker		       					wird zu  		TextView mit Funktionalität 		übersetzt &  \checkmark   	\\
+	43            			& TableView		       				wird zu  		Table		übersetzt &  \checkmark   	\\
+	44            			& List		       						wird zu  		List 		übersetzt &  \checkmark   	\\
+	45            			& CollectionView		       		wird zu  		List 		übersetzt &  \checkmark   	\\
+	46            			& SwipeView		       			wird zu  		flutter\_slideable 		übersetzt &  \checkmark   	\\
+	47            			& Die Flutter App lässt sich mit Hilfe des Flutter Compilers zu mobilen Anwendungen übersetzten &  \checkmark   	\\
+
+
+\caption[]{Testfälle für den Compiler}
+ \label{tab:Testcasescomplete}
+\end{xltabular}
+
+\begin{xltabular}{\textwidth}{l|X|l}
+   \textbf{ID} & \textbf{Beschreibung} & \textbf{Status}  \\  
+\hline
+
+	1             			& 			Das Xamarin.forms Projekt wird über seine Projektmappe ausgewählt       &  \checkmark   	\\ 
+	2             			& 			Für das Flutter-Projekt muss ein Zielordner angegeben werden       &  \checkmark   	\\ 
+	2             			& 			Wenn beide Auswahlen getroffen wurden kann die Übersetzung gestartet werden       &  \checkmark   	\\ 
+	3            			& 			Nach der Übersetzung werden alle übersetzten Dateien angezeigt      &  \checkmark   	\\ 
+	4            			& 			Bei einem click auf die Dateien werden die durchgeführten Schritte angezeigt      &  \checkmark   	\\ 
+	
+
+
+\caption[]{Testfälle für die grafische Benutzeroberfläche}
+ \label{tab:Testcasescomplete}
+\end{xltabular}
+
+
+%1             &  Prüfen ob das App-Icon übernommen wurde                      			 \\ 
+%2             & App-Name          	& Prüfen ob das App-Name übernommen wurde                      		 \\ 
+%3             & SDK Versionen      & Prüfen ob die SDK Versionen übernommen wurden                      \\ 
+%4             & Seitenname           				& In der Navigationsleiste wird der Name der aktuellen Seite angezeigt                      			 \\ 
+%5          	  & Navigation         			  	& Mit Hilfe des Menüs kann navigiert werden                      			 \\ 
+%6             & Zurück Navigation           	& Über die Navigationsleiste kann zurrück Navigiert werden                      			 \\ 
+%7             & Gyroscope auswerten           	& Die Werte werden in der App angezeigt.                      			 \\ 
+%8             & Accelerometer auswerten           	& Die Werte werden in der App angezeigt.                   			 \\ 
+%9            & Compass auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
+%0            & Magnetometer auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
+%1            & Sensor nicht verfügbar           	& Wenn ein Sensor nicht verfügbar ist, wird ein Fehler angezeigt          			 \\ 
+%2            & Steuerelemente wurden ausgetauscht           	& Alle Steuerelemente werden angezeigt        			 \\ 
+%3            & Ereignisse funktionieren           	&  Steuerelemente reagieren wie gewohnt     			 \\ 
+%4            & Bild aus Ressourcen laden           	& Ein Bild aus den Ressourcen wird in der App angezeigt                      			 \\ 
+%5             & Bild aus dem Web laden           	& Ein Bild aus dem Internet wird in der App                      			 \\ 
