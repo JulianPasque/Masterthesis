@@ -1,15 +1,13 @@
 \chapter{Unterschiede zwischen C\# und Dart}
 \label{chap:Programmiersprachen}
 
+Neben den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten unterschieden zwischen den Frameworks werden in diesem Kapitel nun die Unterschiede zwischen den Hochsprachen \Csharp zu Dart behandelt. Die beiden Sprachen haben einen ähnlichen Stils,  Syntax und haben sogar gemeinsame Bibliotheksnamen. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Potentiell haben alle der hier behandelten Aspekte einen Einfluss auf die mobilen Anwendungen.  
 
-Die Programmiersprachen \Csharp zu Dart haben einen ähnlichen Stils,  Syntax und haben sogar gemeinsame Bibliotheksnamen.  \citeauthor{Pedley2019}, der ursprüngliche Auto des "Flutter für Xamarin.Forms Entwicklers" Dokumentation beschrieb in seinem Blog die Unterschiede zwischen den beiden Programmiersprachen. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019} Anhand dieses Beitrages solllen in diesem Abschnitt die Unterschiede zwischen den Programmiersprachen aufgedeckt und Anhand von Dart- Quelltext Beispielen veranschaulicht werden.    
-\section{In Dart ist alles Null}
-In Dart ist alles null, auch das, was in \Csharp als Wertetyp bezeichnet wird.  Dies führt dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden sollte.
+\section{In Dart war alles Null}
+In Dart ist waren bis zum März 2021 alle Variablen potentiell null, das bedeutet das kein Wert verfügbar ist.  Das galt auch für die aus \Csharp als Wertetyp bezeichneten Datentypen wie Integer, Bool und Char.  Dies führte dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden sollte.  Quelltext \ref{lst:DartNull} zeigt die potentielle Prüfung von Null in Dart. \footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
-\begin{minipage}{\linewidth}
-\lstinputlisting[label={lst:DartNull},caption={Alles kann ich Dart Null sein\protect\footnotemark}, language=Dart]{SourceCode/DartNull.Dart}
-\end{minipage}
-\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
+\lstinputlisting[label={lst:DartNull},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
+
 
 
 \section{Generics}
@@ -19,8 +17,11 @@ Generics werden in Dart sehr ähnlich behandelt wie in \Csharp ,  mit der Ausnah
 
 \begin{minipage}{\linewidth}
 \lstinputlisting[label={lst:DartGeneric},caption={Generics in Dart\protect\footnotemark}, language=Dart]{SourceCode/DartGeneric.Dart}
-\end{minipage}
+\end{minipage}s
 \footcitetext[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
+
+
+
 
 \section{Delegates}
 
@@ -112,6 +113,24 @@ Klassenbibliotheken sind das Konzept der freigegebenen Bibliothek für .NET. Sie
 Dart verfügt über eine Vielzahl von Kernbibliotheken, die für viele alltägliche Programmieraufgaben wie das Arbeiten mit Objektsammlungen , das Durchführen von Berechnungen und das Kodieren/Dekodieren von Daten  unerlässlich sind.  Zusätzliche APIs sind in von der Community bereitgestellten Paketen verfügbar. Dieses Konzept ist dem aus .NET bekannten Bilbiothek Konzept sehr ähnlich.
 Neben den Konzept sind auch die Inhalte in einigen Bibliotheken sehr ähnlich. So ähnelt die Bibliothek dart:async sehr dem .Net Namespace System.Threading.  Außerdem ist dart:Math sehr ähnlich wie System.MAth und dart.io zu System.IO.
 Darüber hinaus können Sie Funktionen direkt in Dateien haben, ohne eine Klasse oder einen Namespace. Das ist fantastisch, wenn Sie funktionaler programmieren wollen. z. B. können Sie dies in eine Datei ganz allein stellen, nichts anderes wird benötigt.
+
+
+
+\section{Asynchrone Benutzeroberfläche und Parallelität}
+
+Die Verwendung von asychronen Methoden für lang laufende Aufgaben, wie das herunterladen von Daten, trägt dazu bei , dass die Benutzeroberfläche reaktionsfähig bleibt , während die Nichtverwendung dieser Methoden oder die unsachgemäße Verwendung dazu führen kann,  dass die Benutzeroberfläche Ihrer App nicht mehr auf Benutzereingaben reagiert, bis die lang laufende Aufgabe abgeschlossen ist.  Für beide in dieser Arbeit behandelten Frameworks gilt,  dass arbeitsaufwendige Aufgaben nicht auf in dem Thread durchgeführt werden sollten,  die für die Benutzeroberfläche zuständig ist, um ein einfrieren dieser zu verhindern. 
+In Flutter werden die asynchronen Möglichkeiten, die die Sprache Dart bietet, auch \glq async\grq{} und \glq await\grq{}  genannt, um asynchrone Arbeiten auszuführen. Dies ist dem Vorgehen in \Csharp sehr ähnlich und ist der Lösung in Xamarin.Forms sehr ähnlich die ebenfalls die Schlüsselwörter  \glq async\grq{} und \glq await\grq{}  verwendet. 
+
+Um die Vorteile von mehreren Prozessorkernen nutzen zu können,  reicht dieses Konzept jedoch nicht aus,  in Flutter müssen potentielle Hintergrund-Thread manuell verwaltet werden,  ähnlich wie bei \glq async\grq{} und \glq await\grq{}  ist das vorgehen vergleichbar mit dem Vorgehen in \Csharp. So steht für den Start von rechenintensive Arbeiten sogenannte \glq Isolate\grq{} zur Verfügung,   dies ähnlich arbeiten wie Tasks in \Csharp. Dabei sind \glq Isolates \grq{}  sind separate Ausführungsthreads, die sich keinen Speicher mit dem Hauptspeicherheap der Ausführung teilen.  Dies ist ein Unterschied zu \glq Tasks\grq{} .  Das bedeutet, dass Sie vom Haupt-Thread aus nicht auf Variablen zugreifen oder Ihre Benutzeroberfläche durch den Aufruf von \glq IsetState()\grq{}  aktualisieren können.
+
+\section{Netzwerkaufrufe}
+Um Netzwerkaufrufe durchzuführen, um Daten von einem Server abzurufen oder Benutzereingaben des Anwenders zu übermittelt wird in Xamarin.Forms die Klasse HttpClient verwenden. Für die Arbeit in Flutter wird dafür das http-Paket verwendet, welches von einem großteil der Netzwerkfunktionalitäten abstrahiert und es einfach macht Netzwerkaufrufe zu tätigten.  Um eine Netzwerkanfrage zu stellen ist es wichtig, die vorher eingeführten Schlüsselwörter \glq async\grq{} und \glq await\grq{} zu verwenden, damit die Benutzeroberfläche auch während der Anfrage Reaktionsfähig bleibt.  Ein Netzwerkanfrage in Flutter wird in  \ref{lst:FlutterNetworkRequest} dargestellt.
+
+
+\begin{minipage}{\linewidth}
+\lstinputlisting[label={lst:FlutterNetworkRequest},caption={Flutter Network request}, language=Dart]{SourceCode/NetworkRequest.Dart}
+\end{minipage}
+
 
 \section{Async/Await}
 Das aufgabenbasierte asynchrone Programmiermodell stellt eine Abstraktion über asynchronen Code bereit. Der Quelltext kann dabei in gewohnter Weise als eine Folge von Anweisungen geschrieben werden und auch so gelesen werden, als ob jede Anweisung abgeschlossen wäre, bevor die nächste Anweisung beginnt. Der Compiler führt eine Reihe von Transformationen durch, da möglicherweise einige dieser Anweisungen gestartet werden und eine Task zurückgeben, die die derzeit ausgeführte Arbeit darstellt.

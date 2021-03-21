@@ -10,6 +10,7 @@
 \renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
 
 \usepackage{booktabs}
+\usepackage{caption}
 
 \usepackage{tabularx} 
 \usepackage{xltabular}
@@ -108,10 +109,10 @@ Java
 \definecolor{backcolour}{rgb}{0.95, 0.95, 0.96}
 
 \lstdefinelanguage{Dart} {
-	morekeywords={num,String,var,library,get,set,String,int,num,  @override} ,
+	morekeywords={ num,String,var,library,get,set,String,int,num,await,async,  @override} ,
   	sensitive=true,
  	 morecomment=[l]{//},
-	keywordstyle=\color{blue},
+	keywordstyle=\color{bluekeywords},
 	commentstyle=\color{dkgreen}, 
 	stringstyle=\color{mauve},
 	numberstyle=\tiny\color{gray},
@@ -134,6 +135,8 @@ keywordstyle=\color{bluekeywords},
 stringstyle=\color{redstrings},
 }
 \usepackage{ltxtable}
+
+\usepackage{acronym}
 
 
 \lstset{style=Codestyle}
@@ -173,7 +176,8 @@ Code-erzeugung
   \listoffigures      % Setzt das Abbildungsverzeichnis
   
   \listoftables       % Setzt das Tabellenverzeichnis
-  
+  \include{Abkürzungsverzeichnis}
+
   \let\footnotemark\relax
   \lstlistoflistings
 
