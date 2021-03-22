@@ -56,7 +56,7 @@ Die deutlichen Unterschiede bei der Auswahl eines Navigationkonzeptes können da
 \caption{Gegenüberstellung Pages}
  \label{tab:CompareXFFlutter}
 \end{table}
-Gegenüberstellungen,  in Tabellenform,  von Xamarin.Forms Elementen und Flutter Widgets werden auch an anderer Stelle in diesem Kapitel der Übersichtlichkeit halber verwendet.  Flutter Widgets die nicht im Text expliziert aufgeführt werden,  sind den Xamarin.Forms Elementen bei Funktionalität und Aussehen nahezu identisch.  Eine vollständige Referenztabelle die sich aus allen Einzelbetrachtungen zusammensetzt, befindet sich in \ref{chap:Gegenueberstellung}. 
+Gegenüberstellungen,  in Tabellenform,  von Xamarin.Forms Elementen und Flutter Widgets werden auch an anderer Stelle in diesem Kapitel der Übersichtlichkeit halber verwendet.  Flutter Widgets, die nicht im Text expliziert aufgeführt werden,  sind den Xamarin.Forms Elementen in Funktionalität und Aussehen nahezu identisch.  Eine vollständige Referenztabelle die sich aus allen Einzelbetrachtungen zusammensetzt, befindet sich in \ref{chap:Gegenueberstellung}. 
 
 Neben den Ansichtsseiten bietet Xamarin.Forms weitere Layouts,  die Steuerelemente zu visuellen Strukturen zusammenstellen.  Abbildung \ref{fig:Xamarin.Forms Layouts} stellt die gebräuchlichsten dieser Layouts vor. 
 
@@ -122,7 +122,7 @@ Einige Steuerelemente sind ausschließlich für die Darstellung von Inhalten vor
 Zu zeichnende Elemente, wie die  \glq Ellipse\grq{}, \glq Linie\grq{}, \glq Path\grq{},  \glq Polygon\grq{},  \glq Polyline\grq{}  und \glq Rectangle\grq{}wurden nicht besonders aufgeführt,  da diese bei Flutter auf die sogenannte Canvas der Benutzeroberfläche gezeichnet werden können.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterCanvas2020} 
 
 \subsubsection{Ereignisauslösende Steuerelemente}
-Xamarin.Forms ist ein ereignisgesteuertes Framework. Die hier behandelten Steuerelemente stellen alle mindestens ein Ereignis zur Verfügung,  das mithilfe der in Kapitel \ref{chap:CompilerEntwurf} erwähnten Codebehind Klassen abonniert werden kann.  Sobald ein  sogenanntes Event ausgelöst wird,  übermittelt das Framework diese Information an den Empfänger.   Die folgenden Steuerelemente werden bei Xamarin.Forms dieser Kategorie zugeordnet.  \glq Buttons\grq{} sind rechteckige Objekte,  die einen Text anzeigen und ein \glq clicked\grq{} Ereignis auslösen, nachdem sie von einem Anwender gedrückt wurden.  Mit \glq ImageButton\grq{} steht ebenfalls eine Variante zur Verfügung,  die ein Icon statt einem Text anzeigt.  Bei einem \glq RadioButton\grq{} wird eine Option aus einer Reihe von Möglichkeiten ausgewählt und löst ein Ereignis aus,  wenn sich die Benutzerauswahl ändert.  Ein weiteres Steuerelement ist \glq RefreshView\grq{}, das eine \glq PullToRefresh\grq{}  Funktionalität für Layouts mit Bildlauf anbietet.  Dabei wird durch das Herunterziehen des Seiteninhaltes der Wunsch zur Seitenaktualisierung  übermittelt.  Mithilfe der \glq Searchbar\grq{} haben Anwender die Möglichkeit Inhalte  innerhalb der App zu suchen.  Nach der  Eingabe von Textzeichenfolgen kann per Schaltfläche,  oder Tastaturtaste, ein Ereignis ausgelöst und der eingegeben Text an die Codebehind-Datei weitergeleitet werden.  Tabelle \ref{tab:eventcommands}  zeigt die ereignisauslösenden Steuerelementen von Xamarin.Forms und alternative Flutter Widgets.
+Xamarin.Forms ist ein ereignisgesteuertes Framework. Die hier behandelten Steuerelemente stellen alle mindestens ein Ereignis zur Verfügung,  das durch die in Kapitel \ref{chap:CompilerEntwurf} erwähnten Codebehind Klassen abonniert werden kann.  Sobald ein  sogenanntes Event ausgelöst wird,  übermittelt das Framework diese Information an den Empfänger.   Die folgenden Steuerelemente werden bei Xamarin.Forms dieser Kategorie zugeordnet.  \glq Buttons\grq{} sind rechteckige Objekte,  die einen Text anzeigen und ein \glq clicked\grq{} Ereignis auslösen, nachdem sie von einem Anwender gedrückt wurden.  Mit \glq ImageButton\grq{} steht ebenfalls eine Variante zur Verfügung,  die ein Icon statt einem Text anzeigt.  Bei einem \glq RadioButton\grq{} wird eine Option aus einer Reihe von Möglichkeiten ausgewählt und löst ein Ereignis aus,  wenn sich die Benutzerauswahl ändert.  Ein weiteres Steuerelement ist \glq RefreshView\grq{}, das eine \glq PullToRefresh\grq{}  Funktionalität für Layouts mit Bildlauf anbietet.  Dabei wird durch das Herunterziehen des Seiteninhaltes der Wunsch zur Seitenaktualisierung  übermittelt.  Mithilfe der \glq Searchbar\grq{} haben Anwender die Möglichkeit Inhalte  innerhalb der App zu suchen.  Nach der  Eingabe von Textzeichenfolgen kann per Schaltfläche,  oder Tastaturtaste, ein Ereignis ausgelöst und der eingegeben Text an die Codebehind-Datei weitergeleitet werden.  Tabelle \ref{tab:eventcommands} zeigt die ereignisauslösenden Steuerelementen von Xamarin.Forms und alternative Flutter Widgets.
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
@@ -147,11 +147,11 @@ Die Beziehung zwischen Steuerelementen und Codebehind mittels Ereignissen wird  
 \lstinputlisting[label={lst:XFEventHandler},caption={Xamarin.Forms Event Handler}, , language=csh]{SourceCode/EventHandler.cs}
 
 \subsubsection{Steuerelemente zur Textmanipulation}
-In Xamarin.Forms stehen die Arbeit mit Texten die Steuerelemente\glq Entry\grq{}für die Eingabe von einzelnen und  \glq Editor\grq{} von mehreren Textzeilen zur Verfügung.  Tabelle \ref{tab:TextWidgets} zeigt die Gegenüberstellung zu Flutter Widgets.  
+In Xamarin.Forms stehen für die Arbeit mit Texten die Steuerelemente\glq Entry\grq{}zur  Eingabe von einzelnen und  \glq Editor\grq{} von mehreren Textzeilen bereit.  Tabelle \ref{tab:TextWidgets} zeigt die Gegenüberstellung zu Flutter Widgets.  
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	Entry		       		&  TextField	 		\\ 
 	Editor		       	&  TextField	 		\\ 
@@ -159,7 +159,7 @@ In Xamarin.Forms stehen die Arbeit mit Texten die Steuerelemente\glq Entry\grq{}
 \caption{Gegenüberstellung textmanipulierender Steuerelemente}
  \label{tab:TextWidgets}
 \end{table}
-Wie in der Übersicht erkenntlich besitzt Flutter ausschließlich das Widget \glq TextField\grq{} das beide Funktionalitäten der Xamarin.Forms Steuerelemente bündelt.  Standardmäßig bietet das \glq TextField\grq{} Widget die Eingabemöglichkeit für eine Zeile ähnlich dem \glq Entry\grq{} Steuerelement, kann aber durch das setzen einer Eigenschaft erweitern werden.  Dies wird in Quelltext \ref{lst:FlutterTextField} dargestellt.
+Wie in der Übersicht erkenntlich besitzt Flutter ausschließlich das Widget \glq TextField\grq{},  das beide Funktionalitäten der Xamarin.Forms Steuerelemente bündelt.  Standardmäßig bietet das \glq TextField\grq{} Widget die Eingabemöglichkeit für eine Zeile ähnlich dem \glq Entry\grq{} Steuerelement, kann aber durch das Setzen einer Eigenschaft erweitert werden.  Dies wird in Quelltext \ref{lst:FlutterTextField} dargestellt.
 
 \lstinputlisting[label={lst:FlutterTextField},caption={TextField mit mehreren Zeilen in Flutter}, language=Dart]{SourceCode/FlutterTextField.Dart}
 
@@ -171,13 +171,13 @@ Wersetzung bedeutet das Ergänzen von Steuerelmenten mit Eingaben durch den Anwe
  \caption{Darstellung von den Steuerelementen \glq Switch\grq{} und \glq Checkbox\grq{}}
  \label{fig:SwitchCheckbox}
 \end{figure}
-Die beiden linken Darstellungen der jeweiligen Steuerelemente zeigen den Zustand mit dem boolschen Wert falsch , die rechten wahr.
+Die beiden linken Darstellungen der jeweiligen Steuerelemente zeigen den Zustand mit dem boolschen Wert falsch,  die rechten wahr.
 
-Ein  \glq Slider\grq{}  bieten den Anwendern die Option einen Wert aus einem kontinuierlichen Bereich ein \glq Stepper\grq{}  aus einem Bereich von inkrementellen Werten auszuwählen.  Eine Datumsauswahl wird durch das \glq DatePicker\grq{} Steuerelement ermöglicht,  die Zeitauswahl mit \glq TimePicker\grq{}.  Die Tabelle \ref{tab:valuecontrols} zeigt die gewohnte Gegenüberstellung von Xamarin.Forms Steuerlementen zu Flutter Widgets. 
+Ein  \glq Slider\grq{}  gewährt den Anwendern die Option einen Wert aus einem kontinuierlichen Bereich ein \glq Stepper\grq{}  aus einem Bereich von inkrementellen Werten auszuwählen.  Eine Datumsauswahl wird durch das \glq DatePicker\grq{} Steuerelement ermöglicht,  die Zeitauswahl mit \glq TimePicker\grq{}.  Die Tabelle \ref{tab:valuecontrols} präsentiert die gewohnte Gegenüberstellung von Xamarin.Forms Steuerlementen zu Flutter Widgets. 
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	CheckBox		       				&  Checkbox	 		\\ 
 	Switch		       					&  Switch	 		\\ 
@@ -190,19 +190,19 @@ Ein  \glq Slider\grq{}  bieten den Anwendern die Option einen Wert aus einem kon
  \label{tab:valuecontrols}
 \end{table}
  
-Für die Steuerelemente \glq DatePicker\grq{}  und \glq TimePicker\grq{} steht kein entsprechendes Widget zur Verfügung.  Durch \glq TextField\grq{} und mithilfe einer Fingergeste wird eine Funktion aufgerufen, die den Auswahldialog für Datum und Uhrzeit öffnet und anschließend die Auswahl in das Textfeld einträgt.  Quelltext \ref{lst:FlutterTimePicker} zeigt diese Funktion in Dart am Beispiel einer Zeitauswahl. 
+Für die Steuerelemente \glq DatePicker\grq{}  und \glq TimePicker\grq{} steht kein entsprechendes Widget zur Verfügung.  Durch \glq TextField\grq{} und mithilfe einer Fingergeste wird eine Funktion aufgerufen, die den Auswahldialog für Datum und Uhrzeit öffnet und anschließend die Auswahl in das Textfeld einträgt.  Quelltext \ref{lst:FlutterTimePicker} repräsentiert diese Funktion in Dart am Beispiel einer Zeitauswahl. 
  \newpage
 \lstinputlisting[label={lst:FlutterTimePicker},caption={Verwendung von Timepickern in Flutter}, language=Dart]{SourceCode/FlutterTimePicker.Dart}
 
-Die gesetzten Werte können bei Xamarin.Forms aus den Codebehind Klassen abgefragt werden um den Status eines Steuerelementes zu ermitteln.  Das Abrufen von Informationen in Flutter wird von spezialisierten Widgets beispielsweise dem \glq TextEditingController\grq{} durchgeführt.
+Die gesetzten Werte können bei Xamarin.Forms aus den Codebehind Klassen abgefragt werden,  um den Status eines Steuerelementes zu ermitteln.  Das Abrufen von Informationen in Flutter wird von spezialisierten Widgets,  beispielsweise dem \glq TextEditingController\grq{} durchgeführt.
 
 \subsubsection{Aktivitätsandeutende Steuerelemente}
 
-In mobilen Anwendungen kann es aufgrund der limitierten Hardware Ressourcen und begrenzten Netzwerkanbindung zu zeitaufwendigen Aktionen kommen.  Zur Visualisierung dieser Ladezeit stehen in Xamarin.Forms die folgenden Steuerelemente zur Verfügung.  Der \glq ActivityIndicator\grq{} zeigt durch eine Animation,  dass eine langwierige Aktivität ausführt wird,  die \glq ProgressBar\grq{} kann mittels Ladebalken auch den Fortschritt darstellen.   Die Tabelle \ref{tab:ActivityControls} zeigt die adäquat Flutter Widgets.
+In mobilen Anwendungen kann es aufgrund der limitierten Hardware Ressourcen und begrenzten Netzwerkanbindung zu zeitaufwendigen Aktionen kommen.  Zur Visualisierung dieser Ladezeit stehen in Xamarin.Forms die folgenden Steuerelemente zur Verfügung.  Der \glq ActivityIndicator\grq{} zeigt durch eine Animation,  dass eine langwierige Aktivität ausführt wird,  die \glq ProgressBar\grq{} kann mittels Ladebalken auch den Fortschritt darstellen.  Die Tabelle \ref{tab:ActivityControls} veranschaulicht die adäquaten Flutter Widgets.
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	ActivityIndicator		       		&  	CircularProgressIndicator 		\\ 
 	ProgressBar		       				&  	LinearProgressIndicator 		\\ 
@@ -214,12 +214,12 @@ In mobilen Anwendungen kann es aufgrund der limitierten Hardware Ressourcen und 
 
 \subsubsection{Sammlunganzeigende Steuerelemente}
 
-Xamarin.Forms stellt für die Darstellung von Datensammlungen Steuerelemente zur Verfügung.  \glq CarouselView\grq{}  zeigt eine blätterbare Liste von Datenelementen an.   \glq IndicatorView\grq{}  stellt mithilfe von Indikatoren die Anzahl der Elemente in einer  \glq CarouselView\grq{} dar.   \glq Picker\grq{}  bietet die Möglichkeit eine Auswahl aus einer Sammlung zu entnehmenund anschließend in einem Textfeld auszugeben.   Die Tabelle \ref{tab:Collections} zeigt die entsprechenden Flutter Widgets an.
+Xamarin.Forms stellt für die Darstellung von Datensammlungen Steuerelemente zur Verfügung.  \glq CarouselView\grq{}  zeigt eine blätterbare Liste von Datenelementen an.   \glq IndicatorView\grq{} stellt mithilfe von Indikatoren die Anzahl der Elemente in einer  \glq CarouselView\grq{} dar.  \glq Picker\grq{}  bietet die Möglichkeit eine Auswahl aus einer Sammlung zu entnehmenund anschließend in einem Textfeld auszugeben.   Die Tabelle \ref{tab:Collections} zeigt die entsprechenden Flutter Widgets an.
 
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	CarouselView		       		&  	carousel\_slider  		\\ 
 	IndicatorView		       		&  	carousel\_slider		\\ 	
@@ -233,10 +233,10 @@ Xamarin.Forms stellt für die Darstellung von Datensammlungen Steuerelemente zur
 
 \subsubsection{Listen}
 
-Listen sind  Steuerelemente und dienen ebenfalls der Anzeige und Interaktion von Sammlungen.  Aufgrund der langsamen Ladezeiten von \glq ListView\grq{} hat Microsoft im Jahre 2019 mit  \glq CollectionView\grq{}  ein zweites optimiertes Steuerelement für die Anzeige von Listen zur Verfügung gestellt.   \glq SwipeView\grq{} erlaubt einzelne Reihen zur Seite zu schieben und darunter liegende Schaltflächen sichtbar zu machen.  Tabelle \ref{tab:Listview} zeigt die Listen und Ihre Gegenstücke aus dem Flutter Framework. 
+Listen sind  Steuerelemente und dienen ebenfalls der Anzeige und Interaktion von Sammlungen.  Aufgrund der langsamen Ladezeiten von \glq ListView\grq{} hat Microsoft im Jahre 2019 mit  \glq CollectionView\grq{}  ein zweites optimiertes Steuerelement für die Anzeige von Listen zur Verfügung gestellt.   \glq SwipeView\grq{} erlaubt einzelne Reihen zur Seite zu schieben und darunter liegende Schaltflächen sichtbar zu machen.  Tabelle \ref{tab:Listview} stellt die Listen aus Xamarin.Forms mit denen aus Fluttter gegenüber.  
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X}
-   \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
+   \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	List		       				&  	List 		\\ 
 	CollectionView		       				&  	List 		\\ 
@@ -246,54 +246,65 @@ Listen sind  Steuerelemente und dienen ebenfalls der Anzeige und Interaktion von
  \label{tab:Listview}
 \end{table}
 
-Die Xamarin.Forms \glq ListView \grq{}ermittelt anhand einer Vorlage,  wie eine Zeile dargestellt werden muss.  Jede Reihe die durch den Benutzer ausgewählt wird,  löst ein Ereignis aus.  Um dieses Verhalten in Flutter abzubilden,  wird die Geste des Widgets in der Liste bereitgestellt.  
+Die Xamarin.Forms \glq ListView \grq{}ermittelt anhand einer Vorlage,  wie eine Zeile dargestellt werden muss.  Jede Reihe,  die durch den Benutzer ausgewählt wird,  löst ein Ereignis aus.  Um dieses Verhalten in Flutter abzubilden,  wird die Geste des Widgets in der Liste bereitgestellt.  
 
 Damit sich die ListView im Falle von Änderung in der angezeigten Sammlung automatisch aktualisiert, ist es notwendig die Daten in einer \glq ObservableCollection\grq{} vorzuhalten,  da somit die Benutzeroberfläche über Änderungen informiert wird.   Eine  Möglichkeit, die  \glq ListView\grq{} in Flutter zu aktualisieren, besteht darin, eine neue Instanz des Widget zu erstellen und die Daten aus der alten in die neue Liste zu kopieren.  Dieser Ansatz ist zwar einfach umsetzbar, aber für große Datensätze nicht zu empfehlen.  Eine effektive Änderung für dynamische oder umfangreiche Listen ist mit dem ListView.Builder möglich.   
 
 \section{Gesten}
-Für die Interaktion mit der Benutzeroberfläche werden Gesten verwendet.  Die Steuerelemente von Xamarin.Forms stellen Ereignisse für die häufig verwendeten Interaktionen bereit wie im Unterpunkt Ereignisauslösende Steuerelemente aufgeführt.  Alternativ kann die Klasse  \glq GestureRecognizer\grq{}  verwendet werden, um seltenere Benutzerinteraktionen auf Ansichten zu erkennen beispielsweise der click auf eine Steuerelement für die Darstellung.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftGesten2020} 
-In Flutter gibt es zwei ähnliche Möglichkeiten: Wird die Ereignisserkennung durch das Flutter-Widget z.B. den \glq ElevatedButton\grq{} untersützt kann eine Funktion übergeben werden, indem eine Geste behandelt wird.  Ist keine Ereignisserkennung durch das Widget unterstützt kann es in einem \glq GestureDetector\grq{} verschachtelt werden wie dies im Rahmen des  \glq Timepickers\grq{} in Quelltext \ref{lst:FlutterTimePicker} dargestellt wurde. \footcite[Vgl.][Abgerufen am \today]{GoogleGesture2020} 
+Für die Interaktion mit der Benutzeroberfläche werden Gesten verwendet.  Die Steuerelemente von Xamarin.Forms stellen Ereignisse für die häufig verwendeten Interaktionen bereit, wie im Unterpunkt ereignisauslösende Steuerelemente aufgeführt.  Alternativ kann die Klasse \glq GestureRecognizer\grq{}  verwendet werden, um seltenere Benutzerinteraktionen auf Ansichten zu erkennen, beispielsweise der Klick auf eine Steuerelement für die Darstellung.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftGesten2020} 
+In Flutter gibt es zwei ähnliche Möglichkeiten: Wird die Ereignisserkennung durch das Flutter-Widget z.B. den \glq ElevatedButton\grq{} untersützt,  kann eine Funktion übergeben werden,  in der eine Geste behandelt wird.  Ist keine Ereignisserkennung mittels Widget möglich,  kann es in einem \glq GestureDetector\grq{} verschachtelt werden, wie dies im Rahmen des \glq Timepickers\grq{} in Quelltext \ref{lst:FlutterTimePicker} dargestellt wurde. \footcite[Vgl.][Abgerufen am \today]{GoogleGesture2020} 
 
 \section{Animation}
 Gut gestaltete Animationen machen eine Benutzeroberfläche intuitiver, tragen zum eleganten Erscheinungsbild einer ausgefeilten App bei und verbessern das Benutzererlebnis.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterAnimations2020} 
-Xamarin.Forms enthält eine eigene Animationsinfrastruktur, die für die Erstellung einfacher Bildsequenzen unkompliziert ist, aber auch vielseitig genug, um komplexe Varianten zu erstellen.  Die Klassen zielen auf verschiedene Eigenschaften von visuellen Elementen ab, wobei eine typische Animation eine Eigenschaft schrittweise, von einem Wert zu einem anderen, über einen bestimmten Zeitraum ändert. \footcite[Vgl.][Abgerufen am \today]{Microsoftanimations2020} 
-Flutter stehen vielen Animationen,  insbesondere für Material-Widgets, zur Verfügung.  Sie mit den in ihrer Design-Spezifikation definierten Standard-Bewegungseffekten geliefert,  wobei diese Effekte anpassbar sind.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterAnimations2020} 
+Xamarin.Forms enthält eine eigene Animationsinfrastruktur,  die für die Erstellung einfacher Bildsequenzen unkompliziert,  aber auch vielseitig genug ist,  um komplexe Varianten zu erstellen.  Die Klassen zielen auf verschiedene Eigenschaften von visuellen Elementen ab, wobei eine typische Animation eine Eigenschaft schrittweise, von einem Wert zu einem anderen, über einen bestimmten Zeitraum ändert. \footcite[Vgl.][Abgerufen am \today]{Microsoftanimations2020} 
+In Flutter stehen viele Animationen,  insbesondere für Material-Widgets,  zur Verfügung.  Sie sind mit den in ihrer Design-Spezifikation definierten Standard-Bewegungseffekten geliefert,  wobei diese Effekte anpassbar sind.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterAnimations2020} 
 
 \section{Navigation}
 \label{sec:nav}
 
-Die Navigation innerhalb der Anwendung hängt bei Xamarin.Forms hauptsächlich von der verwendeten Ansichtsseite und ihrem Navigationkonzept ab.  So bietet die NavigationPage eine hierarchische Navigation, bei der der Benutzer durch die Seiten vorwärts und rückwärts navigieren kann. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamNavigation2020}   Flutter hat eine ähnliche Implementierung,  die einen Navigator und Routen verwendet.  Route sind  Abstraktionen für die Seiten einer App, und ein Navigator ist ein Widget, das Routen verwaltet.  Der Navigator arbeitet ähnlich wie die Xamarin.Forms NavigationPage, indem er Seiten aufrufen kann abhängig davon ob man zu einer Ansicht hin oder von ihr zurück navigieren möchte.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterNavigation2020} 
+Die Navigation innerhalb der Anwendung hängt bei Xamarin.Forms hauptsächlich von der verwendeten Ansichtsseite und ihrem Navigationkonzept ab.  So bietet die \glq NavigationPage\grq{}, eine hierarchische Navigation, bei der der Benutzer durch die Seiten vorwärts und rückwärts navigieren kann. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamNavigation2020} Flutter hat eine ähnliche Implementierung,  die einen \glq  Navigator\grq{}, und \glq  Routen\grq{}, verwendet.  Route sind  Abstraktionen für die Seiten einer App, und ein \glq  Navigator\grq{}, ist ein Widget, das \glq Routen\grq{}, verwaltet.  Der \glq Navigator\grq{}, arbeitet ähnlich wie die Xamarin.Forms \glq NavigationPage\grq{}, indem er Seiten aufrufen kann,  abhängig davon,  ob man zu einer Ansicht hin,  oder von ihr zurück navigieren möchte.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterNavigation2020} 
 
 
-Neben der internen Navigation innerhalb einer Anwendung ist es auch möglich zwischen verschiedenen Apps zu navigieren.  Dafür greift Xamarin Forms auf ein bestimmtes URI-Schema zurück.  Mit dem Befehl Launcher.OpenAsync("mailto://") kann so z.B. das  Standard E-Mail-Programm des Gerätes geöffnet und werden verwenden. \footcite[Vgl.][Abgerufen am \today]{MicrosoftLauncher2020}  In Futter kann für diese Funktionalität mithilfe des Plugins urllauncher Anwendungen hinzugefügt werden.\footcite[Vgl.][Abgerufen am \today]{Googleurllauncher2020} 
+Neben der internen Navigation innerhalb einer Anwendung ist es auch möglich zwischen verschiedenen Apps zu navigieren.  Dafür greift Xamarin Forms auf ein bestimmtes \ac{uri}-Schema zurück, mit welchen Ressourcen eindeutig bezeichnet werden.  Durch den Befehl \glq Launcher.OpenAsync("mailto://")\grq{} kann so z.B.  das Standardprogramm für E-Mails des Gerätes geöffnet und werden verwenden. \footcite[Vgl.][Abgerufen am \today]{MicrosoftLauncher2020} Mithilfe des Plugins \glq url\_launcher\grq{} kann die Funktionalität zum öffnen von anderen Anwendungen zu Flutter Apps hinzugefügt werden.\footcite[Vgl.][Abgerufen am \today]{Googleurllauncher2020} Die unterstützten \ac{uri}-Schemata und ihre Aktionen werden in Tabelle \ref{tab:URISChema} dargestellt.
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X}
+   \textbf{\ac{uri}-Schemata} & \textbf{Aktion}  \\
+\hline
+	http:<URL>		       				&  	URL wird im Standardbrowser geöffnet 		\\ 
+	mailto:<E-Mail Adresse>		       		&  	Erstellt eine Email an die angegebene E-Mail Adresse 		\\ 
+	tel:<Telefonnummer>	       		&  	Ruft die Rufnummer an 		\\ 
+	sms:<Telefonnummer>		       		&  	Schreibt eine SMS an die Rufnummer		\\ 
+\end{tabularx}
+\caption{Unterstützte Schemata des \glq url\_launcher\grq{} Plugins}
+ \label{tab:URISChema}
+\end{table}
 
 \section{Lebenzyklus}
-Durch das Navigieren zu anderen Anwendungen ändert sich der Status von im Fordergrund zu im Hintergrund . Der aktuelle Zustand einer App bestimmt, was sie zu jedem Zeitpunkt tun kann und was nicht.  Zum Beispiel hat eine Vordergrund-App die Aufmerksamkeit des Benutzers, also hat sie Vorrang bei de,m Zugriff auf Systemressourcen, einschließlich der CPU.  Im Gegensatz dazu muss eine Hintergrund-App so wenig wie möglich arbeiten, am besten gar nichts, da sie sich außerhalb des Bildschirms befindet.  Wenn eine App ihre Zustand wechselt,  müssen sie ihr Verhalten entsprechend anpassen.\footcite[Vgl.][Abgerufen am \today]{AppleLifecycycle2020} 
-
-Xamarin.Forms bitetet für die Arbeit mit dem Lebenzyklus der App die folgenden drei Methoden \glq OnStart\grq{} , \glq OnResume\grq{}  und \glq OnSleep\grq{} an die aufgerufen werden wenn sich der Status der Anwendung verändert. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLifecycle2020} Bei Flutter kann auf die ‚didChangeAppLifecycleState ‘ Methode zurückgegriffen werden, die bei Änderungsereignissen ausgelöst wird und die drei Lebenszyklen beinhaltet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterLifeCycle2020} 
+Durch das Navigieren zu anderen Anwendungen ändert sich der Status von Ausführung im Vordergrund zu Ausführung im Hintergrund.  Der aktuelle Status der App bestimmt die Handlungsoptionen.  Hat eine Vordergrund App die Aufmerksamkeit des Benutzers, ist sie priorisiert beim Zugriff auf die Systemressourcen, einschließlich der CPU.  Gleichzeitig muss eine Hintergrund-App möglich inaktiv sein,  da sie sich außerhalb des Bildschirms befindet.  Mobile Anwendungen müssen auf Änderungen des Lebenzyklus-Status reagieren können um ihr Verhalten entsprechend anzupassen.\footcite[Vgl.][Abgerufen am \today]{AppleLifecycycle2020} Xamarin.Forms bietet dafür die  drei Methoden \glq OnStart\grq{} , \glq OnResume\grq{} und \glq OnSleep\grq{} an die aufgerufen werden wenn sich der Status verändert. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLifecycle2020} Bei Flutter kann auf die \glq didChangeAppLifecycleState\grq{} Methode zurückgegriffen werden, die bei Änderungsereignissen ausgelöst wird und die ebenfalls die drei Lebenszyklen beinhaltet. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterLifeCycle2020} 
 
 \section{Erweiterungen}
-Erweiterungen sind Programmergänzungen, die auch von externen Entwicklern beigetragen werden können.  Sie dienen der Reduzierung des Entwicklungsaufwandes, da nicht jede Funktionalität eigens implementiert werden muss.  Im .NET-Ökosystem können Xamarin.Forms-Projekte auf das Paketverwaltungssystem Nuget zurückgreifen,  um Erweiterungen zu einer App hinzuzufügen. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamNuget2020}  Bei Flutter wird für diesen Fall mit der pubspec.yaml Datei eine Referenz auf das ausgewählte Plugin gesetzt.  Dabei unterscheidet Flutter zwischen Packeten, welches Erweiterungen sind die in Dart geschrieben wurden und Plugins dabei handelt es sich um eine Erweiterung die Plattformfunktionalität verfügbar macht.  Plugins können für Android (mit Kotlin oder Java) oder für  iOS (mit Swift oder Objective-C) geschrieben sein. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterPackages2020} In Quelltext \ref{tab:Listview} wird ein Auschnitt der pubspec.yaml Datei gezeigt, in welcher das in Abschnitt \ref{sec:nav} erwähnte Plugin für das öffnen von anderen Anwendungen mit Hilfe von URL's als Abhängigkeit geladen wird.
+Erweiterungen sind Programmergänzungen, die auch von externen Entwicklern beigetragen werden können.  Sie dienen der Reduzierung des Entwicklungsaufwandes, da nicht jede Funktionalität eigens implementiert werden muss.  Im .NET-Ökosystem können Xamarin.Forms-Projekte auf das Paketverwaltungssystem Nuget zugreifen,  um Erweiterungen zu einer App hinzuzufügen. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamNuget2020}  Bei Flutter wird für diesen Fall mit der pubspec.yaml Datei eine Referenz auf das ausgewählte Plugin gesetzt.  Dabei werden Pakete,  Erweiterungen die in Dart geschrieben sind, von Plugins, Erweiterungen die plattformfunktionalität verfügbar macht, unterschieden.  Diese Plugins können für Android (mit Kotlin oder Java) oder für iOS (mit Swift oder Objective-C) geschrieben sein. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterPackages2020} In Quelltext \ref{lst:Pubspecjaml} wird ein Auschnitt der pubspec.yaml Datei gezeigt, in welcher das in Abschnitt \ref{sec:nav} erwähnte Plugin \glq url\_launcher\grq{}   geladen wird.
 
+%Kein Quelltext- ggf ändern.
 \lstinputlisting[label={lst:Pubspecjaml},caption={[Erweiterungen in Flutter]{Erweiterungen in Flutter\footcite[In Anlehnung an][Abgerufen am \today]{GoogleFlutterPackages2020}}}, language=Dart]{SourceCode/Pubspec.yaml} 
-\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterPackages2020}In dem Beispiel muss das Plugin eine mindeste Version von 5.4 haben darf jedoch die Version 6 nicht überschreiten. 
+\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterPackages2020}In dem Beispiel muss das Plugin mindeste die Version 5.4 haben darf jedoch die Version 6 nicht überschreiten. 
 
 \section{Bilder}
-Bilder können in Apps das Benutzererlebnis verbessern und helfen eine Aktion zu veranschaulichen oder komplexe Botschaften verdeutlichen.  \footcite[Vgl.][Abgerufen am \today]{GoogleMaterialImages2020} In iOS und Android können Bilder in verschiedenen Auflösungen bereit gestellt werden,  das Betriebssystem wählt während der Laufzeit das beste Bild basierend auf den Eigenschaften des Smartphonedisplays.  Xamarin.Forms verwendet die \acfp{api} der nativen Plattformen zum Laden lokaler Bilder und unterstützt daher die plattformspezifischen  Funktionalitäten,  wenn die Dateiennamen korrekt sind und sich im Projekt befinden.\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamImages2020} Zur Verwendung nativer Bilddateien müssen die Bilder in Xamarin.Forms zu jedem Anwendungsprojekt hinzugefügt werden und vom gemeinsamen Xamarin.Forms-Code referenziert werden. 
-
-Flutter verwendet Im Gegensatz zu Xamarin.Forms keine nativen \acs{api} sondern verwendet ein einfaches dichte-basiertes Format,  ähnlich dem von iOS.  Für die Anzeige von Bildern verwendet Flutter sogenannte logische Pixel, die im Grunde dasselbe sind wie geräteunabhängige Pixel.  Mithilfe der sogenannte devicePixelRatio kann das Verhältnis von physikalischen Pixeln zu einem einzelnen logischen Pixel ermittelt werden. Bei Flutter können sich alle Bilder in einem beliebigen Ordner befinden da Flutter keine vordefinierte Ordnerstruktur hat. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterImages2020} 
+Bilder können in Apps das Benutzererlebnis verbessern und helfen eine Aktion zu veranschaulichen oder komplexe Botschaften zu verdeutlichen.  \footcite[Vgl.][Abgerufen am \today]{GoogleMaterialImages2020} In iOS und Android können sie in verschiedenen Auflösungen bereit gestellt werden,  das Betriebssystem wählt während der Laufzeit das beste Bild basierend auf den Eigenschaften des Smartphonedisplays aus.  Xamarin.Forms verwendet die \acfp{api} der nativen Plattformen zum Laden lokaler Bilder und unterstützt daher die plattformspezifischen Funktionalitäten.\footcite[Vgl.][Abgerufen am \today]{MicrosoftXamImages2020} Zur Verwendung nativer Bilddateien müssen die Bilder in Xamarin.Forms zu jedem Anwendungsprojekt hinzugefügt werden und vom gemeinsamen Xamarin.Forms-Code referenziert werden.  Flutter verwendet im Gegensatz zu Xamarin.Forms keine nativen \acp{api} sondern ein einfaches dichte-basiertes Format,  ähnlich dem von iOS.  Für die Anzeige von Bildern arbeitet Flutter mit sogenannten logischen Pixeln.  Alle Bilderressourcen können sich in einem beliebigen Ordner innerhalb des Projektes befinden da Flutter keine vordefinierte Ordnerstrukturen hat. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterImages2020} 
 
 \section{Schriftsatz}
-Ein Schriftsatz wird verwendet um das Design und den Inhalt so klar und effizient wie möglich darzustellen.  In Xamarin.Forms mussten Schriften bis zum Jahre 2020 in jedem nativen Projekt referenziert werden.  Seit der Version 4.5 können Fonts (deutsch Schriftart) jedoch auch zwischen den Plattformen geteilt werden und befinden sich daher innerhalb des geteilten Projektes. \footcite[Vgl.][Abgerufen am \today]{Versluis2020}  In Flutter werden die Schriftdateien ähnlich wie in der neueren Version von Xamarin.Forms in einem Ordner abgelegt. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterFonts2020}  Eine Verwendung eines bestimmten Schriftsatzes wird in \ref{lst:FlutterFont} dargestellt.  
+Ein Schriftsatz wird verwendet, um das Design und den Inhalt so klar und effizient wie möglich darzustellen.  In Xamarin.Forms mussten Schriften bis zum Jahre 2020 in jedem nativen Projekt referenziert werden.  Seit der Version 4.5 können Fonts (deutsch Schriftarten) auch plattformübergreifend verwendet werden und befinden sich daher innerhalb des geteilten Projekts. \footcite[Vgl.][Abgerufen am \today]{Versluis2020}  In Flutter werden die Schriftdateien wie in der neueren Version von Xamarin.Forms in einem Ordner abgelegt. \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterFonts2020}  Eine Verwendung des Schriftsatzes \glq MyCustomFont\grq{} in Flutter wird in Quelltext \ref{lst:FlutterFont} dargestellt.  
 
-\lstinputlisting[label={lst:FlutterFont},caption={Flutter Font definition}, language=Dart]{SourceCode/Fonts.Dart}
-
+\lstinputlisting[label={lst:FlutterFont},caption={Flutter Verwendung von Schriftsätzen}, language=Dart]{SourceCode/Fonts.Dart}
 
 
 \section{Interaktion mit der Hardware}
-Android und iOS nutzen einzigartige Betriebssystem- und Plattform-\acs{api} , auf die Xamarin.Forms Entwickler zugreifen können.  Mit der Erweiterung Xamarin.Essential bietet Microsoft bietet eine plattformübergreifende \ac{api}, auf die von gemeinsamem Code aus zugegriffen werden kann und direkt auf der Plattform ausgeführt wird.  Der Dart-Code, aus dem eine Flutter-App besteht, wird nativ auf dem Gerät ausgeführt,  zum Beispiel eine Netzwerkanfrage in Dart würde im direkten Dart-Kontext(Umfeld) ausgeführt,  wobei das von der Plattform bereitgestellte \ac{sdk} umgangen wird. Es werden in diesem Fall also nicht die Android- oder iOS-\acs{api}  genutzt.  Das bedeutet, wenn zum Beispiel eine Netzwerkanfrage in Dart durchgeführt wird diese direkt im Dart-Kontext ausgeführt wird.  Es werden also nicht die Android- oder iOS-\acs{api} genutzt.  Das bedeutet aber nicht, dass Flutter-Apps nicht mit diesen nativen \ac{api} oder mit Ihrem nativen Code interagieren können. Flutter bietet sogenannte Plattformkanäle, die mit dem ViewController oder der Activity, die Ihre Flutter-Ansicht hostet, kommunizieren und Daten austauschen. Plattformkanäle sind im Wesentlichen ein asynchroner Messaging-Mechanismus, der den Dart-Code mit dem Host-ViewController oder der Activity und dem iOS- oder Android-Framework, auf dem er läuft, verbindet. Sie können Plattformkanäle verwenden, um eine Methode auf der nativen Seite auszuführen oder um z. B. einige Daten von den Sensoren des Geräts abzurufen.\footcite[Vgl.][Abgerufen am \today]{GooglePlatformspecificCode2020}
+Android und iOS nutzen einzigartige Betriebssystem- und Plattform-\acp{api},  auf die Xamarin.Forms Entwickler zugreifen können.  Mit der Erweiterung Xamarin.Essentials bietet Microsoft eine plattformübergreifende \ac{api}, auf die von gemeinsamem Code aus zugegriffen und die direkt auf der Plattform ausgeführt werden kann.  Der Dart Quelltext,  aus dem eine Flutter-App besteht, wird nicht nicht auf der zugrundeliegenden Plattform, sondern nativ auf dem Gerät ausgeführt.  Es werden also nicht die iOS oder Android \acp{api}, benutzt.  Flutter Apps können über Platformkanäle jedoch auch mit den nativen \acp{api}, interagieren um beispielsweise Daten von Sensoren des Gerätes abzurufen.\footcite[Vgl.][Abgerufen am \today]{GooglePlatformspecificCode2020}
 
 \section{Speicherung von Daten}
-Ein wesentlicher Bestandteil jeder mobilen Anwendung ist die Fähigkeit,  Daten zu persistieren.  Manchmal handelt es sich dabei um große Datenmengen,  die eine Datenbank erfordern,  oft sind es aber auch kleinere Daten wie Einstellungen und Präferenzen, die zwischen den Starts der Anwendung gespeichert werden müssen.   Die eingeführte Xamarin.Essentials erweiterung stellt Entwicklern das Settingsplugin bereit, welches die Speicherung von Einstellungen in einem Schlüsselwertspeicher erlaubt.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamSettings2019} In Flutter wird für die Speicherung von Schlüssel-Wertpaaren auf die gleichen plattformspezifischen \ac{api} zugegriffen wie bei Xamarin Forms diese werden ebenfalls mithilfe eines Plugins angesprochen.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSharedPreferences2020}  Die Verwendung des gleichen Plugins ist ein wichtiger Faktor,  da auf die von Anwendern gespeicherten Schlüsselwert Paaren, auch nach einem Framework Wechsel zu Flutter,  zurückgegriffen werden kann. 
+Ein wesentlicher Bestandteil jeder mobilen Anwendung ist die Fähigkeit,  Daten zu persistieren.  Manchmal handelt es sich dabei um große Datenmengen,  die eine Datenbank erfordern,  oft sind es aber auch kleinere Daten, wie Einstellungen und Präferenzen, die zwischen den Starts der Anwendung gespeichert werden müssen.  
 
-Für die Speicherung in einer Datenbank können Xamarin.Forms Entwickler auf verschiedene Lösungen zurückgreifen zum einen SQLite die am häufigsten verwendete Datenbank-Engine der Welt\footcite[Vgl.][Abgerufen am \today]{SQLiteConsortium2020},  oder Realm einer Datenbank optimiert für mobile Endgeräte. \footcite[Vgl.][Abgerufen am \today]{MongoDBRealm2020} Beide Datenbanken stehen auch als Plugin für Flutter zur Verfügung, wobei SQLite ausgereift ist,\footcite[Vgl.][Abgerufen am \today]{Tekartik2020} während Realm erst am 5 November 2020 support für Flutter angekündigt hat und noch nicht offiziell zur Verfügung steht. \footcite[Vgl.][Abgerufen am \today]{MongoDBFlutterSupport2020}
+Für die Speicherung in einer Datenbank können Xamarin.Forms Entwickler auf verschiedene Lösungsansätze zurückgreifen.  Zum einen \glq SQLite\grq{}, die am häufigsten verwendete Datenbank-Engine der Welt\footcite[Vgl.][Abgerufen am \today]{SQLiteConsortium2020},  oder \glq Realm\grq{},  eine Datenbank optimiert für mobile Endgeräte. \footcite[Vgl.][Abgerufen am \today]{MongoDBRealm2020} Beide Datenbanken stehen auch als Plugin für \glq Flutter\grq{} zur Verfügung, wobei SQLite ausgereift ist,\footcite[Vgl.][Abgerufen am \today]{Tekartik2020} während \glq Realm\grq{} erst am 5 November 2020 support für Flutter angekündigt hat und noch nicht offiziell zur Verfügung steht. \footcite[Vgl.][Abgerufen am \today]{MongoDBFlutterSupport2020}
+
+Die Xamarin.Essentials Erweiterung stellt Entwicklern das \glq Settingsplugin\grq{} bereit, welches die Speicherung von Präferenzen und App-Einstellungen erlaubt.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamSettings2019} In Flutter wird für diese Speicherung mit Hilfe des Plugins \glq shared\_preferences\grq{}  auf die gleichen plattformspezifischen \ac{api} zugegriffen.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSharedPreferences2020}  Die Verwendung der gleichen \acp{api} ist ein wichtiger Faktor,  da auf die von Anwendern gespeicherten Daten,  auch nach einem Framework Wechsel zu Flutter,  noch verfügbar sind. 
