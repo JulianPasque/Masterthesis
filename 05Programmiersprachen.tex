@@ -10,12 +10,34 @@ Bei der Programmiersprache Dart haben sich wärend der Bearbeitungszeit dieser A
 
 \lstinputlisting[label={lst:DartNull},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
-Im März 2021 \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}hat die Programmiersprache Dart den Support für Null-Sicherheit hinzugefügt.  So können Typen, wie in \Csharp nicht den Wert null erhalten,  es sei den der Entwickler entscheidet sich bewusst für das Gegenteil.  Mit Null Sicherheit werden die Laufzeit-Nullreferenzfehler zu Analysefehlern zur Bearbeitungszeit die nicht mehr Zwangsläufig zum Absturz der Anwendung führen. \footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}
+Im März 2021 \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}hat die Programmiersprache Dart den Support für Null-Sicherheit hinzugefügt.  So können Typen, wie in \Csharp nicht den Wert null erhalten,  es sei den der Entwickler entscheidet sich bewusst für das Gegenteil.  Mit Null Sicherheit werden die Laufzeit-Nullreferenzfehler zu Analysefehlern zur Bearbeitungszeit die nicht mehr Zwangsläufig zum Absturz der Anwendung führen. \footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021} Quelltext \ref{lst:DartNotNullAnymore} visualisiert die Arbeit mit den neuen Datentypen in Dart. 
 
-\lstinputlisting[label={lst:DartNull},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}}}, language=Dart]{SourceCode/DartNullable.Dart}
+\lstinputlisting[label={lst:DartNotNullAnymore},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}}}, language=Dart]{SourceCode/DartNullable.Dart}
 
 Nach\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleflutterNullSafty2021} dieser Veränderung verhält sich die Programmiersprache Dart identisch wie \Csharp  sogar das Fragezeichen für die Definition einer Variable die Potentiell null seien kann ist identisch.  
 Durch diese Veränderung muss der Compiler keine speziellen Änderungen mehr vornehmen,  der Vollständigkeit halber sollte dieser Änderung trotzdem nicht unerwähnt bleiben.
+
+\section{Typen}
+
+Anders als die bekannte Auswahl an Integer-Typen von 8 bis 64 Bit mit vorzeichenbehafteten und vorzeichenlosen Varianten ist der wichtigste Integer-Typ von Dart einfach int, ein 64-Bit-Wert. (Für sehr große Zahlen gibt es auch BigInt.)
+
+Da es kein Byte-Array als Teil der Sprachsyntax gibt, können binäre Dateiinhalte als Listen von Integern verarbeitet werden, d.h. List<Int>.
+
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{X|X|X}
+   \textbf{Datentyp} & \textbf{\Csharp}  &  \textbf{Dart}  \\
+\hline
+	Ganzzahl            			&          	& Integer \\ 
+	Fließkommazahlen         &       	& Double \\ 
+	Strings      					&          	& String 					\\ 
+	Booleans            			& 			& bool \\ 
+	List            					& 			& List \\ 
+	Map            					& 			& Dictionary \\ 
+\end{tabularx}
+\caption{Gegenüberstellung Pages}
+ \label{tab:Datatypes}
+\end{table}
 
 \section{Generics}
 Generics  wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklarierst und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
@@ -31,8 +53,12 @@ In Dart kann der Typ Typedef verwendet werden, um eine Methodensignatur zu defin
 
 
 \lstinputlisting[label={lst:DartDelegates},  caption={[Delegates in Dart]{Delegates in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartDelegates.Dart}
-\section{Das New Keyword}
-Dart \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie nicht new sagen, wenn Sie das nicht wollen.
+\section{New Operator}
+In \Csharp wird\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} um eine Instanz eines Typs zu erzeugen der Konstruktor dieses Typs mit dem new Operator aufgerufen. 
+
+
+
+Dart  kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie nicht new sagen, wenn Sie das nicht wollen.
 
 \lstinputlisting[label={lst:DartNew},caption={[Optionales "New" Keyword in Dart]{Optionales "New" Keyword in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNew.Dart}
 
@@ -42,7 +68,7 @@ Listen sind Listen, und Dictionaries sind Maps.
 
 
 \lstinputlisting[label={lst:DartDicAndList}, caption={[Listen und Maps in Dart]{Listen und Maps in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}},  language=Dart]{SourceCode/DartListAndDictionairy.Dart}
-\section{Zugriffsmodifizierer}
+\section{Modifizierer}
 
 Alle \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Typen und Typmember verfügen in beiden Sprachen über eine Zugriffsebene.  Diese Zugriffsebene steuert, ob sie von anderem Code in Ihrer Assembly oder anderen Assemblys verwendet werden können.  Dabei wird in \Csharp mit Mithilfe der Zugriffsmodifizieren (public,  private,  protected,  internal,  protected internal,  private protected) der Zugriff auf einen Typ oder Member festlegen.  In Dart gibt es die Schlüsselwörter public,  protected und private nicht. Wenn ein Bezeichner mit einem Unterstrich (\_) beginnt, ist er für seine Bibliothek privat dies wird in \ref{lst:PrivatePublicDart} als Quelltext dargestellt. 
 
