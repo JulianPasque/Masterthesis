@@ -1,11 +1,4 @@
-// no need for ? sign to signal nullable.
 int myVariable = null;
-
-// Null checking
+// Null check
 if (myVariable != null)
-
-// These work the same way as C#.
-myVariable = myVariable ?? 0; // Assigns 0 if null
-
-// Short circuits also work.
-myVariable?.toString();
+myVariable = myVariable ?? 0; // Setzte den Wert 0 wenn die Variable null ist

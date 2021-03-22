@@ -1,49 +1,54 @@
 \chapter{Unterschiede zwischen C\# und Dart}
 \label{chap:Programmiersprachen}
 
-Neben den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten unterschieden zwischen den Frameworks werden in diesem Kapitel nun die Unterschiede zwischen den Hochsprachen \Csharp zu Dart behandelt. Die beiden Sprachen haben einen ähnlichen Stils,  Syntax und haben sogar gemeinsame Bibliotheksnamen. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Potentiell haben alle der hier behandelten Aspekte einen Einfluss auf die mobilen Anwendungen.  
+Neben den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten unterschieden zwischen den Frameworks werden in diesem Kapitel die Unterschiede zwischen den Hochsprachen \Csharp zu Dart behandelt.  Die beiden Sprachen haben einen ähnlichen Stils,  Syntax und haben sogar gemeinsame Bibliotheksnamen. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Potentiell haben alle der hier behandelten Aspekte einen Einfluss auf die mobilen Anwendungen.  
 
 \section{In Dart war alles Null}
-In Dart ist waren bis zum März 2021 alle Variablen potentiell null, das bedeutet das kein Wert verfügbar ist.  Das galt auch für die aus \Csharp als Wertetyp bezeichneten Datentypen wie Integer, Bool und Char.  Dies führte dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden sollte.  Quelltext \ref{lst:DartNull} zeigt die potentielle Prüfung von Null in Dart. \footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
+In \Csharp müssen jedem normalen Werttypen immer einen zum Typ passender Wert zugewiesen sein.  So muss zu jeder Zeit in einer Instanz des Types DateTime ein Datum verwaltet sein - es ist nicht möglich kein Datum anzugeben.  Für dieses Problem gibt es in der Hochsprache die sogenannte nullable Typen die neben den zulässigen Werten zusätzlich den Wert null zulassen. \footcite[Vgl.][S. 167]{Bayer2008} 
+
+Bei der Programmiersprache Dart haben sich wärend der Bearbeitungszeit dieser Arbeit Änderungen ergeben.  Bis zum März 2021 waren alle Variablen in Dart potentiell null,  das hatte zur Konsequenz, dass jede Variable potentiell keinen Wert hinterlegt hatte.   Das galt auch für die aus \Csharp als Wertetyp bezeichneten Datentypen wie Integer, Bool und Char.  Dies führte dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden musste um Fehler zu vermeiden.  Quelltext \ref{lst:DartNull} zeigt die Arbeit mit einer Ganzzahl in Dart die potentiell null seien kannt. \footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
 
 \lstinputlisting[label={lst:DartNull},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
+Im März 2021 \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}hat die Programmiersprache Dart den Support für Null-Sicherheit hinzugefügt.  So können Typen, wie in \Csharp nicht den Wert null erhalten,  es sei den der Entwickler entscheidet sich bewusst für das Gegenteil.  Mit Null Sicherheit werden die Laufzeit-Nullreferenzfehler zu Analysefehlern zur Bearbeitungszeit die nicht mehr Zwangsläufig zum Absturz der Anwendung führen. \footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}
+
+\lstinputlisting[label={lst:DartNull},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}}}, language=Dart]{SourceCode/DartNullable.Dart}
+
+Nach\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleflutterNullSafty2021} dieser Veränderung verhält sich die Programmiersprache Dart identisch wie \Csharp  sogar das Fragezeichen für die Definition einer Variable die Potentiell null seien kann ist identisch.  
+Durch diese Veränderung muss der Compiler keine speziellen Änderungen mehr vornehmen,  der Vollständigkeit halber sollte dieser Änderung trotzdem nicht unerwähnt bleiben.
+
 \section{Generics}
-Generics wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklariert und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
+Generics  wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklarierst und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
 
 Generics werden in Dart sehr ähnlich behandelt wie in \Csharp ,  mit der Ausnahme,  dass Sie eine generische Klasse ohne die Type-Beschränkung übergeben können.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
 
 \lstinputlisting[label={lst:DartGeneric}, caption={[Generics in Dart]{Generics in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartGeneric.Dart}
 \section{Delegates}
 
-In .Net ist Ein Delegate ist ein Typ,  der Verweise auf Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp darstellt.  Nach der Instanziierung eines Delegaten können die Instanz mit einer beliebigen Methode verknüpft werden,  die eine kompatible Signatur und einen kompatiblen Rückgabetyp aufweisen.  Diese können die Methode über die Delegatinstanz aufrufen.  Delegates werden dazu verwendet,  um Methoden als Argumente an anderen Methoden zu übergeben.  Da Ereignishandler ebenfalls Methoden sind können diese durch Delegates aufgerufen werden.  Benutzerdefinierte Methoden können also durch Steuerelemente diese Methode aufrufen, wenn ein bestimmes Ereignis wie ein klick auf einen Button eintritt.\footcite[Vgl.  ][Abgerufen am \today]{MicrosoftDelegates2015} 
+In .Net\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} ist Ein Delegate ist ein Typ,  der Verweise auf Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp darstellt.  Nach der Instanziierung eines Delegaten können die Instanz mit einer beliebigen Methode verknüpft werden,  die eine kompatible Signatur und einen kompatiblen Rückgabetyp aufweisen.  Diese können die Methode über die Delegatinstanz aufrufen.  Delegates werden dazu verwendet,  um Methoden als Argumente an anderen Methoden zu übergeben.  Da Ereignishandler ebenfalls Methoden sind können diese durch Delegates aufgerufen werden.  Benutzerdefinierte Methoden können also durch Steuerelemente diese Methode aufrufen, wenn ein bestimmes Ereignis wie ein klick auf einen Button eintritt.\footcite[Vgl.  ][Abgerufen am \today]{MicrosoftDelegates2015} 
 
 In Dart kann der Typ Typedef verwendet werden, um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen zu halten. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Dies wird in Quelltext \ref{lst:DartDelegates} dargestellt. 
 
 
 \lstinputlisting[label={lst:DartDelegates},  caption={[Delegates in Dart]{Delegates in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartDelegates.Dart}
-
 \section{Das New Keyword}
-
-
-Dart kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie nicht new sagen, wenn Sie das nicht wollen.
+Dart \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} kann herausfinden, wann Sie ein neues Element definieren, daher müssen Sie nicht new sagen, wenn Sie das nicht wollen.
 
 \lstinputlisting[label={lst:DartNew},caption={[Optionales "New" Keyword in Dart]{Optionales "New" Keyword in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNew.Dart}
 
-
 \section{Listen und Dictionaries}
-\Csharp und .Net haben Sammlungen (Collection) Klassen die alle Auftretenden Probleme des Hinzufügen und entfernen von Elementen aus Arrays behandeln.  Diese werden als Listen (Eng. List) bezeichnet. \footcite[Vgl.][S. 413]{Stellman2021} Dart hat ebenfalls Listen die unter dem gleichen Namen zur Verfügung stehen und die gleichen Funktionalitäten abbilden. \footcite[Vgl.][S. 12f ]{Meiller2020}
+\Csharp und .Net \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} haben Sammlungen (Collection) Klassen die alle Auftretenden Probleme des Hinzufügen und entfernen von Elementen aus Arrays behandeln.  Diese werden als Listen (Eng. List) bezeichnet. \footcite[Vgl.][S. 413]{Stellman2021} Dart hat ebenfalls Listen die unter dem gleichen Namen zur Verfügung stehen und die gleichen Funktionalitäten abbilden. \footcite[Vgl.][S. 12f ]{Meiller2020}
 Listen sind Listen, und Dictionaries sind Maps.
 
 
 \lstinputlisting[label={lst:DartDicAndList}, caption={[Listen und Maps in Dart]{Listen und Maps in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}},  language=Dart]{SourceCode/DartListAndDictionairy.Dart}
 \section{Zugriffsmodifizierer}
 
-Alle Typen und Typmember verfügen in beiden Sprachen über eine Zugriffsebene.  Diese Zugriffsebene steuert, ob sie von anderem Code in Ihrer Assembly oder anderen Assemblys verwendet werden können.  Dabei wird in \Csharp mit Mithilfe der Zugriffsmodifizieren (public,  private,  protected,  internal,  protected internal,  private protected) der Zugriff auf einen Typ oder Member festlegen.  In Dart gibt es die Schlüsselwörter public,  protected und private nicht. Wenn ein Bezeichner mit einem Unterstrich (\_) beginnt, ist er für seine Bibliothek privat dies wird in \ref{lst:PrivatePublicDart} als Quelltext dargestellt. 
+Alle \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Typen und Typmember verfügen in beiden Sprachen über eine Zugriffsebene.  Diese Zugriffsebene steuert, ob sie von anderem Code in Ihrer Assembly oder anderen Assemblys verwendet werden können.  Dabei wird in \Csharp mit Mithilfe der Zugriffsmodifizieren (public,  private,  protected,  internal,  protected internal,  private protected) der Zugriff auf einen Typ oder Member festlegen.  In Dart gibt es die Schlüsselwörter public,  protected und private nicht. Wenn ein Bezeichner mit einem Unterstrich (\_) beginnt, ist er für seine Bibliothek privat dies wird in \ref{lst:PrivatePublicDart} als Quelltext dargestellt. 
 
 \lstinputlisting[label={lst:PrivatePublicDart},caption={[Private und Public Definitionen in Dart]{Private und Public Definitionen in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/PrivateDefinition.Dart}
 
-Da ein Unterstrich ein valides Zeichen bei der Typ und Typmemberdefinition ist, ist daher bei der Übersetzung darauf zu achten,  dass existierende Unterstriche entfernt werden müssen da dies ansonsten potentiell zu fehlerhaften Übersetzungen führen kann.  Außerdem kann es durch die Verwendung von Zugriffsmodifiziern wie "protected internal" vorkommen, dass es keine entsprechende Dart Implementierung existiert.  Folglich führt dies potentiell zu falschen Zugriffsbeschränkungen bei der Übersetzung von Bibliotheken. 
+Da ein \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Unterstrich ein valides Zeichen bei der Typ und Typmemberdefinition ist, ist daher bei der Übersetzung darauf zu achten,  dass existierende Unterstriche entfernt werden müssen da dies ansonsten potentiell zu fehlerhaften Übersetzungen führen kann.  Außerdem kann es durch die Verwendung von Zugriffsmodifiziern wie "protected internal" vorkommen, dass es keine entsprechende Dart Implementierung existiert.  Folglich führt dies potentiell zu falschen Zugriffsbeschränkungen bei der Übersetzung von Bibliotheken. 
 
 \section{Vererbung}
 
@@ -55,30 +60,25 @@ Dart hat keine Schnittstellen, Sie haben abstrakte Klassen. Sie implementieren a
 
 \lstinputlisting[label={lst:DartInherit},caption={[Vererbung in Dart]{Vererbung in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}},  language=Dart]{SourceCode/DartInherit.Dart}
 
-
-Sie können eine Klasse erweitern und mehrere Klassen implementieren. Dart unterstützt auch Mixin's. Ein Mixin ist wie das Anhängen einer Klasse und das Hinzufügen ihrer Funktionalität zu der Klasse, ohne tatsächlich von ihr zu erben. Dies ist auch ähnlich wie die Schnittstellenimplementierungen von \Csharp 8.0.
+Sie \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} können eine Klasse erweitern und mehrere Klassen implementieren. Dart unterstützt auch Mixin's. Ein Mixin ist wie das Anhängen einer Klasse und das Hinzufügen ihrer Funktionalität zu der Klasse, ohne tatsächlich von ihr zu erben. Dies ist auch ähnlich wie die Schnittstellenimplementierungen von \Csharp 8.0.
 
 \lstinputlisting[label={lst:DartMixin},caption={[Mixin's in Dart]{Mixin's in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartMixin.Dart}
 \section{Namespaces}
 
-Namespaces werden häufig in \Csharp -Programmen auf zwei verschiedene Arten verwendet. Erstens: Die .NET-Klassen verwenden Namespaces, um ihre zahlreichen Klassen zu organisieren. Zweitens: Eigene Namespaces zu deklarieren kann Ihnen dabei helfen, den Umfang der Klassen- und Methodennamen in größeren Programmierprojekten zu steuern.
+Namespaces\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} werden häufig in \Csharp -Programmen auf zwei verschiedene Arten verwendet. Erstens: Die .NET-Klassen verwenden Namespaces, um ihre zahlreichen Klassen zu organisieren. Zweitens: Eigene Namespaces zu deklarieren kann Ihnen dabei helfen, den Umfang der Klassen- und Methodennamen in größeren Programmierprojekten zu steuern.
 Die meisten \Csharp -Anwendungen beginnen mit einem Abschnitt von using-Anweisungen. Dieser Abschnitt enthält die von der Anwendung häufig verwendeten Namespaces und erspart dem Programmierer die Angabe eines vollqualifizierten Namens bei jedem Verwenden einer enthaltenen Methode.\footcite[Vgl.  Verwenden von Namespaces (\Csharp-Programmierhandbuch)][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
 Dart hat keine Namespaces. Stattdessen importieren Sie Pakete oder Dateien als solche.
 Dadurch haben Sie Zugriff auf alle Klassen und Funktionen innerhalb der Datei. Aber wenn es einen Namenskonflikt gibt oder Sie die Dinge etwas lesbarer machen wollen, können Sie sie benennen.
 
 \lstinputlisting[label={lst:DartPackages},caption={[Importieren von Paketen in Dart]{Importieren von Paketen in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartPackages.Dart}
-
 \section{Bibliotheken}
 
-Klassenbibliotheken sind das Konzept der freigegebenen Bibliothek für .NET. Sie können damit nützliche Funktionalität auf Module verteilen, die von mehreren Anwendungen verwendet werden können. Sie können auch verwendet werden, um Funktionalität zu laden, die beim Start der Anwendung nicht benötigt wird bzw. nicht bekannt ist. Klassenbibliotheken werden mithilfe des .NET Assembly-Dateiformats beschriebenen.\footcite[Vgl. .NET-Klassenbibliotheken
-][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
+Klassenbibliotheken\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} sind das Konzept der freigegebenen Bibliothek für .NET. Sie können damit nützliche Funktionalität auf Module verteilen, die von mehreren Anwendungen verwendet werden können. Sie können auch verwendet werden, um Funktionalität zu laden, die beim Start der Anwendung nicht benötigt wird bzw. nicht bekannt ist. Klassenbibliotheken werden mithilfe des .NET Assembly-Dateiformats beschriebenen.\footcite[Vgl.  .NET-Klassenbibliotheken][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
 Dart verfügt über eine Vielzahl von Kernbibliotheken, die für viele alltägliche Programmieraufgaben wie das Arbeiten mit Objektsammlungen , das Durchführen von Berechnungen und das Kodieren/Dekodieren von Daten  unerlässlich sind.  Zusätzliche APIs sind in von der Community bereitgestellten Paketen verfügbar. Dieses Konzept ist dem aus .NET bekannten Bilbiothek Konzept sehr ähnlich.
 Neben den Konzept sind auch die Inhalte in einigen Bibliotheken sehr ähnlich. So ähnelt die Bibliothek dart:async sehr dem .Net Namespace System.Threading.  Außerdem ist dart:Math sehr ähnlich wie System.MAth und dart.io zu System.IO.
 Darüber hinaus können Sie Funktionen direkt in Dateien haben, ohne eine Klasse oder einen Namespace. Das ist fantastisch, wenn Sie funktionaler programmieren wollen. z. B. können Sie dies in eine Datei ganz allein stellen, nichts anderes wird benötigt.
-
-
 
 \section{Asynchrone Benutzeroberfläche und Parallelität}
 
@@ -93,23 +93,21 @@ Um Netzwerkaufrufe durchzuführen, um Daten von einem Server abzurufen oder Benu
 
 \lstinputlisting[label={lst:FlutterNetworkRequest},caption={Flutter Network request}, language=Dart]{SourceCode/NetworkRequest.Dart}
 
-
 \section{Async/Await}
-Das aufgabenbasierte asynchrone Programmiermodell stellt eine Abstraktion über asynchronen Code bereit. Der Quelltext kann dabei in gewohnter Weise als eine Folge von Anweisungen geschrieben werden und auch so gelesen werden, als ob jede Anweisung abgeschlossen wäre, bevor die nächste Anweisung beginnt. Der Compiler führt eine Reihe von Transformationen durch, da möglicherweise einige dieser Anweisungen gestartet werden und eine Task zurückgeben, die die derzeit ausgeführte Arbeit darstellt.
+Das\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} aufgabenbasierte asynchrone Programmiermodell stellt eine Abstraktion über asynchronen Code bereit. Der Quelltext kann dabei in gewohnter Weise als eine Folge von Anweisungen geschrieben werden und auch so gelesen werden, als ob jede Anweisung abgeschlossen wäre, bevor die nächste Anweisung beginnt. Der Compiler führt eine Reihe von Transformationen durch, da möglicherweise einige dieser Anweisungen gestartet werden und eine Task zurückgeben, die die derzeit ausgeführte Arbeit darstellt.
 Ziel dieser Syntax ist es: Code zu aktivieren, der sich wie eine Folge von Anweisungen liest, aber in einer deutlich komplizierteren Reihenfolge ausgeführt wird, die auf einer externen Ressourcenzuordnung und dem Abschluss von Aufgaben basiert. Vergleichbar ist dies mit der Art und Weise, wie Menschen Anweisungen für Prozesse erteilen, die asynchrone Aufgaben enthalten.  \footcite[Vgl. MICROSFT Async await][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
 Die asynchrone Programmierung in Dart ist ebenfalls sehr ähnlich zu \Csharp. Sie verwenden die Future-Klasse anstelle von Task. Die async- und await-Schlüsselwörter sind die gleichen, der einzige kleine Unterschied ist die Platzierung des async-Schlüsselworts, das nach dem Methodennamen steht, statt davor.
 
 \lstinputlisting[label={lst:DartAsync},caption={[Async und Await in Dart]{Async und Await in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
 
-
 \section{Events}
-Ein Ereignis ist eine Meldung, die von einem Objekt gesendet wird, um das Auftreten einer Aktion zu signalisieren. Die Aktion kann durch Benutzerinteraktionen wie das Klicken auf eine Schaltfläche verursacht werden, oder sie kann durch eine andere Programmlogik, z. B. das Ändern eines Eigenschaftswerts, ausgelöst werden. Das Objekt, von dem das Ereignis ausgelöst wird, wird als Ereignissender bezeichnet. Dem Ereignissender ist nicht bekannt, welches Objekt oder welche Methode die ausgelösten Ereignisse empfangen (behandeln) wird. Das Ereignis ist in der Regel ein Member des Ereignissenders. Beispielsweise ist das Click-Ereignis ein Member der Klasse Button, und das PropertyChanged-Ereignis ist ein Member der Klasse, von der die INotifyPropertyChanged-Schnittstelle implementiert wird. \footcite[Vgl. MICROSFT Events][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
+Ein \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Ereignis ist eine Meldung, die von einem Objekt gesendet wird, um das Auftreten einer Aktion zu signalisieren. Die Aktion kann durch Benutzerinteraktionen wie das Klicken auf eine Schaltfläche verursacht werden, oder sie kann durch eine andere Programmlogik, z. B. das Ändern eines Eigenschaftswerts, ausgelöst werden. Das Objekt, von dem das Ereignis ausgelöst wird, wird als Ereignissender bezeichnet. Dem Ereignissender ist nicht bekannt, welches Objekt oder welche Methode die ausgelösten Ereignisse empfangen (behandeln) wird. Das Ereignis ist in der Regel ein Member des Ereignissenders. Beispielsweise ist das Click-Ereignis ein Member der Klasse Button, und das PropertyChanged-Ereignis ist ein Member der Klasse, von der die INotifyPropertyChanged-Schnittstelle implementiert wird. \footcite[Vgl. MICROSFT Events][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
 Anstelle eines Ereignisses in \Csharp mit Delegaten, die dann alle aufgerufen werden, wenn ein Ereignis ausgelöst wird, arbeitet Dart in Streams. Ein Stream ist ähnlich wie ein Ereignis, aber Sie öffnen ihn, hören ihn an und schließen ihn.
 
 Der Vorteil dieses Ansatzes ist, dass Sie viele Dinge tun können, wie z. B. Werte transformieren oder Ereignisse für eine bestimmte Zeitspanne anhalten und vieles mehr. 
 
 \lstinputlisting[label={lst:DartEvents},caption={[Events in Dart]{Events in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartEvents.Dart}
-
+ \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 
