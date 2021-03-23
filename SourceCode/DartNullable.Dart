@@ -1,8 +1,4 @@
-// In null-safe Dart, none of these can ever be null.
-var i = 42; // Inferred to be an int.
-String name = getFileName();
-final b = Foo();
-
-
-// Nullable variable
+int i = 42; // Inferred to be an int.
 int? aNullableInt = null;
+if (aNullableInt != null)
+    aNullableInt =  0; 

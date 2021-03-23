@@ -250,6 +250,19 @@ Die Xamarin.Forms \glq ListView \grq{}ermittelt anhand einer Vorlage,  wie eine 
 
 Damit sich die ListView im Falle von Änderung in der angezeigten Sammlung automatisch aktualisiert, ist es notwendig,  die Daten in einer \glq ObservableCollection\grq{} vorzuhalten,  da somit die Benutzeroberfläche über Änderungen informiert wird.   Eine  Möglichkeit, die  \glq ListView\grq{} in Flutter zu aktualisieren, besteht darin, eine neue Instanz des Widgets zu erstellen und die Daten aus der alten in die neue Liste zu kopieren.  Dieser Ansatz ist zwar einfach umsetzbar, aber für große Datensätze nicht zu empfehlen.  Eine effektive Änderung für dynamische oder umfangreiche Listen ist mit dem ListView.Builder möglich.   
 
+\subsection{Ausrichtung von Steuerelementen}
+Innerhalb von \glq Stacklayouts\grq{} können Xamarin.Forms Steuerelemente mit Hilfe der Eigenschaften \glq HorzintalOptions\grq{} und \glq VerticalOptions\grq{}  ausgerichtet werden.  Für diese Eigenschaften können die folgenden Werte gesetzt werden: \footcite[Vgl.][Abgerufen am \today]{MicrosoftLayouts2020} 
+
+\begin{itemize}
+\setlength\itemsep{-0.6em}
+ \item \glq Start\grq{}: positioniert die Ansicht bei einer horizontalen Ausrichtung an der linken Seite des übergeordneten Layouts, und bei vertikaler Ausrichtung positioniert sie die Ansicht am oberen Rand des übergeordneten Layouts.
+  \item \glq Center\grq{}: zentriert die Ansicht in der Mitte. 
+  \item \glq End\grq{}: Bei horizontaler Ausrichtung wird die Ansicht auf der rechten Seite des übergeordneten Layouts und bei vertikaler Ausrichtung  unteren Rand des übergeordneten Layouts positioniert.
+  \item \glq Fill\grq{}:  Bei einer horizontalen Ausrichtung sorgt Fill dafür, dass die Ansicht die Breite des übergeordneten Layouts ausfüllt, und bei der vertikalen Ausrichtung sorgt es dafür, dass die Ansicht die Höhe des übergeordneten Layouts ausfüllt.
+\end{itemize}
+Neben diesen Werten stehen auch noch Ausprägungen mit der Erweiterung \glq expand" zur Verfügung. Diese Werte \glq StartAndExpand\grq{} , \glq CenterAndExpand\grq{} , \glq EndAndExpand\grq{}  und \glq FillAndExpand\grq{}  werden verwendet, um die Ausrichtungspräferenz festzulegen und um zu bestimmen, ob die Ansicht mehr Platz einnimmt, wenn dieser im übergeordneten \glq StackLayout\grq{} verfügbar ist. \footcite[Vgl.][Abgerufen am \today]{MicrosoftLayouts2020} 
+
+
 \section{Gesten}
 Für die Interaktion mit der Benutzeroberfläche werden Gesten verwendet.  Die Steuerelemente von Xamarin.Forms stellen Ereignisse für die häufig verwendeten Interaktionen bereit, wie im Unterpunkt ereignisauslösende Steuerelemente aufgeführt.  Alternativ kann die Klasse \glq GestureRecognizer\grq{}  verwendet werden, um seltenere Benutzerinteraktionen auf Ansichten zu erkennen, beispielsweise der Klick auf eine Steuerelement für die Darstellung.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftGesten2020} 
 In Flutter gibt es zwei ähnliche Möglichkeiten: Wird die Ereignisserkennung durch das Flutter-Widget z.B. den \glq ElevatedButton\grq{} untersützt,  kann eine Funktion übergeben werden,  in der eine Geste behandelt wird.  Ist keine Ereigniserkennung mittels Widget möglich,  kann es in einem \glq GestureDetector\grq{} verschachtelt werden, wie im Rahmen des \glq Timepickers\grq{} in Quelltext \ref{lst:FlutterTimePicker} dargestellt. \footcite[Vgl.][Abgerufen am \today]{GoogleGesture2020} 
