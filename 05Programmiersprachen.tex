@@ -1,60 +1,55 @@
 \chapter{Unterschiede zwischen C\# und Dart}
 \label{chap:Programmiersprachen}
 
-Neben den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten unterschieden zwischen den Frameworks werden in diesem Kapitel die Unterschiede zwischen den Hochsprachen \Csharp zu Dart behandelt.  Die beiden Sprachen haben einen ähnlichen Stils,  Syntax und haben sogar gemeinsame Bibliotheksnamen. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Potentiell haben alle der hier behandelten Aspekte einen Einfluss auf die mobilen Anwendungen.  
+Neben den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten unterschieden zwischen den Frameworks werden in diesem Kapitel die Unterschiede zwischen den Hochsprachen \Csharp und Dart behandelt.  Die beiden Programmiersprachen haben einen ähnlichen Stils und eine vergleichbare Syntax was den Umstieg für Programmierer zu Dart vereinfachen sollte.  \footcite[Vgl. ][Abgerufen am \today]{Pedley2019} Potentiell haben alle der hier behandelten Aspekte einen Einfluss auf die mit den Frameworks mobilen Anwendungen da diese Sprachelemente in dem Quelltext der Projekte vorkommen kann.  
 
-\section{In Dart war alles Null}
-In \Csharp müssen jedem normalen Werttypen immer einen zum Typ passender Wert zugewiesen sein.  So muss zu jeder Zeit in einer Instanz des Types DateTime ein Datum verwaltet sein - es ist nicht möglich kein Datum anzugeben.  Für dieses Problem gibt es in der Hochsprache die sogenannte nullable Typen die neben den zulässigen Werten zusätzlich den Wert null zulassen. \footcite[Vgl.][S. 167]{Bayer2008} 
+\section{Typen}
+In \Csharp unterteilt man zwischen Wertetypen und Referenztypen.  Eine Variable eines Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen eines Referenztyps, die eine Referenz auf eine Instanz des Typs enthält.  Standardmäßig werden bei einer Zuweisung,  der Übergabe eines Arguments an eine Methode und der Rückgabe eines Methodenergebnisses die Variablenwerte kopiert. Bei Variablen von Wertetypen werden die entsprechenden Typinstanzen kopiert.  \Csharp bietet die folgenden eingebauten Wertetypen: Ganzzahlige numerische Typen (Integer) Fließkomma numerische Typen (Float und Double), boolean und Char welcher ein Zeichen darstellt.  Jeder Variablen dieser  Typen muss immer einen zum Typ passender Wert zugewiesen sein.  So muss zu jeder Zeit in einer Instanz des Types Integer eine Zahl verwaltet. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Notwendigkeit eines Wertes zu umgehen gibt es in der Hochsprache die sogenannte nullable Typen die neben den zulässigen Werten zusätzlich den Wert null zulassen. \footcite[Vgl.][S. 167]{Bayer2008} 
 
-Bei der Programmiersprache Dart haben sich wärend der Bearbeitungszeit dieser Arbeit Änderungen ergeben.  Bis zum März 2021 waren alle Variablen in Dart potentiell null,  das hatte zur Konsequenz, dass jede Variable potentiell keinen Wert hinterlegt hatte.   Das galt auch für die aus \Csharp als Wertetyp bezeichneten Datentypen wie Integer, Bool und Char.  Dies führte dazu,  dass bei der Arbeit mit Wertetypen wie Integer eine Null- Prüfung durchgeführt werden musste um Fehler zu vermeiden.  Quelltext \ref{lst:DartNull} zeigt die Arbeit mit einer Ganzzahl in Dart die potentiell null seien kannt. \footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}
+Die Programmiersprache Dart war klassischerweise nicht "Null sicher".  Bis zum März 2021 waren alle Variablen in Dart potentiell null,  das hatte zur Konsequenz, dass jede Variable potentiell keinen Wert hinterlegt hatte.   Das galt auch für Vergleichbare Typen der aus \Csharp bekannten Wertetyp.  Dies führte dazu,  dass bei der Arbeit Variablen Null- Prüfung ,dargestellt in Quelltext \ref{lst:DartNull},  durchgeführt werden musste um Fehler während der Laufzeit zu vermeiden.
 
 \lstinputlisting[label={lst:DartNull},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
-Im März 2021 \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}hat die Programmiersprache Dart den Support für Null-Sicherheit hinzugefügt.  So können Typen, wie in \Csharp nicht den Wert null erhalten,  es sei den der Entwickler entscheidet sich bewusst für das Gegenteil.  Mit Null Sicherheit werden die Laufzeit-Nullreferenzfehler zu Analysefehlern zur Bearbeitungszeit die nicht mehr Zwangsläufig zum Absturz der Anwendung führen. \footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021} Quelltext \ref{lst:DartNotNullAnymore} visualisiert die Arbeit mit den neuen Datentypen in Dart. 
+Im März 2021 hat\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} die Programmiersprache Dart den Support für Null-Sicherheit hinzugefügt.  So können Typen, wie in \Csharp nicht den Wert null erhalten,  es sei den der Entwickler entscheidet sich bewusst für das Gegenteil.  Mit Null Sicherheit werden die Laufzeit-Nullreferenzfehler zu Analysefehlern zur Bearbeitungszeit die nicht mehr Zwangsläufig zum Absturz der Anwendung führen. \footcite[Vgl.][Abgerufen am \today]{GoogleflutterNullSafty2021} Quelltext \ref{lst:DartNotNullAnymore} visualisiert die Arbeit mit den neuen Datentypen in Dart. 
 
 \lstinputlisting[label={lst:DartNotNullAnymore},caption={[Alles kann in Dart Null sein]{Alles kann in Dart Null sein\footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}}}, language=Dart]{SourceCode/DartNullable.Dart}
 
 Nach\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleflutterNullSafty2021} dieser Veränderung verhält sich die Programmiersprache Dart identisch wie \Csharp  sogar das Fragezeichen für die Definition einer Variable die Potentiell null seien kann ist identisch.  
 Durch diese Veränderung muss der Compiler keine speziellen Änderungen mehr vornehmen,  der Vollständigkeit halber sollte dieser Änderung trotzdem nicht unerwähnt bleiben.
-
-\section{Typen}
-
-Anders als die bekannte Auswahl an Integer-Typen von 8 bis 64 Bit mit vorzeichenbehafteten und vorzeichenlosen Varianten ist der wichtigste Integer-Typ von Dart einfach int, ein 64-Bit-Wert. (Für sehr große Zahlen gibt es auch BigInt.)
-
-Da es kein Byte-Array als Teil der Sprachsyntax gibt, können binäre Dateiinhalte als Listen von Integern verarbeitet werden, d.h. List<Int>.
-
-
+Tabelle \ref{tab:Datatypes} zeigt eine Gegenüberstellung von \Csharp und Dart Datentypen.
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X|X}
    \textbf{Datentyp} & \textbf{\Csharp}  &  \textbf{Dart}  \\
 \hline
-	Ganzzahl            			&          	& Integer \\ 
-	Fließkommazahlen         &       	& Double \\ 
-	Strings      					&          	& String 					\\ 
-	Booleans            			& 			& bool \\ 
-	List            					& 			& List \\ 
-	Map            					& 			& Dictionary \\ 
+	Ganzzahl            			&  Integer    		& Integer \\ 
+	Fließkommazahlen         &  Double 			&     Double \\
+										&	Flotat 			&     Double \\ 
+	Strings      					&  String        	& String 					\\ 
+	Booleans            			& 	bool				& bool \\ 
+	List            					& List				& List \\ 
+	Map            					& Dictionairy		& Map \\ 
 \end{tabularx}
-\caption{Gegenüberstellung Pages}
+\caption{Gegenüberstellung Datentypen}
  \label{tab:Datatypes}
 \end{table}
 
-\section{Generics}
-Generics  wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklarierst und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
+\subsection{Ganzzahlen}
 
-Generics werden in Dart sehr ähnlich behandelt wie in \Csharp ,  mit der Ausnahme,  dass Sie eine generische Klasse ohne die Type-Beschränkung übergeben können.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
+Im Gegensatz zu \Csharp steht bei Dart keine Auswahl an Integer-Typen von 8 bis 64 Bit mit vorzeichenbehafteten und vorzeichenlosen Varianten zur Verfügung.  In der Praxis gibt es unterschiedliche interne Darstellungen, je nachdem, welcher Integer-Wert zur Laufzeit tatsächlich verwendet wird.
 
-\lstinputlisting[label={lst:DartGeneric}, caption={[Generics in Dart]{Generics in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartGeneric.Dart}
-\section{Delegates}
-
-In .Net\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} ist Ein Delegate ist ein Typ,  der Verweise auf Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp darstellt.  Nach der Instanziierung eines Delegaten können die Instanz mit einer beliebigen Methode verknüpft werden,  die eine kompatible Signatur und einen kompatiblen Rückgabetyp aufweisen.  Diese können die Methode über die Delegatinstanz aufrufen.  Delegates werden dazu verwendet,  um Methoden als Argumente an anderen Methoden zu übergeben.  Da Ereignishandler ebenfalls Methoden sind können diese durch Delegates aufgerufen werden.  Benutzerdefinierte Methoden können also durch Steuerelemente diese Methode aufrufen, wenn ein bestimmes Ereignis wie ein klick auf einen Button eintritt.\footcite[Vgl.  ][Abgerufen am \today]{MicrosoftDelegates2015} 
-
-In Dart kann der Typ Typedef verwendet werden, um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen zu halten. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Dies wird in Quelltext \ref{lst:DartDelegates} dargestellt. 
+\subsection{Listen}
 
 
-\lstinputlisting[label={lst:DartDelegates},  caption={[Delegates in Dart]{Delegates in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartDelegates.Dart}
+\subsection{Schlüssel-/Wert-Paare}
+
+
+\Csharp und .Net haben Klassen die für die Behandlung von Sammlungen (engl. Collection).   
+Listen sind Auflistungen mit einem Integer Index Zugriff.  Diese Auflistungen können verwendet werden, wenn dynamische Auflistungen verwaltet werden sollen. 
+ Diesedie alle Auftretenden Probleme des Hinzufügen und entfernen von Elementen aus Arrays behandeln.  Diese werden als Listen (Eng. List) bezeichnet. \footcite[Vgl.][S. 413]{Stellman2021} Dart hat ebenfalls Listen die unter dem gleichen Namen zur Verfügung stehen und die gleichen Funktionalitäten abbilden. \footcite[Vgl.][S. 12f ]{Meiller2020}
+Listen sind Listen, und Dictionaries sind Maps.
+
 \section{New Operator}
-In \Csharp wird\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} um eine Instanz eines Typs zu erzeugen der Konstruktor dieses Typs mit dem new Operator aufgerufen. 
+In \Csharp wird um eine Instanz eines Typs zu erzeugen der Konstruktor dieses Typs mit dem new Operator aufgerufen. 
 
 
 
@@ -98,6 +93,26 @@ Dart hat keine Namespaces. Stattdessen importieren Sie Pakete oder Dateien als s
 Dadurch haben Sie Zugriff auf alle Klassen und Funktionen innerhalb der Datei. Aber wenn es einen Namenskonflikt gibt oder Sie die Dinge etwas lesbarer machen wollen, können Sie sie benennen.
 
 \lstinputlisting[label={lst:DartPackages},caption={[Importieren von Paketen in Dart]{Importieren von Paketen in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartPackages.Dart}
+
+\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
+
+
+\section{Generics}
+Generics  wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklarierst und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
+
+Generics werden in Dart sehr ähnlich behandelt wie in \Csharp ,  mit der Ausnahme,  dass Sie eine generische Klasse ohne die Type-Beschränkung übergeben können.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
+
+\lstinputlisting[label={lst:DartGeneric}, caption={[Generics in Dart]{Generics in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartGeneric.Dart}
+\section{Delegates}
+
+In .Net\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} ist Ein Delegate ist ein Typ,  der Verweise auf Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp darstellt.  Nach der Instanziierung eines Delegaten können die Instanz mit einer beliebigen Methode verknüpft werden,  die eine kompatible Signatur und einen kompatiblen Rückgabetyp aufweisen.  Diese können die Methode über die Delegatinstanz aufrufen.  Delegates werden dazu verwendet,  um Methoden als Argumente an anderen Methoden zu übergeben.  Da Ereignishandler ebenfalls Methoden sind können diese durch Delegates aufgerufen werden.  Benutzerdefinierte Methoden können also durch Steuerelemente diese Methode aufrufen, wenn ein bestimmes Ereignis wie ein klick auf einen Button eintritt.\footcite[Vgl.  ][Abgerufen am \today]{MicrosoftDelegates2015} 
+
+In Dart kann der Typ Typedef verwendet werden, um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen zu halten. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Dies wird in Quelltext \ref{lst:DartDelegates} dargestellt. 
+
+
+\lstinputlisting[label={lst:DartDelegates},  caption={[Delegates in Dart]{Delegates in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartDelegates.Dart}
+
+
 \section{Bibliotheken}
 
 Klassenbibliotheken\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} sind das Konzept der freigegebenen Bibliothek für .NET. Sie können damit nützliche Funktionalität auf Module verteilen, die von mehreren Anwendungen verwendet werden können. Sie können auch verwendet werden, um Funktionalität zu laden, die beim Start der Anwendung nicht benötigt wird bzw. nicht bekannt ist. Klassenbibliotheken werden mithilfe des .NET Assembly-Dateiformats beschriebenen.\footcite[Vgl.  .NET-Klassenbibliotheken][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
