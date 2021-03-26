@@ -162,7 +162,7 @@ Xamarin.Forms ist ein ereignisgesteuertes Framework. Die hier behandelten Steuer
 \begin{tabularx}{\textwidth}{X|X}
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
-	Button		       				&  	Flatbutton 		\\ 
+	Button		       				&  	ElevatedButton 		\\ 
 	ImageButton		       		&  	IconButton 		\\ 
 	RadioButton		       		&  	RadioButton 		\\ 
 	RefreshView		       		&  	pull\_to\_refresh 		\\ 
@@ -179,7 +179,7 @@ Die Beziehung zwischen Steuerelementen und Codebehind mittels Ereignissen wird  
 
 \lstinputlisting[label={lst:XFVuttonDefinition},caption={Xamarin.Forms Button Initialisierung}, language=XML]{SourceCode/XamarinFormsButton.XAML}
 
-\lstinputlisting[label={lst:XFEventHandler},caption={Xamarin.Forms Event Handler}, , language=csh]{SourceCode/EventHandler.cs}
+\lstinputlisting[label={lst:XFEventHandler},caption={Xamarin.Forms Event Handler},  language=csh]{SourceCode/EventHandler.cs}
 
 \subsubsection{Steuerelemente zur Textmanipulation}
 In Xamarin.Forms stehen für die Arbeit mit Texten die Steuerelemente\glq Entry\grq{}zur  Eingabe von einzelnen und  \glq Editor\grq{} von mehreren Textzeilen bereit.  Tabelle \ref{tab:TextWidgets} zeigt die Gegenüberstellung zu Flutter Widgets.  
@@ -298,6 +298,8 @@ Innerhalb von \glq Stacklayouts\grq{} können Xamarin.Forms Steuerelemente mit H
 \end{itemize}
 Neben diesen Werten stehen auch noch Ausprägungen mit der Erweiterung \glq AndExpand\grq{} zur Verfügung.  Die Werte \glq StartAndExpand\grq{} , \glq CenterAndExpand\grq{} , \glq EndAndExpand\grq{}  und \glq FillAndExpand\grq{}  werden verwendet, um die Ausrichtungspräferenz festzulegen und zu bestimmen, ob die Ansicht mehr Platz einnimmt, wenn dieser im übergeordneten \glq StackLayout\grq{} verfügbar ist. \footcite[Vgl.][Abgerufen am \today]{MicrosoftLayouts2020} 
 
+In Flutter kann mit den Eigenschaften \glq crossAxisAlignment\grq{} und \glq mainAxisAlignment\grq{} definiert werden, wie eine Zeile oder Spalte ihre Kinder ausrichtet. Bei einem \glq Row\grq{} Widget verläuft die Hauptachse horizontal und die Querachse vertikal bei dem \glq Column\grq{} Widget andersherum. Ähnlich wie bei Xamarin.Forms stehen auch hier \glq Start\grq ,  \glq End\grq{} und \glq Center\grq{} zur Verfügung. \footcite[Vgl.][Abgerufen am \today]{GoogleAlignWidgets}  Für die Zentrierung eines Elementes in Flutter würden über diesen Ansatz ein Widget sowohl in einem zentrierten \glq Row\grq{} als auch in einer zentrierten \glq Column\grq{} abgelegt werden.  Für diesen speziellen Anwendungsfall gibt es jedoch ein spezielles \glq Center\grq{} Widget, welches die gleiche Aufgabe übernimmt. \footcite[Vgl.][Abgerufen am \today]{GoogleCenter} 
+
 \subsection{Gesten}
 Für die Interaktion mit der Benutzeroberfläche werden Gesten verwendet.  Die Steuerelemente von Xamarin.Forms stellen Ereignisse für die häufig verwendeten Interaktionen bereit, wie im Unterpunkt ereignisauslösende Steuerelemente aufgeführt.  Alternativ kann die Klasse \glq GestureRecognizer\grq{}  verwendet werden, um seltenere Benutzerinteraktionen auf Ansichten zu erkennen, beispielsweise der Klick auf eine Steuerelement für die Darstellung.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftGesten2020} 
 In Flutter gibt es zwei ähnliche Möglichkeiten: Wird die Ereignisserkennung durch das Flutter-Widget z.B. den \glq ElevatedButton\grq{} untersützt,  kann eine Funktion übergeben werden,  in der eine Geste behandelt wird.  Ist keine Ereigniserkennung mittels Widget möglich,  kann es in einem \glq GestureDetector\grq{} verschachtelt werden, wie im Rahmen des \glq Timepickers\grq{} in Quelltext \ref{lst:FlutterTimePicker} dargestellt. \footcite[Vgl.][Abgerufen am \today]{GoogleGesture2020} 
@@ -308,7 +310,7 @@ Xamarin.Forms enthält eine eigene Animationsinfrastruktur,  die für die Erstel
 In Flutter stehen viele Animationen,  insbesondere für Material-Widgets,  zur Verfügung.  Sie sind mit den in ihrer Design-Spezifikation definierten Standard-Bewegungseffekten geliefert,  wobei diese Effekte anpassbar sind.\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterAnimations2020} 
 
 \subsection{Übersetzungsbeispiel}
-Nach der Einführung aller verfügbaren Seiten,  Layouts und Steuerelemente soll exemplarisch ein \ac{ui} von Xamarin.Forms zu Flutter überführt werden.  Als Beispielseite wurde die in \ref{fig:ExamplePage} dargestellte Login-Seite mithilfe von Xamarin.Forms entwickelt.  
+Nach der Einführung aller verfügbaren Seiten,  Layouts und Steuerelemente soll exemplarisch ein \ac{ui} von Xamarin.Forms zu Flutter überführt werden.  Als Beispielseite wurde die im linken Bereich der Abbildung \ref{fig:ExamplePage} dargestellte Login-Seite mithilfe von Xamarin.Forms entwickelt.  Der entsprechende \ac{xaml}-Quelltext wird im rechten Bereich der Abbildung dargestellt.  Die abgebildete Login-Seite zeigt eine zentrierte Form mit zwei Eingabefeldern für Benutzernamen und Passwort und eine Schaltfläche für die Ausführung des Loginvorganges.  
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/ExamplePage.png}
@@ -316,17 +318,28 @@ Nach der Einführung aller verfügbaren Seiten,  Layouts und Steuerelemente soll
  \label{fig:ExamplePage}
 \end{figure}
 
-Die abgebildete Login-Seite zeigt eine zentrierte Form mit zwei Eingabefeldern für Benutzernamen und Passwort und eine Schaltfläche für die Ausführung des Loginvorganges.  Mithilfe der Gegenüberstellungen von \ac{ui}-Elementen und Widgets,  kann anschließend eine Transformation des Xamarin.Forms Layout-Baums zu dem Flutter Widget Baum durchgeführt werden.  Zur Darstellung wird in Abbildung \ref{fig:LayoutTree} eine Baumstruktur verwendet,  welche die Verschachtlung innerhalb der Benutzeroberfläche visualisiert.  
+
+Mithilfe der Gegenüberstellungen von \ac{ui}-Elementen und Widgets,  kann anschließend eine Transformation des Xamarin.Forms Layout-Baums zu dem Flutter Widget Baum durchgeführt werden.  Zur Darstellung wird in Abbildung \ref{fig:LayoutTrees} eine Baumstruktur verwendet,  welche die Verschachtlung innerhalb der Benutzeroberfläche visualisiert.  Dabei wird die Zentrierung der Login-Form durch das Center Widget durchgeführt,  da im Xamarin.Forms Layout beide Eigenschaften zur Ausrichtung den Wert CenterAndExpand zugewiesen haben.  Für alle anderen Steuerelemente wird auf die in den im diesen Kapitel verwiesenen Flutter Elemente zurück gegriffen. 
+
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/Gegenüberstellung.png}
  \caption{Überführung von Xamarin.Forms zu Flutter}
- \label{fig:LayoutTree}
+ \label{fig:LayoutTrees}
 \end{figure}
 
-Erkennbar ist,  die Zentrierung der Loginform mithilfe des Steuerelementes \glq Grid\grq{}.  Wie bereits beschrieben könnte es auch mit einem \glq StackLayout\grq{} und der Ausrichtungsoption \glq CenterAndExpand\grq{} realisiert werden.  In Flutter könnte ein entsprechendes Layout auch mit unterschiedlichen Widgets entwickelt werden.  So könnte das übergeordnete \glq GridView \grq{}ebenfalls durch die Widgets \glq Row\grq{} und \glq Column\grq{} ersetzt werden.  Der Austauschen von Steuerelementen und Widgets kann zur Folge haben,  dass erzeugte Flutter Ansichten nicht den optimalen Widget-Baum erzeugen.  So steht für die Zentrierung von Elementen auch ein Widget mit dem Namen \glq Center\grq{}  zur Verfügung,  welches beim Austausch durch Widgets nicht berücksichtigt werden kann, da kein Steuerelement entgegensteht.  Dies ist eine wichtige Erkenntnis,  da die übersetzte App somit nicht als final zu bezeichnen ist, und unter Umständen Optimierungen durchgeführt werden müssen. 
+Um die Funktionsfähigkeit dieses Widget-Baums sicherzustellen,  wird dieser innerhalb einer Flutter-App realisiert und das visuelle Ergebnis mit dem in Abbildung  \ref{fig:ExamplePage} dargestellten Xamarin-Forms App verglichen werden. 
 
-Um die Funktionsfähigkeit des Widget-Baums sicherzustellen,  wird dieser innerhalb einer Flutter-App realisiert und das visuelle Ergebnis mit dem in Abbildung dargestellten Login-Screen verglichen werden. 
+\lstinputlisting[label={lst:LoginPage},caption={Exemplarische LoginPage in Dart} , language=Dart]{SourceCode/FlutterLoginPage.Dart} 
 
+Bei der Ausführung dieser App fällt auf,  dass visuelle Unterschiede im Vergleich zu vorher entwickelten Xamarin.Forms Variante existieren.  Im oberen linken Teil der Abbildung \ref{fig:LoginPageFlutter} wird das zentrale Element der Login-Form dargestellt, es ist ersichtlich, dass im Gegensatz zur Xamarin.Forms Variante Abstände zwischen den Eingabefeldern fehlen.  Außerdem ist der Loginbutton nicht über die verfügbare breite gestreckt.  Die Abstände entstehen dadurch, dass das StackLayout automatisch einen Leerraum zwischen Elemente legt, dieses Verhalten muss in Flutter durch das Padding Widget nachgestellt werden.  Zusätzlich kann das Widget SizedBox verwendet werden um die Breite des ElevatedButtons anzupassen.  Somit kann der zentrale Bereich des Widget-Baums neu erstellt werden,  wie er im unteren Linken Bereich der Abbildung dargestellt ist.  Der angepasste Quelltext,  siehe Anhang II,  erzeugt danach eine App mit dem im rechten Teil angezeigten \ac{ui} welches der Xamarin.Forms Variante sehr nahe kommt.
+
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/FlutterLoginPage.png}
+ \caption{Flutter LoginPage Screenshot und Widget-Baum}
+ \label{fig:LoginPageFlutter}
+\end{figure}
+
+Diese Validierung zeigt,  dass der Ansatz zum Austauschen von \ac{ui}-Elementen eine mobile Anwendung mit einem sehr ähnlichen Benutzeroberfläche generiert.  Aber auch,  dass bei der Übersetzung von Xamarin.Forms auch eine Kombination von Eigenschaftswerten und Standard-Werte die Auswahl der entsprechenden Widgets beeinflussen können.
 
 \section{Navigation}
 \label{sec:nav}

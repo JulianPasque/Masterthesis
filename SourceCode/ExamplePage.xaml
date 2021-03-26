@@ -1,0 +1,21 @@
+<StackLayout 
+    VerticalOptions="CenterAndExpand"
+    HorizontalOptions="CenterAndExpand">
+
+    <Frame>
+
+        <StackLayout>
+
+            <Entry 
+                Placeholder="Username" />
+
+            <Entry 
+                Placeholder="Password"
+                IsPassword="True"/>
+
+            <Button 
+                Text="Login" />
+
+        </StackLayout>
+    </Frame>
+</StackLayout>
