@@ -3,10 +3,15 @@
 
 Nach den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten Unterschieden zwischen den Frameworks wird in diesem Kapitel die Heterogenität zwischen den Hochsprachen \Csharp und Dart behandelt.  Die beiden Programmiersprachen haben einen ähnlichen Stils und eine vergleichbare Syntax was den Umstieg von Xamarin.Forms zu Flutter vereinfachen kann.  \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}Alle Unterschiede zwischen den Programmiersprache können innerhalb des Quelltextes der mobilen Anwendung vorkommen und haben daher einen direkten Einfluss auf die mit den Frameworks entwickelten Apps.
 
-\section{Null Sicherheit}
-In \Csharp unterteilt man Typen in Werte- und Referenztypen.  Eine Variable eines Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen eines Referenztyps, die eine Referenz auf eine Instanz des Typs enthält.  Standardmäßig werden bei einer Zuweisung,  der Übergabe eines Arguments an eine Methode und der Rückgabe eines Methodenergebnisses die Variablenwerte kopiert. Bei Variablen von Wertetypen werden die entsprechenden Typinstanzen kopiert.  \Csharp bietet die folgenden eingebauten Wertetypen: Ganzzahlige numerische Typen (Integer) Fließkomma numerische Typen (Float und Double), boolean und Char welcher ein Zeichen darstellt.  Jeder Variablen dieser  Typen muss immer einen zum Typ passender Wert zugewiesen sein.  So muss zu jeder Zeit in einer Instanz des Types Integer eine Zahl verwaltet werden. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Notwendigkeit eines Wertes zu umgehen gibt es in der Hochsprache die sogenannte nullable Typen die neben den zulässigen Werten zusätzlich den Wert null zulassen. \footcite[Vgl.][S. 167]{Bayer2008} 
+\section{Klassendesign}
 
-Die Programmiersprache Dart war klassischerweise nicht "Null sicher".  Bis zum März 2021 waren alle Variablen in Dart potentiell null,  das hatte zur Konsequenz, dass jede Variable potentiell keinen Wert hinterlegt hatte.   Das galt auch für Vergleichbare Typen der aus \Csharp bekannten Wertetyp.  Dies führte dazu,  dass bei der Arbeit Variablen Null- Prüfung ,dargestellt in Quelltext \ref{lst:DartNull},  durchgeführt werden musste um Fehler während der Laufzeit zu vermeiden.
+Die zentrale Betrachtung dieses Abschnittes sind die sogenannten Klassen und Objekte.  In der objektorientierten Programmierung spricht man von einem Objekt oder auch von einem konkreten Objekt, wenn aus der Klassendefinition heraus etwas Gegenständliches erzeugt wird.  Ein weiterer, häufig benutzter Begriff ist der der Klasseninstanz oder einfach nur Instanz. Sie können diese Begriffe synonym nebeneinander verwenden, sie besagen dasselbe.  Ein Objekt wird durch bestimmte,  charakteristische Merkmale beschrieben,  die in der Klassendefinition festgelegt werden müssen.  Diese werden als Eigenschaften bezeichnet.  Die \ac{oop} wird sowohl von \Csharp und Dart verwendet,  jedoch gibt es vereinzelt Unterschiede bei der Realisierung.  Somit gilt in beiden Sprachen, dass eine Klassendefinition einen Bauplan eines Objektes darstellt und als Typdefinition gilt.  
+
+\subsection{Referenz- und Wertetypen}
+
+Das von \Csharp verwendete .NET- Typsystem indem Typen in Werte- und Referenztypen unterschieden werden. Der Unterschied zwischen beiden ist in der Allozierung des Systemspeichers zu finden.  Eine Variable, die einen Wertetyp repräsentiert, alloziert den notwendigen Speicher für die Daten.   Eine Variable eines Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen eines Referenztyps, die eine Adresse auf die Speicherzellen des Typs enthält.   \Csharp bietet die folgenden eingebauten Wertetypen: Ganzzahlige numerische Typen (Integer) Fließkomma numerische Typen (Float und Double), boolean und Char welcher ein Zeichen darstellt.  Jeder Variablen dieser Typen muss immer einen zum Typ passender Wert zugewiesen sein.  So muss zu jeder Zeit in einer Instanz des Types Integer eine Zahl verwaltet werden. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Notwendigkeit eines Wertes zu umgehen gibt es in der Hochsprache die sogenannte nullable Typen die neben den zulässigen Werten zusätzlich den Wert null zulassen. \footcite[Vgl.][S. 167]{Bayer2008} 
+
+Die Programmiersprache Dart war klassischerweise nicht Null sicher,  dass bedeutet das sowohl Wert als auch Referenztypen potentiell keinen Wert repräsentiert haben.  Dies führte dazu,  dass bei der Arbeit Variablen Null- Prüfung ,dargestellt in Quelltext \ref{lst:DartNull},  durchgeführt werden musste um Laufzeitfehler zu vermeiden.
 
 \lstinputlisting[label={lst:DartNull},caption={[Null-Sicherheit in Dart 1.x]{Null-Sicherheit in Dart 1.x\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
@@ -16,9 +21,9 @@ Im März 2021 hat\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{P
 
 Nach\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleflutterNullSafty2021} dieser Veränderung verhält sich die Programmiersprache Dart identisch wie \Csharp  sogar das Fragezeichen für die Definition einer Variable die Potentiell null seien kann ist identisch.  Durch diese Veränderung muss der Compiler keine speziellen Änderungen mehr vornehmen,  der Vollständigkeit halber sollte dieser Änderung trotzdem nicht unerwähnt bleiben.
 
-\section{Datentypen}
+\subsection{Datentypen}
 
-Das Verständnis des Unterschieds zwischen Referenz und Wertetypen ist elementar für die Programmierung mit .NET.  Ein Unterschied besteht in der Initialisierung von Referenztypen.  Während es bei Werttypen einfach so ist, dass der entsprechende Wert zugewiesen werden kann, muss bei Referneztyen expliziert ein Objekt erzeugt oder ein bestehendes Objekt zugewiesen werden.  Die Erzeugung eines neues Objekts geschieht dabei mit dem Operator New. \footcite[Vgl.][S. 93]{Kofler2005} In Dart muss dieser Operator nicht verwendet werden, da Dart herausfindet, wann ein neues Objekt initiiert werden muss.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Dies wird in Quelltext \ref{lst:DartNew} dargestellt. 
+Das Verständnis des Unterschieds zwischen Referenz und Wertetypen ist elementar für die Programmierung mit .NET.  Ein Unterschied besteht in der Initialisierung von Referenztypen.  Während bei Werttypen einfach der entsprechende Wert zugewiesen werden kann, muss bei Referenztypen expliziert ein Objekt erzeugt oder ein bestehendes Objekt zugewiesen werden.  Die Erzeugung eines neues Objekts geschieht dabei mit dem Operator New. \footcite[Vgl.][S. 93]{Kofler2005} In Dart muss dieser Operator nicht verwendet werden,  da analysiert wird, wann ein neues Objekt initiiert werden muss.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Dies wird in Quelltext \ref{lst:DartNew} dargestellt. 
 
 \lstinputlisting[label={lst:DartNew},caption={[Optionales "New" Keyword in Dart]{Optionales "New" Keyword in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNew.Dart}
 
@@ -70,7 +75,7 @@ Listen sind Listen, und Dictionaries sind Maps.
 
 \lstinputlisting[label={lst:DartDicAndList}, caption={[Listen und Maps in Dart]{Listen und Maps in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}},  language=Dart]{SourceCode/DartListAndDictionairy.Dart}
 
-\section{Modifizierer}
+\subsection{Modifizierer}
 
 Alle \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Typen und Typmember verfügen in beiden Sprachen über eine Zugriffsebene.  Diese Zugriffsebene steuert, ob sie von anderem Code in Ihrer Assembly oder anderen Assemblys verwendet werden können.  Dabei wird in \Csharp mit Mithilfe der Zugriffsmodifizieren (public,  private,  protected,  internal,  protected internal,  private protected) der Zugriff auf einen Typ oder Member festlegen.  In Dart gibt es die Schlüsselwörter public,  protected und private nicht. Wenn ein Bezeichner mit einem Unterstrich (\_) beginnt, ist er für seine Bibliothek privat dies wird in \ref{lst:PrivatePublicDart} als Quelltext dargestellt. 
 
@@ -78,7 +83,7 @@ Alle \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} T
 
 Da ein \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Unterstrich ein valides Zeichen bei der Typ und Typmemberdefinition ist, ist daher bei der Übersetzung darauf zu achten,  dass existierende Unterstriche entfernt werden müssen da dies ansonsten potentiell zu fehlerhaften Übersetzungen führen kann.  Außerdem kann es durch die Verwendung von Zugriffsmodifiziern wie "protected internal" vorkommen, dass es keine entsprechende Dart Implementierung existiert.  Folglich führt dies potentiell zu falschen Zugriffsbeschränkungen bei der Übersetzung von Bibliotheken. 
 
-\section{Vererbung}
+\subsection{Vererbung}
 
 Die Vererbung ist, zusammen mit der Kapselung und der Polymorphie, eines der drei primären Charakteristika des objektorientierten Programmierens. Die Vererbung ermöglicht die Erstellung neuer Klassen, die in anderen Klassen definiertes Verhalten wieder verwenden, erweitern und ändern. Die Klasse, deren Member vererbt werden, wird Basisklasse genannt, und die Klasse, die diese Member erbt, wird abgeleitete Klasse genannt. Eine abgeleitete Klasse kann nur eine direkte Basisklasse haben.\footcite[Vgl.  ][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
@@ -92,9 +97,12 @@ Sie \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} k�
 
 \lstinputlisting[label={lst:DartMixin},caption={[Mixin's in Dart]{Mixin's in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartMixin.Dart}
 
+\subsection{Überführung einer beispielhaften Klassen}
+\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} 
+
 \section{Namespaces}
 
-Namespaces\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} werden häufig in \Csharp -Programmen auf zwei verschiedene Arten verwendet. Erstens: Die .NET-Klassen verwenden Namespaces, um ihre zahlreichen Klassen zu organisieren. Zweitens: Eigene Namespaces zu deklarieren kann Ihnen dabei helfen, den Umfang der Klassen- und Methodennamen in größeren Programmierprojekten zu steuern.
+Namespaceswerden häufig in \Csharp -Programmen auf zwei verschiedene Arten verwendet. Erstens: Die .NET-Klassen verwenden Namespaces, um ihre zahlreichen Klassen zu organisieren. Zweitens: Eigene Namespaces zu deklarieren kann Ihnen dabei helfen, den Umfang der Klassen- und Methodennamen in größeren Programmierprojekten zu steuern.
 Die meisten \Csharp -Anwendungen beginnen mit einem Abschnitt von using-Anweisungen. Dieser Abschnitt enthält die von der Anwendung häufig verwendeten Namespaces und erspart dem Programmierer die Angabe eines vollqualifizierten Namens bei jedem Verwenden einer enthaltenen Methode.\footcite[Vgl.  Verwenden von Namespaces (\Csharp-Programmierhandbuch)][Abgerufen am \today]{GoogleFlutterSharedPreferences2020} 
 
 Dart hat keine Namespaces. Stattdessen importieren Sie Pakete oder Dateien als solche.
@@ -161,5 +169,4 @@ Der Vorteil dieses Ansatzes ist, dass Sie viele Dinge tun können, wie z. B. Wer
 \lstinputlisting[label={lst:DartEvents},caption={[Events in Dart]{Events in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartEvents.Dart}
  \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 
-\section{Überführung einer beispielhaften Klassen}
 

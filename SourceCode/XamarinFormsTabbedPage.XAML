@@ -4,5 +4,4 @@
             x:Class="MasterThesisSample.SampleTabbedPage">
     <NavigationPage Title="Tab 1"/>
     <NavigationPage Title="Tab 2"/>
-    <NavigationPage Title="Tab 3"/>
 </TabbedPage>
