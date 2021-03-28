@@ -2,9 +2,7 @@
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      appBar: AppBar(
-        title: Text("LoginPage"),
-      ),
+      appBar: AppBar( title: Text("LoginPage"),),
       body: Center(
         child: Card(
           child: Column(
@@ -16,18 +14,15 @@
                   obscureText: false,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Username',
-                  ),
+                    labelText: 'Username', ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(5.0),
+              Padding(padding: const EdgeInsets.all(5.0),
                 child: TextField(
                   obscureText: true,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Password',
-                  ),
+                    labelText: 'Password',),
                 ),
               ),
               SizedBox(
@@ -35,10 +30,7 @@
                 child: Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: ElevatedButton(
-                      child: Text('Login'),
-                      onPressed: () {
-                        print('Pressed');
-                      }),
+                      child: Text('Login'),),
                 ),
               ),
             ],
