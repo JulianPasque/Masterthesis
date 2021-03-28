@@ -1,10 +1,2 @@
-class State<Type>
-{
-  Type getValue() => null;
-} 
-void processState(State state) { 
-  dynamic value = state.getValue(); 
-} 
-void processStateWithType(State<String> state) { 
-  String value = state.getValue(); 
-}
+var p1 = Point(2, 2);
+var p2 = Point.fromJson({'x': 1, 'y': 2});
