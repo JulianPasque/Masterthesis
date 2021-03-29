@@ -1,7 +1,12 @@
 \chapter{Fazit und Ausblick}
 \label{chap:FazitAusblick}
-
+Der Umstieg von Xamarin.Forms zu Flutter löst die Abhänhigkeit zu Microsoft, trotzdem sollte nicht vergessen werden, dass auch Flutter eine Abhängigkeit zu Google kree
 Flutter immernoch eine Abhängigkeit
 
 \section{Ausblick}
-Die Installation der notwendigen Software i
+Der im Rahmen dieser Arbeit entwickelte Prototyp ist in der Lage die für diese Arbeit entwickelte Xamarin.Forms App zu übersetzten.  In der Praxis verwenden produktive Xamarin.Forms Anwendungen jedoch auch die in Kapitel \ref{chap:CompilerEntwurf} ausgeschlossenen Elemente.  Darüber hinaus gibt es Firmen, wie DevExpress, Syncfusion und Telerik die sowohl Steuerelemnte für Xamarin.Forms als auch Widgets für Flutter anbieten und die ebenfalls ausgetauscht werden könnten.  Durch eine Veröffentlichung des Compilers als Open-Source Projekt könnten diese Anbieter ihre eigenen \ac{ui}-Elemente durch den Compiler ersetzten lassen und somit den Umfang des Compilers erhöhen.  Die Offenlegung des Quelltextes hätte darüber hinaus noch den Vorteil, dass Entwickler und Unternehmen, die ihre mobilen Anwendungen von Xamarin. Forms zu Flutter migrieren wollen den Compiler auch auf ihre speziellen Gengegebenheiten Anpassen können.
+
+Eine weitere Optimierung des Übersetzers wäre es, den Bedarf an notwendigen Installationsschritten zu reduzieren.  Eine Möglichkeit wäre es,  ein Web-Interface zu Entwickeln, über welches Unternehmen ihre mobilen Anwendungen hochladen können. Im Hintergrund könnte anschließend über eine virtuelle Maschine in der Cloud eine Umgebung gestartet werden,  die die notwendigen Softwareprodukte bereits installiert hat und die Übersetzung durchführen kann.  
+
+
+

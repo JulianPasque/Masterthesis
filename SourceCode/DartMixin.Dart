@@ -1,5 +1,5 @@
 class MyMixin {
-  void sayHello() => print('Hello!');
+  void sayHello() => print("Hello!");
 }
 
 class MyClass with MyMixin
