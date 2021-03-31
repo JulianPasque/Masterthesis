@@ -50,11 +50,11 @@ Folgend\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 	\hline
 	Textzeichen      			&  char        	&  					\\ 
 	\hline
-	Vektor      						&  Array        	&  					\\ 
+	Datenfeld      						&  Array        	&  					\\ 
 	\hline
 	Bool            			& 	bool				& bool \\ 
 	\hline
-	Auflistungen          					& List				& List \\ 
+	Auflistung          					& List				& List \\ 
 	\hline
 	Hashtabelle					& Dictionairy		& Map \\ 
 \end{tabularx}
@@ -63,23 +63,27 @@ Folgend\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 \end{table}
 Die Tabelle zeigt die Datentypen von \Csharp und Dart, es ist ersichtlich, dass sich einige aber nicht alle unterscheiden und für mache Typen in Dart eine entsprechende Repräsentation fehlt.  Auf die für den Compilerbau relevanten Unterschiede wird im folgenden genauer eingegangen. 
 \subsubsection{Ganzzahlen}
-Wie die Tabelle zeigt,  bietet \Csharp eine Vielzahl von Typen für die Arbeit mit Ganzzahlen.  Diese haben einen Bereich von 8 bis 64 Bit und stehen jeweils mit und ohne Vorzeichen zur Verfügung.  Dart besitzt keine vergleichbar umfangreiche Auswahl von Ganzzahl-Datentypen.  Um Zahlen dennoch effizient im Hauptspeicher abzulegen,wird auf unterschiedliche interne Darstellungen,  je nachdem,  welcher Integer-Wert zur Laufzeit tatsächlich verwendet wird, zurückgegriffen.  Für besonders große Zahlenwerte steht jedoch der DatenTyp \glq Bigint \grq{}  zur Verfügung.  \footcite[Vgl. ][Abgerufen am \today]{Ford2019} Der Compiler muss alle ganzzahligen  \Csharp Datentypen zu Dart \glq Integer\grq{},  bis auf \glq long\grq{} und \glq ulong\grq{} die von \glq BigInt\grq{}  repräsentiert werden, übersetzten . 
+Wie die Tabelle zeigt,  bietet \Csharp eine Vielzahl von Typen für die Arbeit mit Ganzzahlen.  Diese haben einen Bereich von 8 bis 64 Bit und stehen jeweils mit und ohne Vorzeichen zur Verfügung.  Dart besitzt keine vergleichbar umfangreiche Auswahl von Ganzzahl-Datentypen.  Um Zahlen dennoch effizient im Hauptspeicher abzulegen,wird auf unterschiedliche interne Darstellungen,  je nachdem,  welcher Integer-Wert zur Laufzeit tatsächlich verwendet wird, zurückgegriffen.  Für besonders große Zahlenwerte steht jedoch der DatenTyp \glq Bigint \grq{}  zur Verfügung.  \footcite[Vgl. ][Abgerufen am \today]{Ford2019} Der Compiler muss alle ganzzahligen  \Csharp Datentypen zu Dart \glq Integer\grq,  bis auf \glq long\grq{} und \glq ulong\grq{} die von \glq BigInt\grq{}  repräsentiert werden, übersetzten . 
 
 \subsubsection{Fließkommazahlen}
-Für Fließkommastellen steht in Flutter nur der Datentyp double zur Verfügung, während in \Csharp double,  float und decimal zur Verfügung stehen.
+Fließkommazahlen stellen reelle Zahlen da,  in \Csharp stehen dafür ,wie in der Tabelle dargestellt,  verschiedene Datentypen zur Verfügung.  Der  \glq decimal\grq{} -Typ ist geeignet, wenn der erforderliche Genauigkeitsgrad durch die Anzahl der Ziffern rechts vom Dezimaltrennzeichen bestimmt wird.  Solche Zahlen werden häufig in Finanzanwendungen, für Währungsbeträge und bei Zinssätzen verwendet. Gerade Zahlen, die nur auf eine Dezimalstelle genau sind, werden vom  \glq decimal\grq{}-Typ genauer behandelt: 0,1 kann z. B. durch eine  \glq decimal\grq{} -Instanz genau dargestellt werden, während keine  \glq double\grq{} - oder  \glq float\grq{} -Instanz 0,1 genau darstellt.  Aufgrund dieses Unterschieds bei numerischen Typen können unerwartete Rundungsfehler in arithmetischen Berechnungen auftreten, wenn double oder float für Dezimaldaten verwendet werden.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftFlieskomma2021}
+In Dart steht für die Arbeit mit reelen Zahlen nur der Datentyp \glq  double\grq{} zur Verfügung, \footcite[Vgl. ][Abgerufen am \today]{GoogleDouble} alle Fließkommazahlen müssen daher während der Kompilierung zu \glq double\grq{} umgewandelt werden.
 \subsubsection{Textzeichen}
+Im Gegensatz zu \Csharp steht bei Flutter kein Datentyp für einzelne Textzeichen zur Verfügung.  Als Alternative wird auf den Datentyp \glq String \grq{} zurückgegriffen,  und diesem nur ein Zeichen zugewiesen.  Für diesen Zweck stellt die String Klasse in Dart einen Kontruktor für die Erzeugung von Objekten zur Verfügung, der einen CharacterCode als Übergabewert erwartet und das entsprechende String Objekt erzeugt.  Dies wird in Quelltext \ref{lst:DartStringChar} dargestellt.
+\lstinputlisting[label={lst:DartStringChar},caption={Erstellung eines Strings mit einem Zeichen in Dart}, language=Dart]{SourceCode/DartNewStringChar.Dart}
 
-Im Gegensatz zu \Csharp steht bei Flutter kein Datentyp für einzelne Textzeichen zur Verfügung.  Als Alternative wird auf den Datentyp \glq String \grq{} zurückgegriffen,  und diesem nur ein Zeichen zugewiesen.  
 
-\subsubsection{Vektoren}
-Die vielleicht gebräuchlichste Sammlung in fast jeder Programmiersprache ist das Array, also eine geordnete Gruppe von Objekten.  In Dart sind Arrays List-Objekte, daher werden sie häufig auch kurz als Listen bezeichnet.. \footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020}  Diese Liste enthält einen internen Puffer, der erweitert wird, wenn die Liste erweitert wird.  In \Csharp gibt es sowohl Arrays als auch Listen für die Behandlung von Sammlungen.  Listen ermöglichen ein einfaches Einfügen von Elementen.  Dafür und auch für andere Aktionen unterstützten die Liste mehrere Operationen.  Array-Speicher ist statisch und kontinuierlich während Listenspeicher dynamisch ist. 
+\subsubsection{Datenfelder}
+Die vielleicht gebräuchlichste Sammlungen sind die sogenannten Arrays, auch als Datenfelder bezeichnet,  die eine geordnete Gruppe von Objekten darstellen.\footcite[Vgl.][S. 110f]{Kühnel2019}  In Dart gibt es im Vergleich zu \Csharp keine Arrays sondern verwendet stattdessen den Datentyp Liste.  Bei der Übersetzung von \Csharp zu Dart müssen daher entsprechende Datenfelder angepasst werden. Die Arbeit mit Datenfeldern in Dart wird in Quelltext \ref{lst:DartList} dargestellt.
+\lstinputlisting[label={lst:DartList},caption={Datenfelder in Dart}, language=Dart]{SourceCode/DartList.Dart}
 
-Für die Übersetzung von \Csharp zu Dart ist es folglich notwendig, alle Arrays zu Listen umzuwandeln.
 
 \subsubsection{Auflistungen}
+Im Gegensatz zu Datenfelder sind Auflistungen in \Csharp nicht statisch und kontinuierlich sondern dynamisch was das Einfügen von Elementen vereinfacht.  Die entsprechende Rerpäsentation in Dart sind wie schon bei den Datenfeldern die Listen.
 
 \subsubsection{Hashtabellen}
-Im Allgemeinen ist eine Hashtabellen ein Objekt, das Schlüssel und Werte miteinander verknüpft. Sowohl Schlüssel als auch Werte können beliebige Objekttypen sein. Jeder Schlüssel kommt nur einmal vor, aber sie können denselben Wert mehrfach verwenden. Dart unterstützt Hashtabellen durch den Typen Map\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} und Csharp durch den Typen Dictionary.  Im Rahmen der Übersetzung muss der Typ Map demnach mit Dictionairy ersetzt werden.
+Eine Hashtabelle ist ein Objekt, das Schlüssel und Werte miteinander verknüpft.  Sowohl Schlüssel als auch Werte können beliebige Objekttypen sein. Jeder Schlüssel kommt nur einmal vor, aber sie können denselben Wert mehrfach verwenden. Dart unterstützt Hashtabellen durch den Datentypen Map\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} und Csharp durch den Typen Dictionary.  Im Rahmen der Übersetzung muss der Typ Map demnach mit Dictionairy ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
+\lstinputlisting[label={lst:DartHashmap},caption={Hashtabellen in Dart}, language=Dart]{SourceCode/DartHashmap.Dart}
 
 
 \subsection{Modifizierer}
@@ -88,9 +92,7 @@ Alle Klassen und Eigenschaften verfügen in beiden Sprachen über eine Zugriffse
 
 \lstinputlisting[label={lst:PrivatePublicDart},caption={[Private und Public Definitionen in Dart]{Private und Public Definitionen in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/PrivateDefinition.Dart}
 
-Da  \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Unterstriche erlaubte Zeichen bei der Entwicklung von  \Csharp -Klassen sind,  müssen sie bei der Übersetzung entfernt werden,  da diese ansonsten zu fehlerhaften Übersetzungen führen könnten.  Durch das Fehlen der anderen oben erwähnten Modifizierer können Berechtigungen in Dart nicht so feingranular definiert werden wie in \Csharp .  Der vom Compiler generierte Dart-Quelltext darf nicht mehr Zugriffe verweigern als der ursprüngliche Quelltext,  daher kann es passieren das der Dart Quelltext weniger gute Restriktionen aufweist. 
-
-Dabei fällt auf, dass der zugriffsmodifizierer nicht mehr vor dem Typen steht sondern als Prefix vor dem Namen der jeweiligen Eigenschaft. 
+Da  \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} Unterstriche erlaubte Zeichen bei der Entwicklung von  \Csharp -Klassen sind,  müssen sie bei der Übersetzung entfernt werden,  da diese ansonsten zu fehlerhaften Übersetzungen führen könnten.  Durch das Fehlen der anderen oben erwähnten Modifizierer können Berechtigungen in Dart nicht so feingranular definiert werden wie in \Csharp .  Der vom Compiler generierte Dart-Quelltext darf nicht mehr Zugriffe verweigern als der ursprüngliche Quelltext,  daher kann es passieren das der Dart Quelltext weniger gute Restriktionen aufweist.  Dabei fällt auf, dass der Zugriffsmodifizierer nicht mehr vor dem Typen steht sondern als Prefix vor dem Namen der jeweiligen Eigenschaft. 
 \subsection{Vererbung}
 
 Erweiterungen oder Veränderung von Klassen entstehen durch die Vererbung, wobei aus einer bestehenden Basisklasse neue abgeleitete Klassen entwickelt werden können, die der Spezialisierung dienen. \footcite[Vgl.  ][Abgerufen am \today]{MicrosoftVeerbung2020}  Der folgende Quelltext zeigt eine Vererebung ist in Dart.
