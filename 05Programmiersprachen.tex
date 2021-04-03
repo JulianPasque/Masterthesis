@@ -66,23 +66,30 @@ Die Tabelle zeigt die Datentypen von \Csharp und Dart, es ist ersichtlich, dass 
 Wie die Tabelle zeigt,  bietet \Csharp eine Vielzahl von Typen für die Arbeit mit Ganzzahlen.  Diese haben einen Bereich von 8 bis 64 Bit und stehen jeweils mit und ohne Vorzeichen zur Verfügung.  Dart besitzt keine vergleichbar umfangreiche Auswahl von Ganzzahl-Datentypen.  Um Zahlen dennoch effizient im Hauptspeicher abzulegen,wird auf unterschiedliche interne Darstellungen,  je nachdem,  welcher Integer-Wert zur Laufzeit tatsächlich verwendet wird, zurückgegriffen.  Für besonders große Zahlenwerte steht jedoch der DatenTyp \glq Bigint \grq{}  zur Verfügung.  \footcite[Vgl. ][Abgerufen am \today]{Ford2019} Der Compiler muss alle ganzzahligen  \Csharp Datentypen zu Dart \glq Integer\grq,  bis auf \glq long\grq{} und \glq ulong\grq{} die von \glq BigInt\grq{}  repräsentiert werden, übersetzten . 
 
 \subsubsection{Fließkommazahlen}
-Fließkommazahlen stellen reelle Zahlen da,  in \Csharp stehen dafür ,wie in der Tabelle dargestellt,  verschiedene Datentypen zur Verfügung.  Der  \glq decimal\grq{} -Typ ist geeignet, wenn der erforderliche Genauigkeitsgrad durch die Anzahl der Ziffern rechts vom Dezimaltrennzeichen bestimmt wird.  Solche Zahlen werden häufig in Finanzanwendungen, für Währungsbeträge und bei Zinssätzen verwendet. Gerade Zahlen, die nur auf eine Dezimalstelle genau sind, werden vom  \glq decimal\grq{}-Typ genauer behandelt: 0,1 kann z. B. durch eine  \glq decimal\grq{} -Instanz genau dargestellt werden, während keine  \glq double\grq{} - oder  \glq float\grq{} -Instanz 0,1 genau darstellt.  Aufgrund dieses Unterschieds bei numerischen Typen können unerwartete Rundungsfehler in arithmetischen Berechnungen auftreten, wenn double oder float für Dezimaldaten verwendet werden.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftFlieskomma2021}
-In Dart steht für die Arbeit mit reelen Zahlen nur der Datentyp \glq  double\grq{} zur Verfügung, \footcite[Vgl. ][Abgerufen am \today]{GoogleDouble} alle Fließkommazahlen müssen daher während der Kompilierung zu \glq double\grq{} umgewandelt werden.
+
+
+Fließkommazahlen stellen reelle Zahlen da,  in \Csharp stehen dafür, wie in der Tabelle dargestellt,  verschiedene Datentypen zur Verfügung.  Der \glq decimal\grq{} -Typ behandelt Dezimalstellen am genausten,  während die Alternativen \glq double\grq{} und  \glq float\grq{} nur Annäherungen an bestimmte reelle Zahl darstellen.  \footcite[Vgl. ][Abgerufen am \today]{MicrosoftFlieskomma2021}
+In Dart steht für die Arbeit mit Kommazahlen nur der Datentyp \glq  double\grq{} zur Verfügung, \footcite[Vgl. ][Abgerufen am \today]{GoogleDouble} alle Fließkommazahlen müssen daher während der Kompilierung zu \glq double\grq{} umgewandelt werden.
+
 \subsubsection{Textzeichen}
-Im Gegensatz zu \Csharp steht bei Flutter kein Datentyp für einzelne Textzeichen zur Verfügung.  Als Alternative wird auf den Datentyp \glq String \grq{} zurückgegriffen,  und diesem nur ein Zeichen zugewiesen.  Für diesen Zweck stellt die String Klasse in Dart einen Kontruktor für die Erzeugung von Objekten zur Verfügung, der einen CharacterCode als Übergabewert erwartet und das entsprechende String Objekt erzeugt.  Dies wird in Quelltext \ref{lst:DartStringChar} dargestellt.
+
+In \Csharp sind einzelne Textzeichen ein \glq  Char\grq, eine Folge von Textzeichen bilden einen  sogenannten \glq  String\grq.  Dart stellt dagegen keinen Datentyp für einzelne Textzeichen zur Verfügung.  Für eine entsprechende Darstellung wird auf den Datentyp \glq  String\grq{} zurückgegriffen.  Die  \glq String\grq{} Klasse verfügt über einen Konstruktor, der einen \glq CharacterCode\grq{} als Übergabewert erwartet und das String Objekt mit einem  Textzeichen erzeugt. Dies wird in Quelltext \ref{lst:DartStringChar} dargestellt.
 \lstinputlisting[label={lst:DartStringChar},caption={Erstellung eines Strings mit einem Zeichen in Dart}, language=Dart]{SourceCode/DartNewStringChar.Dart}
 
 
 \subsubsection{Datenfelder}
-Die vielleicht gebräuchlichste Sammlungen sind die sogenannten Arrays, auch als Datenfelder bezeichnet,  die eine geordnete Gruppe von Objekten darstellen.\footcite[Vgl.][S. 110f]{Kühnel2019}  In Dart gibt es im Vergleich zu \Csharp keine Arrays sondern verwendet stattdessen den Datentyp Liste.  Bei der Übersetzung von \Csharp zu Dart müssen daher entsprechende Datenfelder angepasst werden. Die Arbeit mit Datenfeldern in Dart wird in Quelltext \ref{lst:DartList} dargestellt.
+
+Die vielleicht gebräuchlichsten Datensammlungen sind die sogenannten \glq Arrays\grq{} die auch als Datenfelder bezeichnet werden.  Es sind geordnete Gruppen mit einer festen Anzahl von Objekten eines definierten Typs. \footcite[Vgl.][S. 110f]{Kühnel2019} In Dart gibt es im Vergleich zu \Csharp keine Datenfelder alternativ  wird der Datentyp \glq List\grq{}  verwendet,  sodass bei einer Übersetzung von \Csharp eine Anpassung der Datenfelder erfolgen muss.  Die Arbeit mit Datenfeldern in Dart wird in Quelltext \ref{lst:DartList} dargestellt.
 \lstinputlisting[label={lst:DartList},caption={Datenfelder in Dart}, language=Dart]{SourceCode/DartList.Dart}
 
 
 \subsubsection{Auflistungen}
-Im Gegensatz zu Datenfelder sind Auflistungen in \Csharp nicht statisch und kontinuierlich sondern dynamisch was das Einfügen von Elementen vereinfacht.  Die entsprechende Rerpäsentation in Dart sind wie schon bei den Datenfeldern die Listen.
+Anders als die \glq Arrays\grq{}  sind die Auflistungen in \Csharp nicht statisch und kontinuierlich sondern dynamisch, was das Einfügen von Elementen vereinfacht.   Diese werden von dem Datentyp \glq List\grq{} repräsentiert,  wie es auch Dart macht.  Der Datentyp \glq List\grq{}  wird in Dart folglich sowohl für Datenfelder,  als auch für Auflistungen verwendet.
 
 \subsubsection{Hashtabellen}
-Eine Hashtabelle ist ein Objekt, das Schlüssel und Werte miteinander verknüpft.  Sowohl Schlüssel als auch Werte können beliebige Objekttypen sein. Jeder Schlüssel kommt nur einmal vor, aber sie können denselben Wert mehrfach verwenden. Dart unterstützt Hashtabellen durch den Datentypen Map\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} und Csharp durch den Typen Dictionary.  Im Rahmen der Übersetzung muss der Typ Map demnach mit Dictionairy ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
+
+Eine Hashtabelle ist ein Objekt, das Schlüssel und Werte miteinander verknüpft. Sowohl Schlüssel als auch Werte können beliebige Objekttypen sein.  Jeder Schlüssel darf in einer Hashtabelle nur einmal vorkommen und ist unveränderlich während Werte mehrfach verwendet werden können.  
+\Csharp ermöglicht die Arbeit mit Hashtabellen mit dem Typ Dictionary,  und Dart durch Map.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Im Rahmen der Übersetzung muss der Typ Dictionary folglich durch Map ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
 \lstinputlisting[label={lst:DartHashmap},caption={Hashtabellen in Dart}, language=Dart]{SourceCode/DartHashmap.Dart}
 
 
@@ -115,19 +122,17 @@ Dieser Quelltext kann nun zu Dart kompiliert werden wie der folgende Code-Aussch
 
 \section{Namespaces}
 
-Namespaces werden häufig in \Csharp -Programmen auf zwei verschiedene Arten verwendet. Erstens: Die .NET-Klassen verwenden Namespaces, um ihre zahlreichen Klassen zu organisieren. Zweitens: Eigene Namespaces zu deklarieren kann Ihnen dabei helfen, den Umfang der Klassen- und Methodennamen in größeren Programmierprojekten zu steuern.
-Die meisten \Csharp -Anwendungen beginnen mit einem Abschnitt von using-Anweisungen. Dieser Abschnitt enthält die von der Anwendung häufig verwendeten Namespaces und erspart dem Programmierer die Angabe eines vollqualifizierten Namens bei jedem Verwenden einer enthaltenen Methode.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftNamespaces2020} 
+Namespaces werden häufig in \Csharp -Programmen verwendet um Klassen zu organisieren. Die meisten Klassen beginnen mit einem Abschnitt von using-Anweisungen,  der die Namensräume einbindet.  Dadurch können Entwicklern auf enthaltene Methoden und Klassen zugreifen ohne den  vollqualifizierten Namen verwenden zu müssen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftNamespaces2020} 
 
-Dart hat keine Namespaces,  stattdessen werden Pakete oder Dateien als solche importiert.
-Dadurch kann ein direkter Zugriff auf alle Klassen und Funktionen innerhalb der Datei gewährt werden.  Wenn es zu Namenskonflikten kommt können können Dateien benannt werden.\ref{lst:DartPackages} zeigt die Arbeit mit Paketen und Dateien in Dart.
+Dart hat keine Namespaces,  stattdessen werden Pakete und Dateien direkt importiert.  Somit kann ein direkter Zugriff auf alle Klassen und Funktionen innerhalb der Datei gewährt werden.  Im Falle von  Namenskonflikten, z.B.  gleiche Klassennamen,  können Dateien benannt werden.  Quelltext \ref{lst:DartPackages} zeigt die Arbeit mit Paketen und Dateien in Dart.
 
 \lstinputlisting[label={lst:DartPackages},caption={[Importieren von Paketen in Dart]{Importieren von Paketen in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartPackages.Dart}
 
 \section{Generische Typen}
-Generics \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
- wurden in .NET als Typparameter eingeführt,  wodurch Klassen und Methoden entworfen werden können, bei denen ein Typ erst verzögert werden kann,  bis die Klasse oder Methode vom Clientcode deklarierst und instanziiert wird.  So kann indem z. B. ein generischen Typparameter „T“ verwendet wird,  eine einzelne Klasse geschrieben werden, die von unterschiedlichen Methoden verwendet wird, ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
+Durch Generics \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
+ können in .NET Typen als Parameter übergeben werden.   Dadurch lassen sich Klassen und Methoden designen,  bei denen ein Typ durch Abstraktion verzögert übermittelt wird.   So kann ein generischen Typparameter eingesetzt werden um eine Klasse zu entwickeln, die von unterschiedlichen Methoden  verwendet wird,  ohne dass Kosten und Risiken durch die Umwandlungen zur Laufzeit anfallen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftGenerics2015} 
 
-Generics werden in Dart sehr ähnlich behandelt wie in \Csharp ,  mit der Ausnahme,  dass  eine generische Klasse ohne die Type-Beschränkung übergeben werden kann.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
+Generics werden in Dart sehr ähnlich behandelt wie in \Csharp nur das keine Type-Beschränkung übergeben werden muss.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
 
 \lstinputlisting[label={lst:DartGeneric}, caption={[Generics in Dart]{Generics in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartGeneric.Dart}
 \section{Delegaten}
