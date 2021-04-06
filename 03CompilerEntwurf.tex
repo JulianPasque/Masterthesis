@@ -44,6 +44,9 @@ Durch seinen modularen Aufbau, kann der im letzten Kapitel eingeführte Roslyn C
 
 Neben den Klassen zeigt die Abbildung \ref{fig:CompilerStruktur},  dass auch Ansichten ein Teil von Xamarin.Forms Projekten sind.  Diese bestehen aus \glq XAML\grq{}  sowie \glq XAML.cs\grq{}  Dateien.  Alle Ausgangsdateien müssen zu Dart-Dateien kompiliert werden,  um ein Flutter Projekt als Ziel zu ergeben.  Die Zusammenführung von \glq XAML\grq{}  und \glq XAML.cs\grq{} Dateien ist dabei notwendig,  weil Flutter ohne sogenannte Codebehind Dateien auskommt. 
 
+\section{Informationsfluss}
+
+
 \section{Grafische Darstellung}
 Damit Unternehmen und Entwickler ihre bestehenden Xamarin.Forms Anwendungen übersetzen können, muss eine Möglichkeit für die Interaktion mit dem Source-To-Source Compiler existieren.  Dieser Compiler ist zur einmaligen und nicht regelmäßigen Verwendung ausgelegt und braucht somit nicht in einer Entwicklungsumgebung integrieren werden.  Der Roslyn Compiler ist ausschließlich für das Betriebssystem Windows verfügbar,  die zu entwickelnde Oberfläche muss dementsprechend auf Windows Computern lauffähig sein.  Abbildung \ref{fig:UiMockup} zeigt einen Entwurf (engl. Mockup) der geplanten \ac{gui}.
 
