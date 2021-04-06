@@ -7,12 +7,10 @@ Nach den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten Unterschiede
 In diesem Abschnitt sollen die sogenannten Klassen und Objekte der objektorientierten Programmierung (OOP) betrachtet werden, die sowohl in \Csharp als auch in Dart, allerdings mit vereinzelten Unterschieden bei der Realisierung, Verwendung finden. Die sogenannten Objekte werden durch bestimmte,  charakteristische Merkmale beschrieben,  die in der Klassendefinition festgelegt werden müssen. \footcite[Vgl.][S. 11f.]{Witte2013}
 
 \subsection{Referenz- und Wertetypen}
+\Csharp ist eine Sprache des \glq .NET Frameworks\grq{} und verwendet daher dessen Typ-System welches zwischen Werte- und Referenztypen unterscheidet.  Der Unterschied zwischen beiden ist in der Allokation des Systemspeichers zu finden.  Eine Variable des Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen des Referenztyps, der eine Adresse der Speicherzellen des Typs enthält. \footcite[Vgl.][S. 155f.]{Kühnel2019} \Csharp bietet die folgenden Wertetypen,  ganzzahlig numerische Typen (Integer),  fließkomma numerische Typen (Float und Double),  Wahrheitswerte (Boolean) und ein Zeichen(Char).  Jeder Variablen dieser Typen muss immer ein zum Typ passender Wert zugewiesen sein.  Daraus folgt,  das zu jeder Zeit in einer Instanz des Typs Integer eine Zahl verwaltet werden muss. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Bedingung dieser Wertpflicht zu umgehen,  gibt es in der Hochsprache \Csharp die sogenannte \glq nullable\grq{} Typen,  die neben den zulässigen Werten zusätzlich den Wert \glq null\grq{} akzeptieren. \footcite[Vgl.][S. 167]{Bayer2008} 
 
-Das von \Csharp verwendete \glq .NET\grq - Typsystem unterscheidet in Werte- und Referenztypen.  Der Unterschied zwischen beiden ist in der Allokation des Systemspeichers zu finden.  Eine Variable des Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen des Referenztyps, der eine Adresse der Speicherzellen des Typs enthält. \footcite[Vgl.][S. 155f.]{Kühnel2019} \Csharp bietet die folgenden Wertetypen,  ganzzahlig numerische Typen (Integer),  fließkomma numerische Typen (Float und Double),  Wahrheitswerte (Boolean) und ein Zeichen(Char).  Jeder Variablen dieser Typen muss immer ein zum Typ passender Wert zugewiesen sein.  Daraus folgt,  das zu jeder Zeit in einer Instanz des Typs Integer eine Zahl verwaltet werden muss. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Bedingung dieser Wertpflicht zu umgehen,  gibt es in der Hochsprache \Csharp die sogenannte \glq nullable\grq{} Typen,  die neben den zulässigen Werten zusätzlich den Wert \glq null\grq{} akzeptieren. \footcite[Vgl.][S. 167]{Bayer2008} 
 
-
-Die Programmiersprache Dart war bis zu der Version 2.12 \glq nicht Null sicher\grq . Da nicht gewährleistet war, das Typen einen entsprechenden Wert zu jeder Zeit 
-repräsentieren mussten,  war zur Vermeidung von Laufzeitfehlern eine Null Prüfung, wie in Quelltext \ref{lst:DartNull} dargestellt, bei der Arbeit mit Variablen erforderlich.   
+Die Programmiersprache Dart war bis zu der Version 2.12 \glq nicht Null sicher\grq . Da nicht gewährleistet war, das Typen einen entsprechenden Wert zu jeder Zeit repräsentieren mussten,  war zur Vermeidung von Laufzeitfehlern eine Null Prüfung, wie in Quelltext \ref{lst:DartNull} dargestellt, bei der Arbeit mit Variablen erforderlich.   
 
 \lstinputlisting[label={lst:DartNull},caption={[Null-Sicherheit in Dart bis Version 2.12]{Null-Sicherheit in Dart 1.x\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
@@ -27,7 +25,7 @@ Die Unterscheidung von Referenz und Wertetypen ist elementar für die Programmie
 
 \lstinputlisting[label={lst:DartNew},caption={[Objekterzeugung ohne \glq new\grq{} Keyword in Dart]{Objekterzeugung ohne \glq new\grq{} Keyword in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNew.Dart}
 
-Folgend\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  ist ein Vergleich der verfügbaren Datentypen in Tabelle  \ref{tab:Datatypes}) veranschaulicht.
+Folgend\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  ist ein Vergleich der eingebauten Datentypen beider Sprachen in Tabelle  \ref{tab:Datatypes} veranschaulicht.
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{X|X|X}
@@ -109,14 +107,13 @@ Einer\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  
 
 
 \lstinputlisting[label={lst:DartMixin},caption={[Mixin's in Dart]{Mixin's in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartMixin.Dart}
-
+\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 \subsection{Übersetzungsbeispiel}
-Durch die \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} herausgearbeiteten Unterschiede in der Klassenmodellierung kann exemplarisch eine  \Csharp Klasse zu Dart übersetzt werden,  um einen Eindruck über die Arbeitsweise des Compilers zu vermitteln.  Der folgende Quelltext veranschaulicht die Ausgangsklasse. 
+Durch die  herausgearbeiteten Unterschiede in der Klassenmodellierung kann exemplarisch eine  \Csharp Klasse zu Dart übersetzt werden,  um einen Eindruck über die Arbeitsweise des Compilers zu vermitteln.  Der folgende Quelltext veranschaulicht die Ausgangsklasse. 
 
-\lstinputlisting[inputencoding=latin1,label={lst:CshClass},caption={Beispielklasse in C\#},  language=csh]{SourceCode/ExampleClass.cs}
+\lstinputlisting[label={lst:CshClass},caption={Beispielklasse in C\#},  language=csh]{SourceCode/ExampleClass.cs}
 
 Dieser Quelltext kann nun zu Dart übersetzt werden,  wie der folgende Code-Ausschnitt demonstriert. 
-
 
 \lstinputlisting[label={lst:ExampleClassDart},caption={Beispielklasse in Dart}, language=Dart]{SourceCode/ExampleClass.dart}
 
@@ -167,7 +164,7 @@ Netzwerkaufrufe zur Datenabfrage vom Server oder Übermittlung von Benutzereinga
 \lstinputlisting[label={lst:FlutterNetworkRequest},caption={Flutter Network request}, language=Dart]{SourceCode/NetworkRequest.Dart}
 \subsection{Kodierung und Dekodierung von Daten}
 
-Bei\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  der Entwicklung von Apps wird häufig \ac{json}, ein kompaktes Format für den Austausch von Daten zwischen Anwendungen, verwendet.  \footcite[Vgl.][S. 684]{Dobrenz2018}  Kodierung  auch als Serialisierung bezeichnet,  ist die Umwandlung einer Datenstruktur in eine Zeichenkette.  Dekodierung  auch Deserialisierung ist der umgekehrte Prozess,  die Umwandlung einer Zeichenkette in eine Datenstruktur.  In \Csharp kann für beide Prozesse der Namespace System.Text.Json verwendet werden, während in Dart die Bibliothek dart:convert zur Verfügung steht. 
+Bei\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  der Entwicklung von Apps wird häufig \ac{json}, ein kompaktes Format für den Austausch von Daten zwischen Anwendungen, verwendet.  \footcite[Vgl.][S. 684]{Dobrenz2018}  Kodierung  auch als Serialisierung bezeichnet,  ist die Umwandlung einer Datenstruktur in eine Zeichenkette.  Dekodierung  auch Deserialisierung ist der umgekehrte Prozess,  die Umwandlung einer Zeichenkette in eine Datenstruktur. \footcite[Vgl.][Abgerufen am \today]{GoogleJson} In \Csharp kann für beide Prozesse der Namespace System.Text.Json verwendet werden, \footcite[Vgl.][Abgerufen am \today]{MicrosoftJson2020} während in Dart die Bibliothek dart:convert zur Verfügung steht. \footcite[Vgl.][Abgerufen am \today]{GoogleJson}
 
 
 \section{Ereignisse}

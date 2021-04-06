@@ -8,7 +8,7 @@ Xamarin.Forms weist eine andere Projektstruktur auf als Flutter,  das nur mit ei
 
 
 \subsection{Metadaten}
-Zu den Metadaten einer Anwendungen gehören unter anderem der Name der Anwendung,  Informationen wie die benötigte Betriebssystemversion, das \glq App Launcher Icon\grq, das auf dem Smartphonebildschirm angezeigt wird und die Berechtigungen,  die von der mobile Anwendung während der Ausführung beantragt werden können.  Diese Eigenschaften werden bei Xamarin.Forms innerhalb der nativen Projekte verwaltet.  In iOS können Änderungen mittels der Datei \glq Info.plist\grq{} definiert werden. \footcite[Vgl.][Abgerufen am \today]{MicrosoftInfoPlist2017} Android speichert Metadaten innerhalb der \glq AndroidManifest.xml\grq{}. \footcite[Vgl.][Abgerufen am \today]{MicrosoftManifest2018} Flutter verwendet für die Verwaltung der Metadaten die identischen Dateien,  daher ist es möglich,  diese aus dem Xamarin.Forms Projekt zu kopieren und innerhalb des Flutter Projektes zu sichern.  Dafür muss die \glq Info.plist\grq im Verzeichnis \glq ios/Runner/\grq{} und die \glq AndroidManifest.xml\grq{}  in \glq android/app/src/main/\grq{} gespeichert werden.  In diesen Dateien wird außerdem der Identifizierer der Anwendung definiert.  Durch eine Kopie der Konfigurationsdatei und Erhöhung der Versionsnummer wird eine spätere Kompilierung der Flutter-App demnach als eine Aktualisierung der Xamarin.Forms App erkannt.  \footcite[Vgl.][Abgerufen am \today]{Rana2020}
+Zu den Metadaten einer Anwendungen gehören unter anderem der Name der Anwendung,  Informationen wie die benötigte Betriebssystemversion, das \glq App Launcher Icon\grq ,  das auf dem Smartphonebildschirm angezeigt wird und die Berechtigungen,  die von der mobile Anwendung während der Ausführung beantragt werden können.  Diese Eigenschaften werden bei Xamarin.Forms innerhalb der nativen Projekte verwaltet.  In iOS können Änderungen mittels der Datei \glq Info.plist\grq{} definiert werden. \footcite[Vgl.][Abgerufen am \today]{MicrosoftInfoPlist2017} Android speichert Metadaten innerhalb der \glq AndroidManifest.xml\grq{}. \footcite[Vgl.][Abgerufen am \today]{MicrosoftManifest2018} Flutter verwendet für die Verwaltung der Metadaten die identischen Dateien,  daher ist es möglich,  diese aus dem Xamarin.Forms Projekt zu kopieren und innerhalb des Flutter Projektes zu sichern.  Dafür muss die \glq Info.plist\grq im Verzeichnis \glq ios/Runner/\grq{} und die \glq AndroidManifest.xml\grq{}  in \glq android/app/src/main/\grq{} gespeichert werden.  In diesen Dateien wird außerdem der Identifizierer der Anwendung definiert.  Durch eine Kopie der Konfigurationsdatei und Erhöhung der Versionsnummer wird eine spätere Kompilierung der Flutter-App demnach als eine Aktualisierung der Xamarin.Forms App erkannt.  \footcite[Vgl.][Abgerufen am \today]{Rana2020}
 
 
 \subsection{Bilder und Startbildschirm}
@@ -329,7 +329,7 @@ Nach der Einführung aller verfügbaren Seiten,  Layouts und Steuerelemente soll
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/ExamplePage.png}
- \caption{Darstellung einer exemplarische Login-Page}
+ \caption{Darstellung einer exemplarischen Login-Page}
  \label{fig:ExamplePage}
 \end{figure}
 
@@ -337,7 +337,7 @@ Mithilfe der Gegenüberstellungen von \ac{ui}-Elementen und Widgets,  kann ansch
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{Images/CrossPlattformFrameworks/Gegenüberstellung.png}
- \caption{Überführung von Xamarin.Forms zu Flutter}
+ \caption{Layout-Baum Überführung von Xamarin.Forms zu Flutter}
  \label{fig:LayoutTrees}
 \end{figure}
 

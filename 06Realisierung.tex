@@ -1,20 +1,12 @@
 \chapter{Realisierung des Source-To-Source Compilers}
 \label{chap:Realisierung}
-
-Basierend auf der Einführung zu Compilern und den Herausgearbeiteten Unterschieden zwischen Xamarin.Forms und Flutter sowie der verwendeten Programmiersprachen \Csharp und Dart kann in diesem Kapitel die Realisierung des Source-To-Source Compilers beschrieben werden. 
-
-\section{Entwicklungsumgebung}
-Für die Realisierung sind verschiedene Softwarekomponenten erforderlich,  die zum einen für die Entwicklung und zum anderen für die Qualitätssicherung eingesetzt werden.  Wie bereits in Kapitel \ref{chap:CompilerEntwurf} beschrieben,  soll für einen Teil der zu Übersetzung der Rosyln Compiler von Microsoft verwendet werden.  Um Projekte mit Roslyn Integration zu implementieren bietet sich die Entwicklungsumgebung (engl.  \ac{ide}) Visual Studio 2019 an.  Da auf dieser  Plattform Projekte angelegt werden können,  die mit dem Roslyn Compiler Interagieren.  Zusätzlich können in Visual Studio auch grafische Benutzeroberflächen und Xamarin.Forms Anwendungen realisiert werden.  Die zu programmierende Projektmappe kann demnach aus den folgenden frei Projekten bestehen.  Des Source-To-Source Compilers mit Roslyn Integration, der grafischen Benutzeroberfläche und einer Xamarin.Forms Anwendung anhand welcher der Prototyp validiert werden kann.  Neben der \ac{ide} bilden die sogenannten Build tools for Visual Studio einen wichtigen Bestandteil des Compilers da diese es erlauben \Csharp -Projekte zu kompilieren.  Damit der Compiler Flutter Projekte angelegen kann wird die Flutter \ac{sdk} als Abhängigkeit des Compilers benötigt.  Um die übersetzte Flutter App anschließend testen zu können bietet es sich ebenfalls an eine Flutter- \ac{ide} zu installieren dafür kann auf Visual Studio Code oder Android Studio zurückgegriffen werden.  In Abbildung \ref{fig:IDE} wird die Systemlandschaft des zu entwickelnden Compilers visualisiert. 
-
-
+Gestützt auf das grundsätzliche Wissen über Compiler, die herausgearbeiteten Unterscheidungen von  Xamarin.Forms und Flutter sowie die Differenzen der verwendeten Programmiersprachen  \Csharp und Dart, wird in diesem Kapitel die Realisierung des Source-To-Source Compilers. Um das Projekt mit Roslyn Integration zu implementieren,  bietet sich die \ac{ide} (deutsch Entwicklungsumgebung) Visual Studio 2019 an, da auf dieser Plattform Projekte angelegt werden können, die mit dem Roslyn Compiler interagieren. Die zu entwickelnde Projektmappe, anhand derer der Prototyp validiert werden soll, besteht also aus dem Source to Source Compiler mit Rosyln Integration, der grafischen  Benutzeroberfläche und einer  Xamarin.Forms Anwendung als Testobjekt wobei letzteres erst im nächsten Kapitel eingeführt wird. 
 
 \begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/IDE.png}
- \caption{Source-To-Source Compiler Informationsfluss}
- \label{fig:IDE}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/Ablauf.png}
+ \caption{Aktivitätsdigramm}
+ \label{fig:umlablauf}
 \end{figure}
-In der Abbildung werden die in dieser Arbeit zu realisierenden Komponenten in Blau dargestellt,  die Visual Studio Build Tools und die Flutter \ac{sdk} werden jeweils in grün dargestellt da es sich dabei um bereits existierende Softwarekomponenten handelt.  Da die Build Tools ausschließlich für Windows Computer zur Verfügung stehen wird der zu entwickelnde Übersetzer ebenfalls nur auf Windows Computern lauffähig sein.  auf der Abbildung sind die jeweiligen Interaktionen mit zahlen versehen,  welche die Reihenfolge in der Abarbeitung skizzieren soll.  So wählt der Anwender das Xamarin.Forms Projekt aus und anschließend das Zielverzeichnis indem mit Hilfe der Flutter SDK das Projekt imitiert wird.  Anschließend werden diese Informationen an den Source-To-Source Compiler übergeben, welcher zusammen mit den Visual Studio Build Tools das Ausgangsprojekt übersetzt und die Ergebnisse zurück an die \ac{gui} leitet.  Außerdem werden die übersetzten Dart dateien im angelegten Dart Projekt abgelegt werden und der Anwender kann das Flutter Projekt testen.  
-In den folgenden Unterabschnitten werden sowohl die Entwicklung der grafische Benutzeroberfläche, als auch des Source-To-Source Compilers beschrieben.  Das Xamarin.Forms Projekt, welche für diese Arbeit angelegt wird, wird in Kapitel \ref{chap:Qualitätssicherung} behandelt. 
 
 
 
@@ -25,7 +17,11 @@ Mit Hilfe von Roslyn konnte der Name des Projektes extrahiert werden.  Dieser Na
 
 Wie der Quelltext zeigt,  wird dafür ein neues Projekt mit Hilfe der Kommandozeile angelegt.  Damit das Ergebnis nicht von vorherigen Übersetzungsvorgängen beeinträchtigt wird,  auch im Vorhinein überprüft,  ob das Zielverzeichnis existiert und leer ist. 
 
+
+
 \section{XAML zu Dart}
+
+
 
 \section{C\# zu Dart}
 

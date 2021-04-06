@@ -45,7 +45,15 @@ Durch seinen modularen Aufbau, kann der im letzten Kapitel eingeführte Roslyn C
 Neben den Klassen zeigt die Abbildung \ref{fig:CompilerStruktur},  dass auch Ansichten ein Teil von Xamarin.Forms Projekten sind.  Diese bestehen aus \glq XAML\grq{}  sowie \glq XAML.cs\grq{}  Dateien.  Alle Ausgangsdateien müssen zu Dart-Dateien kompiliert werden,  um ein Flutter Projekt als Ziel zu ergeben.  Die Zusammenführung von \glq XAML\grq{}  und \glq XAML.cs\grq{} Dateien ist dabei notwendig,  weil Flutter ohne sogenannte Codebehind Dateien auskommt. 
 
 \section{Informationsfluss}
+Neben dem Roslyn Compiler soll der zu entwickelnde Transpiler auch die Flutter \ac{sdk}  als bereits bestehende Softwarekomponente verwenden.  Die Flutter-\ac{sdk} enthält die Pakete und Kommandozeilen-Tools die für die Entwicklung von Flutter Anwendungen notwendig sind.  \footcite[Vgl.][Abgerufen am \today]{GoogleFlutterSDK} Der Compiler kann diese \ac{sdk} nutzen um das Zielprojekt anzulegen und die übersetzte App zu testen.  Basierend auf diesen beiden existierenden Software Komponenten kann nun der Informationsfluss wie in Abbildung \ref{fig:Informationflow} dargestellt werden. 
 
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/IDE.png}
+ \caption{Source-To-Source Compiler Informationsfluss}
+ \label{fig:Informationflow}
+\end{figure}
+
+Die in dieser Arbeit zu realisierenden Komponenten erscheinen in der Abbildung blau hinterlegt,  während bereits existierende Softwarekomponenten, wie die \glq Visual Studio Build Tools\grq{} (die den Roslyn Compiler beinhalten) und die Flutter \ac{sdk} grün gefärbt sind.  Die Farbe des Xamarin.Forms Projektes bezieht sich auf die in dieser Arbeit realisierte mobile Anwendung zur Überprüfung des Prototypen.  Die Zahlen innerhalb der Abbildung stellen die Zeitliche Abfolge dar.  So wählt der Anwender in einem ersten Schritt das Xamarin.Forms Projekt über die grafische Benutzeroberfläche aus.  Anschließend wird das Zielverzeichnis angegeben und mit Hilfe der Flutter \ac{sdk} das Projekt in diesem Verzeichnis initiiert.  Anschließend werden diese Informationen an den Source-To-Source Compiler übergeben, welcher zusammen mit den Visual Studio Build Tools das Ausgangsprojekt übersetzt und die Ergebnisse zurück an die \ac{gui} leitet.  Außerdem werden die übersetzten Dart Dateien im angelegten Dart Projekt abgelegt und der Anwender kann das Flutter Projekt testen.  
 
 \section{Grafische Darstellung}
 Damit Unternehmen und Entwickler ihre bestehenden Xamarin.Forms Anwendungen übersetzen können, muss eine Möglichkeit für die Interaktion mit dem Source-To-Source Compiler existieren.  Dieser Compiler ist zur einmaligen und nicht regelmäßigen Verwendung ausgelegt und braucht somit nicht in einer Entwicklungsumgebung integrieren werden.  Der Roslyn Compiler ist ausschließlich für das Betriebssystem Windows verfügbar,  die zu entwickelnde Oberfläche muss dementsprechend auf Windows Computern lauffähig sein.  Abbildung \ref{fig:UiMockup} zeigt einen Entwurf (engl. Mockup) der geplanten \ac{gui}.
