@@ -1,21 +1,38 @@
 \chapter{Realisierung des Source-To-Source Compilers}
 \label{chap:Realisierung}
-Gestützt auf das grundsätzliche Wissen über Compiler, die herausgearbeiteten Unterscheidungen von  Xamarin.Forms und Flutter sowie die Differenzen der verwendeten Programmiersprachen  \Csharp und Dart, wird in diesem Kapitel die Realisierung des Source-To-Source Compilers. Um das Projekt mit Roslyn Integration zu implementieren,  bietet sich die \ac{ide} (deutsch Entwicklungsumgebung) Visual Studio 2019 an, da auf dieser Plattform Projekte angelegt werden können, die mit dem Roslyn Compiler interagieren. Die zu entwickelnde Projektmappe, anhand derer der Prototyp validiert werden soll, besteht also aus dem Source to Source Compiler mit Rosyln Integration, der grafischen  Benutzeroberfläche und einer  Xamarin.Forms Anwendung als Testobjekt wobei letzteres erst im nächsten Kapitel eingeführt wird. 
+Gestützt auf das grundsätzliche Wissen über Compiler, die herausgearbeiteten Unterscheidungen von  Xamarin.Forms und Flutter sowie die Differenzen der verwendeten Programmiersprachen  \Csharp und Dart, wird in diesem Kapitel die Realisierung des Source-To-Source Compilers. Um das Projekt mit Roslyn Integration zu implementieren,  bietet sich die \ac{ide} (deutsch Entwicklungsumgebung) Visual Studio 2019 an, da auf dieser Plattform Projekte angelegt werden können, die mit dem Roslyn Compiler interagieren. Die zu entwickelnde Projektmappe, anhand derer der Prototyp validiert werden soll, besteht also aus dem Source to Source Compiler mit Rosyln Integration, der grafischen Benutzeroberfläche und einer Xamarin.Forms Anwendung als Testobjekt wobei letzteres erst im nächsten Kapitel eingeführt wird. 
+
+
+
+\section{Programmablauf}
+Mit Hilfe des Roslyn Compilers kann der Source-To-Source Compiler Auswertungen zu den in der Xamarin.Forms App referenzierten Dateien durchführen.  Somit ist es möglich eine Auflistung aller verfügbaren Quelltextdokumente aus einem Projekt zu erhalten.  Diese Auswertung beinhaltet jedoch keine \ac{xaml}-Dateien,  da diese nicht von Roslyn behandelt werden.  Da jede \ac{xaml} Datei jedoch eine Codebehind-Datei mit der Dateiendung .XAML.CS beinhaltet können die  \ac{xaml} Dateien über das Dateisystem geladen werden.  Über diesen Wege kann sichergestellt werden, dass ausschließlich Dokumente übersetzt werden die Teil der Xamarin.Forms Anwendung sind, und nicht aus dem Projekt ausgeschlossen wurden und dennoch im Dateiverzeichnis verfügbar sind.  Nachdem der Source-To-Source Compiler alle gefunden Quelltextdateien übersetzt hat, und die Metadaten übernommen hat ist die Übersetzung  abgeschlossen.  Darauf basierend kann nun ein \ac{uml} Aktivitätsdiagramm angelegt werden,  welches den Übersetzungsvorgang visualisiert und in Abbildung \ref{fig:umlablauf} dargestellt ist.  
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/Ablauf.png}
  \caption{Aktivitätsdigramm}
  \label{fig:umlablauf}
 \end{figure}
-
+Das visualisierte \ac{uml}-Diagramm ist aufgrund der Komplexität des Compilers auf einer hohen Abstraktionsebene.  In den folgenden Abschnitten werden die einzelnen Aspekte der Kompilierung näher betrachtet. 
 
 
 \section{Metadaten}
+Wie das UML Diagramm visualisiert können die Metadaten von Android und iOS Metadaten parallel in die Flutter Anwendung kopiert werden können.  Da die Metadaten plattformspezifische Eigenschaften der mobilen Anwendungen sind,  wird im  folgenden die Details für beide Betriebssysteme eingegangen. 
 
+\subsection{Android Metadaten}
+Zu den Android spezifischen Metadaten gehören die sogenannten Launcher Icons,  die den Anwendern als App-Icon angezeigt werden.  Xamarin.Android speichert diese Bilder innerhalb des Android Projektes in Ordnern, welche die unterschiedlichen Pixeldichten der Android-Geräte unterstützen.  Da in diesen Ordnern unter Umständen viele Bilder liegen ist es notwendig das richtige Bild auszuwählen.  Innerhalb von Xamarin.Forms wird das Icon über die Klasse MainActivity.cs definiert wie dies in Quelltext  \ref{lst:IconName} dargestellt ist. 
 
-Mit Hilfe von Roslyn konnte der Name des Projektes extrahiert werden.  Dieser Name kann anschließend verwendet werden um ein neues Flutter Projekt zu initialisieren.  
+\lstinputlisting[label={lst:IconName},caption={Xamarin.Forms Android Launcher-Icon Name}, language=csh]{SourceCode/IconName.cs}
 
-Wie der Quelltext zeigt,  wird dafür ein neues Projekt mit Hilfe der Kommandozeile angelegt.  Damit das Ergebnis nicht von vorherigen Übersetzungsvorgängen beeinträchtigt wird,  auch im Vorhinein überprüft,  ob das Zielverzeichnis existiert und leer ist. 
+Nach der Extraktion des Namens können nun die Bilder kopiert werden.  In dem von der Flutter SDK erzeugten App liegen bereits Bilder als Platzhalter für,  diese können einfach ausgetauscht werden. 
+
+Der nächste wichtige Eigenschaft der Anwendung ist die sogenannte PackageID  dieser eindeutige Identifizierer  identifiziert die Anwendung auf dem Gerät sowie im Google-Play Store.  Es ist daher notwendig,  diese ID innerhalb der Flutter Anwendung wiederzuverwenden.  Die Information kann in Xamarin.Forms aus der AndroidManifest.XML Datei ausgelesen werden, jedoch ist es nicht ausreichend die Information in die Manifest Datei bei Flutter zu schreiben, da diese Information ebenfalls in andere Dateien wie die build.gradle hinterlegt werden muss. Es steht jedoch ein Plugin mit dem Namen change\_app\_package\_name zur Verfügung,  welches alle notwendigen Änderungen vornimmt.  Dafür muss das Plugin als Abhängigkeit zum Projekt hinzugefügt werden und kann anschließend über die Kommandozeile ausgeführt werden.
+
+Einfacher ist die Übertragung des Anwendungsnamen,  der ebenfalls aus dem AppManifest extrahiert werden kann, im Gegensatz zur Package ID ist es jedoch ausreicht,  den Namen in die Flutter-Manifest Datei zu schreiben.  Im Gegensatz zu Xamarin.Forms gibt es bei Flutter jedoch 3 Manifest Dateien,  wobei ausschließlich die Datei im Verzeichnis 'Project/app/src/main' aktualisiert werden muss. 
+
+Ein weiterer Inhalt des AppManifests sind die Berechtigungen,  welche die mobile Anwendung während der Laufzeit erfragen kann.  Diese können ebenfalls wie der Name kopiert werden. 
+
+\subsection{iOS Metadaten}
+
 
 
 
