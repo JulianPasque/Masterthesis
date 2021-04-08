@@ -57,10 +57,13 @@ Die Startbildschirme der Anwendung sind essentiell,  da eine Anwendung ohne dies
 
 \section{Übersetzung von Klassenstrukturen}
 
+Die Übersetzung von \Csharp zu Dart ist ein essentieller Bestandteil des Compilers.  Dafür wird zuerst die Visual Studio Projektmappe,  welches das Xamarin.Forms Projekt beinhaltet geladen.  Anschließend wird das Projekt, welches den gemeinsamen Quelltext beinhaltet weiter betrachtet. Da in dieser Arbeit kein plattformspezifischer Quelltext betrachtet wird,  werden diese Projekte ausschließlich für das Kopieren der Metadaten benötigt.  Anschließend kann für jede Klasse innerhalb des geteilten Projekts die Syntaxanalyse durchgeführt werden, welche den Syntaxbaum zurückliefert.  Darauf aufbauend wird das sogenannte semantische Model generiert.  Dieses semantische Model speichert Symbole der Source-Code Klasse innerhalb der Symboltabelle.  Diese schritte beschreiben das Compiler-Frontend und werden von Roslyn ebenfalls bei der Kompilierung von Projekten zu ausführbaren Dateien umgesetzt.  
 <Beschreibung Arbeitsweise Übersetzer>
 
-Wie in Kapitel 4 beschrieben werden viele Funktionalitäten mithilfe von Erweiterungen realisiert.  Jedoch sind die Erweiterungen, wenn auch vergleichbar, von anderen Herstellern mit unterschiedlichen Anforderungen realisiert worden.  Dies führt dazu,  dass Klassen und Methoden aus diesen Bibliotheken keine identischen Repräsentationen sind.  Diese Inkompatibilität kann nicht mittels Automation gelöst werden und Bedarf  unterschiedlich umfangreicher manueller Umwandlungen.  
+Modifizierer
+Austausch von Typen
 
+Wie in Kapitel 4 beschrieben werden viele Funktionalitäten mithilfe von Erweiterungen realisiert.  Jedoch sind die Erweiterungen, wenn auch vergleichbar, von anderen Herstellern mit unterschiedlichen Anforderungen realisiert worden.  Dies führt dazu,  dass Klassen und Methoden aus diesen Bibliotheken keine identischen Repräsentationen sind.  Diese Inkompatibilität kann nicht mittels Automation gelöst werden und Bedarf  unterschiedlich umfangreicher manueller Umwandlungen.  
 
 
 \section{Übersetzung von Ansichten}
@@ -74,13 +77,16 @@ Die Übersetzung von Ansichten inkludiert die XAML und XAML.Cs Dateien, die ansc
 
 \subsection{Visuellen- Zwischendarstellung}
 
-Für die visuelle Zwischendarstellung wird in einem ersten Schritt die XML Struktur aus der XAML Datei ausgelesen und basierend auf dieser Struktur ein Syntaxbaum mitsamt der Eigenschaften der einzelnen Elemente angelegt.  
+Für die visuelle Zwischendarstellung wird in einem ersten Schritt die XML Struktur aus der XAML Datei ausgelesen und basierend auf dieser Struktur ein Syntaxbaum mitsamt der Eigenschaften der einzelnen Elemente angelegt.  Mit Hilfe des .Net Frameworks kann die XML Struktur der XAML-Datei durchlaufen und analysiert werden.  Dafür wurde das in Abbildung \ref{fig:Klassendiagram} dargestellte Klassendiagramm entworfen. 
+\newpage
 
-<Klassen und Algorithmus>
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/Klassendiagram.png}
+ \caption{Klassendiagram}
+ \label{fig:Klassendiagram}
+\end{figure}
 
-
-Basierend auf diesem Baum wird anschließend basierend auf den in Kapitel 4 beschriebenen Gegenüberstellungen von Flutter Widgets ein Austausch von den visuellen Elementen durchgeführt.  Dabei wird für jedes Widget der Quelltext zur Initialisierung in einem Template vorgehalten.  Alle möglichen Variablen Eigenschaften dieser Widgets werden innerhalb dieser Vorlagen mit Platzhaltern bereitgestellt.  Dies wird in Quelltext \ref{st:Placeholder} dargestellt.
-
+Anschließend stellt ein Objekt der Klasse VisualTree den Layout-Baum einer speziellen XAML Datei dar.  Er beinhaltet eine Auflistung von untergeordneten Elemten, welche wiederum weitere Elemente beinhalten können um die Verschachtelung des Baumes abzubilden. Darüber hinaus hat jedes Element eine Auflistung von Eigenschaften welche die Attribute der einzelnen XML Knoten beschreiben.  Basierend auf diesem Baum wird anschließend basierend auf den in Kapitel 4 beschriebenen Gegenüberstellungen von Flutter Widgets ein Austausch von den visuellen Elementen durchgeführt.  Dabei wird für jedes Widget der Quelltext zur Initialisierung in einem Template vorgehalten.  Alle möglichen Variablen und Eigenschaften dieser Widgets werden innerhalb dieser Vorlagen mit Platzhaltern bereitgestellt.  Dies wird in Quelltext \ref{st:Placeholder} dargestellt.
 
 \lstinputlisting[label={lst:Placeholder},caption={Exemplarische LoginPage in Dart} , language=Dart]{SourceCode/DartPlaceholder.dart} 
 
