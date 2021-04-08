@@ -58,7 +58,12 @@ Die Startbildschirme der Anwendung sind essentiell,  da eine Anwendung ohne dies
 \section{Übersetzung von Klassenstrukturen}
 
 Die Übersetzung von \Csharp zu Dart ist ein essentieller Bestandteil des Compilers.  Dafür wird zuerst die Visual Studio Projektmappe,  welches das Xamarin.Forms Projekt beinhaltet geladen.  Anschließend wird das Projekt, welches den gemeinsamen Quelltext beinhaltet weiter betrachtet. Da in dieser Arbeit kein plattformspezifischer Quelltext betrachtet wird,  werden diese Projekte ausschließlich für das Kopieren der Metadaten benötigt.  Anschließend kann für jede Klasse innerhalb des geteilten Projekts die Syntaxanalyse durchgeführt werden, welche den Syntaxbaum zurückliefert.  Darauf aufbauend wird das sogenannte semantische Model generiert.  Dieses semantische Model speichert Symbole der Source-Code Klasse innerhalb der Symboltabelle.  Diese schritte beschreiben das Compiler-Frontend und werden von Roslyn ebenfalls bei der Kompilierung von Projekten zu ausführbaren Dateien umgesetzt.  
-<Beschreibung Arbeitsweise Übersetzer>
+
+\lstinputlisting[label={lst:IconName},caption={Xamarin.Forms Android Launcher-Icon Name}, language=csh]{SourceCode/Datatypes.cs}
+
+\lstinputlisting[label={lst:IconName},caption={Xamarin.Forms Android Launcher-Icon Name}, language=csh]{SourceCode/Modifizierer.cs}
+
+\lstinputlisting[label={lst:IconName},caption={Xamarin.Forms Android Launcher-Icon Name}, language=csh]{SourceCode/Modifier.cs}
 
 Modifizierer
 Austausch von Typen
