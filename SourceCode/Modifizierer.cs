@@ -12,14 +12,7 @@ public override void VisitPropertyDeclaration(PropertyDeclarationSyntax node)
         Write(" = ");
         Visit(node.Initializer.Value);
     }
-    if (node.ExpressionBody != null)
-    {
-        _indent++;
-        NewLine();
-        IndentWrite("get() = ");
-        Visit(node.ExpressionBody.Expression);
-        _indent--;
-    }
+
     Write($";");
 
     NewLine();

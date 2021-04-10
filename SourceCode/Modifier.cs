@@ -1,7 +1,5 @@
 private void WriteModifiers(SyntaxTokenList modifiers)
 {
-    Indent();
-
     if (modifiers.Contains("private"))
     {
         Write("_");

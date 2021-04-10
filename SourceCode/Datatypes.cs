@@ -5,7 +5,7 @@ public static string GetKnownName(string name)
         case "Void"         : return "Void";
         case "Int"          : return "Int";
         case "byte"         : return "Int";
-        case "shot"         : return "Int";
+        case "short"        : return "Int";
         case "long"         : return "BigInt";
         case "double"       : return "Double";
         case "float"        : return "Double";
