@@ -1,11 +1,30 @@
 \chapter{Qualitätssicherung}
 \label{chap:Qualitätssicherung}
 
-Nach der erfolgreichen Implementierung des Übersetzers soll mit Hilfe einer zu testenden mobilen Anwendung überprüft werden,  ob der Compiler so arbeitet wie zu erwarten ist.  
-\section{Testfälle}
-Um den Compiler zu Testen ist es notwendig anhand vorher definierter Testfälle zu überprüfen, ob der Compiler die Xamarin.Forms App so übersetzt, wie es zu erwarten ist.   Zu diesem Zweck werden in diesem Abschnitt Testfälle definiert die sich aus den ermittelten Unterschieden zwischen beiden Frameworks,  sowie der Programmiersprachen ergeben. 
+Nach der erfolgreichen Implementierung des Source-To-Source Compilers soll mithilfe einer Xamarin.Forms App überprüft werden,  ob der Compiler so arbeitet wie zu erwarten ist.  
 
-Tabelle \ref{tab:Testapp} zeigt die Testfälle für die Metadaten der mobilen Anwendung. 
+\section{Testobjekt}
+Die App wurde mit der aktuellen Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Die Anwendung wurde mit dem Ziel entworfen möglichst viele Funktionalitäten von Xamarin.Forms abzubilden,  sie hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.  Die App verzichtet, bis auf die Metadaten und Ressourcen weitestgehend auf plattformspezifische Implementationen. Im folgenden werden die Funktionalitäten und Eigenschaften der mobilen Anwendung erläutert und mit Hilfe von iOS Screenshots visualisiert,  die entsprechenden Android Screenshots werden der Vollständigkeitsannahme in \hyperref[chap:AnhangAndroidScreenshots]{Anhang IV} dargestellt.
+
+Der Name und das Anwendungsicon sind wichtige Merkmale anhand welcher Anwender die App identifizieren können.  Nach dem Start der Anwendung wird eine  Menüstruktur angezeigt,  über den verschiedene Bereiche der Anwendung angesteuert werden können.  Das Menü dient als zentraler Startpunkt der Anwendung und somit als Wurzel für die Navigation durch die App.  Abbildung \ref{fig:TestObjectI} zeigt sowohl das Icon und den Namen der App auf dem iOS Homescreen,  das Menu der App und eine Seite für die Visualisierung der verfügbaren Steuerelemente.
+\newpage
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/AppIconAndMenu.png}
+ \caption{Test Objekt Screenshots I}
+ \label{fig:TestObjectI}
+\end{figure}
+
+Über das Menü kann neben den Steuerelementen auch zu einer Ansicht navigiert werden,  die die Werte der Smartphone Sensoren ausgibt.  Dazu gehören der Beschleunigungssensor,  der Kompass,  das Gyroscope und das Magnetomet. Außerdem können Bilder über die Kamera aufgenommen oder aus der Galerie ausgewählt werden.  Diese Ansichten werden in Abbildung \ref{fig:TestObjectII} dargestellt.
+
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Sensors.png}
+ \caption{Test Objekt Screenshots II}
+ \label{fig:TestObjectII}
+\end{figure}
+
+
+\section{Testfälle}
+Um den Compiler zu Testen ist es notwendig Testfälle zu definieren und zu überprüfen, ob der Compiler die Xamarin.Forms App so übersetzt, wie es zu erwarten .   Zu diesem Zweck werden in diesem Abschnitt Testfälle definiert die sich aus den ermittelten Unterschieden zwischen beiden Frameworks,  sowie der Programmiersprachen ergeben.  Tabelle \ref{tab:Testapp} zeigt die Testfälle für die Metadaten der mobilen Anwendung. 
 
 \begin{table}[!ht]
 \begin{tabularx}{\textwidth}{l|l|X}
@@ -19,7 +38,7 @@ Tabelle \ref{tab:Testapp} zeigt die Testfälle für die Metadaten der mobilen An
 6             & Zurück Navigation           	& Über die Navigationsleiste kann zurrück Navigiert werden                      			 \\ 
 7             & Gyroscope auswerten           	& Die Werte werden in der App angezeigt.                      			 \\ 
 8             & Accelerometer auswerten           	& Die Werte werden in der App angezeigt.                   			 \\ 
-9            & Compass auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
+9             & Compass auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
 10            & Magnetometer auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
 11            & Sensor nicht verfügbar           	& Wenn ein Sensor nicht verfügbar ist, wird ein Fehler angezeigt          			 \\ 
 12            & Steuerelemente wurden ausgetauscht           	& Alle Steuerelemente werden angezeigt        			 \\ 
@@ -33,51 +52,11 @@ Tabelle \ref{tab:Testapp} zeigt die Testfälle für die Metadaten der mobilen An
 
 
 
-
-\section{Testobjekt}
-Anhand dieser Testfälle kann anschließend ein Xamarin.Forms Projekt erstellt werden, anhand welcher der Source-To-Source Compiler getestet werden kann.  Im folgenden werden die Funktionalitäten der mobilen Anwendung dargelegt und mit Hilfe von iOS Screenshots dargestellt,  die entsprechenden Android Screenshots werden der Vollständigkeitsannahme in \nameref{chap:AnhangAndroidScreenshots} dargestellt. 
-
-Bei der Anwendung sind in einem ersten Schritt die Metadaten der Anwendung relevant.  Dazu gehören der Name der Anwendung sowie das Anwendungsicon - außerdem sollten die SDK Version der mobilen Anwendung nicht modifiziert werden. Nach dem Start der Anwendung wird eine Menustruktur angezeigt,  über den verschiedene Bereiche der Anwendung angesteuert werden können.  In Abbildung \ref{fig:TestObjectI} werden Screenshots der mobilen Anwendung gezeigt.
-
-\begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/AppIconAndMenu.png}
- \caption{Test Objekt Screenshots I}
- \label{fig:TestObjectI}
-\end{figure}
-
-Über dieses Menu kann der Anwender zu verschiedenen Seiten navigieren, die folgend kurz erläutert werden sollen.  Die in Abbildung \ref{fig:TestObjectII} zeigt die Seite mit den verfügbaren Steuerelementen von Xamarin.Forms,  wie sie auch in Kapitel 3 beschrieben wurden. Dazu gehören Ansichten für die Präsentation, für Interaktionen, zum setzen von Werten, für die Manipulation von Texten und für die Anzeige von aktuellen Interaktionen.
-\begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Controls.png}
- \caption{Test Objekt Screenshots II}
- \label{fig:TestObjectII}
-\end{figure}
-
-Die folgende Option Sensoren öffnet eine Ansicht, auf der die aktuellen Werte von den Smartphone-Sensoren ausgegeben werden.  Diese Sensoren werden von vielen mobilen Anwendungen verwendet. Dazu gehören der Beschleunigungssensor, der Compass,  das Gyroscope und das Magnetometer.  Anhand dieser Seite,  soll sichergestellt werden, dass der Compiler auch die Funktionalität dieser Sensoren Abbilden kann. 
-
-\begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Images.png}
- \caption{Test Objekt Screenshots III}
- \label{fig:TestObjectIII}
-\end{figure}
-
-Ebenfalls werden in dem Testprojekt eine Liste und ein Carousel abgebildet,  da es sich bei diesen um häufig verwendete Elemente handelt - die in vielen mobilen Anwendungen verwendet wird. 
-
-\begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Sensors.png}
- \caption{Test Objekt Screenshots IV}
- \label{fig:TestObjectIV}
-\end{figure}
-
-
-
-
 \section{Testablauf}
 Für den Start des Testlaufes wird die grafische Benutzeroberfläche gestartet. Anschließend wird das entwickelte Testobjekt als Xamarin.Forms Projekt und ein leerer als Ordner als Zielverzeichnis ausgewählt. Anschließend kann die Übersetzung gestartet werden.  Aufgrund der vielen Dateizugriffe und durchzuführenden Aktivitäten kann die Übersetzung der Anwendung eine gewisse Zeit in Anspruch nehmen. 
 Nach dem erfolgreichen Durchlauf der Übersetzung werden im Front-End die Informationen bezüglich der Übersetzung ausgegeben.  
-Anschließend kann mit Hilfe von Visual Studio Code die übersetzte Flutter Anwendung gestartet werden.  In einem ersten schritt können die Metadaten von sowohl Android als auch iOS App mit denen der Xamarin.Forms App verglichen werden, um zu validieren ob diese entsprechend übernommen wurden.
+Anschließend kann mit Hilfe von Visual Studio Code die übersetzte Flutter Anwendung gestartet werden.  In einem ersten Schritt können die Metadaten von sowohl Android als auch iOS App mit denen der Xamarin.Forms App verglichen werden, um zu validieren ob diese entsprechend übernommen wurden.
 Nach einer erfolgreichen Überprüfung können nun die einzelnen Ansichten der Flutter App überprüft werden.  Dafür werden im folgenden die Screenshots der Flutter App dargestellt.  Dabei werden wie in der Einführung des Testobjektes die selben Bilder in der selben Reihenfolge dargestellt.  Die entsprechenden Screenshots von Android befinden sich ebenfalls im Anhang dieser Arbeit. 
 
-
-
 \section{Testauswertung}
-
+Dieser Test zeigt,  dass das Testobjekt vollständig überführt wurde.  Das Testobjekt kann jedoch nicht alle Xamarin.Forns Funktionalitäten abbilden und demonstriert ausschließlich die Funktionsfähigkeit des Prototypens.  

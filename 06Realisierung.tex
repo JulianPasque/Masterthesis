@@ -7,7 +7,7 @@ Anwendung als Testobjekt,  wobei letztere jedoch erst im nächsten Kapitel thema
 
 \section{Programmablauf}
 Mithilfe des Roslyn Compilers kann der Source-To-Source Compiler Auswertungen zu den in der Xamarin.Forms App referenzierten Quelltextdateien durchführen.  Somit ist es
-möglich eine Auflistung aller verfügbaren \Csharp - Dateien aus einem Projekt zu extrahieren.  XAML -Dateien werden nicht von Roslyn behandelt.  Dies gelingt jedoch über den Umweg der Codebehind-Dateien mit Endung .XAML.CS,  die ein Laden über das Dateisystem ermöglichen. 
+möglich eine Auflistung aller verfügbaren \Csharp - Dateien aus einem Projekt zu extrahieren.  XAML -Dateien werden nicht von Roslyn behandelt.  Dies gelingt jedoch über den Umweg der Codebehind-Dateien mit Endung .XAML.cs,  die ein Laden über das Dateisystem ermöglichen. 
 
 Nachdem der Source-To-Source Compiler alle Quelltext- und Ansichtsdateien übersetzt hat,  müssen die in Kapitel 4 beschriebenen Metadaten überführt werden.  Anschließend kann der Quelltext optimiert und der Übersetzungsvorgang abgeschlossen werden.  Folgend kann nun zur Visualisierung des Übersetzungsvorganges ein \ac{uml}  Aktivitätsdiagramm angelegt werden, wie es in Abbildung \ref{fig:umlablauf} dargestellt ist.
 
@@ -33,9 +33,9 @@ Zu den Android spezifischen Metadaten gehören die sogenannten Launcher Icons, d
 
 Nach der Extraktion des Namens können nun die entsprechenden Bilder kopiert werden.  In der durch die Flutter SDK erzeugten App liegen bereits Bildplatzhalter zum Austausch bereit.
 
-Der eindeutige Identifizierer,  PackageID,  zählt ebenfalls zu den Metadaten und dient zur eindeutigen Erkennung der Anwendungen auf dem mobilen Gerät und im GooglePlay Store.  Die Information über die ID kann in Xamarin.Forms aus der AndroidManifest.XML Datei ausgelesen  werden, und muss aber in Flutter sowohl in 3 Manifest Dateien als auch in die build.gradle geschrieben werden.Das Plugin,  change\_app\_package\_name , nimmt alle notwendigen Änderungen vor. Es muss als Abhängigkeit zum Projekt hinzugefügt und anschließend über die Kommandozeile ausgeführt werden. 
+Der eindeutige Identifizierer,  PackageID ,  zählt ebenfalls zu den Metadaten und dient zur eindeutigen Erkennung der Anwendungen auf dem mobilen Gerät und im GooglePlay Store.  Die Information über die ID kann in Xamarin.Forms aus der AndroidManifest.XML Datei ausgelesen  werden, und muss aber in Flutter sowohl in 3 Manifest Dateien als auch in die build.gradle geschrieben werden. Das Plugin,  \glq change\_app\_package\_name \grq , nimmt alle notwendigen Änderungen vor. Es muss als Abhängigkeit zum Projekt hinzugefügt und anschließend über die Kommandozeile ausgeführt werden. 
 
-Der Anwendungsname wird, wie die PackageID, aus dem AppManifest extrahiert und in Flutter allerdings auch nur in eine Manifest Datei im Verzeichnis Project/app/src/main’ geschrieben.  Auch die Berechtigungen, die während der Laufzeit der Anwendung, beantragt werden befinden sich innerhalb des AppManifests und können auch kopiert werden.
+Der Anwendungsname wird, wie die PackageID , aus dem AppManifest extrahiert und in Flutter allerdings auch nur in eine Manifest Datei im Verzeichnis Project/app/src/main\grq{} geschrieben.  Auch die Berechtigungen, die während der Laufzeit der Anwendung, beantragt werden befinden sich innerhalb des AppManifests und können auch kopiert werden.
 
 \subsection{iOS Metadaten}
 Xamarin.iOS verwaltet Metadaten die für die Übersetzung notwendig sind ebenfalls in einer Datei im Projektverzeichnis mit dem Namen Info.plist.  In Flutter Apps gibt es eine entsprechende Datei,  jedoch werden die Inhalte,  beispielsweise die Bildnummer und der Identifizierer,  aus Variablen geladen.  Damit nach der Kompilierung keine Besonderheiten in der Administration der Flutter App entstehen,  soll dieses Schema beibehalten werden.  Die AppFrameworkInfoPlist stellt die Quelle aller Werte,  die als Variablen in die Info.plist, geladen werden müssen dar.   Daher werden die entsprechenden Einträge aus der Info.Plist von Xamarin extrahiert und jeweils in die entsprechenden Info.Plist Dateien von Flutter kopiert.  Eine entsprechende Gegenüberstellung, welcher Wert in welche Datei überführt werden muss,  wird in Tabelle \ref{tab:InfoPlist} dargestellt. 
@@ -79,31 +79,30 @@ Eine weitere Ressource bilden die Startbildschirme der verschiedenen Plattformen
 
 \section{Übersetzung von Klassenstrukturen}
 
-Die Übersetzung von \Csharp zu Dart ist ein essentieller Bestandteil des Compilers.  Dafür wird zuerst die Visual Studio Projektmappe geladen.  Da in dieser Arbeit kein plattformspezifischer Quelltext betrachtet wird,  sind die entsprechende  Projekte ausschließlich für das Kopieren der Metadaten und Ressourcen notwendig.  Anschließend kann ausschließlich das Projekt betrachtet werden, welches den plattformunabhängigen Quelltext beinhaltet.  Dabei wird für alle Klassen der in  \ref{lst:CsharpFrontend} dargestellte Quelltext ausgeführt. 
+Die Übersetzung von \Csharp zu Dart ist ein essentieller Bestandteil des Compilers.  Dafür wird zuerst die Visual Studio Projektmappe geladen.  Da plattformspezifischer Quelltext, wie bereits in den Ausschlusskriterien erwähnt, unübersetzt bleibt, sind die entsprechende Projekte ausschließlich für das Kopieren der Metadaten und 
+Ressourcen notwendig.  Anschließend kann ausschließlich das Projekt betrachtet werden, welches den plattformunabhängigen Quelltext beinhaltet.  Dabei wird für alle Klassen der in  \ref{lst:CsharpFrontend} dargestellte Quelltext ausgeführt. 
 \lstinputlisting[label={lst:CsharpFrontend},caption={C\# Compiler Frontend}, language=csh]{SourceCode/CompilerFrontEnd.cs}
-Für die Übersetzung von einer Programmiersprache zu einer anderen ist es notwendig,  alle Knoten und Token innerhalb eines Syntaxbaums in der richtigen Reihenfolge zu betrachten.  Die abstrakte Klasse \glq CSharpSyntaxWalker\grq{} erlaubt es einen eigenen \glq Syntax-Walker\grq{} zu konstruieren,  der alle Knoten und Token analysieren kann.  Dafür kann von \glq CSharpSyntaxWalker\grq{} geerbt werden und anschließend die \glq Visit()\grq{} Methode überschreiben werden.  \footcite[Vgl.][Abgerufen am \today]{Varty2014}  Der Quelltext visualisiert die Erstellung eines \glq FlutterTranspilerVisitors\grq{} mithilfe des vorher ermittelten semantischen Models.  Anschließend wird der ausgelesene Wurzelknoten des Syntaxbaumes als Parameter der \glq Run()\grq{} Methode übergeben, welches den \glq Visitor\grq{} startet.  
+Für die Übersetzung von einer Programmiersprache zu einer anderen ist es notwendig,  alle Knoten und Token innerhalb eines Syntaxbaums in der richtigen Reihenfolge zu betrachten.  Die abstrakte Klasse \glq CSharpSyntaxWalker\grq{} erlaubt es,  einen eigenen \glq Syntax-Walker\grq{} zu konstruieren,  der alle Knoten und Token analysieren kann.  Dafür kann von \glq CSharpSyntaxWalker\grq{} geerbt und anschließend die \glq Visit()\grq{} Methode überschrieben werden.  \footcite[Vgl.][Abgerufen am \today]{Varty2014}  Der Quelltext visualisiert die Erstellung eines \glq FlutterTranspilerVisitors\grq{} mithilfe des vorher ermittelten semantischen Models.  Anschließend wird der ausgelesene Wurzelknoten des Syntaxbaumes als Parameter der \glq Run()\grq{} Methode übergeben, welches den \glq Visitor\grq{} startet.  
 
-
-Diese Schritte beschreiben das Compiler-Frontend,  anschließend kann der Dart Quelltext konstruiert werden.  Dafür werden die einzelnen Knoten des Baumes je nach ihrem Typen zu entsprechenden Dart Synonymen umgewandelt.  Dafür werden die einzelnen Methoden des \glq CSharpSyntaxVisitor\grq{} überschrieben.  So zeigt Quelltext \ref{lst:PropertyDeclaration} die Umwandlung von Eigenschaftsdeklarationen.
+Hiermit endet das compiler Frontend und der der Dart Quelltext kann konstruiert werden.  Dafür werden die einzelnen Knoten des Baumes je nach ihrem Typen zu entsprechenden Dart Synonymen umgewandelt und die einzelnen Methoden des \glq CSharpSyntaxVisitor\grq{} überschrieben.  Quelltext \ref{lst:PropertyDeclaration} zeigt die Umwandlung von Eigenschaftsdeklarationen.
 \newpage
 \lstinputlisting[label={lst:PropertyDeclaration},caption={Compilierung von Eigenschaftsdeklarationen}, language=csh]{SourceCode/Modifizierer.cs}
 
-Der Quelltextausschnitt veranschaulicht die generelle Arbeitsweise des Compilers,  bei der die einzelnen Zeichen und Zeilen des Dart-Textdokumentes generiert und anschließend in gespeichert werden.  So hangelt sich der Compiler durch das Dokument und übersetzt den Quelltext Schritt für Schritt, wobei die Reihenfolge in denen der 
-Typ, der Modifizierer und Name der Eigenschaft in die Dart Datei geschrieben wird essentiell ist.
-n.  So wird in den Quelltextzeilen 6 bis 8 zuerst der Typ der Eigenschaft ausgegeben gefolgt von dem optionalen Modifizierer und dem Namen.   Anschließend wird optional ein Wert gesetzt und die Reihe mit einem Semikolon abgeschlossen.  Die Methode für die Generierung des Dart Modifizierers wird in Quelltext \ref{lst:DartModifier} dargestellt.
+Der Quelltextausschnitt veranschaulicht die generelle Arbeitsweise des Compilers,  bei der die einzelnen Zeichen und Zeilen des Dart-Textdokumentes generiert und anschließend gespeichert werden.  So hangelt sich der Compiler durch das Dokument und übersetzt den Quelltext Schritt für Schritt, wobei die Reihenfolge in der der 
+Typ, der Modifizierer und der Name der Eigenschaft in die Dart Datei geschrieben wird von entscheidender Bedeutung ist.
+n.  Entsprechend wird in den Quelltextzeilen 6 bis 8 zuerst der Typ der Eigenschaft ausgegeben gefolgt von dem optionalen Modifizierer und dem Namen.   Optional kann nun ein Wert gesetzt und die Reihe mit einem Semikolon abgeschlossen werden.  Die Methode für die Generierung des Dart Modifizierers zeigt Quelltext \ref{lst:DartModifier}.
 
 \lstinputlisting[label={lst:DartModifier},caption={Austausch von C\# Modifizierern}, language=csh]{SourceCode/Modifier.cs}
 
 
-Wie bereits in Kapitel 5 beschrieben sind die auszugebenden Typen der Programmiersprachen nicht identisch und müssen daher entsprechend angepasst werden.  Zur  Veranschaulichung wird die realisierte Methode in Quelltext {lst:DataType} dargestellt. 
+Wie bereits in Kapitel 5 beschrieben sind die auszugebenden Typen der beiden Programmiersprachen nicht identisch und müssen daher entsprechend angepasst werden.  Zur  Veranschaulichung wird die realisierte Methode in Quelltext {lst:DataType} dargestellt. 
 \lstinputlisting[label={lst:DataType},caption={Austausch von C\# Datentypen}, language=csh]{SourceCode/Datatypes.cs}
 
-Diese Methode gibt den Namen des jeweiligen Dart-Datentypen,  für die jeweiligen \Csharp Repräsentationen zurück.  Am Ende der Methode wird,  wenn kein passender Datentyp ermittelt werden konnte der Name des ursprünglichen Typen zurück gegeben.  Dies ist notwendig um selbst entwickelten Klassen verwenden zu können. 
+Diese Methode gibt den Namen des jeweiligen Dart-Datentypen,  für die jeweiligen \Csharp Repräsentationen zurück.  Am Ende wird,  wenn kein passender Datentyp ermittelt werden konnte,  der Name des ursprünglichen Typen zurückgegeben.  Dies ist notwendig um selbst entwickelten Klassen verwenden zu können. 
 
 %Was passiert mit .Net klassen? Fehler ausgegeben? 
 
-Wie in Kapitel 4 beschrieben werden viele Funktionalitäten mithilfe von Erweiterungen ermöglicht.  Jedoch sind die Erweiterungen die,  wenn auch vergleichbar, von anderen
-Herstellern mit unterschiedlichen Anforderungen programmiert wurden.  Daraus folgt,  dass es für Klassen und Methoden aus diesen Bibliotheken nicht zwangsläufig identischen Repräsentationen gibt.  Diese Inkompatibilität kann nicht mittels Automation gelöst werden und Bedarf daher unterschiedlich umfangreicher manueller Umwandlungen.  Ein Beispiel soll zeigen,  wie Konflikte aufgelöst werden können.  Der Compiler wird jedoch nur diesen Falle enthalten, weitere Umwandlungen von Plugins müssen im Rahmen von Erweiterungen ergänzt werden.  Als Beispiel soll der bereits in Abschnitt 3.5 eingeführte Anwendungsfalle wieder aufgegriffen werden indem ein Bild aus dem Bilderalbum des Gerätes ausgewählt wird.  So geben die Funktionen von sowohl von Xamarin.Forms als auch von Flutter jeweils ein Objekt zurück, welches das ausgewählte Bild repräsentiert.  Beide haben jedoch unterscheide,   das Flutter Objekt kann mit den Methoden readAsBytes und readAsString gelesen werden,  während das Xamarin.Forms Bild mit der Methode OpenReadAsync geladen werden kann.  Daher ist es notwendig neben der Zuordnung der Erweiterungen auch ein Mapping der Methoden vorzunehmen. Obwohl es keine Gewährleistung gibt, dass für jede Xamarin Forms eine entsprechende Flutter 
+Viele Funktionalitäten werden, wie in Kapitel 4 eingeführt, durch Erweiterungen ermöglicht, die jedoch herstellerabhängig mit unterschiedlichen Anforderungen programmiert wurden.  Daraus folgt,  dass es für Klassen und Methoden aus diesen Bibliotheken nicht zwangsläufig identische Repräsentationen gibt.  Eine Auflösung der Inkompatibilität ist nicht mittels Automation möglich, sondern bedarf unterschiedlich umfangreicher manueller Umwandlungen.  Der Compiler wird jedoch nur diesen Falle enthalten, weitere Umwandlungen von Plugins müssen im Rahmen von Erweiterungen ergänzt werden.  Dafür soll der Anwendungsfall aus Abschnitt 3.5 erneut aufgegriffen werden.  Beim Zugriff auf ein Bilderalbum geben die Erweiterungen von Xamarin.Forms und Flutter ein Objekt zurück, dass das ausgewählte Bild repräsentiert.  Jedoch läd Xamarin.Forms das Bild mit der Methode \glq OpenReadAsync\grq{} und Flutter liest mit den Methoden \glq readAsBytes\grq .  Daher ist es notwendig neben der Zuordnung der Erweiterungen auch ein Mapping der Methoden vorzunehmen. Obwohl es keine Gewährleistung gibt, dass für jede Xamarin Forms eine entsprechende Flutter 
 Erweiterung zur Verfügung steht, konnte bei der Implementierung des Compilers immer eine  Alternative gefunden werden.
 
 
@@ -120,6 +119,7 @@ Die Übersetzung von Ansichten inkludiert die XAML und XAML.cs Dateien, die nach
 
 Für die visuelle Zwischendarstellung wird in einem ersten Schritt die XML Struktur
 aus der XAML Datei ausgelesen und ein Syntaxbaum angelegt.  Die entsprechenden Klassen für die Darstellung des Syntaxbaumes werden in Abbildung \ref{fig:Klassendiagram} in Form eines Klassendiagramm dargestellt..
+\newpage
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/Klassendiagram.png}
@@ -129,32 +129,34 @@ aus der XAML Datei ausgelesen und ein Syntaxbaum angelegt.  Die entsprechenden K
 
 Ein Objekt der Klasse VisualTree stellt den Layout-Baum einer speziellen XAML Datei dar.  Er beinhaltet eine Auflistung von untergeordneten Elementen, welche wiederum weitere Elemente beinhalten können um die Verschachtlung des Baumes abzubilden.  Jedes Element besitzt eine Auflistung von Eigenschaften, die Attribute der einzelnen XML Knoten beschreiben.  Dieser Baum wird anschließend,  durch die in Kapitel 4 beschriebenen Gegenüberstellungen von Flutter Widgets, in einen Flutter Widget-Baum überführt.  Dabei wird für jedes Widget der Quelltext zur Initialisierung in einem Template vorgehalten.  Alle möglichen Variablen und Eigenschaften dieser Widgets werden innerhalb dieser Vorlagen mit Platzhaltern bereitgestellt.  Dies wird in Quelltext \ref{lst:Placeholder} dargestellt.
 
-\lstinputlisting[label={lst:Placeholder},caption={Flutter Widget mit Placeholdern} , language=Dart]{SourceCode/DartPlaceholder.dart} 
+\lstinputlisting[label={lst:Placeholder},caption={Flutter Widget Template} , language=Dart]{SourceCode/DartPlaceholder.dart} 
 
-Nun erfolgt im nächsten Schritt das Extrahieren der Eigenschaften des Quellframeworks und im 
-Anschluss die Eintragung des Codes in das Template.  Neben den Eigenschaften die einen Wert in XAML,  definiert haben gibt es auch noch Eigenschaften,  die über sogenannte Databindings aus den Codebehind-Daten gefüllt werden,  für deren Übersetzung neue Platzhalter mit dem Prefix Databinding in dem Template hinterlegt 
-werden. In einem späteren Arbeitsschritt ist eine Bereinigung des Templates erforderlich,  denn ungenutzte Platzhalter müssen entfernt werden.
+Nun wird eine Arbeitskopie dieser Vorlage angelegt,  in welche in den weiteren Compiler-Phasen die Werte aus der Xamarin.Forms App importiert werden müssen. Abbildung \ref{fig:PlaceholderOptions} visualisiert, in welchen Phasen welche Platzhalter behandelt werden.
 
+\newpage
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/DartPlaceHolder.png}
+ \caption{Bereinigung von Dart Widget Platzhaltern}
+ \label{fig:PlaceholderOptions}
+\end{figure}
+Es wird verdeutlicht, dass in der Phase der Zwischendarstellung ausschließlich die in XAML definierten Eigenschaftswerte innerhalb der Widget Arbeitskopie importiert werden.  Neben diesen direkt importierbaren Werten,  gibt es auch die sogenannten Databindings,  die den Wert aus der Codebehind-Datei erhalten.  Für deren Übersetzung müssen neue Platzhalter mit dem Prefix \glq BindingPlaceholder \grq in dem Quelltext hinterlegt werden,  die während der Synthese ausgetauscht werden müssen.  Exemplarisch wird in Quelltext  \ref{lst:PlaceholderBinding} der Text-Platzhalter zu einem Binding Platzhalter,  außerdem ist ersichtlich,  dass der Platzhalter textAlign mit einem Wert versehen wurde. 
 
+\lstinputlisting[label={lst:PlaceholderBinding},caption={Flutter Widget mit Binding-Platzhaltern} , language=Dart]{SourceCode/DartPlaceholderBinding.dart} 
+
+Zu diesem Zeitpunkt sind in der Arbeitskopie der Widget Definition noch die Binding Platzhalter und ungenutzte Platzhalter vorhanden.  Diese müssen wie in der Abbildung visualisiert in späteren Phasen der Kompilierung bereinigt werden.
 
 \subsection{Logische- Zwischendarstellung}
 
 Für die Erzeugung der logischen Zwischendarstellung wird die gleiche Logik wie für die Klassenstrukturen verwendet,  da es sich bei diesen Dateien ausschließlich um \Csharp Klassen handelt.  Damit sich die Benutzeroberfläche automatisch aktualisiert müssen noch erweiterte Änderungen vorgenommen werden.
 Während bei Xamarin.Forms Änderungen an Eigenschaften automatisch an die Benutzeroberfläche 
-übermittelt werden, muss bei Flutter das Framework mithilfe der setState()) Methode  informiert 
+übermittelt werden, muss bei Flutter das Framework mithilfe der setState()) Methode informiert 
 werden.  Anpassungen am Quelltext können nicht während der Erstellung der Zwischendarstellung 
 geschehen, denn die eigentlich dafür zuständige Codebehind Datei ist nicht darauf ausgelegt zu 
 erkennen, welche Eigenschaften einen direkten Bezug zur Ansicht haben.  Daher erfolgt dieser Schritt im Compiler Backend.
 
 \section{Synthese}
 
-Die Synthese ist eine Teilaufgabe des Compiler Backend  und befasst sich mit der Zusammenführung der einzelnen Zwischendarstellungen.  Dafür werden die gesamten Methoden und Eigenschaften aus der logischen Darstellung in die Ansicht überführt und die Referenzierungen dort entsprechend angepasst.  Zu diesem Zeitpunkt kann ermittelt werden, welche Eigenschaften und Methoden im UI zu 
-Veränderungen führen.   Quelltextstellen,  die eine Oberflächenaktualisierung auslösen sollen,  müssen folglich in einen SetState Block eingefügt werden, damit Änderungen automatisch in App angezeigt werden.
-
-%Quelltext
-
-In einem ersten Schritt werden die Zwischendarstellungen der Codebehind Datei und der Ansicht kombiniert.  Dafür wird die übersetzte Logik unterhalb der für den Aufbau der grafischen Benutzeroberfläche beinhaltenden Build Methode hinterlegt.  Im nächsten Schritt werden ereignisauslösende Aktivitäten, beispielsweise der Klick auf 
-Schaltflächen,  mit den übersetzen Methoden verbunden und die Platzhalter entfernt. Eine Überprüfung welche Eigenschaften der Codebehind-Klassen am Front-End Änderungen durchgeführt haben, wird mittels Binding Platzhaltern vollzogen.  So müssen alle Bereiche im Quelltext, die Änderungen an Eigenschaften vornehmen zu denen es ein Binding-Placeholder gibt mit einem SetState Block umschlossen werden.
+Die Synthese ist eine Teilaufgabe des Compiler Backends und befasst sich mit der Zusammenführung der einzelnen Zwischendarstellungen.  Zu diesem Zeitpunkt wird die übersetzte Logik unterhalb der für den Aufbau der grafischen Benutzeroberfläche beinhaltenden Build Methode hinterlegt.  Im nächsten Schritt werden ereignisauslösende Aktivitäten, beispielsweise der Klick auf Schaltflächen,  mit den übersetzen Methoden verbunden und die Platzhalter entfernt.  Eine Überprüfung welche Eigenschaften der Codebehind-Klassen am Front-End Änderungen durchgeführt haben, wird mittels Binding Platzhaltern vollzogen.  So müssen alle Bereiche im Quelltext, die Änderungen an Eigenschaften vornehmen zu denen es ein Binding-Placeholder gibt mit einem SetState Block umschlossen werden.
 
 %Quelltext
 
@@ -175,4 +177,5 @@ Wie die Ansicht visualisiert werden in der Anwendung umfangreiche Logs angezeigt
 Da sowohl die grafische Benutzeroberfläche als auch der Source-To-Source Compiler mit .Net Technologien realisiert wurden lassen sie sich einfach miteinander kombinieren.  Dafür wird der Compiler als Abhängigkeit in das Projekt der grafischen Benutzeroberfläche geladen.  Dies ist Notwendig,  damit die grafische Benutzeroberfläche den Übersetzungsvorgang starten kann. 
 
 \section{Zusammenfassung}
+Die Kompilierung des Xamarin.Forms Quelltextes erzeugt verschiedene Zwischendarstellungen für XAML und Quelltext Dateien die in der Synthese kombiniert werden.   Ansichten werden Anhand von Vorlagen mit Platzhaltern generiert,  welche in darauf folgenden Phasen bereinigt werden.
 Während der Realisierung des Compilers wurden Entscheidungen getroffen, die für eine nicht vollständig identische Übersetzung verantwortlich sind.  So wurden Bilder ausschließlich aus IOS Projekten entnommen und die Startbildschirme der Xamarin Forms Anwendungen auf eine Bilddarstellung reduziert.
