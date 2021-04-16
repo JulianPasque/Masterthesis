@@ -1,6 +1,10 @@
 Text(
-  %TextPlaceholder%,
-  textAlign: %AlignPlaceholder%,
-  overflow: %OverflowPlaceholder%,
-  style: %StylePlaceholder%,
+  "%TEXT%",
+  textAlign: %HORIZONTALALIGNMENT%,
+  overflow: TextOverflow.ellipsis,
+  style: TextStyle(
+	fontWeight: %FONTWEIGHT%,
+	fontSize: %FONTSIZE%,
+	fontStyle: %ITALIC%
+	),
 )
