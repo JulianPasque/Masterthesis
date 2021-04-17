@@ -4,11 +4,10 @@
 Nach der erfolgreichen Implementierung des Source-To-Source Compilers soll mithilfe einer Xamarin.Forms App überprüft werden,  ob der Compiler erwartungsgemäß arbeitet.  
 
 \section{Testobjekt}
-Die Testapp wurde mit der aktuellen Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Sie soll möglichst viele Funktionalitäten von Xamarin.Forms abbilden, hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
-Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots ergänzend in          \hyperref[chap:AnhangAndroidScreenshots]{Anhang IV}.
+Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Das Testobjekt soll möglichst viele Funktionalitäten von Xamarin.Forms abbilden, hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
+Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots befinden sich in \hyperref[chap:AnhangAndroidScreenshots]{Anhang III}.
 
-Der Name und das Anwendungsicon sind wichtige Merkmale anhand welcher Anwender die App identifizieren können.  Nach dem Start öffnet sich eine Menüstruktur, die Wurzel der Navigation, über die verschiedene 
-Bereiche der App angesteuert werden können.  Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot das Icon und den Namen der,  im zweiten das Menu der App und im dritten die Visualisierung der verfügbaren Steuerelemente.
+Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die Benutzer die App auf dem Startbildschirm identifizieren.  Nach dem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche der mobilen Anwendung angesteuert werden können.  Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot das Icon und den Namen,  im zweiten das Menu der App und im dritten die Visualisierung der verfügbaren Steuerelemente.
 
 \newpage
 \begin{figure}[!ht]
@@ -16,12 +15,11 @@ Bereiche der App angesteuert werden können.  Abbildung \ref{fig:TestObjectI} ze
  \caption{Test Objekt Screenshots I}
  \label{fig:TestObjectI}
 \end{figure}
-Neben der Navigation zu den Steuerelemente ist es auch möglich zu einer Ansicht zu gelangen,  die 
- Werte der Smartphonesensoren anzeigen. Für diesen Anwendungsfall werden sowohl der Beschleunigungssensor als auch die Gyroscop Werte ausgegeben.
- Zusätzlich steht eine Seite zur Verfügung die es erlaubt auf die Kamera des Gerätes und die Bildergalerie zuzugreifen.
-Über das Menü kann neben den Steuerelementen auch zu einer Ansicht navigiert werden,  die die Werte der Smartphone Sensoren ausgibt.  Dazu gehören der Beschleunigungssensor,  der Kompass,  das Gyroscope und das Magnetomet. Außerdem können Bilder über die Kamera aufgenommen oder aus der Galerie ausgewählt werden.  Diese Ansichten werden in Abbildung \ref{fig:TestObjectII} dargestellt.
+Neben der Navigation zu den Steuerelemente ist es  möglich zu einer Ansicht zu gelangen,  die 
+ Werte der Smartphonesensoren anzeigen. Für diesen Anwendungsfall werden sowohl der Beschleunigungssensor,  als auch die Gyroscop Werte ausgegeben.
+ Zusätzlich steht eine Seite zur Verfügung die es erlaubt auf die Kamera des Gerätes und die Bildergalerie zuzugreifen.  Diese Ansichten werden in Abbildung \ref{fig:TestObjectII} dargestellt.
 
-\newpage
+
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Sensors.png}
  \caption{Test Objekt Screenshots II}
@@ -31,32 +29,32 @@ Neben der Navigation zu den Steuerelemente ist es auch möglich zu einer Ansicht
 \section{Testfälle}
 Um den Compiler zu Testen ist es notwendig Testfälle zu definieren und zu überprüfen, ob der Compiler die Xamarin.Forms App so übersetzt, wie es zu erwarten.   Zu diesem Zweck werden in diesem Abschnitt Testfälle definiert die sich aus den ermittelten Unterschieden zwischen beiden Frameworks,  sowie der Programmiersprachen ergeben.  Tabelle \ref{tab:Testapp} beschreibt die Testfälle und ihre entsprechenden Funktionen.
 
-\newpage
 
-\begin{table}[!ht]
-\begin{tabularx}{\textwidth}{l|l|X}
-   \textbf{ID} & \textbf{Komponente} & \textbf{Beschreibung} \\
+\begin{xltabular}{\textwidth}{l|l|X}
+   \textbf{ID} & \textbf{Komponente} & \textbf{Beschreibung}  \\  
+
+
 \hline
 1             & App-Icon           	& Prüfen ob das App-Icon übernommen wurde                      			 \\ 
 2             & App-Name          	& Prüfen ob das App-Name übernommen wurde                      		 \\ 
 3             & SDK Versionen      & Prüfen ob die SDK Versionen übernommen wurden                      \\ 
-4             & Seitenname           				& In der Navigationsleiste wird der Name der aktuellen Seite angezeigt                      			 \\ 
+4             & Seitenname           				& In der Navigationsleiste wird der Name der aktuellen Seite angezeigt               \\ 
 5          	  & Navigation         			  	& Mit Hilfe des Menüs kann navigiert werden                      			 \\ 
 6             & Zurück Navigation           	& Über die Navigationsleiste kann zurrück Navigiert werden                      			 \\ 
 7             & Gyroscope auswerten           	& Die Werte werden in der App angezeigt.                      			 \\ 
 8             & Accelerometer auswerten           	& Die Werte werden in der App angezeigt.                   			 \\ 
 9             & Compass auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
 10            & Magnetometer auswerten           	& Die Werte werden in der App angezeigt.                			 \\ 
-11            & Sensor nicht verfügbar           	& Wenn ein Sensor nicht verfügbar ist, wird ein Fehler angezeigt          			 \\ 
-12            & Steuerelemente wurden ausgetauscht           	& Alle Steuerelemente werden angezeigt        			 \\ 
+11            & Sensor nicht verfügbar         	& Wenn ein Sensor nicht verfügbar ist, wird ein Fehler angezeigt          			 \\ 
+12            & Steuerelemente 	           		& Alle Steuerelemente werden angezeigt        			 \\ 
 13            & Ereignisse funktionieren           	&  Steuerelemente reagieren wie gewohnt     			 \\ 
-14            & Bild aus Ressourcen laden           	& Ein Bild aus den Ressourcen wird in der App angezeigt                      			 \\ 
+14            & Bild aus Ressourcen laden           	& Ein Bild aus den Ressourcen wird in der App angezeigt                   			 \\ 
 15             & Bild aus dem Web laden           	& Ein Bild aus dem Internet wird in der App                      			 \\ 
-\end{tabularx}
-\caption{Testfälle der Testapp}
- \label{tab:Testapp}
-\end{table}
 
+	  \caption{Testfälle der Testapp}
+
+ \label{tab:Testapp}
+\end{xltabular}
 
 
 \section{Testablauf}
@@ -67,6 +65,14 @@ Die Screenshots zeigen,  auf den ersten Blick die erwartete visuelle Vergleichba
 Die Ansicht der Sensoren zeigen,  dass auch hier die Oberfläche korrekt übernommen wurde und auch,  dass die Werte der Smartphone-Sensoren übernommen und im richtigen Format angezeigt sind.  Im Gegensatz zu Xamarin.Forms werden diese Daten jedoch nicht im gleichen zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  Auch die Verwendung der Kamera und der Zugriff auf die Galerie funktionieren wie in der Xamarin.Forms Anwendung. 
 
 Mit der im März 2021 veröffentlichten Version 2.0 von Flutter können Flutter Anwendungen ebenfalls zu Web-Anwendungen kompiliert werden.  Auch wenn die Erstellungen von Webseiten nicht im Fokus dieser Arbeit steht soll diese Anwendung trotzdem kurz betrachtet werden.  Die grundlegende Darstellung ist identisch wie die der mobilen Anwendung.  Da die Xamarin.Forms App nicht darauf ausgelegt war auch großen Monitoren dargestellt zu werden ist diese Ansicht zwar nicht für diese Darstellung optimiert aber funktionsfähig.  Die Funktionalitäten der Sensoren sind jedoch nicht Verfügbar, da das Plugin keinen Support für Flutter-Web bietet. 
+
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/WebApp.png}
+ \caption{Darstellung des Testobjektes als Webseite}
+ \label{fig:WebView}
+\end{figure}
+
+
 
 Obwohl das Testobjekt nicht alle  Xamarin.Forms Funktionalitäten abbildet,  konnte das Testobjekt vollständig überführt und die Funktionsfähigkeit des Prototypen bewiesen werden.  
 

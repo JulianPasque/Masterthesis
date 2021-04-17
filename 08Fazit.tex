@@ -1,12 +1,31 @@
 \chapter{Fazit und Ausblick}
 \label{chap:FazitAusblick}
-Ein Source-To-Source Compiler wie in dieser Arbeit angedacht, stellt einen Lösungsansatz für Xamarin.Forms App-Entwickler dar,  die sich nach dem Ende des Supportes vom Anbieter Microsoft trennen und trotzdem eine bestehende Anwendung erhalten möchten.  Das generelle Problem der Abhängigkeit ist jedoch auch nicht durch eine Abwendung von Microsoft gelöst, da das von der Firma Google entwickelte Flutter Framework ebenfalls ,wenn auch nicht absehbar,  eingestellt werden kann. Der Ausbau der Idee,  durch grundsätzlich automatisierte Übersetzungen Programmierern eine Wahlfreiheit und Wechseloptionen zu ermöglichen rechtfertigt eine Weiterentwicklung des Prototypen.
+Ein Source-To-Source Compiler,  wie in dieser Arbeit angedacht, stellt einen Lösungsansatz für Xamarin.Forms App-Entwickler dar,  die sich nach dem Ende des Supports vom Anbieter Microsoft trennen und trotzdem eine bestehende Anwendung erhalten möchten.  Das generelle Problem der Abhängigkeit ist jedoch nicht durch eine Abwendung von Microsoft gelöst, da das von der Firma Google entwickelte Flutter Framework ebenfalls, wenn auch derzeit nicht absehbar,  eingestellt werden kann. Der Ausbau der Idee,  durch grundsätzlich automatisierte Übersetzungen Programmierern eine Wahlfreiheit und Wechseloptionen zu ermöglichen rechtfertigt eine Weiterentwicklung des Prototypen.
 
 \section{Open Source Veröffentlichung}
-Der im Rahmen dieser Arbeit entwickelte Prototyp ist in der Lage die für diese Arbeit entwickelte Xamarin.Forms App zu übersetzten.  In der Praxis verwenden produktive Xamarin.Forms Anwendungen jedoch auch die in Kapitel \ref{chap:CompilerEntwurf} ausgeschlossenen Elemente.  Außerdem gibt es Unternehmen wie DevExpress, Syncfusion und Telerik die sowohl Steuerelemente für Xamarin.Forms als auch Widgets für Flutter anbieten die ebenfalls ausgetauscht werden könnten.  Durch eine Veröffentlichung des Compilers als Open-Source Projekt könnten diese Anbieter ihre eigenen \ac{ui}-Elemente durch den Compiler ersetzten lassen und somit den Umfang des Compilers erhöhen.  Die Offenlegung des Quelltextes hätte darüber hinaus noch den Vorteil, dass Entwickler und Unternehmen, die ihre mobilen Anwendungen von Xamarin. Forms zu Flutter migrieren wollen den Compiler auch auf ihre speziellen Gengegebenheiten Anpassen können. 
-Durch diese Veröffentlichung könnte auch die notwendige Transparenz geschaffen werden um den Compiler über eine Webseite zur Verfügung zu stellen.  Da Anwender über den Quelltext nachvollziehen könnten wie Ihre Anwendung verarbeitet wird.  
-%Android spezfiscihe Bilder%
+
+Der Umfang des Prototypen konnte durch die in Kapitel \ref{chap:CompilerEntwurf}  ausgeschlossenen Elemente 
+reduziert werden, diese Präklusion besteht bei den meisten Xamerin.Forms Apps nicht. 
+Eine Veröffentlichung des Compilers als Open Source Projekt könnte helfen, diese komplexeren 
+mobilen Anwendungen zu übersetzen,  indem Programmierer den für die Allgemeinheit verfügbaren 
+Quelltext auf ihre speziellen Gegebenheiten anpassen und wiederum publizieren.
+Unternehmen wie DevExpress,  Syncfusion und Telerik bieten sowohl Steuerelemente für 
+Xamarin.Forms, als auch Widgets für Flutter und hätten die Möglichkeit ihre eigenen \ac{ui}-Elemente 
+durch den Compiler ersetzten zu lassen und somit dessen Umfang zu erhöhen.  
+Durch Open Source Veröffentlichung könnte die Entwicklung in Geschwindigkeit und Zielgenauigkeit 
+erhöht werden.
 
 \section{Beantwortung der Forschungsfrage}
-Mithilfe des Source-To-Source Compilers kann nun die zentrale Forschungsfrage dieser Arbeit beantwortet werden.  Xamarin.Forms Anwendungen könnten automatisiert von Xamarin.Forms zu Flutter übersetzt werden,  jedoch gibt es Aspekte die der entwickelte Prototyp nicht berücksichtigt.  Dazu gehören palttformspezfische Implementierungen und viele Erweiterungen für das Xamarin.Forms Framework.  Es bedarf daher Erweiterungen des Compilers für die Übersetzung von Produktiven Anwendungen.  Da Microsoft den Umstieg von Xamarin.Forms zu Flutter für das Ende des Jahres 2021 plant ist es notwendig,  dass der Compiler bis zu diesem Zeitpunkt vollständig funktionsfähig ist,  wenn Unternehmen und Entwickler diesen Einsetzen sollen.  Bereits im aktuellen Zustand ist der Compiler jedoch in der Lage komplexe visuelle Darstellungen und Quelltexte zu übersetzen und kann damit auch für einzelne Quelltextdokumente verwendet werden und somit den Entwicklungsaufwand bei einem Umstieg drastisch reduzieren. 
+Der Source -To-Source Compiler übersetzt die Xamarin.Forms Testapp und zeigt damit die 
+Machbarkeit einer zumindest teilautomatisierten Übersetzung zu Flutter.
+Zur Kompilierung von produktiven Anwendungen ist eine Weiterentwicklung nötig, sodass 
+plattformspezifische Implementierungen und viele Erweiterungen für das Xamarin.Forms Framework 
+ebenfalls umgewandelt werden können.
+Im aktuellen Zustand ist der Compiler schon in der Lage komplexe visuelle Darstellungen
+und Quelltexte zu übersetzen und somit den Entwicklungsaufwand bei einem Umstieg auf Flutter 
+merklich zu reduzieren.
+Da bereits für Ende 2021 das Supportende für Xamarin.Forms beschlossen und die Einführung von 
+MAUI angekündigt wurde, wäre eine vollständige Funktionsfähigkeit des Compilers noch in diesem 
+Jahr nötig, um Unternehmen und Programmierern eine geeignete Alternative zu bieten. 
+
 
