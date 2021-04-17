@@ -94,7 +94,6 @@ Wie bereits in Kapitel 5 beschrieben,  sind die Typen der beiden Programmierspra
 \lstinputlisting[label={lst:DataType},caption={Austausch von C\# Datentypen}, language=csh]{SourceCode/Datatypes.cs}
 
 Der Rückgabewert dieser Methode ist der entsprechende Dart Datentyp.  Sollte keine entsprechende Repräsentation verfügbar sein,  erfolgt die Rückgabe des ursprünglichen Typnamens.  Dies ist notwendig um andere übersetzte Klassen im Quelltext verwenden zu können.  Damit keine unerwünschten Typen des .Net Frameworks oder von Xamarin.Forms Erweiterungen innerhalb des Übersetzungsergebnises erscheinen sind Bereinigungen erforderlich. 
-%Was passiert mit .Net klassen? Fehler ausgegeben? 
 
 Erweiterungen ergänzen die Funktionalität der Frameworks sind jedoch herstellerabhängig mit unterschiedlichen Anforderungen programmiert,  sodass es für Klassen und Methoden aus diesen Bibliotheken nicht zwangsläufig identische Repräsentationen gibt.  Eine Auflösung der Inkompatibilität ist nicht mittels Automation möglich, sondern bedarf unterschiedlich umfangreicher manueller Umwandlungen.  Der Komplexität ist es geschuldet,  dass der Compiler nur eine Auswahl von Erweiterungen unterstützt.  Nachträgliche Erweiterungen des Funktionsumfanges sind möglich.  Die folgenden Anwendungsfälle skizzieren das Vorgehen.  
 
@@ -139,7 +138,7 @@ Aufgrund von Inkompatibilitäten zwischen den von Xamarin.Forms gelieferten und 
 
 \lstinputlisting[label={lst:Parsing},caption={FontSize Umwandlung} , language=csh]{SourceCode/CSharpFontSize.cs} 
 
-Neben dieser Umwandlung sind auch weitere Anpassungen an weiteren Eigenschaften notwendig.  Dazu zählen auch Farben und die Wahl einer Textumbruchoption.
+Neben dieser Umwandlung sind auch weitere Anpassungen an weiteren Eigenschaften notwendig.  Dazu zählen unter anderem auch Farben und die Wahl einer Textumbruchoption.  Da die Implementierungen vergleichbar sind,  wird auf diese nicht näher eingegangen. 
 
 Nun erfolgt die Anlage einer Arbeitskopie des Templates,  um in weiteren Compilerphasen die Werte aus der Xamarin.Forms App einzufügen.  Abbildung \ref{fig:PlaceholderOptions} visualisiert, die Behandlung der Platzhalter in den einzelnen Phasen der Übersetzung.
 
@@ -169,8 +168,9 @@ In einem ersten Schritt erfolgt die Kopie der übersetzen Logik unterhalb der f�
 Eine Überprüfung welche Eigenschaften der Codebehind-Klassen am Front-End Änderungen durchgeführt haben, wird mittels Binding-Platzhaltern vollzogen.  So müssen alle Bereiche im Quelltext, die Änderungen an Eigenschaften vornehmen zu denen es ein Binding-Placeholder gibt mit einem SetState Block umschlossen werden.
 
 %Quelltext
-\section{Synthese}
-Nach der Kombination der visuellen Zwischendarstellungen stehen folglich zwei Dart-Dateien zur Verfügung die ebenfalls miteinander kombiniert werden müssen wo dies notwendig ist.  Hierfür ist es notwendig zu überprüfen welche Klassen in welchen Quelltext-Dokumenten verwendet werden.  Anschließend können die entsprechenden Dateien importiert werden. 
+\section{Ganzheitliche Synthese}
+Nach der Generation der Zwischendarstellungen von sowohl Logik und Ansichten müssen diese Darstellungen ebenfalls Synthetisiert werden wo dies notwendig ist.  Nach der Erfolgreichen Übersetzung einer Anwendung sollen Entwickler in der Lage sein die Anwendung wie gewohnt weiter entwickeln zu können.  Dafür ist es notwendig,  abgesehen von dem Codebehind-Datei Konzept,  die selbe Dateistruktur beizubehalten.  In \Csharp wurden diese Dateien wie bereits eingeführt über Namespaces eingebunden.  Da Dart keine Namespaces verwendet sondern Dateien über ihren Namen einbindet ist es notwendig,  diese zu ermitteln.  Die Namespace Information ist dafür nur begrenzt hilfreich,  da ein Namespace über verschiedene Dateien Klassen inkludieren kann.  Daher wird während der Übersetzung analysiert in welcher Datei,  welche Klassen definiert wurden.  Basierend auf dieser Erkenntnis werden in einer späteren Phase bei Verwendung von diesen Klassen Imports zu den Dateien gesetzt.  Diese Referenzen sind ebenfalls wichtig für die Navigation durch die Anwendung,  da Navigationsziele ebenfalls Importiert werden müssen.  Der Compiler geht in diesem Falle davon aus,  das Dateien, die Ansichten beinhalten den gleichen Namen haben wie die Seiten die sie repräsentieren.
+
 
 \section{Codeoptimierung}
 
@@ -178,15 +178,15 @@ Nach der erfolgreichen Zusammenführung der einzelnen Artefakte kann anschließe
 
 Ein weiterer Schritt der Bereinigung das entfernen der \glq INotifyPropertyChangedgrq{} Schnittstellen Definition die in Xamarin.Forms für die Oberflächen- Aktualisierung zuständig ist und bereits durch SetState-Blöcke ersetzt wurde.  Hierfür ist es notwendig,  die Ereignisdefinition, den Ereignis-Handler und alle Aufrufe zu entfernen.
 
-Jetzt folgt die Entfernung der nicht benötigten Platzhalter aus dem Dart generierten Quelltext.  Damit befindet sich der Programmcode in in einem korrekten syntaktischen Zustand und kann mit Hilfe des Flutter Compilers zu einer mobilen App übersetzt und ausgeführt werden. 
+Jetzt folgt die Entfernung der nicht benötigten Platzhalter,  mit dem in Quelltext \ref{lst:PlaceholderCleanup} dargestellten Algorithmus,  aus dem generierten Dart Quelltext.  Damit befindet sich der Programmcode in in einem korrekten syntaktischen Zustand und kann mit Hilfe des Flutter Compilers zu einer mobilen App übersetzt und ausgeführt werden. 
+\newpage
+\lstinputlisting[label={lst:PlaceholderCleanup},caption={Bereinigung von ungenutzten Platzhaltern}, language=csh]{SourceCode/Cleanup.cs}
 
 
 \section{Grafische Benutzeroberfläche}
 Die GUI ist der zentrale Berührungspunkt von Anwendern mit dem Transpiler.  Sie soll die notwendigen Eingabe-Möglichkeiten anbieten, das Ergebnis ausgeben und den Anwender auf mögliche Fehler hinweisen.  Das grafische Vorbild ist das in Kapitel 3 entworfene Mockup, siehe Abbildung 3.4.  Für die Erstellung einer entsprechenden Benutzeroberfläche stehen eine Vielzahl von Technologien mit verschiedenen Vor- und Nachteilen zur Verfügung. Eine Webseite erspart dem Anwender einen hohen Installationsaufwand und ermöglicht die plattformunabhängige Verwendung des Compilers.  Allerdings ist zumindest ein gewisser Kontrollverlust über den eigenen Quelltext durch das  Hochladen auf eine Webseite nicht ausgeschlossen.  Die Bedienoberfläche dieser Arbeit soll daher eine lokale Anwendung sein, sodass kein  unberechtigter Zugriff auf den Source-Code möglich ist.  Zu diesem Zweck wird die GUI mit der Technologie \ac{wpf} realisiert.  Dabei handelt es sich um ein UI-Framework des .NET Frameworks, das für die Erstellung von Desktopanwendungen geeignet ist die mit XAML und \Csharp entwickelt werden. \footcite[Vgl.][S. 1f]{Wenger2012} 
 
-Anwendungen die mittels WPF programmiert werden, sind nur unter Windows als Betriebssystem ausführbar.  Da der Roslyn Compiler auch nur unter Windows verfügbar ist entstehen hier keine zusätzlichen Einschränkungen. 
-
-Die folgende Darstellung \ref{fig:CompilerUI} zeigt das Erscheinungsbild der Anwendung nach einer erfolgreichen Übersetzung.
+Anwendungen die mittels WPF programmiert werden, sind nur unter Windows als Betriebssystem ausführbar.  Da der Roslyn Compiler auch nur unter Windows verfügbar ist entstehen hier keine zusätzlichen Einschränkungen.  Die folgende Darstellung \ref{fig:CompilerUI} zeigt das Erscheinungsbild der Anwendung nach einer erfolgreichen Übersetzung.
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/UiScreenshot.png}
