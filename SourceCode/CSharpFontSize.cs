@@ -1,26 +1,20 @@
 private static double GetFontSize(object _SizeValue)
 {
     if(_SizeValue is double)
-    {
         return Convert.ToDouble(_SizeValue);
-    }
+    
     string NamedSize = (String)_SizeValue;
 
-    if (NamedSize.Equals("Caption", StringComparison.OrdinalIgnoreCase))
-        return 12;
-    if (NamedSize.Equals("Micro", StringComparison.OrdinalIgnoreCase))
-        return 10;
-    if (NamedSize.Equals("Header", StringComparison.OrdinalIgnoreCase))
-        return 34;
-    if (NamedSize.Equals("Large", StringComparison.OrdinalIgnoreCase))
-        return 34;
-    if (NamedSize.Equals("Medium", StringComparison.OrdinalIgnoreCase))
-        return 14;
-    if (NamedSize.Equals("Small", StringComparison.OrdinalIgnoreCase))
-        return 10;
-    if (NamedSize.Equals("Subtitle", StringComparison.OrdinalIgnoreCase))
-        return 16;
-    if (NamedSize.Equals("Title", StringComparison.OrdinalIgnoreCase))
-        return 24;
-    return 12;
+    switch (NamedSize)
+    {
+        case "Caption"  : return 12;
+        case "Micro"    : return 10;
+        case "Header"   : return 34;
+        case "Large"    : return 34;
+        case "Medium"   : return 14;
+        case "Small"    : return 10;
+        case "Subtitle" : return 16;
+        case "Title"    : return 24;
+        default: return 12;
+    }
 }

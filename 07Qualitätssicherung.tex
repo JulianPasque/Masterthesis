@@ -1,7 +1,11 @@
 \chapter{Qualitätssicherung}
 \label{chap:Qualitätssicherung}
+Die Qualität des Source-To-Source Compilers muss während und nach der erfolgreichen Implementierung sichergestellt werden. In diesem Kapitel werden im ersten Abschnitt die Komponententests als Qualitätsischerungsmaßnahme wärend der Entwicklung thematisiert.  Anschließend wird die Funktionsweise mithilfe einer speziell entwickelten Xamarin.Forms App überprüft.  Anhand dieses Tests kann anschließend überprüft werden, ob  der Compiler erwartungsgemäß funktioniert. 
 
-Nach der erfolgreichen Implementierung des Source-To-Source Compilers soll mithilfe einer Xamarin.Forms App überprüft werden,  ob der Compiler erwartungsgemäß arbeitet.  
+\section{Komponententests}
+Komponententests unterteilen ein Programm in einzelne testfähige Einheiten und validiert deren Funktionalität.  In Visual Studio können diese Testfälle automatisiert ausgeführt werden, wenn Änderungen am Quelltext durchgeführt werden.  Auf diese Weise ist Sichergestellt, dass Änderungen am Quelltext nicht vom gewünschten Verhalten abweichen.  Komponententests optimieren die Qualität des Quelltextes, wenn sie ein integraler Bestandteil des Entwicklungsprozesses sind.  Sobald eine Klasse oder Methode geschrieben ist,  können Komponententests erstellt werden, mit denen das Verhalten des Codes bei der Eingabe von Werten überprüft werden kann.  Klassischerweise werden dafür gültige Daten,  falsche Daten und Daten die an der Grenze des Gültigkeitsbereiches liegen übergeben.  Dieses vorgehen wurde während der Entwicklung des Compilers durchgeführt.  Dieses vorgehen wird häufig als testgesteuerte(engl. testdriven) Entwicklung beschrieben,  bei der die Komponententests vor dem Code geschrieben werden.  Bei diesem Vorgehen dienen die Tests ebenfalls als Entwurfsdokumentation und als funktionale Spezifikationen der Anforderung.
+
+
 
 \section{Testobjekt}
 Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Das Testobjekt soll möglichst viele Funktionalitäten von Xamarin.Forms abbilden, hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.

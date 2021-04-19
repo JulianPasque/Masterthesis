@@ -5,6 +5,7 @@ Text(
   style: TextStyle(
     fontWeight: %FONTWEIGHT%,
     fontSize: %FONTSIZE%,
-    fontStyle: %ITALIC%
-    ),
+    fontStyle: %ITALIC%,
+    color: %TEXTCOLOR%
+  ),
 )

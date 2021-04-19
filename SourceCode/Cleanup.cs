@@ -1,24 +1,11 @@
-public static async Task RemoveUnusedPlaceholders(string _Codefile)
-{
-    string text = await File.ReadAllTextAsync(_Codefile);
-
-    var l = text.Split(new string[]{"\n"}, StringSplitOptions.None).ToList();
-
+public static List<string> RemovePlaceholder(List<String> _LinesOfCode){
     var LinesToDelete = new List<string>();
-
-    foreach (string Line in l)
+    foreach (string L in _LinesOfCode)
     {
-        var first = Line.IndexOf('%');
-
-        var Placeholder = first != Line.LastIndexOf('%') && first != -1;
-
-        if (Placeholder)  
-            LinesToDelete.Add(Line);
-        
+        if (L.IndexOf('%') != L.LastIndexOf('%') && L.IndexOf('%') != -1)
+            LinesToDelete.Add(L);
     }
-
     foreach (string S in LinesToDelete)
-        l.Remove(S);
-
-    await File.WriteAllTextAsync(_Codefile, string.Join("\n", lines));
+        _LinesOfCode.Remove(S);
+    return _LinesOfCode;
 }

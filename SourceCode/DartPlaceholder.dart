@@ -3,8 +3,9 @@ Text(
   textAlign: %HORIZONTALALIGNMENT%,
   overflow: TextOverflow.ellipsis,
   style: TextStyle(
-	fontWeight: %FONTWEIGHT%,
-	fontSize: %FONTSIZE%,
-	fontStyle: %ITALIC%
+    fontWeight: %FONTWEIGHT%,
+    fontSize: %FONTSIZE%,
+    fontStyle: %ITALIC%,
+    color: %TEXTCOLOR%
 	),
 )
