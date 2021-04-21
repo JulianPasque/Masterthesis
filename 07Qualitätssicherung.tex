@@ -3,15 +3,18 @@
 Die Qualität des Source-To-Source Compilers muss während und nach der erfolgreichen Implementierung sichergestellt werden. In diesem Kapitel werden im ersten Abschnitt die Komponententests als Qualitätsischerungsmaßnahme wärend der Entwicklung thematisiert.  Anschließend wird die Funktionsweise mithilfe einer speziell entwickelten Xamarin.Forms App überprüft.  Anhand dieses Tests kann anschließend überprüft werden, ob  der Compiler erwartungsgemäß funktioniert. 
 
 \section{Komponententests}
-Komponententests unterteilen ein Programm in einzelne testfähige Einheiten und validiert deren Funktionalität.  In Visual Studio können diese Testfälle automatisiert ausgeführt werden, wenn Änderungen am Quelltext durchgeführt werden.  Auf diese Weise ist Sichergestellt, dass Änderungen am Quelltext nicht vom gewünschten Verhalten abweichen.  Komponententests optimieren die Qualität des Quelltextes, wenn sie ein integraler Bestandteil des Entwicklungsprozesses sind.  Sobald eine Klasse oder Methode geschrieben ist,  können Komponententests erstellt werden, mit denen das Verhalten des Codes bei der Eingabe von Werten überprüft werden kann.  Klassischerweise werden dafür gültige Daten,  falsche Daten und Daten die an der Grenze des Gültigkeitsbereiches liegen übergeben.  Dieses vorgehen wurde während der Entwicklung des Compilers durchgeführt.  Dieses vorgehen wird häufig als testgesteuerte(engl. testdriven) Entwicklung beschrieben,  bei der die Komponententests vor dem Code geschrieben werden.  Bei diesem Vorgehen dienen die Tests ebenfalls als Entwurfsdokumentation und als funktionale Spezifikationen der Anforderung.
-
-
+Komponententests unterteilen ein Programm in einzelne,  testfähige Einheiten und validieren deren Funktionalität.  Wenn sie integraler Bestandteil des Entwicklungspozesses sind,  optimieren sie die Qualität des Programms. 
+In Visual Studio können diese Testfälle, bei Änderungen am Quelltext automatisiert durchgeführt 
+werden, was garantiert, dass die Modifikation am Code kein unerwünschtes Verhalten erzeugt.   Sobald eine Klasse oder Methode geschrieben ist, werden die Tests angelegt,  um das verhalten des Codes nach Eingabe von gültigen,  falschen und grenzwertig gültigen Daten zu überprüfen.
+Diese testgesteuerte (engl. testdriven) Entwicklung entspricht der Qualitätssicherung bei 
+der Programmierung des Source-To-Source Compilers, denn auch hier wurden die Komponententests vor dem Quelltext geschrieben und dienen damit auch der funktionalen Spezifikation der Anforderungen.
 
 \section{Testobjekt}
-Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Das Testobjekt soll möglichst viele Funktionalitäten von Xamarin.Forms abbilden, hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
+Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
 Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots befinden sich in \hyperref[chap:AnhangAndroidScreenshots]{Anhang III}.
 
-Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die Benutzer die App auf dem Startbildschirm identifizieren.  Nach dem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche der mobilen Anwendung angesteuert werden können.  Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot das Icon und den Namen,  im zweiten das Menu der App und im dritten die Visualisierung der verfügbaren Steuerelemente.
+Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die Benutzer die App auf dem Startbildschirm identifizieren.  Nach dem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche, der mobilen Anwendung angesteuert werden können.  In einer vertikal Ansicht werden dafür Schaltflächen als Ereignisauslöser für die Navigation bereitgestellt,  die zu den folgenden Seiten führen: Übersicht der Steuerelemente,  Ausgabe von Smartphonesensoren,  Arbeit mit Bildern und Ansicht einer Listview. 
+Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot den Startbildschirm mit dem Namen und Icon der Testapp und im zweiten den Hauptbildschirm.  
 
 \newpage
 \begin{figure}[!ht]
@@ -19,8 +22,17 @@ Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die B
  \caption{Test Objekt Screenshots I}
  \label{fig:TestObjectI}
 \end{figure}
-Neben der Navigation zu den Steuerelemente ist es  möglich zu einer Ansicht zu gelangen,  die 
- Werte der Smartphonesensoren anzeigen. Für diesen Anwendungsfall werden sowohl der Beschleunigungssensor,  als auch die Gyroscop Werte ausgegeben.
+
+
+
+und im dritten die Visualisierung der verfügbaren Steuerelemente.
+
+
+Ebenso ist es über die Navigation möglich zu einer Ansicht zu gelangen,  die 
+ Werte der Smartphonesensoren anzeigt.  Für diesen Anwendungsfall werden sowohl der Beschleunigungssensor,  als auch die Gyroscop Werte ausgegeben.
+ 
+ 
+ 
  Zusätzlich steht eine Seite zur Verfügung die es erlaubt auf die Kamera des Gerätes und die Bildergalerie zuzugreifen.  Diese Ansichten werden in Abbildung \ref{fig:TestObjectII} dargestellt.
 
 
@@ -31,7 +43,9 @@ Neben der Navigation zu den Steuerelemente ist es  möglich zu einer Ansicht zu 
 \end{figure}
 
 \section{Testfälle}
-Um den Compiler zu Testen ist es notwendig Testfälle zu definieren und zu überprüfen, ob der Compiler die Xamarin.Forms App so übersetzt, wie es zu erwarten.   Zu diesem Zweck werden in diesem Abschnitt Testfälle definiert die sich aus den ermittelten Unterschieden zwischen beiden Frameworks,  sowie der Programmiersprachen ergeben.  Tabelle \ref{tab:Testapp} beschreibt die Testfälle und ihre entsprechenden Funktionen.
+Zur Überprüfung der Funktionalität des Compilers müssen Testfälle definiert werden. Damit ist zu 
+kontrollieren, ob die Übersetzung der in \Csharp{} programmierten  Xamarin.Forms Testapp eine in 
+visuell und logisch vergleichbare Flutter Zielapp ergibt.  Tabelle \ref{tab:Testapp} beschreibt die Testfälle und ihre entsprechenden Funktionen.
 
 
 \begin{xltabular}{\textwidth}{l|l|X}
@@ -62,13 +76,31 @@ Um den Compiler zu Testen ist es notwendig Testfälle zu definieren und zu über
 
 
 \section{Testablauf}
-Der Start  des Testlaufs beginnt mit dem Aufruf der grafischen Benutzeroberfläche und der Auswahl sowohl der Xamarin.Forms Testapp, als auch eines leeren Ordners, der das Zielverzeichnis nach der Kompilierung dient. 
-Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch.  Im Frontend lassen sich Informationen bezüglich der Übersetzung ablesen, wenn sie erfolgreich absolviert wurde.  Anschließend kann die übersetzte Flutter Anwendung mithilfe der Flutter-SDK kompiliert und die übersetzten Ansichten kontrolliert werden.  Die folgenden Screenshots zeigen das Flutterergebnis. Die entsprechenden Screenshots von Android befinden sich im Anhang dieser Arbeit.
+In diesem Abschnitt werden die definierten Testfälle manuell durchgeführt und das Ergebnis dokumentiert. 
+Der Start  des Testlaufs beginnt mit dem Aufruf der grafischen Benutzeroberfläche,   der Auswahl der Xamarin.Forms Testapp und eines leeren Ordners, der als Zielverzeichnis nach der Kompilierung dient. 
+Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die folgenden Screenshots visualisieren die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden Anhang dieser Arbeit.
 
-Die Screenshots zeigen,  auf den ersten Blick die erwartete visuelle Vergleichbarkeit der Anwendungen.  Sowohl der Name als auch das Launchericon der Anwendung sind korrekterweise übernommen worden.  Nach dem Start der Anwendung fällt auf,  dass die App etwas anders aussieht als die Xamarin.Forms iOS Anwendung.  Dies ist begründet durch die Verwendung der Material Design Vorlagen.  Da der Compiler, wie in den Ausschlusskriterien beschrieben nicht den Style der Anwendungen übersetzt ist dieses verhalten,  das erwartete und daher an dieser Stelle akzeptabel.  Das zentrale Menü der Anwendung ist auch in der Flutter Anwendung verfügbar und die Navigation über dieses funktioniert wie bei Xamarin.Forms ausschließlich die Animation ist unterschiedlich.  Die Ansicht der verfügbaren Ansichten zeigt, dass sowohl die Verschachtelung der Widgets als auch ihre Funktionalitäten mit der Xamarin.Forms Variante übereinstimmen.  So lassen sich beispielsweise auch die Datum- und Uhrzeitsauswahl öffnen. 
-Die Ansicht der Sensoren zeigen,  dass auch hier die Oberfläche korrekt übernommen wurde und auch,  dass die Werte der Smartphone-Sensoren übernommen und im richtigen Format angezeigt sind.  Im Gegensatz zu Xamarin.Forms werden diese Daten jedoch nicht im gleichen zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  Auch die Verwendung der Kamera und der Zugriff auf die Galerie funktionieren wie in der Xamarin.Forms Anwendung. 
+Die Screenshots zeigen,  auf den ersten Blick die erwartete visuelle Vergleichbarkeit der Anwendungen.  Sowohl der Name als auch das Launchericon der Anwendung sind korrekt übernommen worden.  
+Nach dem Start der Anwendung fallen jedoch Designabweichungen auf, die durch die Verwendung 
+der Material Design Vorlagen in Flutter begründet sind.
+Da der Compiler nicht,  wie in den Ausschlusskriterien festgelegt, den Style der Anwendung übersetzt, 
+entspricht das Ergebnis der Erwartungshaltung und ist, wenn daraus keine funktionellen Störungen 
+entstehen,  an dieser Stelle akzeptabel.
+ Das zentrale Menü mit seiner Navigationsfunktion entspricht in der Ziel- dem der Testapp,  
+unterscheidet sich allerdings in der Animation.
+  Die übersetzten Ansichten stimmen  bezüglich der Verschachtelungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein, was beispielsweise beim Öffnen der Datum- und Uhrzeitenauswahl erkennbar ist.
+Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht und alle Werte der 
+Smartphonesensoren befinden sich im richtigen Format.
+ Im Gegensatz zu Xamarin.Forms werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  
+ 
+ 
+ Auch erfolgreich übersetzt wurden der Zugriff auf die Kamera und die Galerie,  sie funktionieren wie in der ursprünglichen Version des Testobjekts.
+ 
+ 
+ 
+Mit der im März 2021 veröffentlichten Version 2.0  können Flutter Anwendungen zu Web-Anwendungen kompiliert werden.  Auch wenn die Erstellungen von Webseiten nicht im Fokus dieser Arbeit steht soll diese Anwendung trotzdem kurz betrachtet werden.  Die grundlegende Darstellung ist identisch wie die der mobilen Anwendung.  Da das Xamarin.Forms Testobjekt nicht als Webseite ausgeführt werden kann,  ist sie nicht darauf ausgelegt auf großen Monitoren dargestellt zu werden.   
 
-Mit der im März 2021 veröffentlichten Version 2.0 von Flutter können Flutter Anwendungen ebenfalls zu Web-Anwendungen kompiliert werden.  Auch wenn die Erstellungen von Webseiten nicht im Fokus dieser Arbeit steht soll diese Anwendung trotzdem kurz betrachtet werden.  Die grundlegende Darstellung ist identisch wie die der mobilen Anwendung.  Da die Xamarin.Forms App nicht darauf ausgelegt war auch großen Monitoren dargestellt zu werden ist diese Ansicht zwar nicht für diese Darstellung optimiert aber funktionsfähig.  Die Funktionalitäten der Sensoren sind jedoch nicht Verfügbar, da das Plugin keinen Support für Flutter-Web bietet. 
+ folgt das die Ansichten nicht für diese Darstellung optimiert sind aber lauffähig.  Die Funktionalitäten der Sensoren sind jedoch nicht verfügbar, da das Plugin keinen Support für Flutter-Web bietet.  Auch das Plugin für die Verwendung der Kamera und den Zugriff auf die Bildergalerie sind nicht primär für die Verwendung im Web Entwickelt worden,  bieten jedoch die Möglichkeit Bilder von dem Computer hochzuladen.  Abbildung \ref{fig:WebView} zeigt einen Screenshot der Webanwendung.
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/WebApp.png}
@@ -77,6 +109,8 @@ Mit der im März 2021 veröffentlichten Version 2.0 von Flutter können Flutter 
 \end{figure}
 
 
+Das Testobjekt konnte vollständig überführt werden, was grundsätzlich die 
+Funktionsfähigkeit die Prototypen beweist. Bei einer Übersetzung aller in der Praxis möglichen 
+Funktionalitäten von Xamerin.Forms bedarf es vielfältiger Erweiterungen des Compilers.
 
-Obwohl das Testobjekt nicht alle  Xamarin.Forms Funktionalitäten abbildet,  konnte das Testobjekt vollständig überführt und die Funktionsfähigkeit des Prototypen bewiesen werden.  
 
