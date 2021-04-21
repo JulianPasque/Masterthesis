@@ -8,39 +8,44 @@ In Visual Studio können diese Testfälle, bei Änderungen am Quelltext automati
 werden, was garantiert, dass die Modifikation am Code kein unerwünschtes Verhalten erzeugt.   Sobald eine Klasse oder Methode geschrieben ist, werden die Tests angelegt,  um das verhalten des Codes nach Eingabe von gültigen,  falschen und grenzwertig gültigen Daten zu überprüfen.
 Diese testgesteuerte (engl. testdriven) Entwicklung entspricht der Qualitätssicherung bei 
 der Programmierung des Source-To-Source Compilers, denn auch hier wurden die Komponententests vor dem Quelltext geschrieben und dienen damit auch der funktionalen Spezifikation der Anforderungen.
+\newpage
+\newpage
 
 \section{Testobjekt}
 Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
-Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots befinden sich in \hyperref[chap:AnhangAndroidScreenshots]{Anhang III}.
+Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots befinden sich in \hyperref[chap:AnhangAndroidScreenshots]{Anhang III}.  Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot den Startbildschirm mit dem Namen und Icon der Testapp und im zweiten den Hauptbildschirm.  
 
-Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die Benutzer die App auf dem Startbildschirm identifizieren.  Nach dem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche, der mobilen Anwendung angesteuert werden können.  In einer vertikal Ansicht werden dafür Schaltflächen als Ereignisauslöser für die Navigation bereitgestellt,  die zu den folgenden Seiten führen: Übersicht der Steuerelemente,  Ausgabe von Smartphonesensoren,  Arbeit mit Bildern und Ansicht einer Listview. 
-Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot den Startbildschirm mit dem Namen und Icon der Testapp und im zweiten den Hauptbildschirm.  
 
-\newpage
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/AppIconAndMenu.png}
  \caption{Test Objekt Screenshots I}
  \label{fig:TestObjectI}
 \end{figure}
 
-
-
-und im dritten die Visualisierung der verfügbaren Steuerelemente.
-
-
-Ebenso ist es über die Navigation möglich zu einer Ansicht zu gelangen,  die 
- Werte der Smartphonesensoren anzeigt.  Für diesen Anwendungsfall werden sowohl der Beschleunigungssensor,  als auch die Gyroscop Werte ausgegeben.
- 
- 
- 
- Zusätzlich steht eine Seite zur Verfügung die es erlaubt auf die Kamera des Gerätes und die Bildergalerie zuzugreifen.  Diese Ansichten werden in Abbildung \ref{fig:TestObjectII} dargestellt.
-
+Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die Benutzer die App auf dem Startbildschirm identifizieren.  Nach dem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche, der mobilen Anwendung angesteuert werden können.  In einer vertikal Ansicht werden dafür Schaltflächen als Ereignisauslöser für die Navigation bereitgestellt,  die zu den folgenden Seiten führen: Übersicht der Steuerelemente,  Ausgabe von Smartphonesensoren,  Arbeit mit Bildern und Ansicht einer Listview.   Abbildung \ref{fig:TestObjectII} zeigt die Übersicht der Steuerelemente sowie die Werte der Smartphone-Sensoren.
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Sensors.png}
  \caption{Test Objekt Screenshots II}
  \label{fig:TestObjectII}
 \end{figure}
+Die übersieht der verfügbaren Steuerelemente greift einige der häufig verwendeten Steuerelemente auf,  diese sind Anhand der in Kapitel 4 aufgeführten Kategorien gruppiert und vertikal angeordnet.  Neben dieser Darstellung ist eine Übersicht über die aktuellen Werte des Beschleunigungssensors und des Gyroskopes abgebildet,  die über das Plugin Xamarin.Essentials ausgelesen werden.  Die nächsten beiden Screenshots in \ref{fig:TestObjectIII} zeigen das Menü für die Arbeit mit Bildern und einen Berechtigungsdialog.
+
+\newpage 
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Permissions.png}
+ \caption{Test Objekt Screenshots III}
+ \label{fig:TestObjectIII}
+\end{figure}
+Das Menü hat Ähnlichkeiten mit dem der Hauptseite,  anstatt einer Navigation werden hier jedoch plattformspezifische Funktionalitäten über das Xamarin.Essentials Plugin ausgeführt.  Diesen bieten Zugriff auf die Kamera und die Galerie des Smartphones.  Der Dialog , der nach der Zugriffsberechtigung fragt zeigt auf iOS einen Eintrag aus den Metadaten an,  der ebenfalls überführt werden muss.  
+Weitere Screenshots werden in \ref{fig:TestObjectIV} gezeigt,  diese beinhalten die Auswahl eines Bildes aus der Galerie. und die Darstellung von Daten in einer ListView.  Diese stellt den Namen und die Emailadresse von  Benutzern da.  Die Klasse Benutzer wird innerhalb der des Quelltexters der mobilen Anwendung definiert.  Anschließend werden zehn Objekte dieses Typen in einer Auflistung vorgehalten und in der ListView angezeigt.
+\newpage 
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/ImagesListView.png}
+ \caption{Test Objekt Screenshots IV}
+ \label{fig:TestObjectIV}
+\end{figure}
+
 
 \section{Testfälle}
 Zur Überprüfung der Funktionalität des Compilers müssen Testfälle definiert werden. Damit ist zu 
@@ -98,9 +103,7 @@ Smartphonesensoren befinden sich im richtigen Format.
  
  
  
-Mit der im März 2021 veröffentlichten Version 2.0  können Flutter Anwendungen zu Web-Anwendungen kompiliert werden.  Auch wenn die Erstellungen von Webseiten nicht im Fokus dieser Arbeit steht soll diese Anwendung trotzdem kurz betrachtet werden.  Die grundlegende Darstellung ist identisch wie die der mobilen Anwendung.  Da das Xamarin.Forms Testobjekt nicht als Webseite ausgeführt werden kann,  ist sie nicht darauf ausgelegt auf großen Monitoren dargestellt zu werden.   
-
- folgt das die Ansichten nicht für diese Darstellung optimiert sind aber lauffähig.  Die Funktionalitäten der Sensoren sind jedoch nicht verfügbar, da das Plugin keinen Support für Flutter-Web bietet.  Auch das Plugin für die Verwendung der Kamera und den Zugriff auf die Bildergalerie sind nicht primär für die Verwendung im Web Entwickelt worden,  bieten jedoch die Möglichkeit Bilder von dem Computer hochzuladen.  Abbildung \ref{fig:WebView} zeigt einen Screenshot der Webanwendung.
+Mit der im März 2021 veröffentlichten Version 2.0  können Flutter Anwendungen zu Web-Anwendungen kompiliert werden.  Auch wenn die Erstellungen von Webseiten nicht im Fokus dieser Arbeit steht soll diese Anwendung trotzdem kurz betrachtet werden.  Die grundlegende Darstellung ist identisch wie die der mobilen Anwendung.  Da das Xamarin.Forms Testobjekt jedoch nicht als Webseite ausgeführt werden kann,  ist sie nicht darauf ausgelegt auf großen Monitoren dargestellt zu werden.   Daraus folgt,  dass die Flutter App nicht für die Darstellung im Web optimiert aber lauffähig ist.  Durch die erst vor kurzem hinzugefügten Support der Webplattform haben sind noch nicht alle Erweiterung für die neue Plattform aktualisiert worden.  So ist die Funktionalität Sensor-Plugins nicht im Web verfügbar,  auch wann das Gerät über entsprechende Sensoren verfügt.  Auch das Plugin für die Verwendung der Kamera und den Zugriff auf die Bildergalerie sind nicht primär für die Verwendung im Web Entwickelt worden,  bietet jedoch die Möglichkeit Bilder hochzuladen.  Abbildung \ref{fig:WebView} zeigt einen Screenshot der Webanwendung.
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/WebApp.png}
