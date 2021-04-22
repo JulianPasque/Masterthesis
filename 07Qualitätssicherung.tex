@@ -8,8 +8,17 @@ In Visual Studio können diese Testfälle, bei Änderungen am Quelltext automati
 werden, was garantiert, dass die Modifikation am Code kein unerwünschtes Verhalten erzeugt.   Sobald eine Klasse oder Methode geschrieben ist, werden die Tests angelegt,  um das verhalten des Codes nach Eingabe von gültigen,  falschen und grenzwertig gültigen Daten zu überprüfen.
 Diese testgesteuerte (engl. testdriven) Entwicklung entspricht der Qualitätssicherung bei 
 der Programmierung des Source-To-Source Compilers, denn auch hier wurden die Komponententests vor dem Quelltext geschrieben und dienen damit auch der funktionalen Spezifikation der Anforderungen.
-\newpage
-\newpage
+
+Dieses Vorgehen wird an dieser Stelle anhand der Umwandlung von Farben exemplarisch dargelegt.  Durch verschiedene verfügbare Eingabeformate ist es notwendig,  dass der Compiler eine vollständige Umwandlung vornimmt.  App-Entwickler können die Farbe mit einem gültigen Farbnahmen oder als Hexadezimale Zahl angeben.  Die Hexadezimale Darstellung kann jeweils über drei, vier,  sechs oder acht Ziffern mit einem optionalen Präfix \# verwendet werden.  Drei Ziffern werden als RGB-Daten für eine vollständig nicht transparente Farbe interpretiert,  so muss der Wert \#123 als \#FF112233 dargestellt werden.  Die Bereitstellung einer vierstelligen hexadezimal Zahl, wird wie eine dreistellige behandelt,  mit der Ausnahme, dass in der ersten Ziffer der Alphakanal angegeben wird.  Beispielsweise gibt \#1234 die Farbe \#11223344 an.  Wenn der Entwickler eine 6-stellige hexadezimal Zahl bereitstellt, werden die Daten mit diesen RGB-Werten als vollständig nicht transparente Farbe interpretiert.  Folglich wird \#112233 zu \#FF112233. Eine acht-stellige Zahl beschreibt zusätzlich mit den ersten beiden Ziffern den Alpha-Kanal.  
+Anhand dieser Anforderungen können nun die in Quelltext \ref{lst:colorTest} gezeigten Testfälle entworfen worden.
+
+\lstinputlisting[label={lst:colorTest},caption={Testfälle für die Umwandlung von Farben}, language=csh]{SourceCode/Testcases.cs}
+
+Durch diese Testfälle unterstützt konnte nun der in Quelltext \ref{lst:colorTestAlgo} dargestellte Algorithmus realisiert werden,  bei dem alle Testfälle korrekt ausgeführt werden.
+
+\lstinputlisting[label={lst:colorTestAlgo},caption={Algorithmus für die Umwandlung von Farben}, language=csh]{SourceCode/AlgorithmusColor.cs}
+
+
 
 \section{Testobjekt}
 Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
