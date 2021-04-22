@@ -83,31 +83,48 @@ visuell und logisch vergleichbare Flutter Zielapp ergibt.  Tabelle \ref{tab:Test
 \section{Testablauf}
 In diesem Abschnitt werden die definierten Testfälle manuell durchgeführt und das Ergebnis dokumentiert. 
 Der Start  des Testlaufs beginnt mit dem Aufruf der grafischen Benutzeroberfläche,   der Auswahl der Xamarin.Forms Testapp und eines leeren Ordners, der als Zielverzeichnis nach der Kompilierung dient. 
-Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die folgenden Screenshots visualisieren die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden Anhang dieser Arbeit.
+Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die im folgenden visualisierten Screenshots zeigen die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden Anhang dieser Arbeit.  Zur Förderung der Vergleichbarkeit werden die gleichen Inhalte der mobilen Anwendung abgebildet.  In Abbildung \ref{fig:FlutterAppI} wird das Icon und der Name der Anwendung auf dem Smartphone und das zentrale Menü der App dargestellt.
+\newpage
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/AppIconAndMenu.png}
+ \caption{Flutter App Screenshots I}
+ \label{fig:FlutterAppI}
+\end{figure}
 
-Die Screenshots zeigen,  auf den ersten Blick die erwartete visuelle Vergleichbarkeit der Anwendungen.  Sowohl der Name als auch das Launchericon der Anwendung sind korrekt übernommen worden.  
-Nach dem Start der Anwendung fallen jedoch Designabweichungen auf, die durch die Verwendung 
-der Material Design Vorlagen in Flutter begründet sind.
-Da der Compiler nicht,  wie in den Ausschlusskriterien festgelegt, den Style der Anwendung übersetzt, 
-entspricht das Ergebnis der Erwartungshaltung und ist, wenn daraus keine funktionellen Störungen 
-entstehen,  an dieser Stelle akzeptabel.
- Das zentrale Menü mit seiner Navigationsfunktion entspricht in der Ziel- dem der Testapp,  
-unterscheidet sich allerdings in der Animation.
-  Die übersetzten Ansichten stimmen  bezüglich der Verschachtelungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein, was beispielsweise beim Öffnen der Datum- und Uhrzeitenauswahl erkennbar ist.
-Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht und alle Werte der 
-Smartphonesensoren befinden sich im richtigen Format.
- Im Gegensatz zu Xamarin.Forms werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  
+Die Screenshots zeigen,  auf den ersten Blick die erwartete visuelle Vergleichbarkeit der Anwendungen.  Sowohl der Name als auch das Launchericon der Anwendung sind korrekt übernommen worden.  Nach dem Start der Anwendung fallen jedoch Designabweichungen auf, die durch die Verwendung der Material Design Vorlagen in Flutter begründet sind. Da der Compiler nicht,  wie in den Ausschlusskriterien festgelegt, den Style der Anwendung übersetzt,  entspricht das Ergebnis der Erwartungshaltung und ist, wenn daraus keine funktionellen Störungen 
+entstehen,  an dieser Stelle akzeptabel.  Das zentrale Menü mit seiner Navigationsfunktion entspricht in der Ziel- dem der Testapp,  
+unterscheidet sich allerdings in der Animation. Abbildung \ref{fig:FlutterAppII} zeigt die Übersicht der Steuerelemente sowie die Werte der Smartphone-Sensoren.
+
+\newpage
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Sensors.png}
+ \caption{Flutter App Screenshots II}
+ \label{fig:FlutterAppII}
+\end{figure}
+Die übersetzten Übersicht der Steuerelemente stimmt  bezüglich der Verschachtlungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein,  was beispielsweise beim Öffnen der Datum- und Uhrzeitenauswahl erkennbar ist. Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht und alle Werte der Smartphonesensoren befinden sich im richtigen Format. Im Gegensatz zu Xamarin.Forms werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  In der Xamarin.Forms App würden die Werte über Databindings geladen und mithilfe der INotifyPropertyChanged Schnittstelle wurde die Benutzeroberfläche im Falle von Änderungen aktualisiert.  Die Schnittstelle wurde in der Flutter Anwendung entfernt und die Stellen des Quelltextes, die Änderungen am UI vornehmen mit einem Setstate-Block umschlossen damit sich die Oberfläche aktualissiert.  Die nächsten beiden Screenshots in Abbildung \ref{fig:FlutterAppIII} zeigen das Menü für die Arbeit mit Bildern und einen Berechtigungsdialog für die Verwendung der Kamera.
+
+
+ \newpage 
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Permissions.png}
+ \caption{Flutter App Screenshots III}
+ \label{fig:FlutterAppIII}
+\end{figure}
+Auf diesen Screenshots ist ersichtlich,  dass auch die Berechtigungen übernommen wurden,  und die Beantragung dieser genau wie bei Xamarin.Forms funktioniert.  Auch erfolgreich übersetzt wurden der Zugriff auf die Kamera und die Galerie,  mithilfe einer Erweiterung.  Dieses funktioniert wie in der ursprünglichen Version des Testobjekts.  Die letzten Screenshots darstellt in Abbildung \ref{fig:TestObjectIV} zeigen,  die Auswahl eines Bildes aus der Galerie und die Darstellung der Benutzerdaten in einer ListView.  Aus der korrekten Darstellung der ListView wird ersichtlich,  dass auch die Klassendefinition und ihr Konstruktor korrekt übersetzt wurden um die Liste mit Daten zu füllen. 
  
- 
- Auch erfolgreich übersetzt wurden der Zugriff auf die Kamera und die Galerie,  sie funktionieren wie in der ursprünglichen Version des Testobjekts.
- 
- 
+ \newpage 
+\begin{figure}[!ht]
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/ImagesListView.png}
+ \caption{Flutter App Screenshots IV}
+ \label{fig:FlutterAppIV}
+\end{figure}
+
  
 Mit der im März 2021 veröffentlichten Version 2.0  können Flutter Anwendungen zu Web-Anwendungen kompiliert werden.  Auch wenn die Erstellungen von Webseiten nicht im Fokus dieser Arbeit steht soll diese Anwendung trotzdem kurz betrachtet werden.  Die grundlegende Darstellung ist identisch wie die der mobilen Anwendung.  Da das Xamarin.Forms Testobjekt jedoch nicht als Webseite ausgeführt werden kann,  ist sie nicht darauf ausgelegt auf großen Monitoren dargestellt zu werden.   Daraus folgt,  dass die Flutter App nicht für die Darstellung im Web optimiert aber lauffähig ist.  Durch die erst vor kurzem hinzugefügten Support der Webplattform haben sind noch nicht alle Erweiterung für die neue Plattform aktualisiert worden.  So ist die Funktionalität Sensor-Plugins nicht im Web verfügbar,  auch wann das Gerät über entsprechende Sensoren verfügt.  Auch das Plugin für die Verwendung der Kamera und den Zugriff auf die Bildergalerie sind nicht primär für die Verwendung im Web Entwickelt worden,  bietet jedoch die Möglichkeit Bilder hochzuladen.  Abbildung \ref{fig:WebView} zeigt einen Screenshot der Webanwendung.
-
+\newpage
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/WebApp.png}
- \caption{Darstellung des Testobjektes als Webseite}
+ \caption{Flutter Web-App Screenshot}
  \label{fig:WebView}
 \end{figure}
 
