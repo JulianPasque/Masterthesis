@@ -164,10 +164,11 @@ Re-prä-sen-ta-ti-on-en
 Benutzer-ober-fläche
 }
 
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
 \newcommand{\Csharp}{%
   {\settoheight{\dimen0}{C}C\kern-.05em \resizebox{!}{\dimen0}{\raisebox{\depth}{\#}}}}
-
-
 
 
   \begin{document}
@@ -201,7 +202,7 @@ Benutzer-ober-fläche
   \include{08Fazit}
   
   \appendix                       % Leitet den Nachspann ein
-  
+  \addtocontents{toc}{\protect\renewcommand*{\protect\@pnumwidth}{3em}}
     \renewcommand*\chapterheadstartvskip{}% removes space before chapter titles 
 
   \renewcommand*{\chapterpagestyle}{scrheadings}

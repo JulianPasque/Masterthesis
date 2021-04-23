@@ -40,7 +40,9 @@ Der Anwendungsname wird, wie die PackageID,  aus dem AppManifest extrahiert und 
 Xamarin.iOS verwaltet die für die Übersetzung notwendigen Metadaten in einer Datei im  Projektverzeichnis mit dem Namen Info.plist.  In Flutter Apps gibt es eine entsprechende Datei,  jedoch werden die Inhalte,  beispielsweise die Bildnummer und der Identifizierer,  aus Variablen geladen.  Damit nach der Kompilierung kein erhöhrter Administrationsaufwand bei der Verwaltung dieser Eigenschaften entsteht,  soll dieses Schema beibehalten werden.  Die AppFrameworkInfoPlist stellt die Quelle aller Werte,  die als Variablen in die Info.plist, geladen werden müssen dar.   Daher werden die entsprechenden Einträge aus der Info.Plist von Xamarin extrahiert und jeweils in die entsprechenden Info.Plist Dateien von Flutter kopiert.  Tabelle \ref{tab:InfoPlist} zeigt die Zieldatei für die Kopie bestimmter Werte.
 
 \begin{table}[!ht]
-  \begin{tabularx}{\linewidth}{X| X| X}
+  \begin{tabularx}{\linewidth}{|l|X|X|}
+  \hline
+
   \textbf{Schlüssel}  &  \textbf{Info.plist} & \textbf{AppFrameworkInfo.plist} \\
 \hline
   DevelopmentRegion  		&  					& 		\checkmark	 \\
@@ -51,8 +53,9 @@ Xamarin.iOS verwaltet die für die Übersetzung notwendigen Metadaten in einer D
   InterfaceOrientations  		& \checkmark  	&		 					\\
   BundleSignature  			&  \checkmark 	& 							\\
   BundleName  					&  \checkmark 	& 		 					\\
+  \hline
 \end{tabularx}
-\caption{Plist Dateien in Flutter }
+\caption{Info.plist Einträge in Flutter}
  \label{tab:InfoPlist}
 \end{table}
 Die Übersicht weist nicht alle aus der iOS Entwicklung bekannten Schlüssel auf.  Alle fehlenden Eigenschaften gehören in die Datei Info.Plist,  wie die letzten drei genannten. 
