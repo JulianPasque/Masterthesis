@@ -46,13 +46,17 @@ Der Vorgang des Kompilierens lässt sich basierend auf diesen zwei Teilaufgaben 
 Die erste Phase eines Compilers ist die lexikalische Analyse,  die den Quelltext in Lexeme untergliedert.  Ein Lexem ist die Folge von Zeichen im Quellprogramm,  die als Instanz eines Tokens erkannt wurden.  Dabei ist ein Token ein Paar aus Namen und einem optionalen Attributwert,  wobei der Name zum Beispiel ein bestimmtes Schlüsselwort, oder eine Folge von Eingabezeichen sein kann und der Attributwert auf einen Eintrag in der Symboltabelle verweist.  \footcite[Vgl.][S. 135 f.]{Ullmann2008} In Tabelle \ref{tab:Tokens} werden einige beispielhafte Tokens aufgeführt sowie die Information darüber, aus welchen Lexemen diese extrahiert werden.
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{l|X|l}
+\begin{tabularx}{\textwidth}{|l|X|l|}
+\hline
+
    \textbf{Token} & \textbf{Beschreibung} & \textbf{Lexem} \\
 \hline
 if             & Zeichen i,f           & if                      \\ 
 comparison     & Vergleichsoperatoren  & \textless{}=            \\ 
 id             & Buchstaben            & pi                      \\ 
-number         & Numerische Konstanten    & 3.14159                  
+number         & Numerische Konstanten    & 3.14159               \\    
+\hline
+
 \end{tabularx}
 \caption[Token-Beispiele]{Token-Beispiele \protect\footcite{Ullmann2008}}
  \label{tab:Tokens}

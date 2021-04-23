@@ -1,17 +1,19 @@
 % !BIB TS-program = biber
 
 % -*- coding: utf-8 -*-
-\documentclass{scrbook}[headings=normal]% Entspricht den Typografieregeln eines Buches
+\documentclass{scrbook}[listof=totoc,listof=entryprefix,toc=chapterentrywithdots,headings=normal]% Entspricht den Typografieregeln eines Buches
 \usepackage{wbh-thesis} % Laden der Vorlage
 \usepackage{blindtext}
 \usepackage{listings}
 \usepackage[automark,headsepline]{scrlayer-scrpage}
+
 \renewcommand{\lstlistingname}{Quelltext}% Listing -> Quelltext
 \renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}
+\newcommand\listoflolentryname\lstlistingname
 
 \usepackage{booktabs}
 \usepackage{caption}
-\usepackage[withpage]{acronym}
+\usepackage[ printonlyused,smaller]{acronym}
 \usepackage{tabularx} 
 \usepackage{xltabular}
 \usepackage{hyperref}
@@ -139,7 +141,6 @@ stringstyle=\color{redstrings},
 }
 \usepackage{ltxtable}
 
-\usepackage{acronym}
 
 
 \lstset{style=Codestyle}
@@ -166,6 +167,11 @@ Benutzer-ober-fläche
 
 \setcounter{biburllcpenalty}{7000}
 \setcounter{biburlucpenalty}{8000}
+\KOMAoptions{listof=graduated}% das automatische listof=flat von
+                              % listof=entryprefix wieder deaktivieren (siehe
+                              % KOMA-Script-Anleitug)
+\DeclareTOCStyleEntries[indent=0pt,numwidth=1cm,level=1]{tocline}{figure,table,lstlisting}% Alle Einträge auf Stil tocline mit den angegebenen Einstellungen ändern. Zu der Bedeutung aller Optionen siehe die KOMA-Script-Anleitung.
+
 
 \newcommand{\Csharp}{%
   {\settoheight{\dimen0}{C}C\kern-.05em \resizebox{!}{\dimen0}{\raisebox{\depth}{\#}}}}

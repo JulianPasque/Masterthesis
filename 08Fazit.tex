@@ -28,4 +28,8 @@ Da bereits für Ende 2021 das Supportende für Xamarin.Forms beschlossen und die
 MAUI angekündigt wurde, wäre eine vollständige Funktionsfähigkeit des Compilers noch in diesem 
 Jahr nötig, um Unternehmen und Programmierern eine geeignete Alternative zu bieten. 
 
+\section{Notwendige manuelle Arbeitsschritte}
 
+In der aktuellen Form sind noch manuelle Arbeitsschritte für die Transformation von produktiven mobilen Anwendungen notwendig.  Da der Prototyp keinen plattformspezifischen Quelltext übersetzt müssen diese mit Hilfe der Plattformchannel nachträglich realisiert werden.  Ebenso müssen die Splashscreens überführt werden falls der während der Übersetzung generierte nicht ausreichend ist.  Da auch der Style der Anwendung nicht übernommen wurde ist eine visuelle Differenz zwischen den Anwendungen zu erwarten, daher ist eine nachträgliche Anpassung des visuellen Erscheinungsbildes wahrscheinlich. 
+
+Der Prototyp wurde ausschließlich mit Hilfe des Testobjektes getestet,  die nicht alle Steuerelemente,  Layouts und Kombinationen derer abbildet.  Außerdem implementiert diese nicht alle Features der Programmiersprache \Csharp{}.  Bei der Übersetzung anderer Anwendung ist nach der Übersetzung ein vollständiger Regressionstest notwendig, um mögliche Seiteneffekte auszuschließen. 

@@ -46,13 +46,15 @@ Die Xamarin.Essentials Erweiterung stellt Entwicklern das \glq Settingsplugin\gr
 Mobile Anwendungen können die Möglichkeit zur Navigation zu anderen Apps realisieren.  Dafür greift Xamarin Forms auf ein bestimmtes \ac{uri}-Schema zurück, mit dem Ressourcen eindeutig bezeichnet werden.  Durch den Befehl \glq Launcher.OpenAsync("mailto://")\grq{}, der Bestandteil der Xamarin.Essentials Erweiterung ist,  wird z.B.  das Standardprogramm für E-Mails des Smartphones gestartet. \footcite[Vgl.][Abgerufen am \today]{MicrosoftLauncher2020}  Mithilfe des Plugins \glq url\_launcher\grq{} kann die Funktionalität zum Öffnen von anderen Anwendungen zu Flutter Apps hinzugefügt werden.\footcite[Vgl.][Abgerufen am \today]{Googleurllauncher2020} Die unterstützten \ac{uri}-Schemata und ihre Aktionen werden in Tabelle \ref{tab:URISChema} dargestellt.
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|l|X|}
+\hline
    \textbf{\ac{uri}-Schemata} & \textbf{Aktion}  \\
 \hline
 	http:<URL>		       				&  	URL wird im Standardbrowser geöffnet 		\\ 
-	mailto:<E-Mail Adresse>		       		&  	Erstellt eine Email an die angegebene E-Mail Adresse 		\\ 
+	mailto:<E-Mail Adresse>		     		&  	Erstellt eine Email an die angegebene E-Mail Adresse 		\\ 
 	tel:<Telefonnummer>	       		&  	Ruft die Rufnummer an 		\\ 
 	sms:<Telefonnummer>		       		&  	Schreibt eine SMS an die Rufnummer		\\ 
+	\hline
 \end{tabularx}
 \caption{Unterstützte Schemata des \glq url\_launcher\grq{} Plugins}
  \label{tab:URISChema}
@@ -95,13 +97,16 @@ Der Vergleich zwischen den XML basierten \ac{xaml}-Dateien\footcitetext[Quelltex
 Die\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterTabs2020}  deutlichen Unterschiede bei der Auswahl eines Navigationkonzeptes können überbrückt werden,  indem zu jeder Xamarin.Forms Page das entsprechende Flutter Widget gefunden wird.  Der Flutter-Widgetkatalog\footcite[Vgl.][Abgerufen am \today]{GoogleFlutterWidgetCatalog2020} und die Webseite "Flutter for Xamarin.Forms Developers"\footcite[Vgl.][Abgerufen am \today]{FlutterForXFDevs} wurde für die Recherche des Gegenstückes verwendet.  Entsprechende Ergebnisse der Suche können in Tabelle \ref{tab:ComparePAGESFlutter} abgelesen werden. 
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Page} & \textbf{Flutter Widget}  \\
 \hline
 	ContentPage            &           	\\ 
 	FlyOutPage             & MasterDetailScaffold          	\\ 
 	NavigationPage       & Scaffold         	 					\\ 
 	TabbedPage            & TabBar und TabBarView 		\\ 
+	\hline
+
 \end{tabularx}
 \caption{Gegenüberstellung Pages}
  \label{tab:ComparePAGESFlutter}
@@ -123,7 +128,8 @@ Die vorgestellten Layouts haben  unterschiedliche visuellen Eigenschaften und di
 Neben diesen gängigen Layouts gibt es noch weniger verbreitete,  zum Beispiel  das \glq  Frame\grq{}, das einen Rahmen um ein visuelles Element zeichnet.  Das \glq AbsolutLayout\grq{},  platziert untergeordnete Elemente an bestimmten Positionen relativ zu ihrem übergeordneten Element.  Das \glq RelativeLayout\grq{} übernimmt die gleiche Aufgabe,  jedoch nur auf der Ebene des Layouts und untergeordneter Elemente. \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} Basierend auf diesen verfügbaren Layouts werden in Tabelle \ref{tab:XamLayouts} die entsprechenden Flutter Widgets entgegengesetzt.  
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Layout} & \textbf{Flutter Widget}  \\
 \hline
 	AbsolutLayout       		&  Positioned	 			\\ 
@@ -133,6 +139,8 @@ Neben diesen gängigen Layouts gibt es noch weniger verbreitete,  zum Beispiel  
 	ScrollView            		&  SingleChildScrollView		\\ 
 	StackLayout       		&  Row und Column  	 			\\ 
 	ReleativLayout           &  Positioned		\\ 
+	\hline
+
 \end{tabularx}
 \caption{Gegenüberstellung Layouts}
  \label{tab:XamLayouts}
@@ -150,7 +158,8 @@ Microsoft kategorisiert die Steuerelemente innerhalb der Frameworkdokumentation 
 Einige Steuerelemente sind ausschließlich für die Darstellung von Inhalten vorgesehen.  In Xamarin.\@Forms gibt es die folgenden  Darstellungssteuerelemente, für die eine Flutter Repräsentation notwendig ist.  Das Steuerelement \glq BoxView\grq{}zeigt in Xamarin.Forms ein einfarbiges Rechteck an.  Für die Darstellung von Texten wird auf \glq Label\grq{} zurückgegriffen.  Bilder können mit Hilfe des \glq Image\grq{}  Steuerelements angezeigt werden,  wobei diese aus verschiedenen Quellen, wie dem Web oder aus den Ressourcen der App geladen werden können.  Das Steuerelement \glq Map\grq{}  kann für die Anzeige von Karten innerhalb der mobilen Anwendung verwendet werden.  Um Web und HTML Inhalte innerhalb einer App visualisieren zu können, steht das \glq WebView\grq{}  Steuerelement bereit.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftXamLayouts2018} Für die Steuerelemente kann nun eine Gegenüberstellung zwischen Xamarin.Forms Elementen und Flutter Widgets vorgenommen werden,  wie in Tabelle \ref{tab:ControlsVisualization} dargestellt.
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelement} & \textbf{Flutter Widget}  \\
 \hline
 	BoxView		       			&   	 SizedBox  		\\ 
@@ -164,7 +173,7 @@ Einige Steuerelemente sind ausschließlich für die Darstellung von Inhalten vor
 	Polygon  						&  	CustomPaint	\\ 
 	Polyline und Rectangle  &  	CustomPaint	\\ 
 	Rectangle  					&  	CustomPaint	\\ 
-
+\hline
 \end{tabularx}
 \caption{Gegenüberstellung Darstellungssteuerelemente}
  \label{tab:ControlsVisualization}
@@ -174,7 +183,8 @@ Zu zeichnende Elemente, wie die  \glq Ellipse\grq{}, \glq Linie\grq{}, \glq Path
 \subsubsection{Ereignisauslösende Steuerelemente}
 Xamarin.Forms ist ein Ereignisgesteuertes Framework. Die hier behandelten Steuerelemente stellen alle mindestens ein Ereignis zur Verfügung,  das durch die in Kapitel \ref{chap:CompilerEntwurf} erwähnten Codebehind Klassen abonniert werden kann.  Sobald ein  sogenanntes Event ausgelöst wird,  übermittelt das Framework diese Information an den Empfänger.   Die folgenden Steuerelemente werden bei Xamarin.Forms der Kategorie ereignisauslösende Steuerelemente zugeordnet.  \glq Buttons\grq{} sind rechteckige Objekte,  die einen Text anzeigen und ein \glq clicked\grq{} Ereignis auslösen, nachdem sie von einem Anwender gedrückt wurden.  Mit \glq ImageButton\grq{} steht ebenfalls eine Variante zur Verfügung,  die ein Icon statt einem Text anzeigt.  Bei einem \glq RadioButton\grq{} wird eine Option aus einer Reihe von Möglichkeiten ausgewählt und löst ein Ereignis aus,  wenn sich die Benutzerauswahl ändert.  Ein weiteres Steuerelement ist \glq RefreshView\grq{}, das eine \glq PullToRefresh\grq{}  Funktionalität für Layouts mit Bildlauf anbietet.  Dabei wird durch das Herunterziehen des Seiteninhaltes der Wunsch zur Seitenaktualisierung  übermittelt.  Mithilfe der \glq Searchbar\grq{} haben Anwender die Möglichkeit, Inhalte  innerhalb der App zu suchen.  Nach der  Eingabe von Textzeichenfolgen kann per Schaltfläche,  oder Tastaturtaste, ein Ereignis ausgelöst und der eingegeben Text an die Codebehind-Datei weitergeleitet werden.  Tabelle \ref{tab:eventcommands} zeigt die Ereignisauslösenden Steuerelementen von Xamarin.Forms und alternativen Flutter Widgets.
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	Button		       				&  	ElevatedButton 		\\ 
@@ -183,6 +193,7 @@ Xamarin.Forms ist ein Ereignisgesteuertes Framework. Die hier behandelten Steuer
 	RefreshView		       		&  	pull\_to\_refresh 		\\ 
 	SearchBar		       			&  	flutter\_search\_bar 	\\ 
 	SwipeView		       		&  	flutter\_slideable 		\\ 
+\hline
 \end{tabularx}
 \caption{Gegenüberstellung ereignisauslösende Steuerelemente}
  \label{tab:eventcommands}
@@ -200,11 +211,13 @@ Die Beziehung zwischen Steuerelementen und Codebehind mittels Ereignissen wird  
 In Xamarin.Forms stehen für die Arbeit mit Texten die Steuerelemente \glq Entry\grq{}zur  Eingabe von einzelnen und  \glq Editor\grq{} von mehreren Textzeilen bereit.  Tabelle \ref{tab:TextWidgets} zeigt die Gegenüberstellung zu Flutter Widgets.  
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	Entry		       		&  TextField	 		\\ 
 	Editor		       	&  TextField	 		\\ 
+\hline
 \end{tabularx}
 \caption{Gegenüberstellung textmanipulierender Steuerelemente}
  \label{tab:TextWidgets}
@@ -226,7 +239,8 @@ Die beiden linken Darstellungen der jeweiligen Steuerelemente zeigen den Zustand
 Ein  \glq Slider\grq{}  gewährt den Anwendern die Option, einen Wert aus einem kontinuierlichen Bereich,  ein \glq Stepper\grq{}  aus einem Bereich von inkrementellen Werten auszuwählen.  Eine Datumsauswahl wird durch das \glq DatePicker\grq{} Steuerelement ermöglicht,  die Zeitauswahl mit \glq TimePicker\grq{}.  Die Tabelle \ref{tab:valuecontrols} präsentiert die gewohnte Gegenüberstellung von Xamarin.Forms Steuerlementen zu Flutter Widgets. 
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	CheckBox		       				&  Checkbox	 		\\ 
@@ -235,6 +249,7 @@ Ein  \glq Slider\grq{}  gewährt den Anwendern die Option, einen Wert aus einem 
 	Stepper		       				&  number\_inc\_dec	 		\\ 
 	DatePicker		       			&  TextField mit Funktion		\\ 
 	TimePicker		       			&  TextField mit Funktion	 		\\ 
+	\hline
 \end{tabularx}
 \caption{Gegenüberstellung wertsetzender Steuerelemente}
  \label{tab:valuecontrols}
@@ -252,11 +267,13 @@ gesetzten Werte können bei Xamarin.Forms aus den Codebehind Klassen abgefragt w
 In mobilen Anwendungen kann es aufgrund der limitierten Hardware Ressourcen und begrenzten Netzwerkanbindung zu zeitaufwendigen Aktionen kommen.  Zur Visualisierung dieser Ladezeit stehen in Xamarin.Forms die folgenden Steuerelemente zur Verfügung.  Der \glq ActivityIndicator\grq{} zeigt durch eine Animation,  dass eine langwierige Aktivität ausführt wird,  die \glq ProgressBar\grq{} kann mittels Ladebalken auch den Fortschritt darstellen.  Die Tabelle \ref{tab:ActivityControls} veranschaulicht die adäquaten Flutter Widgets.
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	ActivityIndicator		       		&  	CircularProgressIndicator 		\\ 
 	ProgressBar		       				&  	LinearProgressIndicator 		\\ 
+	\hline
 \end{tabularx}
 \caption{Gegenüberstellung aktivitätsandeutender Steuerelemente}
  \label{tab:ActivityControls}
@@ -268,13 +285,15 @@ Die überwiegende Anzahl von mobilen Anwendungen visualisiert Sammlungen von Dat
 
 
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	CarouselView		       		&  	carousel\_slider  		\\ 
 	IndicatorView		       		&  	carousel\_slider		\\ 	
 	Picker		       					&  	flutter\_material\_pickers		\\ 
 	TableView		       				&  	Table		\\ 
+\hline
 \end{tabularx}
 \caption{Gegenüberstellung sammlungsanzeigender Steuerelemente}
  \label{tab:Collections}
@@ -285,12 +304,15 @@ Die überwiegende Anzahl von mobilen Anwendungen visualisiert Sammlungen von Dat
 
 Listen sind  Steuerelemente und dienen ebenfalls der Anzeige und Interaktion von Sammlungen.  Aufgrund der langsamen Ladezeiten von \glq ListView\grq{} hat Microsoft im Jahre 2019 mit  \glq CollectionView\grq{}  ein zweites optimiertes Steuerelement für die Anzeige von Listen zur Verfügung gestellt.   \glq SwipeView\grq{} erlaubt einzelne Reihen zur Seite zu schieben und darunter liegende Schaltflächen sichtbar zu machen.  Tabelle \ref{tab:Listview} stellt die Listen aus Xamarin.Forms mit denen aus Fluttter gegenüber.  
 \begin{table}[!ht]
-\begin{tabularx}{\textwidth}{X|X}
+\begin{tabularx}{\textwidth}{|X|X|}
+\hline
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	List		       				&  	List 		\\ 
 	CollectionView		       				&  	List 		\\ 
 	SwipeView		       		&  	flutter\_slideable 		\\ 
+	\hline
+
 \end{tabularx}
 \caption{Gegenüberstellung Listen}
  \label{tab:Listview}
