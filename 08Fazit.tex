@@ -1,4 +1,4 @@
-\chapter{Fazit und Ausblick}
+\chapter{Fazit}
 \label{chap:FazitAusblick}
 Ein Source-To-Source Compiler,  wie in dieser Arbeit angedacht, stellt einen Lösungsansatz für Xamarin.Forms App-Entwickler dar,  die sich nach dem Ende des Supports vom Anbieter Microsoft trennen und trotzdem eine bestehende Anwendung erhalten möchten.  Das generelle Problem der Abhängigkeit ist jedoch nicht durch eine Abwendung von Microsoft gelöst, da das von der Firma Google entwickelte Flutter Framework ebenfalls, wenn auch derzeit nicht absehbar,  eingestellt werden kann. Der Ausbau der Idee,  durch grundsätzlich automatisierte Übersetzungen Programmierern eine Wahlfreiheit und Wechseloptionen zu ermöglichen rechtfertigt eine Weiterentwicklung des Prototypen.
 
@@ -28,8 +28,8 @@ Da bereits für Ende 2021 das Supportende für Xamarin.Forms beschlossen und die
 MAUI angekündigt wurde, wäre eine vollständige Funktionsfähigkeit des Compilers noch in diesem 
 Jahr nötig, um Unternehmen und Programmierern eine geeignete Alternative zu bieten. 
 
-\section{Notwendige manuelle Arbeitsschritte}
+Aktuell sind manuelle Arbeitsschritte notwendig,  um die Transformation produktiver Anwendungen  abzuschließen,  da der Prototyp keinen plattformspezifischen Quelltext übersetzt müssen diese mit nachträglich realisiert werden.  Falls der währen der Übersetzung generierte Splashscreen nicht den Anforderungen genügt,  muss dieser ebenso manuell ersetzt werden.  Da auch der Style der Anwendung nicht übernommen wurde ist eine visuelle Differenz zwischen den Anwendungen zu erwarten,  daher ist eine nachträgliche Anpassung des visuellen Erscheinungsbildes mit hoher Wahrscheinlichkeit notwendig. 
 
-In der aktuellen Form sind noch manuelle Arbeitsschritte für die Transformation von produktiven mobilen Anwendungen notwendig.  Da der Prototyp keinen plattformspezifischen Quelltext übersetzt müssen diese mit Hilfe der Plattformchannel nachträglich realisiert werden.  Ebenso müssen die Splashscreens überführt werden falls der während der Übersetzung generierte nicht ausreichend ist.  Da auch der Style der Anwendung nicht übernommen wurde ist eine visuelle Differenz zwischen den Anwendungen zu erwarten, daher ist eine nachträgliche Anpassung des visuellen Erscheinungsbildes wahrscheinlich. 
 
-Der Prototyp wurde ausschließlich mit Hilfe des Testobjektes getestet,  die nicht alle Steuerelemente,  Layouts und Kombinationen derer abbildet.  Außerdem implementiert diese nicht alle Features der Programmiersprache \Csharp{}.  Bei der Übersetzung anderer Anwendung ist nach der Übersetzung ein vollständiger Regressionstest notwendig, um mögliche Seiteneffekte auszuschließen. 
+\section{Ausblick}
+Anwendungsentwickler bekommen durch den Umstieg von Xamarin.Forms zu Flutter seit März 2021 die Möglichkeit ihre Anwendung als Webseite zu veröffentlichen.  Potentiell kann somit eine weitere Plattform erreicht werden und die Zielgruppe der Anwendung vergrößert werden.  Dies bedarf jedoch zusätzlicher Anpassungen für die Darstellung auf großen Monitoren.  Durch den erst kurzfristig hinzugefügten Support der Webfunktionalität sind zum aktuellen Zeitpunkt noch nicht alle Erweiterungen für die Verwendung im Web ausgelegt.  Für das in dieser Arbeit verwendete Testobjekt gibt es z.B.  keinen Support für den Zugriff auf die Kameras oder das Auslesen von Sensoren! In der Zukunft ist damit zu rechnen, dass diese Erweiterungen um den Support von Flutter-Web ergänzt werden.  
