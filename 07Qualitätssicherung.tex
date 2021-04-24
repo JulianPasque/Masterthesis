@@ -8,12 +8,18 @@ werden, was garantiert, dass die Modifikation am Code kein unerwünschtes Verhal
 Diese testgesteuerte (engl. testdriven) Entwicklung entspricht der Qualitätssicherung bei 
 der Programmierung des Source-To-Source Compilers, denn auch hier wurden die Komponententests vor dem Quelltext geschrieben und dienen damit auch der funktionalen Spezifikation der Anforderungen.\footcite[Vgl.][Abgerufen am \today]{MicrosoftColor} 
 
-Dieses Vorgehen wird an dieser Stelle anhand der Umwandlung von Farben exemplarisch dargelegt.  Durch verschiedene verfügbare Eingabeformate ist es notwendig,  dass der Compiler eine vollständige Umwandlung vornimmt.  App-Entwickler können die Farbe mit einem gültigen Farbnahmen oder als Hexadezimale Zahl angeben.  Die Hexadezimale Darstellung kann jeweils über drei, vier,  sechs oder acht Ziffern mit einem optionalen Präfix \# angegeben werden. \footcite[Vgl.][Abgerufen am \today]{MicrosoftColor} 
+Dieses Testverfahren soll exemplarisch anhand der Umwandlung von Farben veranschaulicht 
+werden.
+App-Entwickler können die Farbe mit einem gültigen Farbnamen oder als Hexadezimalzahl 
+angeben. Hexadezimale Darstellungen können jeweils über drei, vier, sechs oder acht Ziffern mit
+einem optionalen Präfix \# angegeben werden.  \footcite[Vgl.][Abgerufen am \today]{MicrosoftColor} 
+Diese verschieden verfügbaren Eingabeformate machen es notwendig, dass der Compiler eine 
+vollständige Umwandlung vornimmt.  
 Anhand dieser Anforderungen können nun die in Quelltext \ref{lst:colorTest} gezeigten Testfälle entworfen worden.
 
 \lstinputlisting[label={lst:colorTest},caption={Testfälle für die Umwandlung von Farben}, language=csh]{SourceCode/Testcases.cs}
 
-Durch diese Testfälle unterstützt konnte nun der in Quelltext \ref{lst:colorTestAlgo} dargestellte Algorithmus realisiert werden,  bei dem alle Testfälle korrekt ausgeführt werden.
+Durch die in dem Quelltext aufgeführten Komponententests konnte nun der in Quelltext \ref{lst:colorTestAlgo} dargestellte Algorithmus realisiert werden. 
 \newpage
 \lstinputlisting[label={lst:colorTestAlgo},caption={Algorithmus für die Umwandlung von Farben}, language=csh]{SourceCode/AlgorithmusColor.cs}
 
@@ -97,7 +103,7 @@ Der Start  des Testlaufs beginnt mit dem Aufruf der grafischen Benutzeroberfläc
 Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die im folgenden visualisierten Screenshots zeigen die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden Anhang dieser Arbeit.  Zur Förderung der Vergleichbarkeit werden die gleichen Inhalte der mobilen Anwendung abgebildet.  In Abbildung \ref{fig:FlutterAppI} wird links der Startbildschirm mit dem Namen und Icon und rechts das zentrale Menü der App dargestellt. 
 
 \begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/AppIconAndMenu.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Flutter1ios.png}
  \caption{Flutter App Screenshots I}
  \label{fig:FlutterAppI}
 \end{figure}
@@ -107,7 +113,7 @@ entstehen,  an dieser Stelle akzeptabel.  Das zentrale Menü mit seiner Navigati
 unterscheidet sich, wenn auch nicht in der Abbildung ersichtlich,  in der Animation.  Abbildung \ref{fig:FlutterAppII} zeigt die Übersicht der Steuerelemente sowie die Werte der Smartphone-Sensoren.
 
 \begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Sensors.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Flutter2ios.png}
  \caption{Flutter App Screenshots II}
  \label{fig:FlutterAppII}
 \end{figure}
@@ -116,7 +122,7 @@ Die übersetzten Übersicht der Steuerelemente stimmt  bezüglich der Verschacht
 
   
 \begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Permissions.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Flutter3ios.png}
  \caption{Flutter App Screenshots III}
  \label{fig:FlutterAppIII}
 \end{figure}
@@ -130,7 +136,7 @@ passenden Daten gefüllt werden.
  
   
 \begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/ImagesListView.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Flutter4ios.png}
  \caption{Flutter App Screenshots IV}
  \label{fig:FlutterAppIV}
 \end{figure}
