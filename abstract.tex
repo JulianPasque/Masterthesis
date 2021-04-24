@@ -3,24 +3,36 @@
 \chapter*{Zusammenfassung}
 \chaptermark{Zusammenfassung}
 Die Einführung von .NET Multi-platform App User Interface zwingt Entwickler tiefgreifende 
-Modifizierungen an bereits realisierten Xamarin.Forms Anwendungen vorzunehmen,  die zukünftig nicht von Aktualisierungen profitieren werden.  
+Modifizierungen an bereits realisierten Xamarin.Forms Anwendungen, die zukünftig 
+nicht von Aktualisierungen profitieren werden, vorzunehmen.
 
-Diese Abhängigkeit von Microsoft kann durch einen automatisierten Umstieg auf das von Google 
-entwickelte Flutter Framework gelöst und die betroffenen Apps auf eine bewährte leistungsfähigere
-Basis gestellt werden.  
-In dieser Arbeit wurde analysiert, ob eine rein 
-automatisierte Transformation von bestehenden mobilen Anwendungen möglich ist,  oder manuelle Arbeitsschritte notwendig sind.  Zur Beantwortung der daraus resultierten Forschungsfrage wurde ein Source-To-Source Compiler entwickelt,  der Projekte von Xamarin.Forms  zu Flutter übersetzt.
+Die Abhängigkeit von Microsoft kann durch einen automatisierten Umstieg auf das
+von Google entwickelte Flutter Framework gelöst und die betroffenen Apps auf eine
+bewährte, leistungsfähigere Basis gestellt werden. In dieser Arbeit wurde analysiert,
+ob eine rein automatisierte Transformation möglich ist, oder manuelle Arbeitsschritte notwendig 
+sind. Zur Beantwortung der daraus resultierten Forschungsfrage wurde ein Source-To-Source 
+Compiler entwickelt, der Projekte von Xamarin.Forms zu Flutter übersetzt.
+Erster Schritt der Kompilierung war die Analyse von Ansichten und deren dahinterstehende Logiken. 
+Visuelle Elemente von Xamarin.Forms wurden im Anschluss durch Flutter Widgets ersetzt, die zu 
+diesem Zweck in Vorlagen mit Platzhaltern gespeichert wurden. Nach einer Umwandlung
+der visuellen Eigenschaften konnten diese Platzhalter befüllt werden, um die Benutzeroberfläche zu 
+finalisieren.
+Im letzten Schritt konnten mithilfe des Roslyn Compilers, die in \Csharp{} geschriebene Anwendungslogik zu 
+einem Syntaxbaum transformiert und nach dessen Durchlauf der Dart Quelltext zu konstruiert 
+werden. Die ähnliche Syntax beider Sprachen erleichtert den Wechsel zwischen den Frameworks.  Unterschiede bei den 
+verfügbaren Typen und Modifizieren, bedurften jedoch einer genaueren Behandlung.
 
-Für diesen Compilierungsvorgang wurde analysiert,  wie Ansichten und Anwendungslogiken in beiden Frameworks definiert und  transformiert werden können.  Visuelle Elemente können von Xamarin.Forms durch Flutter Wdigets ersetzt werden,  die zu diesem Zweck in Vorlagen mit Platzhaltern gespeichert wurden.  Nach einer Umwandlung der visuellen Eigenschaften konnten diese Platzhalter befüllt werden um die Benutzeroberfläche zu finalisieren.  
-Durch den Roslyn Compiler konnte die in \Csharp{}  geschriebene Anwendungslogik zu einem Syntaxbaum umgewandelt werden der anschließend durchlaufen wurde um den Dart Quelltext zu konstruieren.  Die ähnliche Syntax beider Sprachen erleichtert einen Umstieg.   Unterschiede,  bei den verfügbaren Typen und Modifizierern,  bedurften  jedoch einer genaueren Behandlung.
 
+Zur Überprüfung ob der Prototyp das erwartete Ergebnis erzeugt, wurde eine speziell
+für diesen Zweck programmierte Xamarin.Forms App übersetzt und die erzeugte Flutter
+App mit der Ursprungsvariante verglichen. Das Resultat dieses Tests beweist, dass
+Xamarin.Forms Anwendungen automatisiert, ohne Funktionsverlust, nur mit leichten
+Designabweichungen zu Flutter überführt werden können und nur wenige manuelle
+Nacharbeitung erforderlich sind. Einschränkungen des Prototypens, wie die Ausklammerung der 
+Übersetzung des plattformspezifischen Quelltexts und des Styles der Anwendung, könnten 
+zukünftig durch eine Weiterentwicklung als Open-Source Projekt
+realisiert werden.
 
-Zur Überprüfung, ob der Prototyp das erwartete Ergebnis erzeugt, wurde eine speziell für diesen Zweck programmierte Xamarin.Forms App übersetzt und die erzeugte Flutter App mit der Ursprungsvariante verglichen.
-Das Resultat dieses Tests beweist, dass Xamarin.Forms Anwendungen automatisiert, ohne 
-Funktionsverlust, nur mit leichten Designabweichungen zu Flutter überführt werden können und nur wenige manuelle Nacharbeitung  erforderlich sind. 
-Einschränkungen des Prototypens, wie die Ausklammerung der Übersetzung des 
-plattformspezifischen Quelltexts und des Styles der Anwendung, könnten zukünftig durch eine 
-Weiterentwicklung als Open-Source Projekt realisiert werden.
 
 \chapter*{Abstract}
 \chaptermark{Abstract}
