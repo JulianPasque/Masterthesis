@@ -2,45 +2,22 @@
 
 \chapter*{Zusammenfassung}
 \chaptermark{Zusammenfassung}
-Die Einführung von .NET Multi-platform App User Interface zwingt Entwickler tiefgreifende 
-Modifizierungen an bereits realisierten Xamarin.Forms Anwendungen, die zukünftig 
-nicht von Aktualisierungen profitieren werden, vorzunehmen.
+Die Einführung von .NET Multi-platform App User Interface zwingt Entwickler tiefgreifende Modifizierungen an bereits realisierten Xamarin.Forms Anwendungen, die zukünftig nicht von Aktualisierungen profitieren werden, vorzunehmen.
 
-Die Abhängigkeit von Microsoft kann durch einen automatisierten Umstieg auf das
-von Google entwickelte Flutter Framework gelöst und die betroffenen Apps auf eine
-bewährte, leistungsfähigere Basis gestellt werden. In dieser Arbeit wurde analysiert,
-ob eine rein automatisierte Transformation möglich ist, oder manuelle Arbeitsschritte notwendig 
-sind. Zur Beantwortung der daraus resultierten Forschungsfrage wurde ein Source-To-Source 
-Compiler entwickelt, der Projekte von Xamarin.Forms zu Flutter übersetzt.
-Erster Schritt der Kompilierung war die Analyse von Ansichten und deren dahinterstehende Logiken. 
-Visuelle Elemente von Xamarin.Forms wurden im Anschluss durch Flutter Widgets ersetzt, die zu 
-diesem Zweck in Vorlagen mit Platzhaltern gespeichert wurden. Nach einer Umwandlung
-der visuellen Eigenschaften konnten diese Platzhalter befüllt werden, um die Benutzeroberfläche zu 
-finalisieren.
-Im letzten Schritt konnten mithilfe des Roslyn Compilers, die in \Csharp{} geschriebene Anwendungslogik zu 
-einem Syntaxbaum transformiert und nach dessen Durchlauf der Dart Quelltext zu konstruiert 
-werden. Die ähnliche Syntax beider Sprachen erleichtert den Wechsel zwischen den Frameworks.  Unterschiede bei den 
-verfügbaren Typen und Modifizieren, bedurften jedoch einer genaueren Behandlung.
+Die Abhängigkeit von Microsoft kann durch einen automatisierten Umstieg auf das von Google entwickelte Flutter Framework gelöst und die betroffenen Apps auf eine bewährte, leistungsfähigere Basis gestellt werden. In dieser Arbeit wurde analysiert, ob eine rein automatisierte Transformation möglich ist, oder manuelle Arbeitsschritte notwendig sind.  Zur Beantwortung der daraus resultierten Forschungsfrage wurde ein Source-To-Source Compiler entwickelt, der Projekte von Xamarin.Forms zu Flutter übersetzt. Erster Schritt der Kompilierung war die Analyse von Ansichten und deren dahinterstehende Logiken.  Visuelle Elemente von Xamarin.Forms wurden im Anschluss durch Flutter Widgets ersetzt, die zu  diesem Zweck in Vorlagen mit Platzhaltern gespeichert wurden. Nach einer Umwandlung der visuellen Eigenschaften konnten diese Platzhalter befüllt werden, um die Benutzeroberfläche zu 
+finalisieren.  Im letzten Schritt konnten mithilfe des Roslyn Compilers, die in \Csharp{} geschriebene Anwendungslogik zu einem Syntaxbaum transformiert und nach dessen Durchlauf der Dart Quelltext zu konstruiert werden. Die ähnliche Syntax beider Sprachen erleichtert den Wechsel zwischen den Frameworks.  Unterschiede bei den verfügbaren Typen und Modifizieren, bedurften jedoch einer genaueren Behandlung.
 
-
-Zur Überprüfung ob der Prototyp das erwartete Ergebnis erzeugt, wurde eine speziell
-für diesen Zweck programmierte Xamarin.Forms App übersetzt und die erzeugte Flutter
-App mit der Ursprungsvariante verglichen. Das Resultat dieses Tests beweist, dass
-Xamarin.Forms Anwendungen automatisiert, ohne Funktionsverlust, nur mit leichten
-Designabweichungen zu Flutter überführt werden können und nur wenige manuelle
-Nacharbeitung erforderlich sind. Einschränkungen des Prototypens, wie die Ausklammerung der 
-Übersetzung des plattformspezifischen Quelltexts und des Styles der Anwendung, könnten 
-zukünftig durch eine Weiterentwicklung als Open-Source Projekt
-realisiert werden.
+Zur Überprüfung ob der Prototyp das erwartete Ergebnis erzeugt, wurde eine speziell für diesen Zweck programmierte Xamarin.Forms App übersetzt und die erzeugte Flutter App mit der Ursprungsvariante verglichen. Das Resultat dieses Tests beweist, dass Xamarin.Forms Anwendungen automatisiert, ohne Funktionsverlust, nur mit leichten Designabweichungen zu Flutter überführt werden können und nur wenige manuelle Nacharbeitung erforderlich sind. Einschränkungen des Prototypens, wie die Ausklammerung der Übersetzung des plattformspezifischen Quelltexts und des Styles der Anwendung, könnten 
+zukünftig durch eine Weiterentwicklung als Open-Source Projekt realisiert werden.
 
 
 \chapter*{Abstract}
 \chaptermark{Abstract}
 
-Due to the introduction of .NET Multi-platform App User Interface,  Xamarin.Forms developers have to make profound modifications to already realised applications in order to benefit from future updates.  An automated switch to the Flutter Framework developed by Google would prevent the changes and put existing mobile apps on a powerful and avoidably future-proof footing.  In order to validate this possibility, this thesis analysed whether this automated transformation of existing mobile applications is possible and whether manual steps are necessary afterwards.  To answer this research question, a source-to-source compiler was designed and developed in the form of a prototype.  
+The introduction of .NET Multi-platform App User Interface forces developers to make profound modifications to already realised Xamarin.Forms applications that will not benefit from future updates. 
 
-As a basis for this compiler, it was necessary to analyse the two frameworks in detail and compare their working methods.  For this purpose, a comparison of the available user interface elements was carried out and the view of an application was transferred, with the result that the exchange of elements represents a valid procedure.  The syntax of the two programming languages is very similar, which facilitates a changeover. Nevertheless, there are some differences, such as the available types and modifications, which must be taken into account in the translation.  
+The dependency on Microsoft can be resolved by an automated switch to the Flutter Framework developed by Google and put the affected apps on a more on a proven basis with better performance. In this thesis it has been analysed whether a purely automated transformation is possible or whether manual steps are necessary.  To answer the resulting research question, a source-to-source compiler was developed that translates projects from Xamarin.Forms to Flutter. The first step of the compilation was the analysis of views and their underlying logics.  Visual elements of Xamarin.Forms were then replaced by Flutter widgets, which for this purpose were stored in templates with placeholders. After a conversion of the visual properties, these placeholders could be filled in in order to finalise the user interface. 
+In the last step, with the help of the Roslyn compiler, the application logic written in \Csharp{} was transformed into a syntax tree and after running through it, the Dart source code could be constructed. The similar syntax of both languages makes it easier to switch between the frameworks.  Differences in the available types and modifiers, however, required more detailed treatment.
 
-Subsequently, the source-to-source compiler was realised, which, in combination with the Visual Studio Build Tools and the Flutter SDK, transfers the mobile application to Flutter. To validate the translation, a mobile application was also developed with Xamarin.Forms and translated using the compiler and compared with the original variant.  
-This comparison shows that Xamarin.Forms applications can be automatically transferred to Flutter and thus solve the dependency on the framework developed by Microsoft.  However, since the compiler was only realised as a prototype, platform-specific source code and the style of the application are not translated.  In order to guarantee future development, the compiler will be published as an open-source project. 
+In order to check whether the prototype produces the expected result, a specially Xamarin.Forms app specially programmed for this purpose was translated and the generated flutter app app was compared with the original version. The result of this test proves that Xamarin.Forms applications can be transferred to Flutter automatically, without loss of function, with only slight design deviations. . Limitations of the prototype, such as the exclusion of the the translation of the platform-specific source code and the style of the application, could be be realised in the future through further development as an open-source Project.
 

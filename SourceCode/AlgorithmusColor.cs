@@ -1,19 +1,13 @@
 public static string GetColor(string _Color)
 {
-    var color = Color.FromName(_Color);
-    if(color.IsKnownColor)
-    {
+    if(Color.FromName(_Color).IsKnownColor)
         return string.Format("{0:x6}", color.ToArgb());
-    }
     
     if (_Color[0] == '#')
-    {
-        _Color = _Color.Remove(0, 1);
-    }
+            _Color = _Color.Remove(0, 1);
 
     int res = 0;
-    if (int.TryParse(_Color,
-                NumberStyles.HexNumber,
+    if (int.TryParse(_Color, NumberStyles.HexNumber,
                 CultureInfo.InvariantCulture, out res))
     {
         if(_Color.Length == 3)

@@ -23,8 +23,10 @@ Durch die in dem Quelltext aufgeführten Komponententests konnte nun der in Quel
 \lstinputlisting[label={lst:colorTestAlgo},caption={Algorithmus für die Umwandlung von Farben}, language=csh]{SourceCode/AlgorithmusColor.cs}
 
 
+\section{Manuelles Testing}
+Zur Überprüfung der Funktionalität des Compilers muss eine Xamarin.Forms Anwendung übersetzt und anhand von definierten Testfällen das Ergebnis validiert werden.  In diesem Abschnitt wird ein Testobjekt eingeführt,  bevor die Testfälle spezifiziert werden und die Anwendung übersetzt und anschließend überprüft wird. 
 
-\section{Testobjekt}
+\subsection{Testobjekt}
 Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
 Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots befinden sich in \hyperref[chap:AnhangAndroidScreenshots]{Anhang III}.  
 
@@ -67,14 +69,14 @@ Die Klasse \glq Benutzer\grq{} wird innerhalb des Quelltextes der mobilen Anwend
 \end{figure}
 
 
-\section{Testfälle}
+\subsection{Testfälle}
 Zur Überprüfung der Funktionalität des Compilers müssen Testfälle definiert werden,  mit denen die übersetzte mobile Anwendung manuell validiert wird.  Relevante Prüfobjekte lassen sich sowohl aus dem visuellen  Erscheinungsbild als auch aus dem Funktionsspektrum des Testobjekts ableiten und sind in Tabelle \ref{tab:Testapp} aufgeführt.  Dieser Testkatalog kann erweitert werden,  ist jedoch für eine Qualitätssicherung zur Beantwortung der Forschungsfrage ausreichend.  
-
-
 \newpage
-\begin{xltabular}{\textwidth}{|l|X|}
+
+\begin{table}[!ht]
+\begin{tabularx}{\textwidth}{|l|X|}
 \hline
-   \textbf{Prüfobjekt} & \textbf{Prüfvorgang}  \\  
+ \textbf{Prüfobjekt} & \textbf{Prüfvorgang}  \\  
 \hline
 App-Icon	           					& Wird das App-Icon übernommen                       			 		\\ 
 App-Name          					& Wird der App-Name übernommen                      		 \\ 
@@ -93,14 +95,12 @@ Galerie			         				& Können Bilder aus der Galerie ausgewählt werden      
 Berechtigungen			         	& Wird nach einer Zugriffsberechtigungen gefragt beim Zugriff auf Kamera und Galerie \\ 
 ListView					         	& Werden in der Listview die generierten Daten angezeigt                   			 \\ 
 \hline
-
+\end{tabularx}
 	  \caption{Testfälle der Testapp}
-
  \label{tab:Testapp}
-\end{xltabular}
+\end{table}
 
-
-\section{Testablauf}
+\subsection{Testablauf}
 Die Analyse der Softwarequalität erfolgt nicht ausschließlich automatisiert.  In diesem Abschnitt werden die oben genannten Testfälle manuell durchgeführt und ihr Ergebnis dokumentiert.
 Der Start  des Testlaufs beginnt mit dem Aufruf der grafischen Benutzeroberfläche,   der Auswahl der Xamarin.Forms Testapp und eines leeren Ordners, der als Zielverzeichnis nach der Kompilierung dient. 
 Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die im Folgenden visualisierten Screenshots zeigen die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden sich in  \hyperref[chap:AnhangAndroidScreenshotsFlutter]{Anhang IV} dieser Arbeit.  Die ausgewöhlten Screenshots der übersetzten App zeigen die gleichen Bildschirmstatus der Ausgangsapp wie die der Ausgangsapp um eine Vergleichbar zu gewähren.  Das nahezu identische Erscheinungsbild belegt bereits auf den ersten Blick eine hohe Qualität des Prototypen.  
