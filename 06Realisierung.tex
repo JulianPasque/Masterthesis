@@ -1,14 +1,14 @@
 \chapter{Realisierung des Source-To-Source Compilers}
 \label{chap:Realisierung}
-Gestützt auf das grundsätzliche Wissen über Compiler, die herausgearbeiteten Unterscheidungen von  Xamarin.Forms und Flutter sowie die Differenzen der verwendeten Programmiersprachen  \Csharp{} und Dart, wird in diesem Kapitel die Realisierung des Source-To-Source Compilers beschrieben.  Es bietet sich die \ac{ide} (deutsch Entwicklungsumgebung) Visual Studio 2019 von Microsoft an,  um das Projekt mit Roslyn Integration zu implementieren,  da auf dieser Plattform Erweiterungen für Roslyn zur Verfügung stehen.
-Die zu entwickelnde Projektmappe besteht also aus dem Source to Source Compiler mit Rosyln Integration, der grafischen Benutzeroberfläche und einer Xamarin.Forms
+Gestützt auf das grundsätzliche Wissen über Compiler, die herausgearbeiteten Unterscheidungen von  Xamarin.Forms und Flutter sowie die Differenzen der verwendeten Programmiersprachen  \Csharp{} und Dart, wird in diesem Kapitel die Realisierung des Source-to-Source Compilers beschrieben.  Es bietet sich die \ac{ide} (deutsch Entwicklungsumgebung) Visual Studio 2019 von Microsoft an,  um das Projekt mit Roslyn Integration zu implementieren,  da auf dieser Plattform Erweiterungen für Roslyn zur Verfügung stehen.
+Die zu entwickelnde Projektmappe besteht also aus dem Source-to-Source Compiler mit Rosyln Integration, der grafischen Benutzeroberfläche und einer Xamarin.Forms
 Anwendung als Testobjekt,  wobei letztere jedoch erst im nächsten Kapitel thematisiert wird.
 
 
 \section{Programmablauf}
-Mithilfe des Roslyn Compilers kann der Source-To-Source Compiler Auswertungen zu den in der Xamarin.Forms App referenzierten Quelltextdateien durchführen.  Somit ist es möglich,  eine Auflistung aller verfügbaren \Csharp-Dateien aus einem Projekt zu extrahieren.  XAML-Dateien werden nicht von Roslyn behandelt.  Dies gelingt jedoch über den Umweg der Codebehind-Dateien mit Endung .XAML.cs,  die ein Laden über das Dateisystem ermöglichen. 
+Mithilfe des Roslyn Compilers kann der Source-to-Source Compiler Auswertungen zu den in der Xamarin.Forms App referenzierten Quelltextdateien durchführen.  Somit ist es möglich,  eine Auflistung aller verfügbaren \Csharp-Dateien aus einem Projekt zu extrahieren.  XAML-Dateien werden nicht von Roslyn behandelt.  Dies gelingt jedoch über den Umweg der Codebehind-Dateien mit Endung .XAML.cs,  die ein Laden über das Dateisystem ermöglichen. 
 
-Bevor der Source-To-Source Compiler alle Quelltext- und Ansichtsdateien übersetzt,  müssen die in Kapitel 4 beschriebenen Metadaten überführt werden.  Anschließend kann der Quelltext optimiert und der Übersetzungsvorgang abgeschlossen werden.  Zur Visualisierung des Übersetzungsvorganges dient das in Abbildung \ref{fig:umlablauf} dargestellte \ac{uml}-Aktivitätsdiagramm.
+Bevor der Source-to-Source Compiler alle Quelltext- und Ansichtsdateien übersetzt,  müssen die in Kapitel 4 beschriebenen Metadaten überführt werden.  Anschließend kann der Quelltext optimiert und der Übersetzungsvorgang abgeschlossen werden.  Zur Visualisierung des Übersetzungsvorganges dient das in Abbildung \ref{fig:umlablauf} dargestellte \ac{uml}-Aktivitätsdiagramm.
 
 \newpage
 \begin{figure}[!ht]
