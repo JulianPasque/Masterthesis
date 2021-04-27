@@ -3,8 +3,7 @@
 Die Qualität des Source-To-Source Compilers muss während und nach der erfolgreichen Implementierung sichergestellt werden.  Im ersten Abschnitt dieses Kapitels erfolgt die Vorstellung der Komponententests als Qualitätssicherungsmaßnahme im Verlauf der Entwicklung.  Anschließend wird die Funktionsweise des Compilers mithilfe einer speziell entwickelten Xamarin.Forms App überprüft.  Anhand dieser Maßnahmen kann  festgestellt werden,  ob der Compiler erwartungsgemäß arbeitet. 
 
 \section{Komponententests}
-Komponententests unterteilen ein Programm in einzelne,  testfähige Einheiten und validieren deren Funktionalität.  Wenn sie integraler Bestandteil des Entwicklungspozesses sind,  optimieren sie die Qualität des Programms.  In Visual Studio können diese Testfälle, bei Änderungen am Quelltext automatisiert durchgeführt 
-werden, was garantiert, dass die Modifikation am Code kein unerwünschtes Verhalten erzeugt.   Sobald eine Klasse oder Methode geschrieben ist, beginnt die Analyse, die das Verhalten des Codes nach Eingabe von gültigen, falschen und grenzwertig gültigen Daten überprüft. \footcite[Vgl.][Abgerufen am \today]{MicrosoftColor}  Diese testgesteuerte (engl. testdriven) Entwicklung entspricht der Qualitätssicherung bei 
+Komponententests unterteilen ein Programm in einzelne,  testfähige Einheiten und validieren deren Funktionalität.  Wenn sie integraler Bestandteil des Entwicklungspozesses sind,  optimieren sie die Qualität des Programms.  In Visual Studio können diese Testfälle bei Änderungen am Quelltext automatisiert durchgeführt werden, was garantiert, dass die Modifikation am Code kein unerwünschtes Verhalten erzeugt.   Sobald eine Klasse oder Methode geschrieben ist, beginnt die Analyse, die das Verhalten des Codes nach Eingabe von gültigen, falschen und grenzwertig gültigen Daten überprüft. \footcite[Vgl.][Abgerufen am \today]{MicrosoftColor}  Diese testgesteuerte (engl. testdriven) Entwicklung entspricht der Qualitätssicherung bei 
 der Programmierung des Source-To-Source Compilers, denn auch hier wurden die Komponententests vor dem Quelltext geschrieben und dienen damit  der funktionalen Spezifikation der Anforderungen.
 
 Dieses Testverfahren soll exemplarisch anhand der Umwandlung von Farben veranschaulicht 
@@ -24,10 +23,10 @@ Durch die im Quelltext aufgeführten Komponententests kann nun der in Quelltext 
 
 
 \section{Manuelles Testing}
-Die weiterführende Qualitätssicherung des Compilers macht es erforderlich neben den Komponententests auch ein manuelles Testing vorzunehmen. Hierfür wird eine Testobjekt entwickelt und kompiliert, bevor anhand von manuellen Testfällen die Quell- und Zielobjekte verglichen werden.
+Die weiterführende Qualitätssicherung des Compilers macht es erforderlich,  neben den Komponententests auch ein manuelles Testing vorzunehmen. Hierfür wird ein Testobjekt entwickelt und kompiliert, bevor anhand von manuellen Testfällen die Quell- und Zielobjekte verglichen werden.
 
 \subsection{Testobjekt}
-Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin. Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
+Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin.Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
 Auf plattformspezifische Implementationen mit Ausnahme der Metadaten und Ressourcen wurde verzichtet.  Eine genaue Beschreibung der App-Funktionalitäten und -Eigenschaften folgt und wird mithilfe von iOS Screenshots veranschaulicht.  Die entsprechenden Android Screenshots befinden sich in \hyperref[chap:AnhangAndroidScreenshots]{Anhang III}.  
 
 Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot den Startbildschirm mit dem Namen und Icon der Testapp und im zweiten den Hauptbildschirm.  
@@ -39,8 +38,7 @@ Abbildung \ref{fig:TestObjectI} zeigt im ersten Screenshoot den Startbildschirm 
  \label{fig:TestObjectI}
 \end{figure}
 
-Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die App auf dem Startbildschirm identifizieren.  Nach ihrem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche, der mobilen Anwendung angesteuert werden können.  In einer vertikalen Ansicht werden dafür Schaltflächen als Ereignisauslöser für die Navigation bereitgestellt,  die zu den Seiten, Übersicht der Steuerelemente,  Ausgabe von Smartphonesensoren,  Arbeit mit Bildern und Ansicht einer Listview führen.  
-
+Anhand des Namens,  SampleApp,  und eines Anwendungsicons können Anwender die App auf dem Startbildschirm identifizieren.  Nach ihrem Start öffnet sich eine Menüstruktur,  die Wurzel der Navigation, über die verschiedene Bereiche der mobilen Anwendung angesteuert werden können.  In einer vertikalen Ansicht werden dafür Schaltflächen als Ereignisauslöser für die Navigation bereitgestellt,  die zu den Seiten: \glq Übersicht der Steuerelemente\grq ,  \glq Ausgabe von Smartphonesensoren\grq ,  \glq Arbeit mit Bildern\grq{}  und \glq Ansicht einer Listview\grq{}  führen.  
 Abbildung \ref{fig:TestObjectII} zeigt die Übersicht der Steuerelemente sowie die Werte der Smartphone-Sensoren.
 
 \begin{figure}[!ht]
@@ -48,7 +46,7 @@ Abbildung \ref{fig:TestObjectII} zeigt die Übersicht der Steuerelemente sowie d
  \caption{Test Objekt Screenshots II}
  \label{fig:TestObjectII}
 \end{figure}
-Die Darstellung visualisiert die gängigsten Steuerelemente,  die anhand der in Kapitel 4 aufgeführten Kategorien gruppiert und vertikal angeordnet wurden.  Zu den in der App angezeigten Elementen gehören unter anderem eine Schaltfläche,  ein Bild und im Screenshot nicht erkennbar Auswahlmöglichkeiten für Datum und Uhrzeitwerte.  Der zweite Screenshot zeigt eine Übersicht der aktuellen Werte von Beschleunigungssensors und  Gyroskopes,  die beide über das Plugin Xamarin.Essentials in der Codebehind-Datei ausgelesen und über Databindings im \ac{ui} angezeigt werden.    
+Die Darstellung visualisiert die gängigsten Steuerelemente,  die anhand der in Kapitel 4 aufgeführten Kategorien gruppiert und vertikal angeordnet wurden.  Zu den in der App angezeigten Elementen gehören unter anderem eine Schaltfläche,  ein Bild und im Screenshot nicht erkennbar Auswahlmöglichkeiten für Datum und Uhrzeitwerte.  Der zweite Screenshot zeigt eine Übersicht der aktuellen Werte des Beschleunigungssensors und des Gyroskopes,  die beide über das Plugin Xamarin.Essentials in der Codebehind-Datei ausgelesen und über Databindings im \ac{ui} angezeigt werden.    
 
 Die nächsten beiden Screenshots in \ref{fig:TestObjectIII} visualisieren das Menü für die Arbeit mit Bildern und einem zusätzlichen Berechtigungsdialog rechts.
 
@@ -60,7 +58,7 @@ Die nächsten beiden Screenshots in \ref{fig:TestObjectIII} visualisieren das Me
 \end{figure}
 Das Menü hat Ähnlichkeiten mit dem der Hauptseite.  Statt einer Navigation werden hier jedoch plattformspezifische Funktionalitäten über das Xamarin.Essentials Plugin ausgeführt, die einen Zugriff auf die Kamera und die Galerie des Smartphones bieten.  Der Dialog,  der nach der Zugriffsberechtigung fragt, zeigt in der iOS Version einen Eintrag aus den Metadaten an.
 Die nächste Abbildung stellt im linken Screenshot die Auswahlfunktion von Bildern aus der Galerie dar und rechts eine ListView mit Namen und E-Mail-Adressen von fiktiven Benutzern.  
-Die Klasse \glq Benutzer\grq{} wird innerhalb des Quelltextes der mobilen Anwendung definiert und über den Namespace in der Codebehind-Datei referenziert.  Anschließend werden exemplarisch zehn Objekte dieser Klasse innerhalb der Codebehind Datei,  in Form einer Auflistung vorgehalten und mithilfe eines Databindings in der ListView angezeigt. 
+Die Klasse \glq Benutzer\grq{} wird innerhalb des Quelltextes der mobilen Anwendung definiert und über den Namespace in der Codebehind-Datei referenziert.  Anschließend werden exemplarisch zehn Objekte dieser Klasse innerhalb der Codebehind Datei  in Form einer Auflistung vorgehalten und mithilfe eines Databindings in der ListView angezeigt. 
  
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/ImagesListView.png}
@@ -86,13 +84,13 @@ Navigation         			  		& Wird mithilfe des Menüs navigiert	\\
 Navigation          					& Wird über die Zurück-Schaltfläche in der Navigationsleiste zurück zur letzten Seite navigiert                   			 \\ 
 Schriftgrößen			         	& Werden  Schriftgrößen in der Anwendungen übernommen                 			 \\ 
 Farben						         	& Werden  Farben in der Anwendung korrekt übernommen                 			 \\ 
-Layouts 								& Werden alle Layouts durch die entsprechenden Widgets ersetzt.                 			 \\ 
-Steuerelemente						& Werden alle Steuerelemente durch die entsprechenden Widgets ersetzt.                 			 \\ 
-Beschleunigungssensor        	& Werden die Werte des Beschleunigungssensor ausgelesen          			 \\ 
+Layouts 								& Werden alle Layouts durch die entsprechenden Widgets ersetzt              			 \\ 
+Steuerelemente						& Werden alle Steuerelemente durch die entsprechenden Widgets ersetzt               			 \\ 
+Beschleunigungssensor        	& Werden die Werte des Beschleunigungssensors ausgelesen          			 \\ 
 Gy­ro­s­kop						         & Werden die Werte des Gyroskopes ausgelesen                            			 \\ 
 Kamera			         				& Können Bilder über die Kamera aufgenommen werden\\ 
 Galerie			         				& Können Bilder aus der Galerie ausgewählt werden                			 \\ 
-Berechtigungen			         	& Wird nach einer Zugriffsberechtigungen gefragt beim Zugriff auf Kamera und Galerie \\ 
+Berechtigungen			         	& Wird beim Zugriff auf Kamera und Galerie nach einer Zugriffsberechtigung gefragt \\ 
 ListView					         	& Werden in der Listview die generierten Daten angezeigt                   			 \\ 
 \hline
 \end{tabularx}
@@ -123,7 +121,7 @@ Abbildung \ref{fig:FlutterAppII} stellt die Übersicht der Steuerelemente sowie 
  \caption{Flutter App Screenshots II}
  \label{fig:FlutterAppII}
 \end{figure}
-Die Übersicht der Steuerelemente stimmt  bezüglich der Verschachtlungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein,  was durch die Öffnung der Datums- und Uhrzeitauswahl validiert werden kann.  Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht,  und alle Werte der Smartphonesensoren befinden sich im richtigen Format. Im Gegensatz zu der Xamarin.Forms App werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  In der Xamarin.Forms App werden die Werte über Databindings geladen und mithilfe der INotifyPropertyChanged Schnittstelle wird die Benutzeroberfläche im Falle von Änderungen aktualisiert.  Diese Schnittstelle wurde in der Flutter Anwendung entfernt und der Teil des Quelltextes,  der Änderungen am UI vornimmt mit einem Setstate-Block umschlossen,  damit sich die Oberfläche aktualisiert.  
+Die Übersicht der Steuerelemente stimmt  bezüglich der Verschachtelungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein,  was durch die Öffnung der Datums- und Uhrzeitauswahl validiert werden kann.  Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht und alle Werte der Smartphonesensoren befinden sich im richtigen Format. Im Gegensatz zu der Xamarin.Forms App werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  In der Xamarin.Forms App werden die Werte über Databindings geladen und mithilfe der INotifyPropertyChanged Schnittstelle wird die Benutzeroberfläche im Falle von Änderungen aktualisiert.  Diese Schnittstelle wurde in der Flutter Anwendung entfernt und der Teil des Quelltextes,  der Änderungen am UI vornimmt mit einem Setstate-Block umschlossen,  damit sich die Oberfläche aktualisiert.  
 
 Die in Abbildung \ref{fig:FlutterAppIII}  gezeigten Screenshots zeigen ein Menü zur Arbeit mit Bildern, wobei der rechte zusätzlich den Berechtigungsdialog für die Kameraverwendung präsentiert. 
   
@@ -135,7 +133,7 @@ Die in Abbildung \ref{fig:FlutterAppIII}  gezeigten Screenshots zeigen ein Menü
 Der Berechtigungsdialog entspricht nach Kompilierung in Darstellung und 
 Funktion dem der Xamarin.Forms Version.  Auch der Zugriff auf die Kamera und die Galerie wurde, allerdings mithilfe der Erweiterung image\_picker, erfolgreich übersetzt.
 
-Die Screenshots aus Abbildung \ref{fig:FlutterAppIV} visualisiert,  links die Galerie zur Bildauswahl und rechts die Darstellung der Benutzer in einer ListView.  
+Die Screenshots aus Abbildung \ref{fig:FlutterAppIV} visualisiert links die Galerie zur Bildauswahl und rechts die Darstellung der Benutzer in einer ListView.  
 
 
  \newpage 
@@ -148,6 +146,6 @@ Die korrekte Darstellung der ListView beweist, dass auch die Klassendefinition u
 
 Das Testobjekt konnte also vollständig überführt werden, was grundsätzlich die 
 Funktionsfähigkeit des Prototypen beweist.  Bei einer Übersetzung aller in der Praxis möglichen 
-Funktionalitäten von Xamerin.Forms bedarf es jedoch Erweiterungen des Compilers. 
+Funktionalitäten von Xamarin.Forms bedarf es jedoch Erweiterungen des Compilers. 
 
 

@@ -1,8 +1,7 @@
 \chapter{Realisierung des Source-To-Source Compilers}
 \label{chap:Realisierung}
 Gestützt auf das grundsätzliche Wissen über Compiler, die herausgearbeiteten Unterscheidungen von  Xamarin.Forms und Flutter sowie die Differenzen der verwendeten Programmiersprachen  \Csharp{} und Dart, wird in diesem Kapitel die Realisierung des Source-to-Source Compilers beschrieben.  Es bietet sich die \ac{ide} (deutsch Entwicklungsumgebung) Visual Studio 2019 von Microsoft an,  um das Projekt mit Roslyn Integration zu implementieren,  da auf dieser Plattform Erweiterungen für Roslyn zur Verfügung stehen.
-Die zu entwickelnde Projektmappe besteht also aus dem Source-to-Source Compiler mit Rosyln Integration, der grafischen Benutzeroberfläche und einer Xamarin.Forms
-Anwendung als Testobjekt,  wobei letztere jedoch erst im nächsten Kapitel thematisiert wird.
+Die zu entwickelnde Projektmappe besteht also aus dem Source-to-Source Compiler mit Rosyln Integration, der grafischen Benutzeroberfläche und einer Xamarin.Forms Anwendung als Testobjekt,  wobei letztere jedoch erst im nächsten Kapitel thematisiert wird.
 
 
 \section{Programmablauf}
@@ -181,7 +180,7 @@ Damit befindet sich der Programmcode in einem korrekten syntaktischen Zustand un
 
 
 \section{Grafische Benutzeroberfläche}
-Die GUI ist der zentrale Berührungspunkt von Anwendern mit dem Transpiler.  Sie soll die notwendigen Eingabe-Möglichkeiten anbieten, das Ergebnis ausgeben und den Anwender auf mögliche Fehler hinweisen.  Das grafische Vorbild ist das in Kapitel 3 entworfene Mockup, siehe Abbildung 3.4.  Für die Erstellung einer entsprechenden Benutzeroberfläche stehen eine Vielzahl von Technologien mit verschiedenen Vor- und Nachteilen zur Verfügung. Eine Webseite erspart dem Anwender einen hohen Installationsaufwand und ermöglicht die plattformunabhängige Verwendung des Compilers.  Allerdings ist zumindest ein gewisser Kontrollverlust über den eigenen Quelltext durch das  Hochladen auf eine Webseite nicht ausgeschlossen.  Die Bedienoberfläche dieser Arbeit soll daher eine lokale Anwendung sein, sodass kein  unberechtigter Zugriff auf den Source-Code möglich ist.  Zu diesem Zweck wird die GUI mit der Technologie \ac{wpf} realisiert.  Dabei handelt es sich um ein UI-Framework des .NET Frameworks, das für die Erstellung von mit XAML und \Csharp{} entwickelten Desktopanwendungen geeignet ist. \footcite[Vgl.][S. 1f]{Wenger2012} 
+Die \ac{gui} ist der zentrale Berührungspunkt von Anwendern mit dem Transpiler.  Sie soll die notwendigen Eingabe-Möglichkeiten anbieten, das Ergebnis ausgeben und den Anwender auf mögliche Fehler hinweisen.  Das grafische Vorbild ist das in Kapitel 3 entworfene Mockup, siehe Abbildung 3.4.  Für die Erstellung einer entsprechenden Benutzeroberfläche stehen eine Vielzahl von Technologien mit verschiedenen Vor- und Nachteilen zur Verfügung.  Eine Webseite erspart dem Anwender einen hohen Installationsaufwand und ermöglicht die plattformunabhängige Verwendung des Compilers.  Allerdings ist zumindest ein gewisser Kontrollverlust über den eigenen Quelltext durch das  Hochladen auf eine Webseite nicht ausgeschlossen.  Die Bedienoberfläche dieser Arbeit soll daher eine lokale Anwendung sein, sodass kein  unberechtigter Zugriff auf den Source-Code möglich ist.  Zu diesem Zweck wird die \ac{gui}  mit der Technologie \ac{wpf} realisiert.  Dabei handelt es sich um ein UI-Framework des .NET Frameworks, das für die Erstellung von mit XAML und \Csharp{} entwickelten Desktopanwendungen geeignet ist. \footcite[Vgl.][S. 1f]{Wenger2012} 
 
 Anwendungen,  die mittels WPF programmiert werden, sind nur unter Windows als Betriebssystem ausführbar.  Da der Roslyn Compiler auch nur unter Windows verfügbar ist,  entstehen hier keine zusätzlichen Einschränkungen.  Die folgende Darstellung \ref{fig:CompilerUI} zeigt das Erscheinungsbild der Anwendung nach einer erfolgreichen Übersetzung.
 \newpage
@@ -193,4 +192,4 @@ Anwendungen,  die mittels WPF programmiert werden, sind nur unter Windows als Be
 
 Wie die Ansicht veranschaulicht, werden die durchgeführten Arbeitsschritte durch Log-Einträge in der Anwendung angezeigt.
 Die Realisierung der grafischen Benutzeroberfläche 
-und des Source-To-Source Compilers erfolgte mit  .Net Technologien,  sodass es möglich ist,  den Compiler als Abhängigkeit in das Projekt der grafischen Benutzeroberfläche zu laden und von dort aus die Übersetzung zu starten.  
+und des Source-To-Source Compilers erfolgte mit  .Net Technologien,  sodass es möglich ist,  den Compiler als Abhängigkeit in das Projekt der grafischen Benutzeroberfläche zu laden und von dort aus die Übersetzung zu starten.  Eine vollständige Anleitung für die Installation der \ac{gui}  befindet sich in  \hyperref[chap:Installationsanleitung]{Anhang V}.

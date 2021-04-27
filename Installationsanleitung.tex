@@ -1,3 +1,11 @@
 \chapter{Anhang V: Installationsanleitung}
 \label{chap:Installationsanleitung}
 
+Für die Verwendung des Prototyps ist ein Windows Computer notwendig,  da er nur auf diesem Betriebssystem lauffähig ist.  Auf dieser Plattform müssen die Buildtools für Visual Studio 2019 installiert werden, die über die Webseite \url{https://visualstudio.microsoft.com/de/downloads/} heruntergeladen werden können.  Über den Installer müssen anschließend die Komponenten \glqq Mobile-Entwicklung mit .NET\grqq{} und \glqq .NET Core-Buildtools\grqq{} installiert werden.  Zusätzlich muss die Version 5.0 des .NET Framework installiert werden,   da der Compiler Funktionalitäten dieser Version verwendet.  
+
+Für die Erstellung des Flutter Projektes und die Ausführung der App ist es notwendig,  Flutter zu installieren.  Die Installationsanleitung und die notwendigen Dateien sind unter auf der Webseite \url{https://flutter.dev/docs/get-started/install/windows} verfügbar.  
+Bei der Flutter-Installation ist darauf zu achten,  dass die Umgebungsvariable mit dem Namen \glq Path\grq{}  auf das \glqq flutter\textbackslash bin\grqq{} Verzeichnis verweist. 
+Flutter benötigt die Android SDK-tools,  für eine Installation kann die Entwicklungsumgebung Android Studio über die Webseite \url{https://developer.android.com/studioinstalliert} bezogen werden,  die alle benötigten Inhalte mitliefert. 
+Über die Kommandozeile können anschließend die Lizenzbedingungen der Android SDK gelesen und akzeptiert werden.  Dafür muss der Befehl \glqq flutter doctor \texttt{-{}-}android-licenses\grqq{} ausgeführt werden.  Die Flutter Installation kann anschließend mithilfe des  Befehls \glqq flutter -doctor\grqq{} überprüft werden.
+
+Vor der Ausführung ist in einem letzten Schritt notwendig,  der Anwendung zu vertrauen,  damit diese auf dem Computer ausgeführt werden kann.
