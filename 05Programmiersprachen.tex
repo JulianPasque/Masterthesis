@@ -7,7 +7,7 @@ Nach den in Kapitel \ref{chap:CrossPlattformFrameworks} behandelten Unterschiede
 In diesem Abschnitt sollen die sogenannten Klassen und Objekte der objektorientierten Programmierung betrachtet werden, die sowohl in \Csharp{} als auch in Dart, allerdings mit vereinzelten Unterschieden bei der Realisierung, Verwendung finden. Die sogenannten Objekte werden durch bestimmte,  charakteristische Merkmale beschrieben,  die in der Klassendefinition festgelegt werden müssen. \footcite[Vgl.][S. 11f.]{Witte2013}
 
 \subsection{Referenz- und Wertetypen}
-\Csharp{} ist eine Sprache des \glq .NET Frameworks\grq{} und verwendet daher dessen Typ-System,  welches zwischen Werte- und Referenztypen unterscheidet.  Der Unterschied zwischen beiden ist in der Allokation des Systemspeichers zu finden.  Eine Variable des Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen des Referenztyps, der eine Adresse der Speicherzellen des Typs enthält. \footcite[Vgl.][S. 155f.]{Kühnel2019} \Csharp{} bietet die folgenden Wertetypen: Ganzzahlig numerische Typen (Integer),  Fließkomma  Typen (Float und Double),  Wahrheitswerte (Boolean) und ein Zeichen (Char).  Jeder Variable dieser Typen muss immer ein zum Typ passender Wert zugewiesen sein.  Daraus folgt,  dass zu jeder Zeit in einer Instanz des Typs Integer eine Zahl verwaltet werden muss. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Bedingung dieser Wertpflicht zu umgehen,  gibt es in der Hochsprache \Csharp{} die sogenannte \glq nullable\grq{} Typen,  die neben den zulässigen Werten zusätzlich den Wert \glq null\grq{} akzeptieren. \footcite[Vgl.][S. 167]{Bayer2008} 
+\Csharp{} ist eine Sprache des \glq .NET Frameworks\grq{} und verwendet daher dessen Typ-System,  welches zwischen Werte- und Referenztypen unterscheidet.  Der Unterschied zwischen beiden ist in der Allokation des Systemspeichers zu finden.  Eine Variable des Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen des Referenztyps, der eine Adresse der Speicherzellen des Typs enthält. \footcite[Vgl.][S. 155f.]{Kühnel2019} \Csharp{} bietet die folgenden Wertetypen: Ganzzahlig numerische Typen (Integer),  Fließkomma  Typen (Float und Double),  Wahrheitswerte (Boolean) und ein Zeichen (Char).  Jeder Variable dieser Typen muss zwingend ein zum Typ passender Wert zugewiesen sein.  Daraus folgt,  dass zu jeder Zeit in einer Instanz des Typs Integer eine Zahl verwaltet werden muss. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Bedingung dieser Wertpflicht zu umgehen,  gibt es in der Hochsprache \Csharp{} die sogenannte \glq nullable\grq{} Typen,  die neben den zulässigen Werten zusätzlich den Wert \glq null\grq{} akzeptieren. \footcite[Vgl.][S. 167]{Bayer2008} 
 
  
 Die Programmiersprache Dart war bis zu der Version 2.12 \glq nicht Null sicher\grq . Da nicht gewährleistet war, das Typen einen entsprechenden Wert zu jeder Zeit repräsentieren mussten,  war zur Vermeidung von Laufzeitfehlern eine Nullprüfung, wie in Quelltext \ref{lst:DartNull} dargestellt, bei der Arbeit mit Variablen erforderlich.   
@@ -64,7 +64,7 @@ Folgend\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 \end{table}
 Es ist ersichtlich,  dass sich einige,  aber nicht alle Datentypen unterscheiden und für manche Typen in Dart eine entsprechende Repräsentation fehlt.  Auf die für den Compilerbau relevanten Unterschiede wird im Folgenden genauer eingegangen. 
 \subsubsection{Ganzzahlen}
-Wie die Tabelle zeigt,  bietet \Csharp{} eine Vielzahl von Typen für die Arbeit mit Ganzzahlen.  Diese haben einen Bereich von 8 bis 64 Bit und stehen jeweils mit und ohne Vorzeichen zur Verfügung.  Dart besitzt keine vergleichbar umfangreiche Auswahl von Ganzzahl-Datentypen.  Um Zahlen dennoch effizient im Hauptspeicher abzulegen, wird auf unterschiedliche interne Darstellungen zurückgegriffen, je nachdem,  welcher Integer-Wert zur Laufzeit tatsächlich verwendet wird.  Für besonders große Zahlenwerte steht jedoch der DatenTyp \glq Bigint\grq{}  zur Verfügung.  \footcite[Vgl. ][Abgerufen am \today]{Ford2019} Der Compiler muss alle ganzzahligen  \Csharp{} Datentypen zu Dart \glq Integer\grq,  bis auf \glq long\grq{} und \glq ulong\grq{} die von \glq BigInt\grq{}  repräsentiert werden, übersetzten . 
+Wie die Tabelle zeigt,  bietet \Csharp{} eine Vielzahl von Typen für die Arbeit mit Ganzzahlen.  Diese haben einen Bereich von 8 bis 64 Bit und stehen jeweils mit und ohne Vorzeichen zur Verfügung.  Dart besitzt keine vergleichbar umfangreiche Auswahl von Ganzzahl-Datentypen.  Um Zahlen dennoch effizient im Hauptspeicher abzulegen, wird auf unterschiedliche interne Darstellungen zurückgegriffen, je nachdem,  welcher Integer-Wert zur Laufzeit tatsächlich verwendet wird.  Für besonders große Zahlenwerte steht jedoch der DatenTyp \glq Bigint\grq{}  zur Verfügung.  \footcite[Vgl. ][Abgerufen am \today]{Ford2019} Der Compiler muss alle ganzzahligen  \Csharp{} Datentypen zu Dart \glq Integer\grq,  bis auf \glq long\grq{} und \glq ulong\grq{} die von \glq BigInt\grq{}  repräsentiert werden, übersetzten. 
 
 \subsubsection{Fließkommazahlen}
 
@@ -90,7 +90,7 @@ Anders als die \glq Arrays\grq{}  sind die Auflistungen in \Csharp{} nicht stati
 \subsubsection{Hashtabellen}
 
 Eine Hashtabelle ist ein Objekt, das Schlüssel und Werte miteinander verknüpft. Sowohl Schlüssel als auch Werte können beliebige Objekttypen sein.  Jeder Schlüssel darf in einer Hashtabelle nur einmal vorkommen und ist unveränderlich,  während Werte mehrfach verwendet werden können.  
-\Csharp{} bietet den Datentyp Dictionary für die Arbeit mit Hashtabellen, in  Dart geschieht dies mittels Map.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Im Rahmen der Übersetzung muss der Typ Dictionary folglich durch Map ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
+\Csharp{} bietet den Datentyp \glq Dictionary\grq{}  für die Arbeit mit Hashtabellen, in  Dart geschieht dies mittels \glq Map\grq.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Im Rahmen der Übersetzung muss der Typ Dictionary folglich durch Map ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
 \lstinputlisting[label={lst:DartHashmap},caption={Hashtabellen in Dart}, language=Dart]{SourceCode/DartHashmap.Dart}
 
 
@@ -100,10 +100,10 @@ Alle Klassen und Eigenschaften verfügen in beiden Sprachen über eine Zugriffse
 
 \lstinputlisting[label={lst:PrivatePublicDart},caption={[Private und Public Definitionen in Dart]{Private und Public Definitionen in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/PrivateDefinition.Dart}
 
-Unterstriche  \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} sind erlaubte Zeichen bei der Entwicklung von  \Csharp{} Klassen.  Sie müssen bei der Übersetzung entfernt werden,  da sonst fehlerhafte Übersetzungen drohen.  Durch das Fehlen der anderen oben erwähnten Modifizierer können Berechtigungen in Dart nicht so feingranular definiert werden wie in \Csharp .  Der vom Compiler generierte Dart-Quelltext darf nicht mehr Zugriffe verweigern als der ursprüngliche Quelltext,  daher kann es passieren,  dass der Dart Quelltext weniger gute Restriktionen aufweist.  
+Unterstriche  \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} sind erlaubte Zeichen bei der Entwicklung von  \Csharp{} Klassen.  Sie müssen bei der Übersetzung entfernt werden,  da sonst fehlerhafte Übersetzungen drohen.  Durch das Fehlen der anderen oben erwähnten Modifizierer können Berechtigungen in Dart nicht so feingranular definiert werden wie in \Csharp .  Der vom Compiler generierte Dart Quelltext darf nicht mehr Zugriffe verweigern als der ursprüngliche Quelltext,  daher kann es passieren,  dass der Dart Quelltext weniger gute Restriktionen aufweist.  
 \subsection{Vererbung}
 
-Erweiterungen oder Veränderung von Klassen entstehen durch die Vererbung, wobei aus einer bestehenden Basisklasse neue abgeleitete Klassen entwickelt werden können, die der Spezialisierung dienen. \footcite[Vgl.  ][Abgerufen am \today]{MicrosoftVeerbung2020}  Der folgende Quelltext zeigt eine Vererebung in Dart.
+Erweiterungen oder Veränderung von Klassen entstehen durch die Vererbung, wobei aus einer bestehenden Basisklasse neue abgeleitete Klassen entwickelt werden können, die der Spezialisierung dienen. \footcite[Vgl.  ][Abgerufen am \today]{MicrosoftVeerbung2020}  Der folgende Quelltext zeigt eine Vererbung in Dart.
 
 \lstinputlisting[label={lst:DartInherit},caption={[Vererbung in Dart]{Vererbung in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}},  language=Dart]{SourceCode/DartInherit.Dart}
 Einer\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  abgeleiteten Klasse kann exakt nur eine Basisklasse,  also eine Elternklasse, zugeordnet werden, dies ist bei \Csharp{} und Dart gleich definiert. Eine Mehrfachvererbung ist in \Csharp{} auf Klassenebene nicht vorgesehen, kann aber durch Schnittstellenvererbung erfolgen. Dafür muss eine Implementierung von Attributen oder Methoden über Schnittstellen erfolgen.\footcite[Vgl.][S. 258f.]{Kühnel2019} Dart kennt im Gegensatz zu \Csharp{} keine Schnittstellen,  sondern verwendet stattdessen das Konzept der Mixins.  Auch hier hat jede Klasse genau eine Elternklasse,  jedoch kann ein Klassenkörper in mehreren Hierarchien vorkommen.  Dies wird in Quelltext \ref{lst:DartMixin} visualisiert. 
@@ -116,14 +116,14 @@ Durch die  herausgearbeiteten Unterschiede in der Klassenmodellierung kann exemp
 
 \lstinputlisting[label={lst:CshClass},caption={Beispielklasse in C\#},  language=csh]{SourceCode/ExampleClass.cs}
 
-Dieser Quelltext kann nun zu Dart übersetzt werden,  wie der folgende Code-Ausschnitt demonstriert. 
+Dieser Quelltext kann nun zu Dart übersetzt werden,  wie der folgende Quelltextausschnitt demonstriert. 
 
 \lstinputlisting[label={lst:ExampleClassDart},caption={Beispielklasse in Dart}, language=Dart]{SourceCode/ExampleClass.dart}
 
 \section{Namespaces}
 
-Namespaces werden häufig in \Csharp -Programmen verwendet,  um Klassen zu organisieren. Die meisten Klassen beginnen mit einem Abschnitt von using-Anweisungen,  der die Namensräume einbindet.  Dadurch können Entwickler auf enthaltene Methoden und Klassen zugreifen, ohne den vollqualifizierten Namen verwenden zu müssen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftNamespaces2020} 
-Dart hat keine Namespaces,  stattdessen werden Pakete und Dateien direkt importiert.  Somit kann ein direkter Zugriff auf alle Klassen und Funktionen innerhalb der Datei gewährt werden.  Im Falle von  Namenskonflikten, z.B.  gleiche Klassennamen,  können Dateien benannt werden.  Quelltext \ref{lst:DartPackages} zeigt die Arbeit mit Paketen und Dateien in Dart.
+Namespaces werden häufig in \Csharp{} Programmen verwendet,  um Klassen zu organisieren.  Die meisten Klassen beginnen mit einem Abschnitt von using-Anweisungen,  der die Namensräume einbindet.  Dadurch können Entwickler auf enthaltene Methoden und Klassen zugreifen, ohne den vollqualifizierten Namen verwenden zu müssen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftNamespaces2020} 
+Dart hat keine Namespaces,  stattdessen werden Pakete und Dateien direkt importiert.  Somit kann ein direkter Zugriff auf alle Klassen und Funktionen innerhalb der Datei gewährt werden.  Im Falle von  Namenskonflikten,  z.B.  gleiche Klassennamen,  können Dateien benannt werden.  Quelltext \ref{lst:DartPackages} zeigt die Arbeit mit Paketen und Dateien in Dart.
 
 \lstinputlisting[label={lst:DartPackages},caption={[Importieren von Paketen in Dart]{Importieren von Paketen in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartPackages.Dart}
 
@@ -153,7 +153,7 @@ In Dart wird auf die gleichen Schlüsselwörter \glq async\grq{} und \glq await\
 
 \lstinputlisting[label={lst:DartAsync},caption={[Async und Await in Dart]{Async und Await in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
 
-Um\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  die Vorteile von mehreren Prozessorkernen nutzen zu können,  reicht dieses Konzept jedoch nicht aus.  In Flutter müssen potentielle Hintergrundthreads , wie in  \Csharp ,  manuell verwaltet werden.  Für den Start von rechenintensiven Arbeiten stehen die \glq Isolates\grq{} zur Verfügung,  die dem Task Konzept aus \Csharp{} ähneln.  Dabei sind \glq Isolates\grq{} separate Ausführungsthreads, die sich keinen Speicher mit dem Hauptspeicher der Anwendung teilen und somit im Gegensatz zu \glq Task\grq{} nicht auf die Anwendung zugreifen können.
+Um\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  die Vorteile von mehreren Prozessorkernen nutzen zu können,  reicht dieses Konzept jedoch nicht aus.  In Flutter müssen potentielle Hintergrundthreads,  wie in  \Csharp ,  manuell verwaltet werden.  Für den Start von rechenintensiven Arbeiten stehen die \glq Isolates\grq{} zur Verfügung,  die dem Task Konzept aus \Csharp{} ähneln.  Dabei sind \glq Isolates\grq{} separate Ausführungsthreads, die sich keinen Speicher mit dem Hauptspeicher der Anwendung teilen und somit im Gegensatz zu \glq Task\grq{} nicht auf die Anwendung zugreifen können.
 
 
 \section{Bibliotheken}
@@ -171,7 +171,7 @@ Bei\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  de
 
 \section{Ereignisse}
 Ein Ereignis ist eine Meldung, die von einem Objekt gesendet wird, um das Auftreten
-einer Aktion zu signalisieren. Dies wird beim ereignisgesteuerten Xamarin.Forms z.B. durch den Klick auf eine Schaltfläche ausgelöst. Events können in  \Csharp{}  auch ohne \ac{xaml}-Dateien verwendet werden, wenn etwa die Programmlogik das Ändern eines Eigenschaftswerts verursacht.  Das Objekt, von dem das Ereignis ausgelöst wird, ist der Ereignissender, dem die weitere Folge der  Aktion nicht bekannt ist.  Dart verwendet Streams,  die ähnlich wie Ereignisse arbeiten, deren Verwendung in Quelltext  \ref{lst:DartEvents} dargestellt sind.
+einer Aktion zu signalisieren. Dies wird beim ereignisgesteuerten Xamarin.Forms z.B. durch den Klick auf eine Schaltfläche ausgelöst. Events können in  \Csharp{}  auch ohne \ac{xaml} Dateien verwendet werden, wenn etwa die Programmlogik das Ändern eines Eigenschaftswerts verursacht.  Das Objekt, von dem das Ereignis ausgelöst wird, ist der Ereignissender, dem die weitere Folge der  Aktion nicht bekannt ist.  Dart verwendet Streams,  die ähnlich wie Ereignisse arbeiten, deren Verwendung in Quelltext  \ref{lst:DartEvents} dargestellt sind.
 
 
 \lstinputlisting[label={lst:DartEvents},caption={[Events in Dart]{Events in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartEvents.Dart}
