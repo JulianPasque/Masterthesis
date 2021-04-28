@@ -10,7 +10,7 @@ In diesem Abschnitt sollen die sogenannten Klassen und Objekte der objektorienti
 \Csharp{} ist eine Sprache des \glq .NET Frameworks\grq{} und verwendet daher dessen Typ-System,  welches zwischen Werte- und Referenztypen unterscheidet.  Der Unterschied zwischen beiden ist in der Allokation des Systemspeichers zu finden.  Eine Variable des Wertetyps enthält eine Instanz des Typs.  Dies unterscheidet sich von einer Variablen des Referenztyps, der eine Adresse der Speicherzellen des Typs enthält. \footcite[Vgl.][S. 155f.]{Kühnel2019} \Csharp{} bietet die folgenden Wertetypen: Ganzzahlig numerische Typen (Integer),  Fließkomma  Typen (Float und Double),  Wahrheitswerte (Boolean) und ein Zeichen (Char).  Jeder Variable dieser Typen muss zwingend ein zum Typ passender Wert zugewiesen sein.  Daraus folgt,  dass zu jeder Zeit in einer Instanz des Typs Integer eine Zahl verwaltet werden muss. \footcite[Vgl. ][Abgerufen am \today]{MicrosoftValueTypes2020} Um die Bedingung dieser Wertpflicht zu umgehen,  gibt es in der Hochsprache \Csharp{} die sogenannte \glq nullable\grq{} Typen,  die neben den zulässigen Werten zusätzlich den Wert \glq null\grq{} akzeptieren. \footcite[Vgl.][S. 167]{Bayer2008} 
 
  
-Die Programmiersprache Dart war bis zu der Version 2.12 \glq nicht Null sicher\grq . Da nicht gewährleistet war, das Typen einen entsprechenden Wert zu jeder Zeit repräsentieren mussten,  war zur Vermeidung von Laufzeitfehlern eine Nullprüfung, wie in Quelltext \ref{lst:DartNull} dargestellt, bei der Arbeit mit Variablen erforderlich.   
+Die Programmiersprache Dart war bis zu der Version 2.12 \glq nicht Null sicher\grq . Da nicht gewährleistet war,  dass Typen einen entsprechenden Wert zu jeder Zeit repräsentieren mussten,  war zur Vermeidung von Laufzeitfehlern eine Nullprüfung, wie in Quelltext \ref{lst:DartNull} dargestellt, bei der Arbeit mit Variablen erforderlich.   
 
 \lstinputlisting[label={lst:DartNull},caption={[Nullsicherheit in Dart bis Version 2.12]{Nullsicherheit in Dart 1.x\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
@@ -21,7 +21,7 @@ Im März 2021 hat\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{P
 Seit \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleflutterNullSafty2021} dieser Veränderung verhält sich die Programmiersprache Dart analog zu \Csharp.  Auch ein Fragezeichen,  das für die Definition eines nullable Typs verendet wird,  ist identisch.  Spezielle Änderungen sind somit nicht mehr durch den Compiler an dieser Stelle vorzunehmen.  
 
 \subsection{Datentypen}
-Die Unterscheidung von Referenz- und Wertetypen ist elementar für die Programmierung mit \Csharp .  Neben den bereits eingeführten Unterschieden bei der Speicherallokation besteht eine weitere Differenz bei der Initialisierung.   Während  Werttypen einfach der entsprechende Wert zugewiesen werden kann,  muss bei Referenztypen expliziert ein Objekt generiert oder ein bestehendes zugewiesen werden.  Die Erzeugung eines neuen Objekts erfolgt durch den Operator \glq new\grq .\footcite[Vgl.][S. 93]{Kofler2005} Dart analysiert, wann ein neues Objekt initiiert werden muss und benötigt daher keinen \glq new\grq{} Operator,  wie in Quelltext \ref{lst:DartNew} dargestellt.  \footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} 
+Die Unterscheidung von Referenz- und Wertetypen ist elementar für die Programmierung mit \Csharp .  Neben den bereits eingeführten Unterschieden bei der Speicherallokation besteht eine weitere Differenz bei der Initialisierung.   Während  Werttypen einfach der entsprechende Wert zugewiesen werden kann,  muss bei Referenztypen explizit ein Objekt generiert oder ein bestehendes zugewiesen werden.  Die Erzeugung eines neuen Objekts erfolgt durch den Operator \glq new\grq .\footcite[Vgl.][S. 93]{Kofler2005} Dart analysiert, wann ein neues Objekt initiiert werden muss und benötigt daher keinen \glq new\grq{} Operator,  wie in Quelltext \ref{lst:DartNew} dargestellt.  \footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} 
 
 \lstinputlisting[label={lst:DartNew},caption={[Objekterzeugung ohne \glq new\grq{} Keyword in Dart]{Objekterzeugung ohne \glq new\grq{} Keyword in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNew.Dart}
 
@@ -69,7 +69,7 @@ Wie die Tabelle zeigt,  bietet \Csharp{} eine Vielzahl von Typen für die Arbeit
 \subsubsection{Fließkommazahlen}
 
 
-Fließkommazahlen stellen reelle Zahlen dar.  In \Csharp{} stehen dafür, wie in der Tabelle aufgeführt,  verschiedene Datentypen zur Verfügung.  Der \glq decimal\grq -Typ behandelt Dezimalstellen am genauesten,  während die Alternativen \glq double\grq{} und  \glq float\grq{} nur Annäherungen an bestimmte reelle Zahl erreichen.  \footcite[Vgl. ][Abgerufen am \today]{MicrosoftFlieskomma2021}
+Fließkommazahlen stellen reelle Zahlen dar.  In \Csharp{} stehen dafür, wie in der Tabelle aufgeführt,  verschiedene Datentypen zur Verfügung.  Der \glq decimal\grq -Typ behandelt Dezimalstellen am genauesten,  während die Alternativen \glq double\grq{} und  \glq float\grq{} nur Annäherungen an bestimmte reelle Zahlen erreichen.  \footcite[Vgl. ][Abgerufen am \today]{MicrosoftFlieskomma2021}
 In Dart steht für die Arbeit mit Kommazahlen nur der Datentyp \glq  double\grq{} zur Verfügung, \footcite[Vgl. ][Abgerufen am \today]{GoogleDouble} alle Fließkommazahlen müssen daher während der Kompilierung zu \glq double\grq{} umgewandelt werden.
 
 \subsubsection{Textzeichen}
@@ -90,7 +90,7 @@ Anders als die \glq Arrays\grq{}  sind die Auflistungen in \Csharp{} nicht stati
 \subsubsection{Hashtabellen}
 
 Eine Hashtabelle ist ein Objekt, das Schlüssel und Werte miteinander verknüpft. Sowohl Schlüssel als auch Werte können beliebige Objekttypen sein.  Jeder Schlüssel darf in einer Hashtabelle nur einmal vorkommen und ist unveränderlich,  während Werte mehrfach verwendet werden können.  
-\Csharp{} bietet den Datentyp \glq Dictionary\grq{}  für die Arbeit mit Hashtabellen, in  Dart geschieht dies mittels \glq Map\grq.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Im Rahmen der Übersetzung muss der Typ Dictionary folglich durch Map ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
+\Csharp{} bietet den Datentyp \glq Dictionary\grq{}  für die Arbeit mit Hashtabellen, in  Dart geschieht dies mittels \glq Map\grq.\footcite[Vgl. ][Abgerufen am \today]{GoogleFlutterTour2020} Im Rahmen der Übersetzung muss der Typ Dictionary folglich durch \glq Map\grq{} ersetzt werden.  Der folgende Quelltext zeigt die Verwendung einer Hashtabelle in der Programmiersprache Dart.
 \lstinputlisting[label={lst:DartHashmap},caption={Hashtabellen in Dart}, language=Dart]{SourceCode/DartHashmap.Dart}
 
 

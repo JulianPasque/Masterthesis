@@ -5,7 +5,7 @@ Die zu entwickelnde Projektmappe besteht also aus dem Source-to-Source Compiler 
 
 
 \section{Programmablauf}
-Mithilfe des Roslyn Compilers kann der Source-to-Source Compiler Auswertungen zu den in der Xamarin.Forms App referenzierten Quelltextdateien durchführen.  Somit ist es möglich,  eine Auflistung aller verfügbaren \Csharp-Dateien aus einem Projekt zu extrahieren.  XAML-Dateien werden nicht von c behandelt.  Dies gelingt jedoch über den Umweg der Codebehind-Dateien mit Endung .XAML.cs,  die ein Laden über das Dateisystem ermöglichen. 
+Mithilfe des Roslyn Compilers kann der Source-to-Source Compiler Auswertungen zu den in der Xamarin.Forms App referenzierten Quelltextdateien durchführen.  Somit ist es möglich,  eine Auflistung aller verfügbaren \Csharp-Dateien aus einem Projekt zu extrahieren.  XAML-Dateien werden nicht von Roslyn behandelt.  Dies gelingt jedoch über den Umweg der Codebehind-Dateien mit Endung .XAML.cs,  die ein Laden über das Dateisystem ermöglichen. 
 
 Bevor der Source-to-Source Compiler alle Quelltext- und Ansichtsdateien übersetzt,  müssen die in Kapitel 4 beschriebenen Metadaten überführt werden.  Anschließend kann der Quelltext optimiert und der Übersetzungsvorgang abgeschlossen werden.  Zur Visualisierung des Übersetzungsvorganges dient das in Abbildung \ref{fig:umlablauf} dargestellte \ac{uml}-Aktivitätsdiagramm.
 
