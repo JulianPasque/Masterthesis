@@ -1,4 +1,4 @@
-int i = 42; // Inferred to be an int.
+int i = 42; 
 int? aNullableInt = null;
 if (aNullableInt != null)
     aNullableInt =  0; 

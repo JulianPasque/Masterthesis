@@ -1,4 +1,5 @@
-class MyMixin {
+class MyMixin 
+{
   void sayHello() => print("Hello!");
 }
 

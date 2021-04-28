@@ -1,8 +1,8 @@
-// Import a core dart library
+// Import einer Dart Bibliothek
 import 'dart:async';
 
-// Import a package
+// Import eines Packages
 import 'package:flutter/material.dart';
 
-// Import another file in your application
+//  Import einer Datei und Bennenung
 import 'myfilename.dart' as filename;

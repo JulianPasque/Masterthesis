@@ -1,8 +1,9 @@
-void main() async {
+void main() async 
+{
   var result = await myFunction();
 }
 
-Future<String> myFunction() {
-  // Similar to Task.FromResult
+Future<String> myFunction() 
+{
   return Future.value('Hello');
 }

@@ -1,15 +1,18 @@
-class BaseClass {
+class BaseClass 
+{
   void myFunction() {}
 }
 
-class MyClass extends BaseClass {
-  void myOtherFunction() {
-    // do something
+class MyClass extends BaseClass 
+{
+  void myOtherFunction() 
+  {
+    // Quelltext
   }
-
-  // every function is overridable in Dart.
+  // Jede Methode kann ueberschrieben werden
   @override
-  void myFunction() {
-    // do something
+  void myFunction() 
+  {
+    // Quelltext
   }
 }
