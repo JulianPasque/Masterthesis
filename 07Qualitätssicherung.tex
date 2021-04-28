@@ -23,7 +23,7 @@ Durch die im Quelltext aufgeführten Komponententests kann nun der in Quelltext 
 
 
 \section{Manuelles Testing}
-Die weiterführende Qualitätssicherung des Compilers macht es erforderlich,  neben den Komponententests auch ein manuelles Testing vorzunehmen. Hierfür wird ein Testobjekt entwickelt und kompiliert, bevor anhand von manuellen Testfällen die Quell- und Zielobjekte verglichen werden.
+Die weiterführende Qualitätssicherung des Compilers macht es erforderlich,  neben den Komponententests auch ein manuelles Testing vorzunehmen. Hierfür wird ein Testobjekt entwickelt und kompiliert, bevor anhand von manuellen Arbeitsschritten die Quell- und Zielobjekte verglichen werden.
 
 \subsection{Testobjekt}
 Die Testapp wurde mit der Version 5.0.0.2012 des Xamarin.Forms Frameworks realisiert und verwendet die Erweiterungen Xamarin.Essentials.  Als Testobjekt soll diese mobile Anwendung möglichst viele Funktionalitäten von Xamarin.Forms abbilden,  hat jedoch nicht den Anspruch einer vollständigen Testabdeckung.
@@ -99,9 +99,9 @@ ListView					         	& Werden in der Listview die generierten Daten angezeigt 
 \end{table}
 
 \subsection{Testablauf}
-Die Analyse der Softwarequalität erfolgt nicht ausschließlich automatisiert.  In diesem Abschnitt werden die oben genannten Testfälle manuell durchgeführt und ihr Ergebnis dokumentiert.
-Der Start  des Testlaufs beginnt mit dem Aufruf der grafischen Benutzeroberfläche,   der Auswahl der Xamarin.Forms Testapp und eines leeren Ordners, der als Zielverzeichnis nach der Kompilierung dient. 
-Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die im Folgenden visualisierten Screenshots zeigen die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden sich in  \hyperref[chap:AnhangAndroidScreenshotsFlutter]{Anhang IV} dieser Arbeit.  Die ausgewählten Screenshots der übersetzten App zeigen die gleichen Bildschirmstatus  wie die der Ausgangsapp, um eine Vergleichbarkeit zu gewähren.  Das nahezu identische Erscheinungsbild lässt bereits auf den ersten Blick eine hohe Qualität des Prototypen vermuten.  
+In diesem Abschnitt werden die genannten Testfälle durchgeführt und ihr Ergebnis dokumentiert.
+Der Start  des Testlaufs beginnt mit dem Aufruf der \ac{gui},  der Auswahl der Xamarin.Forms Testapp und eines leeren Ordners, der als Zielverzeichnis nach der Kompilierung dient. 
+Aufgrund der vielen Dateizugriffe und durchzuführenden Aktionen nimmt die Übersetzung der Anwendung eine gewisse Zeit in Anspruch. Im Frontend lassen sich Informationen über den Status, den Verlauf und mögliche Fehlerquellen nach der Übersetzung ablesen.  Anschließend kann die fertige Flutter Anwendung mithilfe der SDK kompiliert und ihre Ansichten kontrolliert werden.  Die im Folgenden visualisierten Screenshots zeigen die generierte iOS Flutter-App,  die entsprechenden Androidrepräsenationen befinden sich in  \hyperref[chap:AnhangAndroidScreenshotsFlutter]{Anhang IV} dieser Arbeit.  Die Screenshots der übersetzten App zeigen die gleichen Bildschirmstatus wie die der Ausgangsapp, um eine Vergleichbarkeit zu gewähren.  Das nahezu identische Erscheinungsbild lässt bereits auf den ersten Blick eine hohe Qualität des Prototypen vermuten.  
 
 In Abbildung \ref{fig:FlutterAppI} wird links der Startbildschirm mit dem Namen und Icon und rechts das zentrale Menü der App dargestellt. 
 
@@ -121,17 +121,17 @@ Abbildung \ref{fig:FlutterAppII} stellt die Übersicht der Steuerelemente sowie 
  \caption{Flutter App Screenshots II}
  \label{fig:FlutterAppII}
 \end{figure}
-Die Übersicht der Steuerelemente stimmt  bezüglich der Verschachtelungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein,  was durch die Öffnung der Datums- und Uhrzeitauswahl validiert werden kann.  Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht und alle Werte der Smartphonesensoren befinden sich im richtigen Format. Im Gegensatz zu der Xamarin.Forms App werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  In der Xamarin.Forms App werden die Werte über Databindings geladen und mithilfe der INotifyPropertyChanged Schnittstelle wird die Benutzeroberfläche im Falle von Änderungen aktualisiert.  Diese Schnittstelle wurde in der Flutter Anwendung entfernt und der Teil des Quelltextes,  der Änderungen am UI vornimmt mit einem Setstate-Block umschlossen,  damit sich die Oberfläche aktualisiert.  
+Die Übersicht der Steuerelemente stimmt  bezüglich der Verschachtelungen als auch der Funktionalitäten mit denen der Xamarin.Forms Variante überein,  was durch die Öffnung der Datums- und Uhrzeitauswahl validiert werden kann.  Ebenfalls korrekt übernommen wurde die Oberfläche der Sensorenansicht und alle Werte der Smartphonesensoren befinden sich im richtigen Format. Im Gegensatz zu der Xamarin.Forms App werden diese Daten jedoch nicht im gleichen Zyklus aktualisiert.  Dieser Unterschied basiert auf den Implementationen des jeweiligen Plugins und entsteht nicht durch den Übersetzer.  In der Xamarin.Forms App werden die Werte über Databindings geladen und mithilfe der \glq INotifyPropertyChanged\grq{} Schnittstelle wird die Benutzeroberfläche im Falle von Änderungen aktualisiert.  Diese Schnittstelle wurde in der Flutter Anwendung entfernt und der Teil des Quelltextes,  der Änderungen am \ac{ui} vornimmt mit einem Setstate-Block umschlossen,  damit sich die Oberfläche aktualisiert.  
 
-Die in Abbildung \ref{fig:FlutterAppIII}  gezeigten Screenshots zeigen ein Menü zur Arbeit mit Bildern, wobei der rechte zusätzlich den Berechtigungsdialog für die Kameraverwendung präsentiert. 
+Die in Abbildung \ref{fig:FlutterAppIII} dargestellten Screenshots zeigen ein Menü zur Arbeit mit Bildern, wobei der rechte zusätzlich den Berechtigungsdialog für die Kameraverwendung präsentiert. 
   
 \begin{figure}[!ht]
- \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Flutter3ios.png}
+ \includegraphics[width=\textwidth,keepaspectratio]{Images/Screenshot/Flutterios3.png}
  \caption{Flutter App Screenshots III}
  \label{fig:FlutterAppIII}
 \end{figure}
 Der Berechtigungsdialog entspricht nach Kompilierung in Darstellung und 
-Funktion dem der Xamarin.Forms Version.  Auch der Zugriff auf die Kamera und die Galerie wurde, allerdings mithilfe der Erweiterung image\_picker, erfolgreich übersetzt.
+Funktion dem der Xamarin.Forms Version.  Auch der Zugriff auf die Kamera und die Galerie wurde, allerdings mithilfe der Erweiterung \glq image\_picker\grq , erfolgreich übersetzt.
 
 Die Screenshots aus Abbildung \ref{fig:FlutterAppIV} visualisiert links die Galerie zur Bildauswahl und rechts die Darstellung der Benutzer in einer ListView.  
 
@@ -142,7 +142,7 @@ Die Screenshots aus Abbildung \ref{fig:FlutterAppIV} visualisiert links die Gale
  \caption{Flutter App Screenshots IV}
  \label{fig:FlutterAppIV}
 \end{figure}
-Die korrekte Darstellung der ListView beweist, dass auch die Klassendefinition und ihr Konstruktor korrekt übersetzt wurden, denn nur unter dieser Voraussetzung konnte die Liste mit den  passenden Daten gefüllt werden.
+Die korrekte Darstellung der \glq ListView\grq{} beweist, dass auch die Klassendefinition und ihr Konstruktor korrekt übersetzt wurden, denn nur unter dieser Voraussetzung konnte die Liste mit den  passenden Daten gefüllt werden.
 
 Das Testobjekt konnte also vollständig überführt werden, was grundsätzlich die 
 Funktionsfähigkeit des Prototypen beweist.  Bei einer Übersetzung aller in der Praxis möglichen 
