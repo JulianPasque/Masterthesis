@@ -57,7 +57,8 @@ Xamarin.iOS verwaltet die für die Übersetzung notwendigen Metadaten in einer D
 \caption{Info.plist Einträge in Flutter}
  \label{tab:InfoPlist}
 \end{table}
-Die Übersicht weist nicht alle aus der iOS Entwicklung bekannten Schlüssel auf.  Alle fehlenden Eigenschaften gehören in die Datei \glq Info.plist\grq, wie die letzten drei in der Tabelle \ref{tab:InfoPlist} genannten. 
+Die Übersicht weist nicht alle aus der iOS Entwicklung bekannten Schlüssel auf.  Alle fehlenden Eigenschaften gehören in die Datei \glq Info.plist\grq, wie die letzten drei in der Tabelle \ref{tab:InfoPlist} genannten.  Ähnlich wie bei den Android Metadaten kann für die Änderung von Anwendungsnamen und Identifizierer auf ein Erweiterung zurückgegriffen werden.  So kann der Compiler das \glq rename\grq{}  plugin verwenden und muss die Zugriffe und die Zugriffe auf die Dateien muss nicht manuell entwickelt werden. \footcite[Vgl.][Abgerufen am \today]{Rename}  Die aus iOS bekannten Texte,  zur Beantragung von Berechtigungen müssen jedoch extrahier und in die Flutter info.plist transferiert werden.
+
 Für das Anwendungsicon kann das Verzeichnis \glq Assets.xcassets\grq{} aus dem Stammverzeichnis der Xamarin.Forms iOS App in das Verzeichnis \glq ios/flutter/Runner\grq , das alle notwendigen Bilder enthält,  kopiert werden. 
 
 \section{Ressourcen}
@@ -154,7 +155,7 @@ Xamarin.Forms übermittelt Änderungen an  Eigenschaften automatisch, mithilfe d
 
 \subsection{Visuelle Synthese}
 
-Die Zusammenführung der visuellen und logischen Zwischendarstellung erfolgt während der visuellen Synthese im Compiler-Backend.  In einem ersten Schritt erfolgt die Kopie der übersetzen Logik unterhalb der für den Aufbau der grafischen Benutzeroberfläche beinhalteten \glq Build\grq{} Methode.  Im nächsten Schritt werden ereignisauslösende Aktivitäten,  beispielsweise der Klick auf Schaltflächen wie in Quelltext \ref{lst:Synth} dargestellt,  mit den übersetzen Methoden verbunden und die Platzhalter entfernt.  Dabei wird der Name der behandelten Methode aus der XML Struktur extrahiert und der entsprechende Binding-Platzhalter mit dem Namen und dem Parameter \glq Context\grq{} ersetzt. 
+Die Zusammenführung der visuellen und logischen Zwischendarstellung erfolgt während der visuellen Synthese im Compiler-Backend.  In einem ersten Schritt erfolgt die Kopie der übersetzten Logik unterhalb der für den Aufbau der grafischen Benutzeroberfläche beinhalteten \glq Build\grq{} Methode.  Im nächsten Schritt werden ereignisauslösende Aktivitäten,  beispielsweise der Klick auf Schaltflächen wie in Quelltext \ref{lst:Synth} dargestellt,  mit den übersetzten Methoden verbunden und die Platzhalter entfernt.  Dabei wird der Name der behandelten Methode aus der XML Struktur extrahiert und der entsprechende Binding-Platzhalter mit dem Namen und dem Parameter \glq Context\grq{} ersetzt. 
 
 
 \lstinputlisting[label={lst:Synth},caption={Synthese von ereignisauslösenden Aktivitäten} , language=csh]{SourceCode/ClickSynth.cs} 
