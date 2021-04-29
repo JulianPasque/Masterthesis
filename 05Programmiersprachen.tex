@@ -133,13 +133,13 @@ Dart hat keine Namespaces,  stattdessen werden Pakete und Dateien direkt importi
 Generics werden in Dart sehr ähnlich behandelt wie in \Csharp{} allerdings muss keine Typbeschränkung übergeben werden.  \footcite[Vgl.][S. 98]{Cheng2019} Quelltext \ref{lst:DartGeneric} zeigt die Implementation einer generischen State-Klasse in Dart. 
 
 \lstinputlisting[label={lst:DartGeneric}, caption={[Generics in Dart]{Generics in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartGeneric.Dart}
-
+ \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 \section{Integrierte Verweistypen }
-Integrierte Verweistypen (engl. Delegates) \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} referenzieren Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp.  \glq Delegates\grq{} werden dazu verwendet,  Methoden als Parameter zu übergeben.  Im ereignisgesteuerten Framework Xamarin.Forms werden die Methoden zur Behandlung von Ereignissen durch  \glq Delegates\grq{}  aufgerufen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftDelegates2015} 
+Integrierte Verweistypen (engl. Delegates) referenzieren Methoden mit einer bestimmten Parameterliste und dem Rückgabetyp.  \glq Delegates\grq{} werden dazu verwendet,  Methoden als Parameter zu übergeben.  Im ereignisgesteuerten Framework Xamarin.Forms werden die Methoden zur Behandlung von Ereignissen durch  \glq Delegates\grq{}  aufgerufen.\footcite[Vgl. ][Abgerufen am \today]{MicrosoftDelegates2015} 
 
 In Dart kann der Typ \glq Typedef\grq{} verwendet werden,  um eine Methodensignatur zu definieren und eine Instanz davon in einer Variablen vorzuhalten. \footcite[Vgl. ][Abgerufen am \today]{Pedley2019}  Dies wird in Quelltext \ref{lst:DartDelegates} dargestellt. 
 
-\lstinputlisting[label={lst:DartDelegates},  caption={[Delegates in Dart]{Delegates in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartDelegates.Dart}
+\lstinputlisting[label={lst:DartDelegates},  caption={[Integrierte Verweistypen in Dart]{Integrierte Verweistypen in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartDelegates.Dart}
 
 \section{Asynchronität und Parallelität}
 
@@ -151,7 +151,7 @@ aufgehoben.  Der Quelltext lässt sich trotz asynchroner Entwicklung weiterhin w
 
 In Dart wird auf die gleichen Schlüsselwörter \glq async\grq{} und \glq await\grq{}  für die Realisierung von asynchronen Programmen zurückgegriffen.  Jedoch wird das Schlüsselwort \glq async\grq{} nicht vor dem Methodennamen sondern nach der Parameterliste aufgeführt.   Dies wird in Quelltext \ref{lst:DartAsync} dargestellt.
 
-\lstinputlisting[label={lst:DartAsync},caption={[Async und Await in Dart]{Async und Await in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
+\lstinputlisting[label={lst:DartAsync},caption={[Asynchronität in Dart]{Asynchronität in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartAsyncAwait.Dart}
 
 Um\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  die Vorteile von mehreren Prozessorkernen nutzen zu können,  reicht dieses Konzept jedoch nicht aus.  In Flutter müssen potentielle Hintergrundthreads,  wie in  \Csharp ,  manuell verwaltet werden.  Für den Start von rechenintensiven Arbeiten stehen die \glq Isolates\grq{} zur Verfügung,  die dem Task Konzept aus \Csharp{} ähneln.  Dabei sind \glq Isolates\grq{} separate Ausführungsthreads, die sich keinen Speicher mit dem Hauptspeicher der Anwendung teilen und somit im Gegensatz zu \glq Task\grq{} nicht auf die Anwendung zugreifen können.
 
@@ -163,15 +163,14 @@ Klassenbibliotheken\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]
 \subsection{Netzwerkaufrufe}
 Netzwerkaufrufe zur Datenabfrage vom Server oder Übermittlung von Benutzereingaben erfolgt in \Csharp{} durch die Klasse HttpClient,  Dart verwendet das http-Paket.  Um eine Netzwerkanfrage zu stellen,  ist es in beiden Sprachen wichtig, die vorher eingeführten Schlüsselwörter \glq async\grq{} und \glq await\grq{} zu verwenden, damit die Benutzeroberfläche auch während der Anfrage reaktionsfähig bleibt.  Ein Netzwerkanfrage in Flutter wird in Quelltext \ref{lst:FlutterNetworkRequest} dargestellt.
 
-\lstinputlisting[label={lst:FlutterNetworkRequest},caption={Flutter Network request}, language=Dart]{SourceCode/NetworkRequest.Dart}
+\lstinputlisting[label={lst:FlutterNetworkRequest},caption={Netzwerkanfrage in Dart}, language=Dart]{SourceCode/NetworkRequest.Dart}
 \subsection{Kodierung und Dekodierung von Daten}
 
 Bei\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  der Entwicklung von Apps wird häufig \ac{json}, ein kompaktes Format für den Austausch von Daten zwischen Anwendungen, verwendet.  \footcite[Vgl.][S. 684]{Dobrenz2018}  Kodierung,  auch als Serialisierung bezeichnet,  ist die Umwandlung einer Datenstruktur in eine Zeichenkette.  Dekodierung,  auch Deserialisierung, ist der umgekehrte Prozess,  die Umwandlung einer Zeichenkette in eine Datenstruktur. \footcite[Vgl.][Abgerufen am \today]{GoogleJson} In \Csharp{} kann für beide Prozesse der Namespace \glq System.Text.Json\grq{} verwendet werden, \footcite[Vgl.][Abgerufen am \today]{MicrosoftJson2020} während in Dart die Bibliothek \glq dart:convert\grq{} zur Verfügung steht. \footcite[Vgl.][Abgerufen am \today]{GoogleJson}
 
 
 \section{Ereignisse}
-Ein Ereignis ist eine Meldung, die von einem Objekt gesendet wird, um das Auftreten
-einer Aktion zu signalisieren. Dies wird beim ereignisgesteuerten Xamarin.Forms z.B. durch den Klick auf eine Schaltfläche ausgelöst. Events können in  \Csharp{}  auch ohne \ac{xaml} Dateien verwendet werden, wenn etwa die Programmlogik das Ändern eines Eigenschaftswerts verursacht.  Das Objekt, von dem das Ereignis ausgelöst wird, ist der Ereignissender, dem die weitere Folge der  Aktion nicht bekannt ist.  Dart verwendet Streams,  die ähnlich wie Ereignisse arbeiten, deren Verwendung in Quelltext  \ref{lst:DartEvents} dargestellt sind.
+Ein Ereignis ist eine Meldung, die von einem Objekt gesendet wird, um das Auftreten einer Aktion zu signalisieren. Dies wird beim ereignisgesteuerten Xamarin.Forms z.B. durch den Klick auf eine Schaltfläche ausgelöst. Events können in  \Csharp{}  auch ohne \ac{xaml} Dateien verwendet werden, wenn etwa die Programmlogik das Ändern eines Eigenschaftswerts verursacht.  Das Objekt, von dem das Ereignis ausgelöst wird, ist der Ereignissender, dem die weitere Folge der  Aktion nicht bekannt ist. \footcite[Vgl.][Abgerufen am \today]{MicrosoftEvents2017} Dart verwendet Streams,  die ähnlich wie Ereignisse arbeiten, deren Verwendung in Quelltext  \ref{lst:DartEvents} dargestellt sind.\footcite[Vgl.][Abgerufen am \today]{GoogleAsynchronous}
 
 
 \lstinputlisting[label={lst:DartEvents},caption={[Events in Dart]{Events in Dart\footcite[[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartEvents.Dart}

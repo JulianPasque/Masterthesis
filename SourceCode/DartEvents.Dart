@@ -1,6 +1,7 @@
 StreamController streamController = new StreamController.broadcast();
 
-void main() {
+void main() 
+{
   streamController.stream.listen((args) => 
   {
         // Quelltext

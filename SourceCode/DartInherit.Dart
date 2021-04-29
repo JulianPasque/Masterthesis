@@ -1,6 +1,9 @@
 class BaseClass 
 {
-  void myFunction() {}
+  void myFunction() 
+  {
+    // Quelltext
+  }
 }
 
 class MyClass extends BaseClass 

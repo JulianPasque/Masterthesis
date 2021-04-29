@@ -19,8 +19,6 @@
 \usepackage{xltabular}
 \setlength{\extrarowheight}{4pt}
 
-
-
 \newcommand{\cmark}{\ding{51}}%
 
 \KOMAoptions{%
@@ -119,6 +117,8 @@ Java
 	keywordstyle=\color{bluekeywords},
 	commentstyle=\color{dkgreen}, 
 	stringstyle=\color{mauve},
+	    morestring=*[d]{"},
+    morestring=*[d]{'},
 	numberstyle=\tiny\color{gray},
   	breaklines={true},
 }
@@ -136,6 +136,8 @@ commentstyle=\color{greencomments},
 morekeywords={partial, var, value, get, set},
 keywordstyle=\color{bluekeywords},
 morecomment=[l]{//},
+    morestring=*[d]{"},
+    morestring=*[d]{'},
 stringstyle=\color{redstrings},
 }
 \usepackage{ltxtable}
@@ -217,7 +219,7 @@ Funk-ti-ons-fä-hig-keit
 
   \renewcommand*{\chapterpagestyle}{scrheadings}
 
-\setlength\bibitemsep{1.5\itemsep}
+\setlength\bibitemsep{1.25\itemsep}
 
 \chapter*{Literaturverzeichnis}
 \pagenumbering{Roman}
@@ -225,7 +227,6 @@ Funk-ti-ons-fä-hig-keit
  \chaptermark{Literaturverzeichnis}
 
  \addcontentsline{toc}{chapter}{Literaturverzeichnis}
-
 \printbibliography[nottype=online, heading=subbibliography, title={Gedruckte Quellen}]
 \printbibliography[type=online, heading=subbibliography, title={Online Quellen}]
   \include{AnhangGegenüberstellung}

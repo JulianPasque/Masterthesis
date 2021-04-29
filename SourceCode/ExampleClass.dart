@@ -1,6 +1,8 @@
-class ExampleClass {
+class ExampleClass 
+{
   // Konstruktor
-  PublicExampleClass() {
+  PublicExampleClass() 
+  {
     PublicChar = String.fromCharCode(106);
   }
 
