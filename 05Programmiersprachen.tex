@@ -12,11 +12,11 @@ In diesem Abschnitt sollen die sogenannten Klassen und Objekte der objektorienti
  
 Die Programmiersprache Dart war bis zu der Version 2.12 \glq nicht Null sicher\grq . Da nicht gewährleistet war,  dass Typen einen entsprechenden Wert zu jeder Zeit repräsentieren mussten,  war zur Vermeidung von Laufzeitfehlern eine Nullprüfung, wie in Quelltext \ref{lst:DartNull} dargestellt, bei der Arbeit mit Variablen erforderlich.   
 
-\lstinputlisting[label={lst:DartNull},caption={[Nullsicherheit in Dart bis Version 2.12]{Nullsicherheit in Dart 1.x\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
+\lstinputlisting[label={lst:DartNull},caption={[Nullsicherheit in Dart bis Version 2.12]{Nullsicherheit in Dart bis Version 2.12\footcite[In Anlehnung an ][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartNull.Dart}
 
 Im März 2021 hat\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019} die Programmiersprache Dart den Support für Nullsicherheit hinzugefügt. Diese gravierende Änderung für Softwareentwickler ist in der aktuellen Literatur und vielen Onlineressourcen noch nicht veröffentlicht,  muss jedoch beim Compilerentwurf berücksichtigt werden.  Ab diesem Zeitpunkt ist ein Wert \glq null\grq{} nur noch möglich, wenn der Entwickler dies bewusst entscheidet, ansonsten benötigen Typen einen Wert.  Mit dieser \glq Nullsicherheit\grq{} werden die Laufzeit-Nullreferenzfehler zu Analysefehlern, die während der lexikalischen Analyse auffallen und somit nicht mehr zwangsläufig zum Absturz der Anwendung führen. \footcite[Vgl.][Abgerufen am \today]{GoogleflutterNullSafty2021} Quelltext \ref{lst:DartNotNullAnymore} visualisiert die Arbeit mit den neuen Datentypen in Dart. 
 
-\lstinputlisting[label={lst:DartNotNullAnymore},caption={[Nullsicherheit in Dart 2.12]{Nullsicherheit in Dart 2.x\footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}}}, language=Dart]{SourceCode/DartNullable.Dart}
+\lstinputlisting[label={lst:DartNotNullAnymore},caption={[Nullsicherheit in Dart ab Version 2.12]{Nullsicherheit in Dart ab Version 2.12\footcite[In Anlehnung an ][Abgerufen am \today]{GoogleflutterNullSafty2021}}}, language=Dart]{SourceCode/DartNullable.Dart}
 
 Seit \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleflutterNullSafty2021} dieser Veränderung verhält sich die Programmiersprache Dart analog zu \Csharp.  Auch ein Fragezeichen,  das für die Definition eines nullable Typs verwendet wird,  ist identisch.  Spezielle Änderungen sind somit nicht mehr durch den Compiler an dieser Stelle vorzunehmen.  
 
@@ -109,7 +109,7 @@ Erweiterungen oder Veränderung von Klassen entstehen durch die Vererbung, wobei
 Einer\footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}  abgeleiteten Klasse kann exakt nur eine Basisklasse,  also eine Elternklasse, zugeordnet werden, dies ist bei \Csharp{} und Dart gleich definiert. Eine Mehrfachvererbung ist in \Csharp{} auf Klassenebene nicht vorgesehen, kann aber durch Schnittstellenvererbung erfolgen. Dafür muss eine Implementierung von Attributen oder Methoden über Schnittstellen erfolgen.\footcite[Vgl.][S. 258f.]{Kühnel2019} Dart kennt im Gegensatz zu \Csharp{} keine Schnittstellen,  sondern verwendet stattdessen das Konzept der Mixins.  Auch hier hat jede Klasse genau eine Elternklasse,  jedoch kann ein Klassenkörper in mehreren Hierarchien vorkommen.  Dies wird in Quelltext \ref{lst:DartMixin} visualisiert. 
 
 
-\lstinputlisting[label={lst:DartMixin},caption={[Mixin's in Dart]{Mixin's in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartMixin.Dart}
+\lstinputlisting[label={lst:DartMixin},caption={[Mixins in Dart]{Mixins in Dart\footcite[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}}}, language=Dart]{SourceCode/DartMixin.Dart}
 \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{Pedley2019}
 \subsection{Übersetzungsbeispiel}
 Durch die  herausgearbeiteten Unterschiede in der Klassenmodellierung kann exemplarisch eine  \Csharp{} Klasse zu Dart übersetzt werden,  um einen Eindruck über die Arbeitsweise des Compilers zu vermitteln.  Der folgende Quelltext veranschaulicht die Ausgangsklasse. 

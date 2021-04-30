@@ -12,7 +12,7 @@ Bevor der Source-to-Source Compiler alle Quelltext- und Ansichtsdateien überset
 \newpage
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/Ablauf.png}
- \caption{Aktivitätsdigramm}
+ \caption{Compiler-Ablauf als UML Aktivitätsdiagramm}
  \label{fig:umlablauf}
 \end{figure}
 
@@ -54,7 +54,7 @@ Xamarin.iOS verwaltet die für die Übersetzung notwendigen Metadaten in einer D
   BundleName  					&  \checkmark 	& 		 					\\
   \hline
 \end{tabularx}
-\caption{Info.plist Einträge in Flutter}
+\caption{Einträge in \glq Info.plist\grq-Dateien in Flutter}
  \label{tab:InfoPlist}
 \end{table}
 Die Übersicht weist nicht alle aus der iOS Entwicklung bekannten Schlüssel auf.  Alle fehlenden Eigenschaften gehören in die Datei \glq Info.plist\grq, wie die letzten drei in der Tabelle \ref{tab:InfoPlist} genannten.  Ähnlich dem Vorgehen bei den Android Metadaten kann für die Modifizierung  von Anwendungsnamen und Identifizierer auf iOS eine Erweiterung verwendet werden.  So kann der Compiler das \glq rename\grq{} Plugin verwenden und es bedarf keiner zusätzlichen manuellen Entwicklung. \footcite[Vgl.][Abgerufen am \today]{Rename}  Die aus iOS bekannten Texte,  zur Beantragung von Berechtigungen müssen weiterhin vom Source-To-Source Compiler extrahiert und in die Flutter \glq info.plist\grq{} transferiert werden.
@@ -100,7 +100,7 @@ Mobile Anwendungen nutzen Bilder, die neu über die Kamera aufgenommen werden od
 
 \lstinputlisting[label={lst:MediaPlugin},caption={Austausch der Kamera und Galerie Erweiterung}, language=csh]{SourceCode/ImagePluginSwap.cs}
 
-Ein weiterer wichtiger Anwendungsfall,  der nur mithilfe von Erweiterungen implementiert werden kann,  ist der Zugriff auf die Smartphone Sensoren.  Der folgende Quelltext zeigt den Austausch der Beschleunigungssensorfunktionen des Xamarin.Essentials Plugins mithilfe des Flutter Sensor Plugins.  Der Compiler übersetzt ebenfalls die Funktionalität des Gyroskops, siehe Programmcode \ref{lst:Sensor},  da der Quelltext jedoch analog ist, wird er an dieser Stelle nicht explizit aufgeführt. 
+Ein weiterer wichtiger Anwendungsfall,  der nur durch Erweiterungen implementiert werden kann,  ist der Zugriff auf die Smartphone Sensoren.  Der folgende Quelltext zeigt den Austausch der Beschleunigungssensorfunktionen des Xamarin.Essentials Plugins mithilfe des Flutter Sensor Plugins.  Der Compiler übersetzt ebenfalls die Funktionalität des Gyroskops, siehe Programmcode \ref{lst:Sensor}. Da der Quelltext jedoch analog ist, wird er an dieser Stelle nicht explizit aufgeführt. 
 
 \lstinputlisting[label={lst:Sensor},caption={Austausch der Beschleunigungssensor Erweiterung}, language=csh]{SourceCode/Accelerometer.cs}
 
@@ -114,7 +114,7 @@ Die Kompilierung der beiden Dateien geschieht jeweils durch ein dediziertes Comp
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/ViewCompiler.png}
- \caption{Compiler Phasen für Ansichten}
+ \caption{Compiler-Phasen für die Übersetzung von Ansichten}
  \label{fig:ViewCompilerPhases}
 \end{figure}
 
@@ -136,7 +136,7 @@ Nun erfolgt die Anlage einer Arbeitskopie des Templates,  um in weiteren Compile
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/DartPlaceHolder.png}
- \caption{Bereinigung von Dart Widget Platzhaltern}
+ \caption{Bereinigung von Platzhaltern}
  \label{fig:PlaceholderOptions}
 \end{figure}
 
@@ -151,7 +151,7 @@ Zu diesem Zeitpunkt sind in der Arbeitskopie noch die Binding- und die ungenutzt
 
 Die Erzeugung der logischen Zwischendarstellung,  basierend auf den Codebehind Dateien,  erfordert die gleiche Implementierung mit \glq CSharpSyntaxWalker\grq{} wie die der Klassenstrukturen,  da es sich bei diesen Dateien ebenfalls um \Csharp{} Klassen handelt.  
 
-Xamarin.Forms übermittelt Änderungen an  Eigenschaften automatisch, mithilfe der \glq INotifyPropertyChanged\grq{}  Schnittstelle, an die Benutzeroberfläche.  Bei Flutter erhält das Framework durch die \glq setState\grq{}  Methode entsprechende Informationen.  Der Compiler kann notwendige Änderungen nicht im Rahmen der Zwischendarstellung durchführen, da anhand der Codebehind Dateien nicht identifizierbar ist, welche Eigenschaften einen direkten Bezug auf die graphische Benutzeroberfläche haben. 
+Xamarin.Forms übermittelt Änderungen an  Eigenschaften automatisch, mithilfe der \glq INotifyPropertyChanged\grq{}  Schnittstelle, an die Benutzeroberfläche.  Bei Flutter erhält das Framework durch die \glq setState\grq{}  Methode entsprechende Informationen.  Der Compiler kann notwendige Änderungen erst im Backend und nicht im Rahmen der Zwischendarstellung durchführen,  da anhand der Codebehind Dateien nicht identifizierbar ist, welche Eigenschaften einen direkten Bezug auf die graphische Benutzeroberfläche haben. 
 
 \subsection{Visuelle Synthese}
 
@@ -164,15 +164,15 @@ Die Sicherstellung der automatischen Aktualisierung der Benutzeroberfläche kann
 
 
 \section{Referenzierung}
-Im Anschluss an die Zwischendarstellung, in der die Generierung von Logik und Ansichten erfolgte,  müssen nun die entstandenen Dartartefakte untereinander referenziert werden.  Darunter wird in diesem Zusammenhang die Verknüpfung der entsprechenden Quelltextdokumente verstanden.  Diese Verlinkung ist erforderlich,  damit Komponenten auf Klassen zugreifen können,  die in anderen Dateien definiert sind.  Im Gegensatz zu \Csharp{} können Dateien in Dart nicht über Namespaces, sondern nur über ihren Dateinamen eingebunden werden.  Folglich ist es erforderlich,  Dateien in Quelltextdokumente einzubinden,  die verwendete Klassendefinition enthalten.  Die Information,  in welcher Datei sich eine Klasse befindet, wurde durch den \glq CSharpSyntaxWalker\grq{} festgehalten.  Diese Referenzen werden ebenfalls benötigt,  um durch die Anwendung zu den Navigationszielen zu gelangen, da es sich bei der Navigation um die Erzeugung eines Objektes des entsprechenden Widgets handelt. 
+Im Anschluss an die Zwischendarstellung, in der die Generierung von Logik und Ansichten erfolgte,  müssen nun die entstandenen Dartartefakte untereinander referenziert werden.  Darunter wird in diesem Zusammenhang die Verknüpfung der entsprechenden Quelltextdokumente verstanden.  Diese Verlinkung ist erforderlich,  damit Komponenten auf Klassen zugreifen können,  die in anderen Dateien definiert sind.  Im Gegensatz zu \Csharp{} können Dateien in Dart nicht über Namespaces, sondern nur über ihren Dateinamen eingebunden werden.  Folglich ist es erforderlich,  Dateien in Quelltextdokumente einzubinden,  die verwendete Klassendefinition enthalten.  Die Information,  in welcher Datei sich eine Klasse befindet, wird durch den \glq CSharpSyntaxWalker\grq{} festgehalten.  Diese Referenzen werden ebenfalls benötigt,  um durch die Anwendung zu den Navigationszielen zu gelangen, da es sich bei der Navigation um die Erzeugung eines Objektes des entsprechenden Widgets handelt. 
 
 
 \section{Codeoptimierung}
 
 Nach der erfolgreichen Zusammenführung der einzelnen Artefakte kann der Code optimiert werden. Dafür werden Sprachkomponenten einschließlich der Ereignisdefinition,  der Ereignishandler und aller Aufrufe entfernt, die  nur für die  Arbeit von Xamarin.Forms benötigt  wurden. Die Löschung betrifft die \glq InitializeComponent\grq{}  Methode, die aus der Codebehind-Datei die grafische Benutzeroberfläche geladen hat und die bereits durch SetState-Blöcke ersetzte
- \glq INotifyPropertyChanged\grq{}  Schnittstellen Definition,  die für die Oberflächenaktualisierung zuständig war.  Jetzt folgt die Entfernung der nicht benötigten Platzhalter mit dem in Quelltext \ref{lst:PlaceholderCleanup} dargestellten Algorithmus,  aus dem generierten Dart Quelltext.  
+ \glq INotifyPropertyChanged\grq{}  Schnittstellendefinition,  die für die Oberflächenaktualisierung zuständig war.  Jetzt folgt die Entfernung der nicht benötigten Platzhalter mit dem in Quelltext \ref{lst:PlaceholderCleanup} dargestellten Algorithmus,  aus dem generierten Dart Quelltext.  
 \lstinputlisting[label={lst:PlaceholderCleanup},caption={Bereinigung von ungenutzten Platzhaltern}, language=csh]{SourceCode/Cleanup.cs}
-Damit befindet sich der Programmcode in einem korrekten syntaktischen Zustand und kann mithilfe des Flutter Compilers zu einer mobilen App übersetzt und ausgeführt werden.  Es wird jedoch noch ein weiterer Schritt in der Codeoptimierung durchgeführt,  der die Lesbarkeit des Quelltextes durch eine einheitliche Formatierung verbessert.  Durch die Verwendung der Templates ist der generierte  Widget-Baum innerhalb der Build Methode nicht eingerückt.  Die Flutter SDK bietet jedoch die Möglichkeit,  Quelltext-Dokumente über die Kommandozeilen Schnittstelle zu formatieren.  Quelltext \ref{lst:Formatting} zeigt die Methode zur Quelltextformatierung mithilfe der Flutter SDK. 
+Damit befindet sich der Programmcode in einem korrekten syntaktischen Zustand und kann mithilfe des Flutter Compilers zu einer mobilen App übersetzt und ausgeführt werden.  Ein zusätzlicher Schritt der Codeoptimierung verbessert die Lesbarkeit des erzeugten Quelltextes durch eine einheitliche Formatierung. Der mit Templates generierte Widget-Baum ist innerhalb der Build Methode nicht eingerückt. Zur Bereinigung bietet die Flutter-SDK die Möglichkeit,  Quelltextdokumente über die Kommandozeilenschnittstelle zu formatieren.  Quelltext \ref{lst:Formatting} zeigt die Methode zur Quelltextformatierung durch die SDK. 
 
 \lstinputlisting[label={lst:Formatting},caption={Methode zur Quelltextformatierung} , language=csh]{SourceCode/FlutterFormatting.cs} 
 

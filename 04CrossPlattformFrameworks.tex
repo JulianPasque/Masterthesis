@@ -32,7 +32,7 @@ Diese Plugins können für Android (mit Kotlin oder Java) oder für iOS (mit Swi
 In Quelltext \ref{lst:Pubspecjaml} wird ein Ausschnitt der \glq pubspec.yaml\grq{} Datei gezeigt, in welcher das in Unterabschnitt \ref{sec:nav} erwähnte Plugin \glq url\_launcher\grq{} geladen wird.
 
 %Kein Quelltext- ggf ändern.
-\lstinputlisting[label={lst:Pubspecjaml},caption={[Erweiterungen in Flutter]{Erweiterungen in Flutter\footcite[In Anlehnung an][Abgerufen am \today]{GoogleFlutterPackages2020}}}, language=Dart]{SourceCode/Pubspec.yaml} 
+\lstinputlisting[label={lst:Pubspecjaml},caption={[Referenzierung von Erweiterungen in Flutter]{Referenzierung von Erweiterungen in Flutter\footcite[In Anlehnung an][Abgerufen am \today]{GoogleFlutterPackages2020}}}, language=Dart]{SourceCode/Pubspec.yaml} 
 \footcitetext[Quelltext in Anlehnung an][Abgerufen am \today]{GoogleFlutterPackages2020}In dem Beispiel muss das Plugin mindestens die Version 5.4 haben,  darf jedoch die Version 6 nicht überschreiten.  Aufgrund der Vielzahl an existierenden Erweiterungen für beide Frameworks ist es nicht möglich,  eine vollständige Gegenüberstellung anzulegen.  Im Folgenden wird jedoch anhand von drei gängigen Anwendungsszenarien der Einsatz von Erweiterungen erläutert.
 
 \subsection{Interaktion mit der Hardware}
@@ -139,7 +139,7 @@ Neben diesen gängigen Layouts gibt es noch weniger verbreitete,  zum Beispiel  
 \hline
 	AbsolutLayout       		&  Positioned	 			\\ 
 	ContentView       		&  StatelessWidget	 			\\ 
-	Frame       					&  BoxDecoration     	 			\\ 
+	Frame       					&  Card     	 			\\ 
 	Grid            				&  GridView oder Stack		\\ 
 	ScrollView            		&  SingleChildScrollView		\\ 
 	StackLayout       		&  Row und Column  	 			\\ 
@@ -167,7 +167,7 @@ Einige Steuerelemente sind ausschließlich für die Darstellung von Inhalten vor
 \hline
    \textbf{Xamarin.Forms Steuerelement} & \textbf{Flutter Widget}  \\
 \hline
-	BoxView		       			&   	 SizedBox  		\\ 
+	BoxView		       			&   	 SizedBox oder Divider 		\\ 
 	Image       						&	     Image	 			\\ 
 	Label       						&  	Text 					\\ 
 	Map            					&	   	Leamaps oder Google Maps \\ 
@@ -193,10 +193,10 @@ Xamarin.Forms ist ein ereignisgesteuertes Framework. Die hier behandelten Steuer
    \textbf{Xamarin.Forms Steuerelemente} & \textbf{Flutter Widget}  \\
 \hline
 	Button		       				&  	ElevatedButton 		\\ 
-	ImageButton		       		&  	IconButton 		\\ 
+	ImageButton		       		&  	ElevatedButton 		\\ 
 	RadioButton		       		&  	RadioButton 		\\ 
 	RefreshView		       		&  	pull\_to\_refresh 		\\ 
-	SearchBar		       			&  	flutter\_search\_bar 	\\ 
+	SearchBar		       			&  	flutter\_search\_bar oder TextField	\\ 
 	SwipeView		       		&  	flutter\_slideable 		\\ 
 \hline
 \end{tabularx}
@@ -224,7 +224,7 @@ In Xamarin.Forms stehen für die Arbeit mit Texten die Steuerelemente \glq Entry
 	Editor		       	&  TextField	 		\\ 
 \hline
 \end{tabularx}
-\caption{Gegenüberstellung textmanipulierender Steuerelemente}
+\caption{Gegenüberstellung von textmanipulierenden Steuerelementen}
  \label{tab:TextWidgets}
 \end{table}
 Wie in der Übersicht erkenntlich besitzt Flutter ausschließlich das Widget \glq TextField\grq{},  das beide Funktionalitäten der Xamarin.Forms Steuerelemente bündelt.  Standardmäßig bietet das \glq TextField\grq{} Widget die Eingabemöglichkeit für eine Zeile ähnlich dem \glq Entry\grq{} Steuerelement, kann aber durch das Setzen einer Eigenschaft erweitert werden.  Dies wird in Quelltext \ref{lst:FlutterTextField} dargestellt.

@@ -4,7 +4,7 @@ Zur Entwicklung eines möglichst effektiven Compilers ist es notwendig, die gena
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/CompilerArchitecture/CompilerStructure.png}
- \caption{Umfeld des Source-To-Source Compilerns}
+ \caption{Compiler-Umfeld}
  \label{fig:CompilerArchitecture}
 \end{figure}
 
@@ -12,7 +12,7 @@ Wie auf der Abbildung erkennbar ist,  durchlaufen sowohl Xamarin.Forms als auch 
 
 \begin{figure}[!ht]
  \includegraphics[width=14.5cm]{Images/CompilerArchitecture/S2SArchitecture.png}
- \caption{Source-To-Source Compiler Aufbau}
+ \caption{Compiler-Aufbau}
  \label{fig:S2SCompilerAufbau}
 \end{figure}
 
@@ -49,7 +49,7 @@ Neben dem Roslyn Compiler soll der zu entwickelnde Transpiler auch die Flutter \
 
 \begin{figure}[!ht]
  \includegraphics[width=\textwidth,keepaspectratio]{Images/Implementation/IDE.png}
- \caption{Source-To-Source Compiler Informationsfluss}
+ \caption{Compiler-Informationsfluss}
  \label{fig:Informationflow}
 \end{figure}
 
@@ -71,7 +71,7 @@ Der Bedarf zum Austausch von Klassen und Methoden resultiert aus unterschiedlich
 
 \lstinputlisting[label={lst:XFSelectImage},caption={Bilderauswahl in Xamarin.Forms}, language=csh]{SourceCode/Galery.cs}
 
-\lstinputlisting[label={lst:FlutterSelectImage},caption={Bilderauswahl in Dart}, language=Dart]{SourceCode/Galery.Dart}
+\lstinputlisting[label={lst:FlutterSelectImage},caption={Bilderauswahl in Flutter}, language=Dart]{SourceCode/Galery.Dart}
 
 Beide Crossplatform Frameworks verwenden in diesem Beispiel unterschiedliche Klassen für die Auswahl eines Bildes aus der Smartphonegalerie.  Daher ist es notwendig,  die Frameworks zu analysieren und die genauen Unterschiede zwischen den Arbeitsweisen zu verstehen.  Zu diesem Zweck werden im nachfolgenden Kapitel sowohl die Frameworks als auch deren Programmiersprachen analysiert.  Hieraus resultiert das Verständnis, inwiefern sich Benutzeroberflächen und Sprachen unterscheiden und wie diese übersetzt werden können.
 
